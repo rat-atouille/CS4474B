@@ -10,5 +10,5 @@
 - #b3b3b3	(179,179,179) Light grey
 
 ### FONTS
-- [Atkinson Hyperlegible Next] (https://fonts.google.com/specimen/Atkinson+Hyperlegible+Next)
-- [Noto Sans] (https://fonts.google.com/noto/specimen/Noto+Sans)
+- [Atkinson Hyperlegible Next](https://fonts.google.com/specimen/Atkinson+Hyperlegible+Next)
+- [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans)
