@@ -1,5 +1,4 @@
-# CS 4474B Group Project 
-## Redesigning Spotify
+# CS 4474B Redesigning Spotify
 
 ## Designs
 ### COLORS
