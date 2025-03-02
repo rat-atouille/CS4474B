@@ -1,5 +1,16 @@
 # CS 4474B Redesigning Spotify
 
+## DIRECTORY STRUCTURE
+```
+src
+ - assets
+  - imgs etc
+ - components
+  - each page should have a folder and their own css file if neccessary
+ - App.jsx
+  - Routes to each page
+```
+
 ## Designs
 ### COLORS
 - #1db954	(29,185,84) Green
