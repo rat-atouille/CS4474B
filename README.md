@@ -1,5 +1,10 @@
 # CS 4474B Redesigning Spotify
 
+## Technologies
+- React (https://react.dev/reference/react)
+- TailwindCSS (https://tailwindcss.com/docs/installation/using-vite)
+- DaisyUI (https://daisyui.com/docs/install/)
+
 ## DIRECTORY STRUCTURE
 ```
 src
@@ -22,3 +27,4 @@ src
 ### FONTS
 - [Atkinson Hyperlegible Next](https://fonts.google.com/specimen/Atkinson+Hyperlegible+Next)
 - [Noto Sans](https://fonts.google.com/noto/specimen/Noto+Sans)
+
