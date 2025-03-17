@@ -1,5 +1,6 @@
-import { BrowserRouter } from 'react-router'
+import { BrowserRouter, Routes, Route } from 'react-router'
 import './App.css'
+import Artist from './components/Artist/Artist'
 
 
 // make sure to route urs here 
@@ -9,6 +10,7 @@ function App() {
       <>
       <BrowserRouter>
         <Routes>
+          <Route path='/artist' element={<Artist /> } />
         </Routes>
       </BrowserRouter>
       </>
