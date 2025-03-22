@@ -6,7 +6,7 @@ function Navbar() {
         <i className="fa-solid fa-house text-2xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></i>
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="What do you want to play?"
           className="w-xl text-lg pl-3 pr-4 py-2 rounded-lg bg-stone-600 text-white focus:outline-none focus:ring-2 focus:ring-stone-500"
         />
       </div>

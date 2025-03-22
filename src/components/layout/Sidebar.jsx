@@ -22,7 +22,7 @@ function Sidebar() {
 
   return (
     <div className={"bg-black h-screen w-[20vw]"}>
-      <div className="p-8 mt-20 mx-10 w-full">
+      <div className="mt-20 mx-10">
         {/* First Row with Book Icon, Plus and Arrow Icons */}
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center space-x-4">
