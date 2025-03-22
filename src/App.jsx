@@ -1,17 +1,16 @@
-import { BrowserRouter } from 'react-router'
+import {BrowserRouter, Route, Routes} from 'react-router'
 import './App.css'
-
+import Podcast from "./components/layout/Podcast Page/Podcast.jsx";
 
 // make sure to route urs here 
-// <Routepath="/pathName" element={<className />} />
+// <Route path="/pathName" element={<ComponentName />} />
 function App() {
     return (
-      <>
       <BrowserRouter>
-        <Routes>
-        </Routes>
+          <Routes>
+              <Route path={"/podcast"} element={<Podcast/>}></Route>
+          </Routes>
       </BrowserRouter>
-      </>
     )
 }
 

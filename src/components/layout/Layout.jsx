@@ -7,7 +7,8 @@ function Layout({children}) {
       <Sidebar/>
       <div className={"flex flex-col"}>
         <Navbar/>
-        {children}
+        <div className={"bg-[#212121]"}>
+          {children}</div>
       </div>
     </div>
   )
