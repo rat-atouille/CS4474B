@@ -3,9 +3,9 @@ import Navbar from "./Navbar.jsx";
 
 function Layout({children}) {
   return (
-    <div className={"flex flex-row"}>
+    <div className={"flex flex-row "}>
       <Sidebar/>
-      <div className={"flex flex-col"}>
+      <div className={"flex flex-col w-[80vw]"}>
         <Navbar/>
         <div className={"bg-[#212121]"}>
           {children}</div>
