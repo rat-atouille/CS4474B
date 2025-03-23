@@ -36,12 +36,12 @@ function Sidebar() {
         </div>
 
         {/* Category Buttons */}
-        <div className="flex justify-between space-x-3 mb-6">
+        <div className="grid grid-cols-2 gap-3 mb-6 2xl:flex 2xl:flex-wrap">
           {["Playlists", "Artists", "Albums", "Podcasts"].map((category) => (
             <button
               onClick={() => handleCategory(category)}
               key={category}
-              className={`bg-gray-700 text-sm font-semibold text-gray-300 px-6 py-1 rounded 
+              className={`bg-gray-700 text-xs font-semibold text-gray-300 px-4 py-1 rounded 
                   cursor-pointer transition-all duration-300 ease-in-out 
                   ${selectedCategory === category ? 'bg-white text-gray-700 hover:text-gray-500' : 'hover:bg-gray-500'}`}
             >
@@ -64,12 +64,12 @@ function Sidebar() {
           {data.map((item, index) => (
             <div key={index} className="flex items-center space-x-4">
               {/* Square Image */}
-              <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded-sm" />
+              <img src={item.image} alt={item.name} className="2xl:w-20 2xl:h-20 w-14 h-14 object-cover rounded-sm" />
 
               {/* Text Info */}
               <div>
-                <span className="text-white font-semibold">{item.name}</span>
-                <div className="text-gray-400 text-sm">{item.year}</div>
+                <span className="text-white font-semibold 2xl:text-lg text-xs">{item.name}</span>
+                <div className="text-gray-400 2xl:text-lg text-xs">{item.year}</div>
               </div>
             </div>
           ))}
