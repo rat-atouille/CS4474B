@@ -1,9 +1,11 @@
-function Navbar() {
+function Navbar({showNavBackground}) {
   return (
-    <div className="fixed w-[80vw] h-[5vw] z-10 px-4 py-2 flex items-center justify-between">
+    <div
+         className={`fixed w-[80vw] h-[5vw] z-10 px-4 py-2 flex items-center justify-between transition-all ${showNavBackground && "bg-gray-900"}`}>
       {/* Left Icon and Search Bar in Center */}
       <div className="flex-1 flex justify-center items-center space-x-4">
-        <i className="fa-solid fa-house text-2xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></i>
+        <i
+          className="fa-solid fa-house text-2xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></i>
         <input
           type="text"
           placeholder="What do you want to play?"
@@ -13,7 +15,8 @@ function Navbar() {
 
       {/* Right Icons */}
       <div className="flex items-center space-x-4 mr-8">
-        <i className="fa-solid fa-bell text-3xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></i>
+        <i
+          className="fa-solid fa-bell text-3xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></i>
         <img
           src="src\assets\profileIcon.png"
           alt="Thumbnail"
