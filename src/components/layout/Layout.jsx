@@ -3,10 +3,9 @@ import Navbar from "./Navbar.jsx";
 import {useState, useEffect} from "react";
 
 function Layout({children}) {
-
   const [showNavBackground, setShowNavBackground] = useState(false)
 
-  const handleScroll = (event) => {
+  const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const windowHeight = window.innerHeight;
     const docHeight = document.documentElement.scrollHeight;
@@ -16,15 +15,22 @@ function Layout({children}) {
   }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
+    
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
-    <div className={"flex flex-row bg-gray-900"}>
+    <div className="flex flex-row bg-gray-900 h-screen">
       <Sidebar/>
-      <div className={"flex flex-col w-[80vw]"}>
+      <div className="flex flex-col w-[80vw] overflow-hidden">
         <Navbar showNavBackground={showNavBackground}/>
-        <div>{children}</div>
+        <div className="flex-grow overflow-auto">
+          {children}
+        </div>
       </div>
     </div>
   )

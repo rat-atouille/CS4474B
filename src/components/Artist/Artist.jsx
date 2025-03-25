@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {getArtistData} from '../../assets/data/getData';
-import axios from 'axios';
 
 const Artist = () => {
   const [activeTab, setActiveTab] = useState('Home');
   
-  // fetches data from spotify api and displays it to UIs
-  useEffect(()=> {
-    
-  }, []);
 
   // Sample data
   const artistData = {
-    name: "Bobby Bobblehead",
+    name: "Artist name",
     verified: true,
     monthlyListeners: "1,234,567",
     profileImage: "/api/placeholder/300/300"
@@ -71,16 +65,19 @@ const Artist = () => {
         return (
           <div>
             <h2 className="text-xl font-bold mb-4">Popular</h2>
-            <div className="bg-gray-800 rounded">
+            <div className="rounded">
               {songs.map((song, index) => (
-                <div key={song.id} className="flex items-center p-3 border-b border-gray-700">
-                  <div className="w-8 text-center text-gray-400 mr-3">{index + 1}</div>
+                <div key={song.id} className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353]">
+                  <div className="w-8 text-center text-gray-400 mr-3">
+                    {index + 1}
+                  </div>
                   <div className="w-12 h-12 bg-blue-500 mr-3"></div>
                   <div className="flex-1">
                     <p className="text-white">{song.title}</p>
                     <p className="text-gray-400 text-sm">{song.plays} plays</p>
                   </div>
-                  <div className="text-gray-400">{song.duration}</div>
+                  <div className="text-gray-400 mr-7">{song.duration}</div>
+                  <div className="text-gray-400 mr-3">▪▪▪</div>
                 </div>
               ))}
             </div>
@@ -148,12 +145,12 @@ const Artist = () => {
       <div className="relative h-48 bg-purple-900 p-6 flex items-end">
         <div className="relative z-10">
           {artistData.verified && (
-            <span className="bg-gray-800 text-xs px-2 py-1 rounded-sm mb-1 inline-block">
-              ✓ Verified Artist
+            <span className="text-xs px-2 py-1 rounded-sm mb-1 inline-block">
+              ✅ Verified Artist
             </span>
           )}
           <h1 className="text-4xl font-bold">{artistData.name}</h1>
-          <p className="text-sm">{artistData.monthlyListeners} monthly listeners</p>
+          <p className="text-sm mt-2 text-[#b3b3b3]">{artistData.monthlyListeners} monthly listeners</p>
         </div>
         
         <button className="absolute right-25 bottom-8 rounded-400 pl-6 pr-6 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer">
