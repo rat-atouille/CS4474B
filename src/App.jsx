@@ -1,20 +1,17 @@
-import { BrowserRouter, Routes, Route } from 'react-router'
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css'
-import Artist from './components/Artist/Artist'
-
+import HomePage from './pages/homePage';
 
 // make sure to route urs here 
-// <Routepath="/pathName" element={<className />} />
+// <Route path="/pathName" element={<componentName />} />
 function App() {
-    return (
-      <>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/artist' element={<Artist /> } />
-        </Routes>
-      </BrowserRouter>
-      </>
-    )
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path={"/"} element={<HomePage/>}/>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App
