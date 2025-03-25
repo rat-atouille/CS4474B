@@ -20,9 +20,9 @@ function RecentPlayedCarousel({ items }) {
   useEffect(() => {
     const updateItemsToShow = () => {
       if (window.innerWidth >= 1024) {
-        setItemsToShow(6);
+        setItemsToShow(5);
       } else if (window.innerWidth >= 768) {
-        setItemsToShow(4);
+        setItemsToShow(3);
       } else {
         setItemsToShow(2);
       }
@@ -34,7 +34,7 @@ function RecentPlayedCarousel({ items }) {
 
   const totalItems = items.length;
   const maxIndex = totalItems - itemsToShow;
-  
+
   const goToNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex >= maxIndex ? 0 : prevIndex + 1));
   };
@@ -93,9 +93,39 @@ function RecentPlayedCarousel({ items }) {
 
 // Grid Component
 const GridView = ({ items }) => {
+  const [itemsToShow, setItemsToShow] = useState(2);
+
+  useEffect(() => {
+    const updateItemsToShow = () => {
+      if (window.innerWidth >= 1024) {
+        setItemsToShow(5);
+      } else if (window.innerWidth >= 768) {
+        setItemsToShow(3);
+      } else {
+        setItemsToShow(2);
+      }
+    };
+    
+    // Initial check
+    updateItemsToShow();
+    
+    // Update on resize
+    window.addEventListener("resize", updateItemsToShow);
+    
+    // Cleanup on unmount
+    return () => window.removeEventListener("resize", updateItemsToShow);
+  }, []);
+
   return (
     <div className="flex relative space-x-2 w-full">
-      <div className="mt-8 p-2 grid grid-cols-6 gap-4 w-full">
+      {/* Dynamic grid columns based on itemsToShow */}
+      <div 
+        className="p-2 gap-4 w-full"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${itemsToShow}, minmax(0, 1fr))`, // Set the columns dynamically
+        }}
+      >
         {items.map((item, index) => (
           <div key={index} className="w-full">
             <div className="relative">
@@ -126,7 +156,7 @@ const MediaSection = ({ title, items, renderCollapsed, renderExpanded }) => {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <div className="mt-8">
+    <div className="mt-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <h2 className="font-bold tracking-wide">{title}</h2>
@@ -169,17 +199,54 @@ const renderMediaSection = (title, items) => (
 );
 
 export default function HomePage() {
-    const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [itemsToShow, setItemsToShow] = useState(2);
 
-    const handleCategory = (category) => {
-        setSelectedCategory(category);
-        console.log(category)
-    }
+  useEffect(() => {
+    const updateItemsToShow = () => {
+      if (window.innerWidth >= 1024) {
+        setItemsToShow(5);
+      } else if (window.innerWidth >= 768) {
+        setItemsToShow(3);
+      } else {
+        setItemsToShow(2);
+      }
+    };
+
+    // Initial check
+    updateItemsToShow();
+
+    // Update on resize
+    window.addEventListener("resize", updateItemsToShow);
+
+    // Cleanup on unmount
+    return () => window.removeEventListener("resize", updateItemsToShow);
+  }, []);
+
+  const handleCategory = (category) => {
+    setSelectedCategory(category);
+    console.log(category);
+  };
 
   return (
-    <div className="p-8 mt-20 mx-10 bg-gray-900">
+    <div className="p-8 mt-20 mx-10 w-19/20 bg-gray-900">
+
+      {/* Main Grid Section */}
+      <div className="mt-4 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+        {data.map((item, index) => (
+          <div key={index} className="flex items-center bg-gray-700 hover:bg-gray-600 rounded">
+            <img
+              src={item.image}
+              alt="Thumbnail"
+              className="h-16 w-16 object-cover"
+            />
+            <h2 className="ml-3 text-sm font-semibold">{item.name}</h2>
+          </div>
+        ))}
+      </div>
+
       {/* Category Buttons */}
-      <div className="space-x-3">
+      <div className="mt-12 flex flex-wrap gap-3">
         {["All", "Music", "Podcasts", "Audiobooks"].map((category) => (
           <button
             onClick={() => handleCategory(category)}
@@ -193,51 +260,40 @@ export default function HomePage() {
         ))}
       </div>
 
-      {/* Main Grid Section */}
-      <div className="mt-8 grid grid-cols-4 gap-4">
-        {data.map((item, index) => (
-          <div key={index} className="flex items-center bg-gray-700 hover:bg-gray-600 rounded">
-            <img
-              src={item.image}
-              alt="Thumbnail"
-              className="h-16 w-16 object-cover"
-            />
-            <h2 className="ml-3 font-semibold">{item.name}</h2>
-          </div>
-        ))}
-      </div>
-
-        {selectedCategory == "All" ? (
-            <>
-                    {renderMediaSection("Recently Played", data)}
-                    {renderMediaSection("Made For You", data)}
-                    {renderMediaSection("Your Top Mixes", data)}
-                    {renderMediaSection("Trending Podcasts", data)}
-                    {renderMediaSection("Your Latest Episodes", data)}
-                    {renderMediaSection("Recommended For You", data)}
-                    {renderMediaSection("Audiobook Collection", data)}
-                    {renderMediaSection("Your Audiobook Library", data)}
-                    {renderMediaSection("Top Audiobooks", data)}
-            </>
-            ) : selectedCategory == "Music" ? (
-                <>
-                    {renderMediaSection("Recently Played", data)}
-                    {renderMediaSection("Made For You", data)}
-                    {renderMediaSection("Your Top Mixes", data)}
-                </>   
-            ) : selectedCategory == "Podcasts" ? (
-                <>
-                    {renderMediaSection("Trending Podcasts", data)}
-                    {renderMediaSection("Your Latest Episodes", data)}
-                    {renderMediaSection("Recommended For You", data)}
-                </>
-            ) : selectedCategory == "Audiobooks" && (
-                <>
-                    {renderMediaSection("Audiobook Collection", data)}
-                    {renderMediaSection("Your Audiobook Library", data)}
-                    {renderMediaSection("Top Audiobooks", data)}
-                </>
-            )}
+      {selectedCategory === "All" && (
+        <>
+          {renderMediaSection("Recently Played", data)}
+          {renderMediaSection("Made For You", data)}
+          {renderMediaSection("Your Top Mixes", data)}
+          {renderMediaSection("Trending Podcasts", data)}
+          {renderMediaSection("Your Latest Episodes", data)}
+          {renderMediaSection("Recommended For You", data)}
+          {renderMediaSection("Audiobook Collection", data)}
+          {renderMediaSection("Your Audiobook Library", data)}
+          {renderMediaSection("Top Audiobooks", data)}
+        </>
+      )}
+      {selectedCategory === "Music" && (
+        <>
+          {renderMediaSection("Recently Played", data)}
+          {renderMediaSection("Made For You", data)}
+          {renderMediaSection("Your Top Mixes", data)}
+        </>
+      )}
+      {selectedCategory === "Podcasts" && (
+        <>
+          {renderMediaSection("Trending Podcasts", data)}
+          {renderMediaSection("Your Latest Episodes", data)}
+          {renderMediaSection("Recommended For You", data)}
+        </>
+      )}
+      {selectedCategory === "Audiobooks" && (
+        <>
+          {renderMediaSection("Audiobook Collection", data)}
+          {renderMediaSection("Your Audiobook Library", data)}
+          {renderMediaSection("Top Audiobooks", data)}
+        </>
+      )}
     </div>
   );
 }
