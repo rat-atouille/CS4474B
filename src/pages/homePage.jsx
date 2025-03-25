@@ -186,7 +186,7 @@ export default function HomePage() {
             key={category}
             className={`bg-gray-700 text-sm font-semibold text-gray-300 px-4 py-1 rounded-full 
                 cursor-pointer transition-all duration-300 ease-in-out 
-                ${selectedCategory === category ? 'bg-white text-gray-700 hover:text-gray-500' : 'hover:bg-gray-500'}`}              
+                ${selectedCategory === category ? 'bg-green-500 text-white' : 'hover:bg-gray-500'}`}              
           >
             {category}
           </button>
