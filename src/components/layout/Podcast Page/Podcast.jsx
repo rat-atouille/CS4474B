@@ -68,10 +68,10 @@ function Podcast({title, author, about, tags, img, episodes}) {
   }, []);
 
   return (
-    <div className={"h-full w-full"}>
+    <div className={"pb-7"}>
       {/*Top section*/}
       <div ref={topRef} className={"mt-20 pl-3 py-3 flex gap-2 bg-primary h-1/10"}>
-        <img crossOrigin="anonymous" alt={"Thumbnail"} className={"h-full"} src={img}/>
+        <img crossOrigin="anonymous" alt={"Thumbnail"} className={"h-32"} src={img}/>
         <section className={"justify-end flex flex-col gap-2"}>
           <div className={"flex gap-2 content-center line-clamp-1"}>
             <div>Podcast</div>
@@ -122,7 +122,6 @@ function Podcast({title, author, about, tags, img, episodes}) {
             {episodesState.map((episode, index) => <Episode key={index} episode={episode}></Episode>)}
           </div>
         </div>
-
       </div>
     </div>)
 }
