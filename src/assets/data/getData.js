@@ -22,7 +22,7 @@ async function getAccessToken() {
   return response.data.access_token;
 }
 
-async function getArtistData(access_token) {
+export async function getArtistData(access_token) {
   let url = new URL("https://api.spotify.com/v1/search");
   url.searchParams.append("q", "genre:pop");
   url.searchParams.append("type", "artist");

@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import {getArtistData} from '../../assets/data/getData';
+import axios from 'axios';
 
 const Artist = () => {
   const [activeTab, setActiveTab] = useState('Home');
   
+  // fetches data from spotify api and displays it to UIs
+  useEffect(()=> {
+    
+  }, []);
+
   // Sample data
   const artistData = {
     name: "Bobby Bobblehead",
@@ -136,7 +143,7 @@ const Artist = () => {
   };
   
   return (
-    <div className="bg-gray-900 text-white min-h-screen">
+    <div className="bg-[#212121] text-white h-full">
       {/* Header with artist info */}
       <div className="relative h-48 bg-purple-900 p-6 flex items-end">
         <div className="relative z-10">
@@ -149,9 +156,13 @@ const Artist = () => {
           <p className="text-sm">{artistData.monthlyListeners} monthly listeners</p>
         </div>
         
+        <button className="absolute right-25 bottom-8 rounded-400 pl-6 pr-6 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer">
+          <div className="w-6 h-6 flex items-center justify-center text-[#b3b3b3]">Follow</div>
+        </button>
+
         {/* Play button */}
-        <button className="absolute right-6 bottom-6 bg-green-500 rounded-full p-3">
-          <div className="w-6 h-6 flex items-center justify-center">▶</div>
+        <button className="absolute right-6 bottom-6 bg-green-500 rounded-full p-3 z-10 cursor-pointer">
+          <div className="w-6 h-6 flex items-center justify-center">▸</div>
         </button>
         
         {/* Gradient overlay */}
