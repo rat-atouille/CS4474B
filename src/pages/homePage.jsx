@@ -177,7 +177,7 @@ export default function HomePage() {
     }
 
   return (
-    <div className="p-8 mt-20 mx-10 w-ful">
+    <div className="p-8 mt-20 mx-10 bg-gray-900">
       {/* Category Buttons */}
       <div className="space-x-3">
         {["All", "Music", "Podcasts", "Audiobooks"].map((category) => (

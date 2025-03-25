@@ -20,7 +20,7 @@ function Layout({children}) {
   }, []);
 
   return (
-    <div className={"flex flex-row"}>
+    <div className={"flex flex-row bg-gray-900"}>
       <Sidebar/>
       <div className={"flex flex-col w-[80vw]"}>
         <Navbar showNavBackground={showNavBackground}/>
