@@ -36,7 +36,15 @@ const Artist = () => {
         return (
           <div>
             <div>
-              <h2 className="text-xl font-bold mb-4 mt-2">Popular</h2>
+              <div className="flex p-0 mb-4 mt-2 justify-between">
+                <h2 className="text-xl font-bold ">Popular</h2>
+                <button className="
+                  cursor-pointer text-[#b3b3b3]
+                  hover:scale-105 transition-transform duration-150 hover:border-white hover:text-white
+                  pl-3 pr-3 pt-1 pb-1 text-sm font-md border-[#b3b3b3] border border-2 rounded-2xl"
+                  onClick={()=>setPlayIndex(0)}
+                  >Play All</button>
+              </div>
               <div className="rounded">
                   {songs.map((song, index) => (
                     <div
@@ -77,25 +85,13 @@ const Artist = () => {
                 </div>
 
             </div>
-            <div className="mb-8">
-              <h2 className="text-xl font-bold mb-4">Recent Plays</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {songs.slice(0, 4).map(song => (
-                  <div key={song.id} className="bg-gray-800 p-3 rounded">
-                    <div className="w-full h-32 bg-blue-500 mb-2 rounded"></div>
-                    <p className="text-white truncate">{song.title}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            <div>
-              <h2 className="text-xl font-bold mb-4">Recommended for You</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className='ml-3 mr-3'>
+              <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {albums.map(album => (
-                  <div key={album.id} className="bg-gray-500 p-3 rounded">
-                    <div className="w-full h-32 bg-purple-500 mb-2 rounded"></div>
-                    <p className="text-white truncate">{album.title}</p>
+                  <div key={album.id} className=" p-3 rounded">
+                    <div className="w-full h-38 bg-purple-500 mb-2 rounded"></div>
+                    <p className="text-white truncate font-semibold">{album.title}</p>
                     <p className="text-gray-400 text-sm">{album.year}</p>
                   </div>
                 ))}
@@ -175,7 +171,7 @@ const Artist = () => {
         
         <button className="
           hover:scale-110 transition-transform duration-150 hover:border-white hover:text-white
-          text-[#b3b3b3] absolute right-25 bottom-10 rounded-400 pl-4 pr-4 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer">
+          text-[#b3b3b3] absolute right-25 bottom-10  pl-4 pr-4 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer">
               Follow
         </button>
 
