@@ -44,7 +44,7 @@ function RecentPlayedCarousel({ items }) {
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-19/20 mx-auto">
       <div className="overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"
@@ -229,7 +229,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="p-8 mt-20 mx-10 w-19/20 bg-gray-900">
+    <div className="p-8 mt-20 w-full bg-gray-900">
 
       {/* Main Grid Section */}
       <div className="mt-4 grid sm:grid-cols-2 md:grid-cols-4 gap-4">

@@ -26,7 +26,7 @@ function Sidebar() {
   }
 
   return (
-    <div className={`bg-black ${!collapsed ? 'w-[20vw]' : 'w-[5vw]'}`}>
+    <div className={`bg-black z-10 ${!collapsed ? 'w-[30vw] md:w-[24vw]' : 'w-[14vw] md:w-[5vw]'}`}>
       <div className={`bg-black my-20 ${!collapsed ? 'mx-6' : 'mx-2 flex flex-col justify-center items-center'}`}>
       <svg 
         onClick={handleCollapse} 
@@ -50,7 +50,7 @@ function Sidebar() {
           <div className="flex justify-between items-center mb-6">
           <div className="flex items-center space-x-4">
             <i className="fas fa-book text-white mt-2"></i>
-            <span className="text-white font-bold">Your Library</span>
+            <span className="hidden md:block text-white font-bold">Your Library</span>
           </div>
           <div className="flex space-x-4">
             <i className="fas fa-plus text-white mt-2"></i>
@@ -67,12 +67,12 @@ function Sidebar() {
 
         {/* Category Buttons */}
         {!collapsed && (
-          <div className="grid grid-cols-2 gap-3 mb-6 2xl:flex 2xl:flex-wrap">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-2 mb-6">
           {["Playlists", "Artists", "Albums", "Podcasts"].map((category) => (
             <button
               onClick={() => handleCategory(category)}
               key={category}
-              className={`bg-gray-700 text-xs font-semibold text-gray-300 px-4 py-1 rounded 
+              className={`bg-gray-700 text-[8px] md:text-[9px] lg:text-xs font-semibold text-gray-300 py-1 md:py-2 rounded 
                   cursor-pointer transition-all duration-300 ease-in-out 
                   ${selectedCategory === category ? 'bg-white text-gray-700 hover:text-gray-500' : 'hover:bg-gray-500'}`}
             >
@@ -87,14 +87,14 @@ function Sidebar() {
           <div className="flex justify-between items-center">
           <i className="fas fa-search text-white mt-2"></i>
           <div className="flex items-start space-x-2">
-            <span className="text-white">Recents</span>
+            <span className="hidden md:block text-white">Recents</span>
             <i className="fas fa-list text-white mt-2"></i>
           </div>
         </div>
         )}
 
         {/* Item Column */}
-        <div className={`space-y-4 ${!collapsed ? 'mt-10' : 'mt-2'}`}>
+        <div className={`space-y-4 ${!collapsed ? 'mt-10' : 'mt-2'} mx-auto flex flex-col items-center md:items-start`}>
           {data.map((item, index) => (
             <div key={index} className="flex items-center space-x-4">
               {/* Square Image */}
@@ -102,7 +102,7 @@ function Sidebar() {
 
               {/* Text Info */}
               {!collapsed && (
-                <div>
+                <div className="hidden md:block">
                   <span className="text-white font-semibold 2xl:text-lg text-xs">{item.name}</span>
                   <div className="text-gray-400 2xl:text-lg text-xs">{item.year}</div>
                 </div>
