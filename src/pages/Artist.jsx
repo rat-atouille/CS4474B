@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 const Artist = () => {
-  const [activeTab, setActiveTab] = useState('Home');
-  
+  const [activeTab, setActiveTab] = useState('All');
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [playIndex, setPlayIndex] = useState(null);
 
   // Sample data
   const artistData = {
@@ -31,7 +32,7 @@ const Artist = () => {
   // Tab content rendering
   const renderTabContent = () => {
     switch(activeTab) {
-      case 'Home':
+      case 'All':
         return (
           <div>
             <div className="mb-8">
@@ -61,28 +62,38 @@ const Artist = () => {
           </div>
         );
       
-      case 'Popular':
-        return (
-          <div>
-            <h2 className="text-xl font-bold mb-4">Popular</h2>
-            <div className="rounded">
-              {songs.map((song, index) => (
-                <div key={song.id} className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353]">
-                  <div className="w-8 text-center text-gray-400 mr-3">
-                    {index + 1}
+        case 'Popular':
+          return (
+            <div>
+              <h2 className="text-xl font-bold mb-4">Popular</h2>
+              <div className="rounded">
+                {songs.map((song, index) => (
+                  <div
+                    key={song.id}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353]"
+                  >
+                    <div className="w-8 text-center text-gray-400 mr-3">
+                      {hoveredIndex === index
+                            ? (playIndex === index ? '||' : '▸') 
+                            : index + 1
+                      }                        
+                    </div>
+                    <div className="w-12 h-12 bg-blue-500 mr-3"></div>
+                    <div className="flex-1">
+                      <p className="text-white">{song.title}</p>
+                      <p className="text-gray-400 text-sm">{song.plays} plays</p>
+                    </div>
+                    <div className="fixed right-17 text-gray-400 mr-7">{song.duration}</div>
+                    {hoveredIndex === index && (
+                      <div className="fixed right-14 text-gray-400">▪▪▪</div>
+                    )}
                   </div>
-                  <div className="w-12 h-12 bg-blue-500 mr-3"></div>
-                  <div className="flex-1">
-                    <p className="text-white">{song.title}</p>
-                    <p className="text-gray-400 text-sm">{song.plays} plays</p>
-                  </div>
-                  <div className="text-gray-400 mr-7">{song.duration}</div>
-                  <div className="text-gray-400 mr-3">▪▪▪</div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        );
+          );        
       
       case 'Songs':
         return (
@@ -153,12 +164,16 @@ const Artist = () => {
           <p className="text-sm mt-2 text-[#b3b3b3]">{artistData.monthlyListeners} monthly listeners</p>
         </div>
         
-        <button className="absolute right-25 bottom-8 rounded-400 pl-6 pr-6 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer">
-          <div className="w-6 h-6 flex items-center justify-center text-[#b3b3b3]">Follow</div>
+        <button className="
+          hover:scale-110 transition-transform duration-150 hover:border-white
+          absolute right-25 bottom-10 rounded-400 pl-6 pr-6 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer">
+          <div className="hover:text-white w-6 h-6 flex items-center justify-center text-[#b3b3b3]">Follow</div>
         </button>
 
         {/* Play button */}
-        <button className="absolute right-6 bottom-6 bg-green-500 rounded-full p-3 z-10 cursor-pointer">
+        <button className="
+          hover:scale-110 transition-transform duration-150 
+          absolute right-6 bottom-8 bg-green-500 rounded-full p-4 z-10 cursor-pointer">
           <div className="w-6 h-6 flex items-center justify-center">▸</div>
         </button>
         
@@ -169,7 +184,7 @@ const Artist = () => {
       {/* Navigation Tabs */}
       <div className="px-6 border-b border-gray-800">
         <div className="flex space-x-6">
-          {['Home', 'Popular', 'Songs', 'Albums'].map(tab => (
+          {['All', 'Popular', 'Songs', 'Albums'].map(tab => (
             <button 
               key={tab} 
               onClick={() => setActiveTab(tab)}

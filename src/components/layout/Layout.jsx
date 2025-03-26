@@ -26,7 +26,7 @@ function Layout({children}) {
   return (
     <div className="flex flex-row bg-gray-900 h-screen">
       <Sidebar/>
-      <div className="flex flex-col w-[80vw] overflow-hidden">
+      <div className="flex flex-col w-80% overflow-hidden">
         <Navbar showNavBackground={showNavBackground}/>
         <div className="flex-grow overflow-auto">
           {children}

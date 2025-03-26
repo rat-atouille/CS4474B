@@ -229,10 +229,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="p-8 mt-20 w-full bg-gray-900">
+    <div className="p-8 w-full bg-[#212121]">
 
       {/* Main Grid Section */}
-      <div className="mt-4 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
         {data.map((item, index) => (
           <div key={index} className="flex items-center bg-gray-700 hover:bg-gray-600 rounded">
             <img
@@ -246,7 +246,7 @@ export default function HomePage() {
       </div>
 
       {/* Category Buttons */}
-      <div className="mt-12 flex flex-wrap gap-3">
+      <div className="mt-7 mb-7 flex flex-wrap gap-3">
         {["All", "Music", "Podcasts", "Audiobooks"].map((category) => (
           <button
             onClick={() => handleCategory(category)}
