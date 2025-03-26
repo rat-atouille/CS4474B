@@ -11,22 +11,19 @@ function formatDate(dateObj) {
   const oneWeekAgo = new Date();
   oneWeekAgo.setDate(now.getDate() - 7);
 
-  const options = { weekday: 'long' }; // for weekday name
+  const year = dateObj.toLocaleDateString(undefined, {year: "numeric"});
+  const month = dateObj.toLocaleDateString(undefined, {month: "long"});
+  const day = dateObj.toLocaleDateString(undefined, {weekday: "long"});
+  const dayNumeric = dateObj.toLocaleDateString(undefined, {day: "2-digit"});
+
+
 
   if (dateObj > oneWeekAgo) {
-    // Return weekday (e.g., "Monday")
-    return dateObj.toLocaleDateString(undefined, options);
+    return `${day}`;
   } else if (dateObj.getFullYear() === now.getFullYear()) {
-    // Return MM-DD
-    const month = String(dateObj.getMonth() + 1).padStart(2, '0');
-    const day = String(dateObj.getDate()).padStart(2, '0');
-    return `${month}-${day}`;
+    return ` ${month} ${dayNumeric}`;
   } else {
-    // Return YY-MM-DD
-    const year = String(dateObj.getFullYear()).slice(-2);
-    const month = String(dateObj.getMonth() + 1).padStart(2, '0');
-    const day = String(dateObj.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
+    return `${year} ${month}  ${dayNumeric}`;
   }
 }
 
@@ -46,8 +43,9 @@ function formatLength(lengthInMinutes) {
 
 function Episode({episode}) {
   return (
-    <div className={"flex flex-nowrap items-center content-stretch gap-[10px] hover:cursor-pointer hover:scale-105 transition-all"}>
-      <img className={"flex-shrink h-44"} src={episode.img} alt="Thumbnail" />
+    <div
+      className={"flex flex-nowrap items-center content-stretch gap-[10px] hover:cursor-pointer hover:scale-105 transition-all"}>
+      <img className={"flex-shrink h-44"} src={episode.img} alt="Thumbnail"/>
       <div className={"flex flex-col gap-1"}>
         <div className={"font-bold text-xl line-clamp-3"}>{episode.title}</div>
         <div className={"text-neutral-400 text-xs line-clamp-3"}>{episode.description}</div>
