@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function Sidebar() {
+function Sidebar({collapsed, setCollapsed}) {
   // Sample data
   const data = [
     { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
@@ -14,7 +14,10 @@ function Sidebar() {
   ];
 
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [collapsed, setCollapsed] = useState(false);
+
+  useEffect(() => {
+    console.log("Sidebar collapsed state changed:", collapsed);
+  }, [collapsed]);
 
   const handleCategory = (category) => {
     // Toggle category selection
@@ -28,8 +31,8 @@ function Sidebar() {
   }
 
   return (
-    <div className={`bg-black z-10 h-screen overflow-hidden ${!collapsed ? 'w-[30vw] md:w-[24vw]' : 'w-[14vw] md:w-[5vw]'}`}>
-      <div className={`bg-black h-full flex flex-col ${!collapsed ? 'mx-6' : 'mx-2 items-center'}`}>
+      <div className={`mt-6 bg-black z-10 h-screen overflow-hidden ${!collapsed ? 'w-[30vw] md:w-[24vw]' : 'w-[14vw] md:w-[5vw]'}`}>
+      <div className={`bg-black h-full flex flex-col ${!collapsed ? 'mx-6' : 'mx-2 justify-center items-center'} justify-center items-center`}>
         {/* Collapse Toggle */}
         <svg 
           onClick={handleCollapse} 
@@ -38,7 +41,7 @@ function Sidebar() {
           viewBox="0 0 24 24" 
           strokeWidth={1.5} 
           stroke="currentColor" 
-          className="size-5 mb-3 self-end cursor-pointer text-white"
+          className={`size-5 mb-3 cursor-pointer text-white ${!collapsed ? 'self-end' : 'self-center'}`}
         >
           <path 
             strokeLinecap="round" 
@@ -48,6 +51,7 @@ function Sidebar() {
               : "m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"} 
           />
         </svg>
+        
 
         {/* Header */}
         {!collapsed && (
@@ -72,13 +76,13 @@ function Sidebar() {
 
         {/* Category Buttons */}
         {!collapsed && (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-2 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-2 mb-6 w-full">
             {["Playlists", "Artists", "Albums", "Podcasts"].map((category) => (
               <button
                 onClick={() => handleCategory(category)}
                 key={category}
                 className={`
-                  text-[8px] md:text-[9px] lg:text-xs font-semibold 
+                  text-[8px] md:text-[9px] lg:text-xs font-semibold
                   py-1 md:py-2 rounded cursor-pointer 
                   transition-all duration-300 ease-in-out 
                   ${selectedCategory === category 
