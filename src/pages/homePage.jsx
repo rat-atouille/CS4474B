@@ -232,7 +232,7 @@ export default function HomePage() {
     <div className="p-8 w-full bg-[#212121]">
 
       {/* Main Grid Section */}
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-4">
         {data.map((item, index) => (
           <div key={index} className="flex items-center bg-gray-700 hover:bg-gray-600 rounded">
             <img

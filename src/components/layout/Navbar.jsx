@@ -1,7 +1,7 @@
 function Navbar({showNavBackground}) {
   return (
     <div
-      className={`bg-[#1a1a1a] w-full h-[5vw] z-10 px-4 py-2 flex items-center justify-between transition-all ${showNavBackground && "bg-[#1a1a1a]"}`}>
+      className={`bg-black w-full h-[5vw] z-10 px-4 py-2 flex items-center justify-between transition-all ${showNavBackground && "bg-[#1a1a1a]"}`}>
       {/* Left Icon and Search Bar in Center */}
       <div className="flex-1 flex justify-center items-center space-x-4">
         <i

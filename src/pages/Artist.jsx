@@ -35,6 +35,48 @@ const Artist = () => {
       case 'All':
         return (
           <div>
+            <div>
+              <h2 className="text-xl font-bold mb-4 mt-2">Popular</h2>
+              <div className="rounded">
+                  {songs.map((song, index) => (
+                    <div
+                      key={song.id}
+                      onMouseEnter={() => setHoveredIndex(index)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
+                    >
+                      <div className="w-8 text-center text-gray-400 mr-3"
+                        onClick={() => {
+                          if (playIndex === index) {
+                            setPlayIndex(null);
+                          } else {
+                            setPlayIndex(index);
+                          }
+                        }}
+                      >
+                        {hoveredIndex === index
+                          ? (playIndex === index ? '||' : '▸') 
+                          : index + 1
+                        }                        
+                      </div>
+                      <div className="w-12 h-12 bg-blue-500 mr-3"></div>
+                      <div className="flex-1">
+                        <p className="text-white">{song.title}</p>
+                        <p className="text-gray-400 text-sm">{song.plays} plays</p>
+                      </div>
+                      <div className="text-gray-400 mr-7">{song.duration}</div>
+                      {hoveredIndex === index && (
+                        <div 
+                          className="absolute right-4 text-gray-400 cursor-pointer"
+                        >
+                          {hoveredIndex &&  '▪▪▪'}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+            </div>
             <div className="mb-8">
               <h2 className="text-xl font-bold mb-4">Recent Plays</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -51,7 +93,7 @@ const Artist = () => {
               <h2 className="text-xl font-bold mb-4">Recommended for You</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {albums.map(album => (
-                  <div key={album.id} className="bg-gray-800 p-3 rounded">
+                  <div key={album.id} className="bg-gray-500 p-3 rounded">
                     <div className="w-full h-32 bg-purple-500 mb-2 rounded"></div>
                     <p className="text-white truncate">{album.title}</p>
                     <p className="text-gray-400 text-sm">{album.year}</p>
@@ -61,39 +103,6 @@ const Artist = () => {
             </div>
           </div>
         );
-      
-        case 'Popular':
-          return (
-            <div>
-              <h2 className="text-xl font-bold mb-4">Popular</h2>
-              <div className="rounded">
-                {songs.map((song, index) => (
-                  <div
-                    key={song.id}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353]"
-                  >
-                    <div className="w-8 text-center text-gray-400 mr-3">
-                      {hoveredIndex === index
-                            ? (playIndex === index ? '||' : '▸') 
-                            : index + 1
-                      }                        
-                    </div>
-                    <div className="w-12 h-12 bg-blue-500 mr-3"></div>
-                    <div className="flex-1">
-                      <p className="text-white">{song.title}</p>
-                      <p className="text-gray-400 text-sm">{song.plays} plays</p>
-                    </div>
-                    <div className="fixed right-17 text-gray-400 mr-7">{song.duration}</div>
-                    {hoveredIndex === index && (
-                      <div className="fixed right-14 text-gray-400">▪▪▪</div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          );        
       
       case 'Songs':
         return (
@@ -151,23 +160,23 @@ const Artist = () => {
   };
   
   return (
-    <div className="bg-[#212121] text-white h-full">
+    <div className="bg-[#212121] text-white w-full">
       {/* Header with artist info */}
       <div className="relative h-48 bg-purple-900 p-6 flex items-end">
         <div className="relative z-10">
           {artistData.verified && (
-            <span className="text-xs px-2 py-1 rounded-sm mb-1 inline-block">
+            <span className="text-xs px-2 py-1 rounded-sm mb-1 inline-block select-none">
               ✅ Verified Artist
             </span>
           )}
           <h1 className="text-4xl font-bold">{artistData.name}</h1>
-          <p className="text-sm mt-2 text-[#b3b3b3]">{artistData.monthlyListeners} monthly listeners</p>
+          <p className="text-sm mt-2 text-[#b3b3b3] select-none">{artistData.monthlyListeners} monthly listeners</p>
         </div>
         
         <button className="
-          hover:scale-110 transition-transform duration-150 hover:border-white
-          absolute right-25 bottom-10 rounded-400 pl-6 pr-6 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer">
-          <div className="hover:text-white w-6 h-6 flex items-center justify-center text-[#b3b3b3]">Follow</div>
+          hover:scale-110 transition-transform duration-150 hover:border-white hover:text-white
+          text-[#b3b3b3] absolute right-25 bottom-10 rounded-400 pl-4 pr-4 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer">
+              Follow
         </button>
 
         {/* Play button */}
@@ -184,7 +193,7 @@ const Artist = () => {
       {/* Navigation Tabs */}
       <div className="px-6 border-b border-gray-800">
         <div className="flex space-x-6">
-          {['All', 'Popular', 'Songs', 'Albums'].map(tab => (
+          {['All', 'Songs', 'Albums'].map(tab => (
             <button 
               key={tab} 
               onClick={() => setActiveTab(tab)}
