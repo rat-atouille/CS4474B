@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css'
-import Podcast from "./components/layout/Podcast Page/Podcast.jsx";
+import PodcastPage from "./pages/Podcast Page/PodcastPage.jsx";
 import HomePage from './pages/homePage';
 import Artist from './pages/Artist.jsx';
 
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path={"/"} element={<HomePage />}/>
         <Route path={"/artist"} element={<Artist />} />
-        <Route path={"/podcast"} element={<Podcast/>}></Route>
+        <Route path={"/podcast"} element={<PodcastPage/>}></Route>
       </Routes>
     </BrowserRouter>
   )
