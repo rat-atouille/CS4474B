@@ -1,7 +1,14 @@
 // Import link to get to browse from button click
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar({ showNavBackground }) { 
+  const navigate = useNavigate(); // Initialize the navigate function
+
+  const handleNavigation = () => {
+    console.log("Navigating to browse page...");
+    navigate("/browse"); // Programmatically navigate to /browse
+  };
+
   return (
     <div
       className={`fixed bg-black w-full h-[10vh] md:h-[5vw] z-10 px-4 py-2 flex items-center justify-between transition-all ${
@@ -20,9 +27,7 @@ function Navbar({ showNavBackground }) {
           />
           {/* Vertical Divider */}
           <div className="h-6 w-px bg-gray-400 mx-3 hidden sm:block">
-            <Link to="/browse">
-              <i className="fa-solid fa-box-archive text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out hidden sm:block"></i>
-            </Link>
+              <i onClick={handleNavigation} className="fa-solid fa-box-archive text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out hidden sm:block"></i>
           </div>
         </div>
       </div>
@@ -36,6 +41,7 @@ function Navbar({ showNavBackground }) {
           className="h-6 w-6 md:h-8 md:w-8 object-cover rounded-full hover:text-white"
         />
       </div>
+     
     </div>
   );
 }

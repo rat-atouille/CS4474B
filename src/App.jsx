@@ -14,10 +14,10 @@ function App() {
         <Route path={"/"} element={<HomePage />}/>
         <Route path={"/artist"} element={<Artist />} />
         <Route path={"/podcast"} element={<PodcastPage/>}></Route>
-        <Route path={"/browse"} element={<Browse/>}/>
+        <Route path={"/browse"} element={<Browse />}/>
       </Routes>
     </BrowserRouter>
   );
 }
 
-export default App
+export default App;
