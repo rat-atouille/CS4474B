@@ -31,7 +31,7 @@ function Sidebar({collapsed, setCollapsed}) {
   }
 
   return (
-      <div className={`mt-6 bg-black z-10  overflow-hidden ${!collapsed ? 'w-1/3' : '1/6'}`}>
+      <div className={`mt-[10vh] md:mt-[5vw] bg-black z-10 overflow-hidden ${!collapsed ? 'w-1/3' : '1/6'}`}>
       <div className={`bg-black h-full flex flex-col ${!collapsed ? 'mx-6' : 'mx-2 justify-center items-center'} justify-center items-center`}>
         {/* Collapse Toggle */}
         <svg 

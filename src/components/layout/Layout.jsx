@@ -25,15 +25,18 @@ function Layout({children}) {
   }, []);
 
   return (
-    <div className="flex flex-row bg-gray-900 h-screen">
-      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
-      <div className={`flex flex-col overflow-hidden w-full`}>
-        <Navbar showNavBackground={showNavBackground}/>
-        <div className="flex-grow overflow-auto">
-          {children}
+    <div className="h-screen">
+      <Navbar showNavBackground={showNavBackground}/>
+      <div className="flex flex-row bg-gray-900">
+        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+        <div className={`flex flex-col overflow-hidden w-full mt-[10vh] md:mt-[5vw]`}>
+          <div className="flex-grow overflow-auto">
+            {children}
+          </div>
         </div>
       </div>
     </div>
+
   )
 }
 
