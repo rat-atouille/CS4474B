@@ -6,7 +6,7 @@ function Navbar({ showNavBackground }) {
       }`}
     >
       {/* Left Icon and Search Bar in Center */}
-      <div className="flex-1 flex justify-center items-center space-x-4 bg">
+      <div className="flex-1 flex justify-center items-center space-x-4">
         <i className="fa-solid fa-house text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></i>
         <div className="relative flex items-center rounded-full py-1 text-white bg-stone-800 hover:bg-stone-600 focus-within:border-2 focus-within:bg-stone-700 transition-all duration-150 ease-in-out px-4 w-full max-w-xs sm:max-w-md md:max-w-lg">
           <i className="fa-solid fa-search text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></i>
