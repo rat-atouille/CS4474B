@@ -7,9 +7,9 @@ function Navbar({ showNavBackground }) {
     >
       {/* Left Icon and Search Bar in Center */}
       <div className="flex-1 flex justify-center items-center space-x-4">
-        <a href={"/"} className="fa-solid fa-house text-md hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></a>
+        <a href={"/"} className="fa-solid fa-house text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></a>
         <div className="relative flex items-center rounded-full py-1 text-white bg-stone-800 hover:bg-stone-600 focus-within:border-2 focus-within:bg-stone-700 transition-all duration-150 ease-in-out px-4 w-full max-w-xs sm:max-w-md md:max-w-lg">
-          <i className="fa-solid fa-search text-md hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></i>
+          <i className="fa-solid fa-search text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></i>
           <input
             type="text"
             placeholder="What do you want to play?"
@@ -17,7 +17,7 @@ function Navbar({ showNavBackground }) {
           />
           {/* Vertical Divider */}
           <div className="h-6 w-px bg-gray-400 mx-2 hidden sm:block"></div>
-              <a href={"/browse"} className="fa-solid fa-box-archive text-md hover:text-white hover:scale-110 transition-all duration-150 ease-in-out hidden sm:block"></a>
+              <a href={"/browse"} className="fa-solid fa-box-archive text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out hidden sm:block"></a>
         </div>
       </div>
 
