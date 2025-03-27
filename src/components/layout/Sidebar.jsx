@@ -31,7 +31,7 @@ function Sidebar({collapsed, setCollapsed}) {
   }
 
   return (
-      <div className={`mt-6 bg-black z-10 h-screen overflow-hidden ${!collapsed ? 'w-[30vw] md:w-[24vw]' : 'w-[14vw] md:w-[5vw]'}`}>
+      <div className={`mt-6 bg-black z-10  overflow-hidden ${!collapsed ? 'w-1/3' : '1/6'}`}>
       <div className={`bg-black h-full flex flex-col ${!collapsed ? 'mx-6' : 'mx-2 justify-center items-center'} justify-center items-center`}>
         {/* Collapse Toggle */}
         <svg 
@@ -108,14 +108,11 @@ function Sidebar({collapsed, setCollapsed}) {
         )}
 
         {/* Item Container with Scrolling */}
-        <div className={`
-          flex-grow overflow-hidden 
-          ${!collapsed ? 'w-full' : 'w-full'}
-        `}>
+        <div className={`flex-grow overflow-hidden w-full`}>
           <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-black">
             <div className={`
-              space-y-4 p-2 bg-black
-              ${!collapsed ? 'px-2' : 'px-1'}
+              space-y-4 p-2 bg-black flex flex-col justify-center md:justify-normal
+              ${!collapsed ? 'px-2 mt-2' : 'px-1 mt-8'}
             `}>
               {data
                 .filter(item => 

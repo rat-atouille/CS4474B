@@ -27,7 +27,7 @@ function Layout({children}) {
   return (
     <div className="flex flex-row bg-gray-900 h-screen">
       <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
-      <div className={`flex flex-col w-80% overflow-hidden ${!collapsed ? 'w-[70vw] md:w-[76vw]' : 'w-[86vw] md:w-[95vw]'}`}>
+      <div className={`flex flex-col overflow-hidden w-full`}>
         <Navbar showNavBackground={showNavBackground}/>
         <div className="flex-grow overflow-auto">
           {children}
