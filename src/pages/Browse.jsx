@@ -1,11 +1,8 @@
 import { songData, podcastData, audiobookData } from "../assets/Browse/constants";
 import SongCard from "../components/layout/SongCard";
-import {assets} from '../assets/Browse/constants'
-import { useNavigate } from "react-router";
 import { useState } from "react";
 
 const BrowsePage = () => {   
-  console.log('Browse component rendered');
   const [activeFilter, setActiveFilter] = useState("All");
 
   const handleClick=(buttonName) => {

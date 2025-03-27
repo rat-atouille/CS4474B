@@ -1,14 +1,4 @@
-// Import link to get to browse from button click
-import { useNavigate } from 'react-router-dom';
-
-function Navbar({ showNavBackground }) { 
-  const navigate = useNavigate(); // Initialize the navigate function
-
-  const handleNavigation = () => {
-    console.log("Navigating to browse page...");
-    navigate("/browse"); // Programmatically navigate to /browse
-  };
-
+function Navbar({ showNavBackground }) {
   return (
     <div
       className={`fixed bg-black w-full h-[10vh] md:h-[5vw] z-10 px-4 py-2 flex items-center justify-between transition-all ${
@@ -17,7 +7,7 @@ function Navbar({ showNavBackground }) {
     >
       {/* Left Icon and Search Bar in Center */}
       <div className="flex-1 flex justify-center items-center space-x-4">
-        <i className="fa-solid fa-house text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></i>
+        <a href={"/"} className="fa-solid fa-house text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></a>
         <div className="relative flex items-center rounded-full py-1 text-white bg-stone-800 hover:bg-stone-600 focus-within:border-2 focus-within:bg-stone-700 transition-all duration-150 ease-in-out px-4 w-full max-w-xs sm:max-w-md md:max-w-lg">
           <i className="fa-solid fa-search text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></i>
           <input
@@ -27,7 +17,7 @@ function Navbar({ showNavBackground }) {
           />
           {/* Vertical Divider */}
           <div className="h-6 w-px bg-gray-400 mx-3 hidden sm:block">
-              <i onClick={handleNavigation} className="fa-solid fa-box-archive text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out hidden sm:block"></i>
+              <a href={"/browse"} className="fa-solid fa-box-archive text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out hidden sm:block"></a>
           </div>
         </div>
       </div>
