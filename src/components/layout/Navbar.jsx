@@ -1,4 +1,7 @@
-function Navbar({ showNavBackground }) {
+// Import link to get to browse from button click
+import { Link } from 'react-router-dom';
+
+function Navbar({ showNavBackground }) { 
   return (
     <div
       className={`fixed bg-black w-full h-[10vh] md:h-[5vw] z-10 px-4 py-2 flex items-center justify-between transition-all ${
@@ -16,8 +19,11 @@ function Navbar({ showNavBackground }) {
             className="w-full text-sm md:text-md pl-3 pr-4 outline-none bg-transparent"
           />
           {/* Vertical Divider */}
-          <div className="h-6 w-px bg-gray-400 mx-3 hidden sm:block"></div>
-          <i className="fa-solid fa-box-archive text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out hidden sm:block"></i>
+          <div className="h-6 w-px bg-gray-400 mx-3 hidden sm:block">
+            <Link to="/browse">
+              <i className="fa-solid fa-box-archive text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out hidden sm:block"></i>
+            </Link>
+          </div>
         </div>
       </div>
 
