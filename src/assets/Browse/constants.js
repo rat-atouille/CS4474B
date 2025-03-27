@@ -62,15 +62,6 @@ export const assets = {
   salsaCover,
   soulCover,
   jazzCover,
-  // Icon
-  homeIcon,
-  searchIcon,
-  topPodcastCover,
-  bookIcon,
-  plusIcon,
-  arrowIcon,
-  backArrowIcon,
-  forwardArrowIcon,
   // Pocast
   artCover,
   beautyCover,

@@ -4,7 +4,7 @@ import {assets} from '../assets/Browse/constants'
 import { useNavigate } from "react-router";
 import { useState } from "react";
 
-const Browse = () => {   
+const BrowsePage = () => {   
   console.log('Browse component rendered');
   const [activeFilter, setActiveFilter] = useState("All");
 
@@ -51,4 +51,4 @@ const Browse = () => {
     );
 };
 
-export default Browse; 
+export default BrowsePage; 
