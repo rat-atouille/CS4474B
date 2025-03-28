@@ -40,6 +40,27 @@ import popCultureCover from './popCultureCover.png'
 import scienceCover from './scienceCover.png'
 import techCover from './techCover.png'
 import topPodcastCover from './topPodcastCover.png'
+// Audiobooks
+import bioAudio from './bioAudio.png'
+import businessAudio from './businessAudio.png'
+import businessBioAudio from './businessBioAudio.png'
+import comedyAudio from './comedyAudio.png'
+import cookingAudio from './cookingAudio.png'
+import cozyAudio from './cozyAudio.png'
+import crimeAudio from './crimeAudio.png'
+import fictionAudio from './fictionAudio.png'
+import frenchAudio from './frenchAudio.png'
+import healthAudio from './healthAudio.png' 
+import mysteryAudio from './mysteryAudio.png'
+import philosophyAudio from './philosophyAudio.png'
+import religionAudio from './religionAudio.png'
+import romanceAudio from './romanceAudio.png' 
+import scifiAudio from './scifiAudio.png'
+import selfHelpAudio from './selfHelpAudio.png'
+import sportAudio from './sportAudio.png'
+import suspenseAudio from './suspenseAudio.png'
+import timeAudio from './timeAudio.png'
+import youngAdultAudio from './youngAdultAudio.png'
 
 export const assets = {
   afroCover,
@@ -83,6 +104,27 @@ export const assets = {
   scienceCover,
   techCover,
   topPodcastCover,
+  //Audiobooks
+  bioAudio,
+  businessAudio,
+  businessBioAudio,
+  comedyAudio,
+  cookingAudio,
+  cozyAudio,
+  crimeAudio,
+  fictionAudio,
+  frenchAudio,
+  healthAudio,
+  mysteryAudio,
+  philosophyAudio,
+  religionAudio,
+  romanceAudio,
+  scifiAudio,
+  selfHelpAudio,
+  sportAudio,
+  suspenseAudio,
+  timeAudio,
+  youngAdultAudio,
 }
 
 export const songData = [
@@ -334,122 +376,122 @@ export const podcastData = [
 export const audiobookData = [
   {
     id:0,
-    name: "Weekly Afro Hit",
-    genre: "Afro",
-    image: afroCover
+    name: "Biography Audio",
+    genre: "Biography Audio",
+    image: bioAudio
   },
   {
     id:1,
-    name: "Weekly Alternative Hit",
-    genre: "Alternative",
-    image: alternativeCover
+    name: "Business Audiobook",
+    genre: "Business Audiobook",
+    image: businessAudio
   },
   {
     id:2,
-    name: "Weekly Arab Hit",
-    genre: "Arab",
-    image: arabCover
+    name: "Business Biography Audiobook",
+    genre: "Business Biography Audiobook",
+    image: businessBioAudio
   },
   {
     id:3,
-    name: "Weekly Blue Hit",
-    genre: "Blue",
-    image: blueCover
+    name: "Comedy Audiobook",
+    genre: "Comedy Audiobook",
+    image: comedyAudio
   },
   {
     id:4,
-    name: "Weekly Caribbean Hit",
-    genre: "Caribbean",
-    image: caribbeanCover
+    name: "Cozy Mystery Audiobook",
+    genre: "Cozy Mystery Audiobook",
+    image: cozyAudio
   },
   {
     id:5,
-    name: "Weekly Classical Hit",
-    genre: "Classical",
-    image: classicalCover
+    name: "Cooking Audiobook",
+    genre: "Cooking Audiobook",
+    image: cookingAudio
   },
   {
     id:6,
-    name: "Weekly Country Hit",
-    genre: "Country",
-    image: countryCover
+    name: "True Crime Audiobook",
+    genre: "True Crime Audiobook",
+    image: crimeAudio
   },
   {
     id:7,
-    name: "Weekly Dance Hit",
-    genre: "Dance",    
-    image: danceCover
+    name: "Fiction Audiobook",
+    genre: "Fiction Audiobook",    
+    image: fictionAudio
   },
   {
     id:8,
-    name: "Weekly Desi Hit",
-    genre: "Desi",
-    image: desiCover
+    name: "French Audiobook",
+    genre: "French Audiobook",
+    image: frenchAudio
   },
   {
     id:9,
-    name: "Weekly Folk Hit",
-    genre: "Folk",
-    image: folkCover
+    name: "Health Audiobook",
+    genre: "Health Audiobook",
+    image: healthAudio
   },
   {
     id:10,
-    name: "Weekly Hip Hop Hit",
-    genre: "Hip Hop",
-    image: hiphopCover
+    name: "Mystery Audiobook",
+    genre: "Mystery Audiobook",
+    image: mysteryAudio
   },
   {
     id:11,
-    name: "Weekly Indie Hit",
-    genre: "Indie",
-    image: indieCover
+    name: "Philosophy Audiobook",
+    genre: "Philosophy Audiobook",
+    image: philosophyAudio
   },
   {
     id:12,
     name: "Weekly Latin Hit",
     genre: "Latin",
-    image: latinCover
+    image: religionAudio
   },
   {
     id:13,
     name: "Weekly Pop Hit",
     genre: "Pop",
-    image: popCover
+    image:  romanceAudio
   },
   {
     id:14,
     name: "Weekly Punk Hit",
     genre: "Punk",
-    image: punkCover
+    image:  scifiAudio
   },
   {
     id:15,
     name: "Weekly Rock Hit",
     genre: "Rock",
-    image: rockCover
+    image: selfHelpAudio
   },
   {
     id:16,
     name: "Weekly R&B Hit",
     genre: "R&B",
-    image: rnbCover
+    image: sportAudio
   },
   {
     id:17,
     name: "Weekly Salsa Hit",
     genre: "Salsa",
-    image: salsaCover
+    image:  suspenseAudio
   },
   {
     id:18,
     name: "Weekly Soul Hit",
     genre: "Soul",
-    image: soulCover
+    image: timeAudio
   },
   {
     id:19,
     name: "Weekly Jazz Hit",
     genre: "Jazz",
-    image: jazzCover
+    image: youngAdultAudio
   },
 ]
