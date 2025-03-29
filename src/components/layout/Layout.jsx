@@ -1,6 +1,7 @@
 import Sidebar from "./Sidebar.jsx";
 import Navbar from "./Navbar.jsx";
 import {useState, useEffect} from "react";
+import MusicPlayer from "./MusicPlayer.jsx";
 
 function Layout({children}) {
   const [showNavBackground, setShowNavBackground] = useState(false)
@@ -35,6 +36,7 @@ function Layout({children}) {
           </div>
         </div>
       </div>
+      <MusicPlayer />
     </div>
 
   )
