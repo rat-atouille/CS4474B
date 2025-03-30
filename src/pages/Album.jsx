@@ -118,7 +118,7 @@ export default function Album() {
       <img 
           src="/placeHolders/placeHolderIcon.jpeg" 
           alt="Song Image" 
-          className="object-cover rounded w-1/3 md:w-1/6"
+          className="object-cover rounded w-1/3 md:w-1/6 z-10"
         />
         <div className="relative z-10">
           <span className="text-xs px-2 py-1 rounded-sm mb-1 inline-block select-none">
