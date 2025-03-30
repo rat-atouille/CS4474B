@@ -7,6 +7,7 @@ const  SongCard = ({image, type, genre, desc, id}) => {
 
     // Handle navigation based on the type
     const handleNavigate = () => {
+        console.log('Navigating with type:', type);
         if (type === 'Song') {
             navigate(`/album/${id}`);
         } else if (type === 'Audiobook') {
