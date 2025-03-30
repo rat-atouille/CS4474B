@@ -38,7 +38,7 @@ import historyCover from './historyCover.png'
 import newsCover from './newsCover.png'
 import popCultureCover from './popCultureCover.png'
 import scienceCover from './scienceCover.png'
-import techCover from './techCover.png'
+import sportCover from './sportAudio.png'
 import topPodcastCover from './topPodcastCover.png'
 // Audiobooks
 import bioAudio from './bioAudio.png'
@@ -57,8 +57,8 @@ import religionAudio from './religionAudio.png'
 import romanceAudio from './romanceAudio.png' 
 import scifiAudio from './scifiAudio.png'
 import selfHelpAudio from './selfHelpAudio.png'
-import sportAudio from './sportAudio.png'
 import suspenseAudio from './suspenseAudio.png'
+import techAudio from './techCover.png'
 import timeAudio from './timeAudio.png'
 import youngAdultAudio from './youngAdultAudio.png'
 
@@ -102,7 +102,7 @@ export const assets = {
   newsCover,
   popCultureCover,
   scienceCover,
-  techCover,
+  sportCover,
   topPodcastCover,
   //Audiobooks
   bioAudio,
@@ -121,8 +121,8 @@ export const assets = {
   romanceAudio,
   scifiAudio,
   selfHelpAudio,
-  sportAudio,
   suspenseAudio,
+  techAudio,
   timeAudio,
   youngAdultAudio,
 }
@@ -356,14 +356,14 @@ export const podcastData = [
   {
     id:37,
     type: "Podcast",
-    genre: "Scienc",
+    genre: "Science",
     image:  scienceCover
   },
   {
     id:38,
     type: "Podcast",
-    genre: "Tech",
-    image:  techCover
+    genre: "Sport",
+    image: sportCover
   },
   {
     id:39,
@@ -473,20 +473,20 @@ export const audiobookData = [
   {
     id:56,
     type: "Audiobook",
-    genre: "Sport",
-    image: sportAudio
-  },
-  {
-    id:57,
-    type: "Audiobook",
     genre: "Suspense",
     image:  suspenseAudio
   },
   {
-    id:58,
+    id:57,
     type: "Audiobook",
     genre: "Time management",
     image: timeAudio
+  },
+  {
+    id: 58,
+    type: "Audiobook",
+    genre: "Tech",
+    image:  techAudio
   },
   {
     id:59,

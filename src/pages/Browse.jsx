@@ -37,7 +37,7 @@ const BrowsePage = () => {
           <div className="flex flex-wrap">
             {dataToDisplay.map((item, index) => (
               <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-2 relative" key={index}>
-                <SongCard key={index} image={item.image} id={item.id} type={item.type}/>
+                <SongCard key={index} image={item.image} id={item.id} type={item.type} genre={item.genre}/>
                 <button className="absolute bottom-6 right-4 z-10  rounded-full p-2">
                   <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-white transition-all duration-300 ease-in-out"></i>
                 </button>
