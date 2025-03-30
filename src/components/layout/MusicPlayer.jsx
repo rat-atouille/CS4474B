@@ -15,7 +15,7 @@ export default function MusicPlayer() {
           <span className="text-white font-medium text-[10px] md:text-sm">Anonymous</span>
           <div className="text-gray-400 text-[8px] md:text-xs">2019</div>
         </div>
-        <i className="fa-solid fa-plus text-[8px] md:text-xs border p-1 rounded-full"></i>
+        <i className="fa-solid fa-plus text-[8px] md:text-xs border p-1 rounded-full text-gray-300 hover:text-white transition-all duration-300 ease-in-out"></i>
       </div>
 
       {/* Player (Center) */}

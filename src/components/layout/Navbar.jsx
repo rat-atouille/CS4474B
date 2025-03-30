@@ -1,7 +1,7 @@
 function Navbar({ showNavBackground }) {
   return (
     <div
-      className={`fixed bg-black w-full h-[10vh] md:h-[5vw] z-10 px-4 py-2 flex items-center justify-between transition-all ${
+      className={`fixed bg-black w-full h-[10vh] md:h-[5vw] z-20 px-4 py-2 flex items-center justify-between transition-all ${
         showNavBackground && "bg-[#1a1a1a]"
       }`}
     >
