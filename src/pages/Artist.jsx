@@ -169,17 +169,14 @@ const Artist = () => {
           <p className="text-sm mt-2 text-[#b3b3b3] select-none">{artistData.monthlyListeners} monthly listeners</p>
         </div>
         
-        <button className="
-          hover:scale-110 transition-transform duration-150 hover:border-white hover:text-white
-          text-[#b3b3b3] absolute right-25 bottom-10  pl-4 pr-4 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer">
+        <button className="hover:scale-110 transition-transform duration-150 hover:border-white hover:text-white
+          text-[#b3b3b3] absolute right-25 bottom-10 pl-4 pr-4 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer">
               Follow
         </button>
 
         {/* Play button */}
-        <button className="
-          hover:scale-110 transition-transform duration-150 
-          absolute right-6 bottom-8 bg-green-500 rounded-full p-4 z-10 cursor-pointer">
-          <div className="w-6 h-6 flex items-center justify-center">▸</div>
+        <button className="hover:scale-110 transition-transform duration-150 rounded-full p-4 z-10 cursor-pointer absolute right-4 bottom-5">
+            <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
         </button>
         
         {/* Gradient overlay */}

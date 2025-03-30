@@ -1,0 +1,863 @@
+{
+  "The All-American Rejects": {
+    "followers": 2797343,
+    "genres": [
+      "pop punk",
+      "emo",
+      "emo pop"
+    ],
+    "image": "https://i.scdn.co/image/ab6761610000e5ebb18bd56871c0ce8c8d6c8fa7",
+    "albums": [
+      {
+        "name": "Kids In The Street (Deluxe Version)",
+        "image": "https://i.scdn.co/image/ab67616d0000b27365428c7d90b9ae9e0c710388",
+        "releaseDate": "2012-01-01",
+        "songs": [
+          {
+            "name": "Someday's Gone",
+            "durationMs": 205080,
+            "image": "https://i.scdn.co/image/ab67616d0000b27365428c7d90b9ae9e0c710388"
+          },
+          {
+            "name": "Beekeeper’s Daughter",
+            "durationMs": 213520,
+            "image": "https://i.scdn.co/image/ab67616d0000b27365428c7d90b9ae9e0c710388"
+          },
+          {
+            "name": "Fast & Slow",
+            "durationMs": 240386,
+            "image": "https://i.scdn.co/image/ab67616d0000b27365428c7d90b9ae9e0c710388"
+          },
+          {
+            "name": "Heartbeat Slowing Down",
+            "durationMs": 284280,
+            "image": "https://i.scdn.co/image/ab67616d0000b27365428c7d90b9ae9e0c710388"
+          },
+          {
+            "name": "Walk Over Me",
+            "durationMs": 238720,
+            "image": "https://i.scdn.co/image/ab67616d0000b27365428c7d90b9ae9e0c710388"
+          }
+        ]
+      },
+      {
+        "name": "Kids In The Street",
+        "image": "https://i.scdn.co/image/ab67616d0000b273342eeefed9d0c9472cc71b33",
+        "releaseDate": "2012-01-01",
+        "songs": [
+          {
+            "name": "Someday's Gone",
+            "durationMs": 205080,
+            "image": "https://i.scdn.co/image/ab67616d0000b273342eeefed9d0c9472cc71b33"
+          },
+          {
+            "name": "Beekeeper’s Daughter",
+            "durationMs": 213520,
+            "image": "https://i.scdn.co/image/ab67616d0000b273342eeefed9d0c9472cc71b33"
+          },
+          {
+            "name": "Fast & Slow",
+            "durationMs": 240386,
+            "image": "https://i.scdn.co/image/ab67616d0000b273342eeefed9d0c9472cc71b33"
+          },
+          {
+            "name": "Heartbeat Slowing Down",
+            "durationMs": 284280,
+            "image": "https://i.scdn.co/image/ab67616d0000b273342eeefed9d0c9472cc71b33"
+          },
+          {
+            "name": "Walk Over Me",
+            "durationMs": 238720,
+            "image": "https://i.scdn.co/image/ab67616d0000b273342eeefed9d0c9472cc71b33"
+          }
+        ]
+      },
+      {
+        "name": "When The World Comes Down",
+        "image": "https://i.scdn.co/image/ab67616d0000b2738f6b4035c82eb9cf42e9d8d7",
+        "releaseDate": "2008-01-01",
+        "songs": [
+          {
+            "name": "I Wanna",
+            "durationMs": 208600,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738f6b4035c82eb9cf42e9d8d7"
+          },
+          {
+            "name": "Fallin' Apart",
+            "durationMs": 206986,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738f6b4035c82eb9cf42e9d8d7"
+          },
+          {
+            "name": "Damn Girl",
+            "durationMs": 231466,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738f6b4035c82eb9cf42e9d8d7"
+          },
+          {
+            "name": "Gives You Hell",
+            "durationMs": 213106,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738f6b4035c82eb9cf42e9d8d7"
+          },
+          {
+            "name": "Mona Lisa (When The World Comes Down)",
+            "durationMs": 194800,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738f6b4035c82eb9cf42e9d8d7"
+          }
+        ]
+      },
+      {
+        "name": "When The World Comes Down (International Version)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2738ee0a80b00d2c3c8c7a3ee55",
+        "releaseDate": "2008",
+        "songs": [
+          {
+            "name": "I Wanna",
+            "durationMs": 208600,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ee0a80b00d2c3c8c7a3ee55"
+          },
+          {
+            "name": "Fallin' Apart",
+            "durationMs": 206986,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ee0a80b00d2c3c8c7a3ee55"
+          },
+          {
+            "name": "Damn Girl",
+            "durationMs": 231466,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ee0a80b00d2c3c8c7a3ee55"
+          },
+          {
+            "name": "Gives You Hell",
+            "durationMs": 213106,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ee0a80b00d2c3c8c7a3ee55"
+          },
+          {
+            "name": "Mona Lisa (When The World Comes Down)",
+            "durationMs": 194800,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ee0a80b00d2c3c8c7a3ee55"
+          }
+        ]
+      },
+      {
+        "name": "Move Along (Deluxe Edition)",
+        "image": "https://i.scdn.co/image/ab67616d0000b273beb649016c1174ff8262d2f4",
+        "releaseDate": "2006-01-01",
+        "songs": [
+          {
+            "name": "Dirty Little Secret",
+            "durationMs": 193653,
+            "image": "https://i.scdn.co/image/ab67616d0000b273beb649016c1174ff8262d2f4"
+          },
+          {
+            "name": "Stab My Back",
+            "durationMs": 189306,
+            "image": "https://i.scdn.co/image/ab67616d0000b273beb649016c1174ff8262d2f4"
+          },
+          {
+            "name": "Move Along",
+            "durationMs": 238880,
+            "image": "https://i.scdn.co/image/ab67616d0000b273beb649016c1174ff8262d2f4"
+          },
+          {
+            "name": "It Ends Tonight",
+            "durationMs": 244826,
+            "image": "https://i.scdn.co/image/ab67616d0000b273beb649016c1174ff8262d2f4"
+          },
+          {
+            "name": "Change Your Mind",
+            "durationMs": 220040,
+            "image": "https://i.scdn.co/image/ab67616d0000b273beb649016c1174ff8262d2f4"
+          }
+        ]
+      }
+    ]
+  },
+  "All That Remains": {
+    "followers": 1416115,
+    "genres": [
+      "metalcore",
+      "metal"
+    ],
+    "image": "https://i.scdn.co/image/ab6761610000e5ebb4d9c699a6e892bab3121226",
+    "albums": [
+      {
+        "name": "AntiFragile",
+        "image": "https://i.scdn.co/image/ab67616d0000b2731a96f5952589527c8d054aaa",
+        "releaseDate": "2025-01-31",
+        "songs": [
+          {
+            "name": "Divine",
+            "durationMs": 219676,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731a96f5952589527c8d054aaa"
+          },
+          {
+            "name": "Kerosene",
+            "durationMs": 263622,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731a96f5952589527c8d054aaa"
+          },
+          {
+            "name": "No Tomorrow",
+            "durationMs": 280251,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731a96f5952589527c8d054aaa"
+          },
+          {
+            "name": "The Piper",
+            "durationMs": 262801,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731a96f5952589527c8d054aaa"
+          },
+          {
+            "name": "AntiFragile",
+            "durationMs": 270578,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731a96f5952589527c8d054aaa"
+          }
+        ]
+      },
+      {
+        "name": "Victim of the New Disease",
+        "image": "https://i.scdn.co/image/ab67616d0000b27363b2c8a48d3d0029a68f5eac",
+        "releaseDate": "2018-11-09",
+        "songs": [
+          {
+            "name": "Fuck Love",
+            "durationMs": 178213,
+            "image": "https://i.scdn.co/image/ab67616d0000b27363b2c8a48d3d0029a68f5eac"
+          },
+          {
+            "name": "Everything’s Wrong",
+            "durationMs": 250280,
+            "image": "https://i.scdn.co/image/ab67616d0000b27363b2c8a48d3d0029a68f5eac"
+          },
+          {
+            "name": "Blood I Spill",
+            "durationMs": 219520,
+            "image": "https://i.scdn.co/image/ab67616d0000b27363b2c8a48d3d0029a68f5eac"
+          },
+          {
+            "name": "Wasteland",
+            "durationMs": 290266,
+            "image": "https://i.scdn.co/image/ab67616d0000b27363b2c8a48d3d0029a68f5eac"
+          },
+          {
+            "name": "Alone In The Darkness",
+            "durationMs": 209853,
+            "image": "https://i.scdn.co/image/ab67616d0000b27363b2c8a48d3d0029a68f5eac"
+          }
+        ]
+      },
+      {
+        "name": "Madness",
+        "image": "https://i.scdn.co/image/ab67616d0000b2735f862a70fc02032666e11995",
+        "releaseDate": "2017-04-28",
+        "songs": [
+          {
+            "name": "Safe House",
+            "durationMs": 216773,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735f862a70fc02032666e11995"
+          },
+          {
+            "name": "Madness",
+            "durationMs": 203800,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735f862a70fc02032666e11995"
+          },
+          {
+            "name": "Nothing I Can Do",
+            "durationMs": 219720,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735f862a70fc02032666e11995"
+          },
+          {
+            "name": "If I'm Honest",
+            "durationMs": 262280,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735f862a70fc02032666e11995"
+          },
+          {
+            "name": "Halo",
+            "durationMs": 242866,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735f862a70fc02032666e11995"
+          }
+        ]
+      },
+      {
+        "name": "The Order Of Things",
+        "image": "https://i.scdn.co/image/ab67616d0000b2735a19e91366aa45fa3efeef12",
+        "releaseDate": "2015-02-24",
+        "songs": [
+          {
+            "name": "This Probably Won’t End Well",
+            "durationMs": 228680,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735a19e91366aa45fa3efeef12"
+          },
+          {
+            "name": "No Knock",
+            "durationMs": 168746,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735a19e91366aa45fa3efeef12"
+          },
+          {
+            "name": "Divide",
+            "durationMs": 198186,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735a19e91366aa45fa3efeef12"
+          },
+          {
+            "name": "The Greatest Generation",
+            "durationMs": 240600,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735a19e91366aa45fa3efeef12"
+          },
+          {
+            "name": "For You",
+            "durationMs": 256279,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735a19e91366aa45fa3efeef12"
+          }
+        ]
+      },
+      {
+        "name": "A War You Cannot Win",
+        "image": "https://i.scdn.co/image/ab67616d0000b273838c8e2b7c01e762bec4b7bf",
+        "releaseDate": "2012-11-06",
+        "songs": [
+          {
+            "name": "Down Through The Ages",
+            "durationMs": 212000,
+            "image": "https://i.scdn.co/image/ab67616d0000b273838c8e2b7c01e762bec4b7bf"
+          },
+          {
+            "name": "You Can't Fill My Shadow",
+            "durationMs": 213040,
+            "image": "https://i.scdn.co/image/ab67616d0000b273838c8e2b7c01e762bec4b7bf"
+          },
+          {
+            "name": "Stand Up",
+            "durationMs": 240920,
+            "image": "https://i.scdn.co/image/ab67616d0000b273838c8e2b7c01e762bec4b7bf"
+          },
+          {
+            "name": "A Call To All Non-Believers",
+            "durationMs": 164280,
+            "image": "https://i.scdn.co/image/ab67616d0000b273838c8e2b7c01e762bec4b7bf"
+          },
+          {
+            "name": "Asking Too Much",
+            "durationMs": 208400,
+            "image": "https://i.scdn.co/image/ab67616d0000b273838c8e2b7c01e762bec4b7bf"
+          }
+        ]
+      }
+    ]
+  },
+  "A.R. Rahman": {
+    "followers": 61247507,
+    "genres": [
+      "tamil pop",
+      "kollywood",
+      "sufi",
+      "bollywood",
+      "hindi pop",
+      "desi",
+      "tamil dance"
+    ],
+    "image": "https://i.scdn.co/image/ab6761610000e5ebb19af0ea736c6228d6eb539c",
+    "albums": [
+      {
+        "name": "Chhaava (Telugu) [Original Motion Picture Soundtrack]",
+        "image": "https://i.scdn.co/image/ab67616d0000b273c62fa46c489ea613391052bc",
+        "releaseDate": "2025-03-27",
+        "songs": [
+          {
+            "name": "Praanamlo",
+            "durationMs": 284791,
+            "image": "https://i.scdn.co/image/ab67616d0000b273c62fa46c489ea613391052bc"
+          },
+          {
+            "name": "Jai Shambho",
+            "durationMs": 279659,
+            "image": "https://i.scdn.co/image/ab67616d0000b273c62fa46c489ea613391052bc"
+          },
+          {
+            "name": "O Veeruda",
+            "durationMs": 305973,
+            "image": "https://i.scdn.co/image/ab67616d0000b273c62fa46c489ea613391052bc"
+          },
+          {
+            "name": "Jeevinchaali",
+            "durationMs": 185909,
+            "image": "https://i.scdn.co/image/ab67616d0000b273c62fa46c489ea613391052bc"
+          },
+          {
+            "name": "The Roar",
+            "durationMs": 192625,
+            "image": "https://i.scdn.co/image/ab67616d0000b273c62fa46c489ea613391052bc"
+          }
+        ]
+      },
+      {
+        "name": "Chhaava (Original Motion Picture Soundtrack)",
+        "image": "https://i.scdn.co/image/ab67616d0000b273e5551dc0359b1ce82ef078f4",
+        "releaseDate": "2025-02-13",
+        "songs": [
+          {
+            "name": "Jaane Tu (From \"Chhaava\")",
+            "durationMs": 284721,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e5551dc0359b1ce82ef078f4"
+          },
+          {
+            "name": "Aaya Re Toofan (From \"Chhaava\")",
+            "durationMs": 279659,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e5551dc0359b1ce82ef078f4"
+          },
+          {
+            "name": "Zinda Rahey (From \"Chhaava\")",
+            "durationMs": 308076,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e5551dc0359b1ce82ef078f4"
+          },
+          {
+            "name": "Teri Chaahat (From \"Chhaava\")",
+            "durationMs": 185909,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e5551dc0359b1ce82ef078f4"
+          },
+          {
+            "name": "The Roar (From \"Chhaava\")",
+            "durationMs": 192625,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e5551dc0359b1ce82ef078f4"
+          }
+        ]
+      },
+      {
+        "name": "Pemwatha (Original Motion Picture Soundtrack)",
+        "image": "https://i.scdn.co/image/ab67616d0000b273f83ca04a1c2ef00014aa37c3",
+        "releaseDate": "2025-01-21",
+        "songs": [
+          {
+            "name": "Jeewithe",
+            "durationMs": 325528,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f83ca04a1c2ef00014aa37c3"
+          },
+          {
+            "name": "Sadhawathiye",
+            "durationMs": 270723,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f83ca04a1c2ef00014aa37c3"
+          },
+          {
+            "name": "Heena Re",
+            "durationMs": 259953,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f83ca04a1c2ef00014aa37c3"
+          },
+          {
+            "name": "Kirilliye",
+            "durationMs": 75728,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f83ca04a1c2ef00014aa37c3"
+          },
+          {
+            "name": "Paata Paata",
+            "durationMs": 282392,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f83ca04a1c2ef00014aa37c3"
+          }
+        ]
+      },
+      {
+        "name": "Husma (Original Motion Picture Soundtrack)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2730b2bae730a89b8661efec1da",
+        "releaseDate": "2025-01-21",
+        "songs": [
+          {
+            "name": "Man Enawa",
+            "durationMs": 362706,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b2bae730a89b8661efec1da"
+          },
+          {
+            "name": "Nil Ahasa Waage",
+            "durationMs": 260737,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b2bae730a89b8661efec1da"
+          },
+          {
+            "name": "Podha",
+            "durationMs": 284605,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b2bae730a89b8661efec1da"
+          },
+          {
+            "name": "Saajan",
+            "durationMs": 376037,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b2bae730a89b8661efec1da"
+          },
+          {
+            "name": "Chil Vanna Epa",
+            "durationMs": 270798,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b2bae730a89b8661efec1da"
+          }
+        ]
+      },
+      {
+        "name": "Jodi (Original Motion Picture Soundtrack)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2733d542f2acaff189e2f844368",
+        "releaseDate": "2025-01-08",
+        "songs": [
+          {
+            "name": "Andaala Jeeva",
+            "durationMs": 326922,
+            "image": "https://i.scdn.co/image/ab67616d0000b2733d542f2acaff189e2f844368"
+          },
+          {
+            "name": "Hrudayanni Muripinchu",
+            "durationMs": 68832,
+            "image": "https://i.scdn.co/image/ab67616d0000b2733d542f2acaff189e2f844368"
+          },
+          {
+            "name": "Kadile Kaalame",
+            "durationMs": 294870,
+            "image": "https://i.scdn.co/image/ab67616d0000b2733d542f2acaff189e2f844368"
+          },
+          {
+            "name": "Naa Kanne Hamsa",
+            "durationMs": 243722,
+            "image": "https://i.scdn.co/image/ab67616d0000b2733d542f2acaff189e2f844368"
+          },
+          {
+            "name": "Nanu Preminchananu Maata (Female Vocals)",
+            "durationMs": 360724,
+            "image": "https://i.scdn.co/image/ab67616d0000b2733d542f2acaff189e2f844368"
+          }
+        ]
+      }
+    ]
+  },
+  "All Time Low": {
+    "followers": 3130044,
+    "genres": [
+      "pop punk",
+      "emo",
+      "emo pop",
+      "punk"
+    ],
+    "image": "https://i.scdn.co/image/ab6761610000e5ebc42923f098c078d2caace1b7",
+    "albums": [
+      {
+        "name": "The Forever Sessions (Vol. 1)",
+        "image": "https://i.scdn.co/image/ab67616d0000b27356f2427fd44a78601aeaefb3",
+        "releaseDate": "2024-08-23",
+        "songs": [
+          {
+            "name": "Dear Maria, Count Me In - ATL's Version",
+            "durationMs": 187266,
+            "image": "https://i.scdn.co/image/ab67616d0000b27356f2427fd44a78601aeaefb3"
+          },
+          {
+            "name": "Coffee Shop Soundtrack - ATL's Version",
+            "durationMs": 176491,
+            "image": "https://i.scdn.co/image/ab67616d0000b27356f2427fd44a78601aeaefb3"
+          },
+          {
+            "name": "Damned If I Do Ya, Damned If I Don't - ATL's Version",
+            "durationMs": 185124,
+            "image": "https://i.scdn.co/image/ab67616d0000b27356f2427fd44a78601aeaefb3"
+          },
+          {
+            "name": "Six Feet Under The Stars - ATL's Version",
+            "durationMs": 215268,
+            "image": "https://i.scdn.co/image/ab67616d0000b27356f2427fd44a78601aeaefb3"
+          },
+          {
+            "name": "Weightless - ATL's Version",
+            "durationMs": 202712,
+            "image": "https://i.scdn.co/image/ab67616d0000b27356f2427fd44a78601aeaefb3"
+          }
+        ]
+      },
+      {
+        "name": "Tell Me I'm Alive",
+        "image": "https://i.scdn.co/image/ab67616d0000b27351c5a0490ea847ecb7b8b164",
+        "releaseDate": "2023-03-17",
+        "songs": [
+          {
+            "name": "Tell Me I’m Alive",
+            "durationMs": 155562,
+            "image": "https://i.scdn.co/image/ab67616d0000b27351c5a0490ea847ecb7b8b164"
+          },
+          {
+            "name": "Modern Love",
+            "durationMs": 194959,
+            "image": "https://i.scdn.co/image/ab67616d0000b27351c5a0490ea847ecb7b8b164"
+          },
+          {
+            "name": "Are You There?",
+            "durationMs": 192659,
+            "image": "https://i.scdn.co/image/ab67616d0000b27351c5a0490ea847ecb7b8b164"
+          },
+          {
+            "name": "Sleepwalking",
+            "durationMs": 187344,
+            "image": "https://i.scdn.co/image/ab67616d0000b27351c5a0490ea847ecb7b8b164"
+          },
+          {
+            "name": "Calm Down",
+            "durationMs": 194227,
+            "image": "https://i.scdn.co/image/ab67616d0000b27351c5a0490ea847ecb7b8b164"
+          }
+        ]
+      },
+      {
+        "name": "Wake Up, Sunshine",
+        "image": "https://i.scdn.co/image/ab67616d0000b27328c24b54e9149cab239ac1cd",
+        "releaseDate": "2020-04-03",
+        "songs": [
+          {
+            "name": "Some Kind of Disaster",
+            "durationMs": 223994,
+            "image": "https://i.scdn.co/image/ab67616d0000b27328c24b54e9149cab239ac1cd"
+          },
+          {
+            "name": "Sleeping In",
+            "durationMs": 180599,
+            "image": "https://i.scdn.co/image/ab67616d0000b27328c24b54e9149cab239ac1cd"
+          },
+          {
+            "name": "Getaway Green",
+            "durationMs": 167041,
+            "image": "https://i.scdn.co/image/ab67616d0000b27328c24b54e9149cab239ac1cd"
+          },
+          {
+            "name": "Melancholy Kaleidoscope",
+            "durationMs": 174895,
+            "image": "https://i.scdn.co/image/ab67616d0000b27328c24b54e9149cab239ac1cd"
+          },
+          {
+            "name": "Trouble Is...",
+            "durationMs": 147059,
+            "image": "https://i.scdn.co/image/ab67616d0000b27328c24b54e9149cab239ac1cd"
+          }
+        ]
+      },
+      {
+        "name": "It's Still Nothing Personal: A Ten Year Tribute (Live In The Studio)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2735ca2efae3bbbc594c29bd7c5",
+        "releaseDate": "2019-11-08",
+        "songs": [
+          {
+            "name": "Weightless - Live In The Studio",
+            "durationMs": 209488,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735ca2efae3bbbc594c29bd7c5"
+          },
+          {
+            "name": "Break Your Little Heart - Live In The Studio",
+            "durationMs": 178496,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735ca2efae3bbbc594c29bd7c5"
+          },
+          {
+            "name": "Damned If I Do Ya (Damned If I Don't) - Live In The Studio",
+            "durationMs": 179221,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735ca2efae3bbbc594c29bd7c5"
+          },
+          {
+            "name": "Lost in Stereo - Live In The Studio",
+            "durationMs": 220880,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735ca2efae3bbbc594c29bd7c5"
+          },
+          {
+            "name": "Stella - Live In The Studio",
+            "durationMs": 199210,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735ca2efae3bbbc594c29bd7c5"
+          }
+        ]
+      },
+      {
+        "name": "Last Young Renegade",
+        "image": "https://i.scdn.co/image/ab67616d0000b273634ebb5b4796e92c00da986f",
+        "releaseDate": "2017-06-02",
+        "songs": [
+          {
+            "name": "Last Young Renegade",
+            "durationMs": 214093,
+            "image": "https://i.scdn.co/image/ab67616d0000b273634ebb5b4796e92c00da986f"
+          },
+          {
+            "name": "Drugs & Candy",
+            "durationMs": 217680,
+            "image": "https://i.scdn.co/image/ab67616d0000b273634ebb5b4796e92c00da986f"
+          },
+          {
+            "name": "Dirty Laundry",
+            "durationMs": 197640,
+            "image": "https://i.scdn.co/image/ab67616d0000b273634ebb5b4796e92c00da986f"
+          },
+          {
+            "name": "Good Times",
+            "durationMs": 224946,
+            "image": "https://i.scdn.co/image/ab67616d0000b273634ebb5b4796e92c00da986f"
+          },
+          {
+            "name": "Nice2KnoU",
+            "durationMs": 196506,
+            "image": "https://i.scdn.co/image/ab67616d0000b273634ebb5b4796e92c00da986f"
+          }
+        ]
+      }
+    ]
+  },
+  "Wolfgang Amadeus Mozart": {
+    "followers": 5737802,
+    "genres": [
+      "classical",
+      "requiem",
+      "opera",
+      "classical piano",
+      "chamber music"
+    ],
+    "image": "https://i.scdn.co/image/ab6761610000e5eb7fa9108c6dadb8c3ec21da88",
+    "albums": [
+      {
+        "name": "Eugene Ormandy & Friends",
+        "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b",
+        "releaseDate": "2025-03-30",
+        "songs": [
+          {
+            "name": "Barber: Adagio for Strings, Op. 11",
+            "durationMs": 381533,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b"
+          },
+          {
+            "name": "Bartók: Suite from the Miraculous Mandarin, Op. 19, Sz. 73: I. Beginning - Curtain Rises",
+            "durationMs": 84053,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b"
+          },
+          {
+            "name": "Bartók: Suite from the Miraculous Mandarin, Op. 19, Sz. 73: II. First Seduction Game",
+            "durationMs": 75653,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b"
+          },
+          {
+            "name": "Bartók: Suite from the Miraculous Mandarin, Op. 19, Sz. 73: III. Second Seduction Game",
+            "durationMs": 239373,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b"
+          },
+          {
+            "name": "Bartók: Suite from the Miraculous Mandarin, Op. 19, Sz. 73: IV. Third Seduction Game - The Mandarin Appears",
+            "durationMs": 209053,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b"
+          }
+        ]
+      },
+      {
+        "name": "\"Prélude à la nuit\" - Lullabies for a Quiet Evening",
+        "image": "https://i.scdn.co/image/ab67616d0000b273d5d8d27065e79a8f58843bb7",
+        "releaseDate": "2025-03-30",
+        "songs": [
+          {
+            "name": "La fille aux cheveux de lin",
+            "durationMs": 162120,
+            "image": "https://i.scdn.co/image/ab67616d0000b273d5d8d27065e79a8f58843bb7"
+          },
+          {
+            "name": "Gnossienne No. 3",
+            "durationMs": 132066,
+            "image": "https://i.scdn.co/image/ab67616d0000b273d5d8d27065e79a8f58843bb7"
+          },
+          {
+            "name": "Sonata in D Minor, K. 32 (Arr. for Guitar by Michael Lewin)",
+            "durationMs": 172880,
+            "image": "https://i.scdn.co/image/ab67616d0000b273d5d8d27065e79a8f58843bb7"
+          },
+          {
+            "name": "Carnival of the Animals, R. 125: The Swan",
+            "durationMs": 186453,
+            "image": "https://i.scdn.co/image/ab67616d0000b273d5d8d27065e79a8f58843bb7"
+          },
+          {
+            "name": "Ma mère l'oye, M. 62: III. Pavane de la belle au bois dormant",
+            "durationMs": 151880,
+            "image": "https://i.scdn.co/image/ab67616d0000b273d5d8d27065e79a8f58843bb7"
+          }
+        ]
+      },
+      {
+        "name": "Springtime Symphonies",
+        "image": "https://i.scdn.co/image/ab67616d0000b273aa4ae65784746a64cdf673f2",
+        "releaseDate": "2025-03-29",
+        "songs": [
+          {
+            "name": "Eine Alpensinfonie, Op. 64: I. Nacht",
+            "durationMs": 212893,
+            "image": "https://i.scdn.co/image/ab67616d0000b273aa4ae65784746a64cdf673f2"
+          },
+          {
+            "name": "Eine Alpensinfonie, Op. 64: II. Sonnenaufgang",
+            "durationMs": 87440,
+            "image": "https://i.scdn.co/image/ab67616d0000b273aa4ae65784746a64cdf673f2"
+          },
+          {
+            "name": "Eine Alpensinfonie, Op. 64: III. Der Anstieg",
+            "durationMs": 142000,
+            "image": "https://i.scdn.co/image/ab67616d0000b273aa4ae65784746a64cdf673f2"
+          },
+          {
+            "name": "Eine Alpensinfonie, Op. 64: IV. Eintritt in den Wald",
+            "durationMs": 317960,
+            "image": "https://i.scdn.co/image/ab67616d0000b273aa4ae65784746a64cdf673f2"
+          },
+          {
+            "name": "Eine Alpensinfonie, Op. 64: V. Wanderung neben dem Bache",
+            "durationMs": 44973,
+            "image": "https://i.scdn.co/image/ab67616d0000b273aa4ae65784746a64cdf673f2"
+          }
+        ]
+      },
+      {
+        "name": "Mozart: Piano Variations, Vol. 1",
+        "image": "https://i.scdn.co/image/ab67616d0000b2739b44e4eeef06fbeb94e77d2d",
+        "releaseDate": "2025-03-29",
+        "songs": [
+          {
+            "name": "12 Variations on \"Ah, vous dirai-je maman\", K. 265: Theme",
+            "durationMs": 54680,
+            "image": "https://i.scdn.co/image/ab67616d0000b2739b44e4eeef06fbeb94e77d2d"
+          },
+          {
+            "name": "12 Variations on \"Ah, vous dirai-je maman\", K. 265: Var. 1",
+            "durationMs": 53333,
+            "image": "https://i.scdn.co/image/ab67616d0000b2739b44e4eeef06fbeb94e77d2d"
+          },
+          {
+            "name": "12 Variations on \"Ah, vous dirai-je maman\", K. 265: Var. 2",
+            "durationMs": 50626,
+            "image": "https://i.scdn.co/image/ab67616d0000b2739b44e4eeef06fbeb94e77d2d"
+          },
+          {
+            "name": "12 Variations on \"Ah, vous dirai-je maman\", K. 265: Var. 3",
+            "durationMs": 52306,
+            "image": "https://i.scdn.co/image/ab67616d0000b2739b44e4eeef06fbeb94e77d2d"
+          },
+          {
+            "name": "12 Variations on \"Ah, vous dirai-je maman\", K. 265: Var. 4",
+            "durationMs": 49933,
+            "image": "https://i.scdn.co/image/ab67616d0000b2739b44e4eeef06fbeb94e77d2d"
+          }
+        ]
+      },
+      {
+        "name": "Flute Concertos",
+        "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644",
+        "releaseDate": "2025-03-29",
+        "songs": [
+          {
+            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: I. Larghetto (Transcr. of Organ Concerto)",
+            "durationMs": 149333,
+            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
+          },
+          {
+            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: II. Allegro (Transcr. of Organ Concerto)",
+            "durationMs": 125880,
+            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
+          },
+          {
+            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: III. Alla siciliana (Transcr. of Organ Concerto)",
+            "durationMs": 78813,
+            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
+          },
+          {
+            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: IV. Presto (Transcr. of Organ Concerto)",
+            "durationMs": 129280,
+            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
+          },
+          {
+            "name": "Vivaldi: Flute Concerto in F Major, Op. 10 No. 1, RV 433 \"La tempesta di mare\": I. Allegro",
+            "durationMs": 173600,
+            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
+          }
+        ]
+      }
+    ]
+  }
+}

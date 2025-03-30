@@ -63,11 +63,7 @@ function RecentPlayedCarousel({ items }) {
                   className="h-36 w-full object-cover rounded"
                 />
                 <button className="absolute bottom-2 right-2">
-                  <img
-                    src="/play-button.png"
-                    alt="Play"
-                    className="w-10 h-10 hover:scale-105 transition-transform duration-300"
-                  />
+                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-white transition-all duration-300 ease-in-out"></i>
                 </button>
               </div>
               <h2 className="mt-1 text-xs font-semibold text-gray-200">{item.name}</h2>
