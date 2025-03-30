@@ -74,7 +74,6 @@ const GenrePage = () => {
               alt="Podcast thumbnail" 
               className="w-48 h-48 object-cover rounded-lg shadow-md"
             />
-            <p className="mt-2">Click to listen</p>
           </div>
         </div>
       ) : (
