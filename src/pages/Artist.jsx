@@ -7,7 +7,7 @@ import { FaPlay } from "react-icons/fa";
 
 
 const Artist = () => {
-  const [activeTab, setActiveTab] = useState('Home');
+  const [activeTab, setActiveTab] = useState('All');
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [playIndex, setPlayIndex] = useState(null);
   const [likedSongs, setLikedSongs] = useState([]);
@@ -68,7 +68,7 @@ const Artist = () => {
   // Tab content rendering
   const renderTabContent = () => {
     switch(activeTab) {
-      case 'Home':
+      case 'All':
         return (
           <div>
             <div>
@@ -132,7 +132,7 @@ const Artist = () => {
 
               {/* popular songs */}
               <div className="flex p-0 mb-4 mt-2 justify-between">
-                <h2 className="text-xl font-bold">Popular</h2>
+                <h2 className="text-xl font-bold ">Popular</h2>
                 <button className="
                   cursor-pointer text-[#b3b3b3]
                   hover:scale-105 transition-transform duration-150 hover:border-white hover:text-white
@@ -210,7 +210,7 @@ const Artist = () => {
               <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {albums.map(album => (
-                  <div key={album.id} className="p-3 rounded">
+                  <div key={album.id} className=" p-3 rounded">
                     <div className="w-full h-38 bg-purple-500 mb-2 rounded"></div>
                     <p className="text-white truncate font-semibold">{album.title}</p>
                     <p className="text-gray-400 text-sm">{album.year}</p>
@@ -231,7 +231,7 @@ const Artist = () => {
                   <div className="w-16 h-16 bg-blue-500 mr-4"></div>
                   <div>
                     <p className="text-white">You've liked {likedSongs.length} songs</p>
-                    <p className="text-gray-400 text-sm">By {artistData.name}</p>
+                    <p className="text-gray-400 text-sm">By Bobby Bobblehead</p>
                   </div>
                 </div>
               </div>
@@ -416,7 +416,7 @@ const Artist = () => {
             <button 
               key={tab} 
               onClick={() => setActiveTab(tab)}
-              className={`py-4 px-2 relative hover:text-white transition-colors ${activeTab === tab ? 'text-white' : 'text-gray-400'}`}
+              className={`py-4 px-2 relative ${activeTab === tab ? 'text-white' : 'text-gray-400'}`}
             >
               {tab}
               {activeTab === tab && (

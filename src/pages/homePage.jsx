@@ -1,18 +1,8 @@
 import { useState, useEffect } from "react";
-
-const data = [
-  { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
-  { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
-  { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
-  { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
-  { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
-  { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
-  { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
-  { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
-];
+import spotifyData from "../assets/data/data.json";
 
 // ===== Carousel Component =====
-function RecentPlayedCarousel({ items }) {
+function RecentPlayedCarousel({ items, handlePlay }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(1);
 
@@ -50,25 +40,28 @@ function RecentPlayedCarousel({ items }) {
               style={{ transform: `translateX(-${(currentIndex * 100) / itemsToShow}%)` }}
           >
             {items.map((item, index) => (
-                <div
-                    key={index}
-                    className="p-2"
-                    style={{ flex: `0 0 ${100 / itemsToShow}%` }}
+              <div
+                key={index}
+                className="p-2 group"
+                style={{ flex: `0 0 ${100 / itemsToShow}%` }}
+              >
+                <div className="relative">
+                  <img
+                    src={item.album.image}
+                    alt="Thumbnail"
+                    className="h-36 w-full object-cover rounded"
+                  />
+                <button
+                  className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
+                  onClick={() => handlePlay(item)}  // Pass the item to the handlePlay function
                 >
-                  <div className="relative">
-                    <img
-                        src={item.image}
-                        alt="Thumbnail"
-                        className="h-36 w-full object-cover rounded"
-                    />
-                    <button className="absolute bottom-2 right-2">
-                      <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-white transition-all duration-300 ease-in-out"></i>
-                    </button>
-                  </div>
-                  <h2 className="mt-1 text-xs font-semibold text-gray-200">
-                    {item.name}
-                  </h2>
+                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+                </button>
                 </div>
+                <h2 className="mt-1 text-xs font-semibold text-gray-200">
+                  {item.album.name}
+                </h2>
+              </div>
             ))}
           </div>
         </div>
@@ -92,7 +85,7 @@ function RecentPlayedCarousel({ items }) {
 }
 
 // ===== Grid Component =====
-function GridView({ items }) {
+function GridView({ items, handlePlay }) {
   const [itemsToShow, setItemsToShow] = useState(2);
 
   useEffect(() => {
@@ -121,23 +114,22 @@ function GridView({ items }) {
             }}
         >
           {items.map((item, index) => (
-              <div key={index} className="w-full">
+              <div key={index} className="w-full group">
                 <div className="relative">
                   <img
-                      src={item.image}
+                      src={item.album.image}
                       alt="Thumbnail"
                       className="h-36 w-full object-cover rounded"
                   />
-                  <button className="absolute bottom-2 right-2">
-                    <img
-                        src="/play-button.png"
-                        alt="Play"
-                        className="w-14 h-14 hover:scale-105 transition-transform duration-300"
-                    />
-                  </button>
+                <button
+                  className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
+                  onClick={() => handlePlay(item)}  // Pass the item to the handlePlay function
+                >
+                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+                </button>
                 </div>
                 <h2 className="mt-1 text-xs font-semibold text-gray-200">
-                  {item.name}
+                  {item.album.name}
                 </h2>
               </div>
           ))}
@@ -185,21 +177,22 @@ function MediaSection({ title, items, renderCollapsed, renderExpanded }) {
   );
 }
 
-function renderMediaSection(title, items) {
+function renderMediaSection(title, items, handlePlay) {
   return (
-      <MediaSection
-          title={title}
-          items={items}
-          renderCollapsed={(items) => <RecentPlayedCarousel items={items} />}
-          renderExpanded={(items) => <GridView items={items} />}
-      />
+    <MediaSection
+      title={title}
+      items={items}
+      renderCollapsed={(items) => <RecentPlayedCarousel items={items} handlePlay={handlePlay} />}
+      renderExpanded={(items) => <GridView items={items} handlePlay={handlePlay} />}
+    />
   );
 }
 
 // ===== HomePage Component =====
-export default function HomePage() {
+export default function HomePage({ setMusicQueue }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [itemsToShow, setItemsToShow] = useState(2);
+  const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
     const updateItemsToShow = () => {
@@ -217,28 +210,65 @@ export default function HomePage() {
     return () => window.removeEventListener("resize", updateItemsToShow);
   }, []);
 
+  useEffect(() => {
+    if (spotifyData) {
+      const albumList = Object.entries(spotifyData).flatMap(([artistName, artist]) => {
+        return artist.albums.map((album) => ({
+          artist: artistName,
+          album: album
+        }));
+      });
+      setAlbums(albumList);
+    }
+  }, []);
+
+  function shuffleArray(array) {
+    const newArray = [...array]; // Create a copy of the original array
+    for (let i = newArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]]; // Swap elements
+    }
+    return newArray;
+  }
+  
   const handleCategory = (category) => {
     setSelectedCategory(category);
-    console.log(category);
+  };
+
+  const handlePlay = (album) => {
+    // Ensure that setMusicQueue is a function
+    if (typeof setMusicQueue === 'function') {
+      setMusicQueue(album);  // Ensure it's an array for a queue
+    } else {
+      console.error('setMusicQueue is not a function1');
+    }
   };
 
   return (
       <div className="p-8 w-full bg-[#212121]">
         {/* Main Grid Section */}
         <div className="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-          {data.map((item, index) => (
+          {albums.length > 0 && // ✅ Ensure albums exist before mapping
+            albums.slice(0, 8).map((item, index) => (
               <div
-                  key={index}
-                  className="flex items-center bg-gray-700 hover:bg-gray-600 rounded"
+                key={index}
+                className="flex items-center bg-gray-700 hover:bg-gray-600 rounded group relative"
               >
                 <img
-                    src={item.image}
-                    alt="Thumbnail"
-                    className="h-16 w-16 object-cover"
+                  src={item.album.image}
+                  alt="Thumbnail"
+                  className="h-16 w-16 object-cover"
                 />
-                <h2 className="ml-3 text-sm font-semibold">{item.name}</h2>
+                <h2 className="ml-3 p-1 text-xs font-semibold">{item.album.name}</h2>
+                <button
+                  className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
+                  onClick={() => handlePlay(item)}  // Pass the item to the handlePlay function
+                >
+                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+                </button>
               </div>
-          ))}
+            ))
+          }
         </div>
 
         {/* Category Buttons */}
@@ -263,36 +293,36 @@ export default function HomePage() {
         {/* Conditional Rendering of Media Sections */}
         {selectedCategory === "All" && (
             <>
-              {renderMediaSection("Recently Played", data)}
-              {renderMediaSection("Made For You", data)}
-              {renderMediaSection("Your Top Mixes", data)}
-              {renderMediaSection("Trending Podcasts", data)}
-              {renderMediaSection("Your Latest Episodes", data)}
-              {renderMediaSection("Recommended For You", data)}
-              {renderMediaSection("Audiobook Collection", data)}
-              {renderMediaSection("Your Audiobook Library", data)}
-              {renderMediaSection("Top Audiobooks", data)}
+              {renderMediaSection("Recently Played", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Made For You", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Your Top Mixes", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Trending Podcasts", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Your Latest Episodes", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Recommended For You", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Audiobook Collection", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Your Audiobook Library", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Top Audiobooks", shuffleArray(albums), handlePlay)}
             </>
         )}
         {selectedCategory === "Music" && (
             <>
-              {renderMediaSection("Recently Played", data)}
-              {renderMediaSection("Made For You", data)}
-              {renderMediaSection("Your Top Mixes", data)}
+              {renderMediaSection("Recently Played", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Made For You", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Your Top Mixes", shuffleArray(albums), handlePlay)}
             </>
         )}
         {selectedCategory === "Podcasts" && (
             <>
-              {renderMediaSection("Trending Podcasts", data)}
-              {renderMediaSection("Your Latest Episodes", data)}
-              {renderMediaSection("Recommended For You", data)}
+              {renderMediaSection("Trending Podcasts", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Your Latest Episodes", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Recommended For You", shuffleArray(albums), handlePlay)}
             </>
         )}
         {selectedCategory === "Audiobooks" && (
             <>
-              {renderMediaSection("Audiobook Collection", data)}
-              {renderMediaSection("Your Audiobook Library", data)}
-              {renderMediaSection("Top Audiobooks", data)}
+              {renderMediaSection("Audiobook Collection", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Your Audiobook Library", shuffleArray(albums), handlePlay)}
+              {renderMediaSection("Top Audiobooks", shuffleArray(albums), handlePlay)}
             </>
         )}
       </div>
