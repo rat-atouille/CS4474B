@@ -99,7 +99,7 @@ export default function Album() {
                     alt="Song Image" 
                     className="object-cover rounded"
                     />
-                    <button className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                    <button className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out">
                     <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
                     </button>
                 </div>
