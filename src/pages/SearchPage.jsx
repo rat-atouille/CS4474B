@@ -1,16 +1,11 @@
-// SearchPage.jsx
-
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-// Example import from src/assets (ensure Rock.png is actually in ../assets)
 import rockImage from "../assets/Rock.png";
 
 export default function SearchPage() {
-    // 1) Grab "?q=..." from the URL for main search
     const location = useLocation();
     const [searchParam, setSearchParam] = useState("");
 
-    // 2) We'll also use navigate for clickable category tags
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -48,13 +43,9 @@ export default function SearchPage() {
         { name: "Rock", image: rockImage },
     ];
 
-    // 4) The category tags we want clickable
     const categories = ["Songs", "Playlists", "Artists", "Podcasts", "Audiobooks"];
 
-    // 5) Handle user clicking a tag
     const handleTagClick = (category) => {
-        // Example: navigate to /search/songs or /search/playlists etc.
-        // Adjust if you prefer query params like navigate(`/search?category=${category}`)
         navigate(`/search/${category.toLowerCase()}`);
     };
 
