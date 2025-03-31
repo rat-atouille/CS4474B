@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { LuChevronsLeft, LuChevronsRight } from "react-icons/lu";
+import spotifyData from "../../assets/data/data.json";
 
-function Sidebar({collapsed, setCollapsed}) {
+function Sidebar({ collapsed, setCollapsed }) {
+  const [albums, setAlbums] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
   // Sample data
   const data = [
     { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
@@ -13,8 +17,6 @@ function Sidebar({collapsed, setCollapsed}) {
     { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
     { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2020" },
   ];
-
-  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     console.log("Sidebar collapsed state changed:", collapsed);
@@ -31,8 +33,21 @@ function Sidebar({collapsed, setCollapsed}) {
     setCollapsed((prev) => !prev);
   }
 
+  useEffect(() => {
+    if (spotifyData) {
+      const albumList = Object.entries(spotifyData).flatMap(([artistName, artist]) => {
+        return artist.albums.map((album) => ({
+          artist: artistName,
+          album: album
+        }));
+      });
+      console.log(albumList);
+      setAlbums(albumList);
+    }
+  }, []);
+
   return (
-      <div className={`mt-[10vh] md:mt-[5vw] bg-black z-10 overflow-hidden ${!collapsed ? 'w-1/3' : '1/6'}`}>
+      <div className={`fixed h-screen overflow-y-auto mt-[10vh] md:mt-[5vw] bg-black z-10 overflow-hidden ${!collapsed ? 'w-1/4' : '1/6'}`}>
       <div className={`bg-black h-full flex flex-col ${!collapsed ? 'mx-6' : 'mx-2 justify-center items-center'} justify-center items-center`}>
         {/* Collapse Toggle */}
         <div
@@ -109,12 +124,12 @@ function Sidebar({collapsed, setCollapsed}) {
               space-y-4 p-2 bg-black flex flex-col justify-center md:justify-normal
               ${!collapsed ? 'px-2 mt-2' : 'px-1 mt-8'}
             `}>
-              {data
-                .filter(item => 
-                  !selectedCategory || 
-                  // You can add more filtering logic here if needed
-                  item.year === selectedCategory
-                )
+              {albums
+                // .filter(item => 
+                //   !selectedCategory || 
+                //   // You can add more filtering logic here if needed
+                //   item.year === selectedCategory
+                // )
                 .map((item, index) => (
                   <div 
                     key={index} 
@@ -122,7 +137,7 @@ function Sidebar({collapsed, setCollapsed}) {
                   >
                     {/* Square Image */}
                     <img 
-                      src={item.image} 
+                      src={item.album.image} 
                       alt={item.name} 
                       className={`
                         object-cover rounded-sm 
@@ -136,8 +151,8 @@ function Sidebar({collapsed, setCollapsed}) {
                     {/* Text Info */}
                     {!collapsed && (
                       <div className="hidden md:block select-none">
-                        <span className="text-white font-semibold 2xl:text-lg text-xs">{item.name}</span>
-                        <div className="text-gray-400 2xl:text-lg text-xs">{item.year}</div>
+                        <span className="text-white font-semibold 2xl:text-lg text-xs">{item.album.name}</span>
+                        <div className="text-gray-400 2xl:text-lg text-xs">{item.artist}</div>
                       </div>
                     )}
                   </div>

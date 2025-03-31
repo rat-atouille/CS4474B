@@ -7,9 +7,9 @@ import Browse from './pages/Browse.jsx';
 import Album from './pages/Album.jsx';
 import GenrePage from './pages/GenrePage.jsx';
 import SearchPage from "./pages/SearchPage.jsx";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-function App({ setMusicQueue }) { // Make sure to accept the prop
+function App({ currentAlbum, setCurrentAlbum, setMusicQueue }) { // Make sure to accept the prop
 
   return (
     <Routes>
@@ -19,7 +19,7 @@ function App({ setMusicQueue }) { // Make sure to accept the prop
       <Route path={"/podcast"} element={<PodcastPage setMusicQueue={setMusicQueue} />} />
       <Route path={"/browse"} element={<Browse setMusicQueue={setMusicQueue} />} />
       <Route path={"/genre/:genre"} element={<GenrePage setMusicQueue={setMusicQueue} />} />
-      <Route path={"/album"} element={<Album setMusicQueue={setMusicQueue} />} />
+      <Route path={"/album"} element={<Album setMusicQueue={setMusicQueue} album={currentAlbum} />} />
     </Routes>
   );
 }

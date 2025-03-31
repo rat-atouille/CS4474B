@@ -244,6 +244,7 @@ export default function HomePage({ setMusicQueue }) {
     }
   };
 
+
   return (
       <div className="p-8 w-full bg-[#212121]">
         {/* Main Grid Section */}
