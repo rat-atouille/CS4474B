@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import data from '../assets/data/data.json';
 import podcastThumbnail from '../assets/Podcast/sample_thumbnail.png';
+import { IoChevronBackOutline } from "react-icons/io5";
 
 const GenrePage = () => {
   const { genre } = useParams();
@@ -54,17 +55,22 @@ const GenrePage = () => {
   };
 
   return (
-    <div className="genre-page">
-      <h1 className="ml-4 my-5 font-bold text-2xl">{genre}</h1>
+    <div className="genre-page bg-[#212121]">
+      <div className='flex gap-3 mx-3 my-5'>
+        <button className='cursor-pointer py-1 px-3 rounded-2xl font-semibold text-md bg-green-500 flex'
+          onClick={()=>navigate('/browse', {replace: true})}
+          > <IoChevronBackOutline /> Back </button>
+        <h1 className="ml-2 font-bold text-2xl"> {genre}</h1>      
+      </div>
       
       {filteredData.length === 0 ? (
-        <p style={{ fontSize: '20px', marginLeft: '16px' }}>
-        No content found for this genre.
+        <p className="text-20 ml-6 mt-8 bg-[#212121]">
+          No content found for this genre.
         </p>
       
       ) : genre.toLowerCase() === 'sport' ? (
         // Left-aligned clickable podcast thumbnail
-        <div className="ml-4"> {/* Added ml-4 to match heading alignment */}
+        <div className="ml-4 bg-[#212121]"> {/* Added ml-4 to match heading alignment */}
           <div 
             onClick={handlePodcastClick}
             className="cursor-pointer hover:opacity-80 transition-opacity inline-block"
@@ -78,7 +84,7 @@ const GenrePage = () => {
         </div>
       ) : (
         // Regular Music View (unchanged)
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap bg-[#212121]">
           {filteredData.map((artist, index) => (
             artist.albums.map((album, albumIndex) => (
               album.songs.map((song, songIndex) => (

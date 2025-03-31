@@ -32,7 +32,7 @@ const BrowsePage = () => {
           <p className={`px-4 py-1 rounded-2xl  font-semibold cursor-pointer ${activeFilter === "Podcast" ? "bg-green-500 text-white" : "bg-gray-700 text-gray-300"}`} onClick={()=>handleClick("Podcast")}>Podcast</p>
           <p className={`px-4 py-1 rounded-2xl font-semibold cursor-pointer ${activeFilter === "Audiobooks" ? "bg-green-500 text-white" : "bg-gray-700 text-gray-300"}`} onClick={()=>handleClick("Audiobooks")}>Audiobooks</p>
         </div>
-        <div className="mb-4">
+        <div className="mb-4 bg-[#212121]">
           <h1 className="ml-4 my-5 font-bold text-2xl">Genres</h1>
           <div className="flex flex-wrap">
             {dataToDisplay.map((item, index) => (

@@ -16,3 +16,7 @@
 body {
   color:white;
 }
+
+button {
+  user-select: none;
+}

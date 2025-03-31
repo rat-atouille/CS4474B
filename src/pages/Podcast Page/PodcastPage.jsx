@@ -4,6 +4,7 @@ import Episode from "./Episode.jsx";
 import {useState, useRef, useEffect} from "react";
 import Grade from 'grade-js'
 import useDebounce from './UseDebounce.jsx';
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 
 // interface episode {
@@ -109,7 +110,7 @@ function PodcastPage({title, author, about, tags, img, episodes}) {
   }, []);
 
   return (
-    <div className={"pb-7"}>
+    <div className="pb-7 bg-[#212121]">
       {/*Top section*/}
       <div ref={topRef} className={"pl-3 py-3 flex gap-2 bg-linear-to-b to-black to-110%"}>
         <img crossOrigin="anonymous" alt={"Thumbnail"} className={"h-36"} src={img}/>
@@ -136,7 +137,7 @@ function PodcastPage({title, author, about, tags, img, episodes}) {
         {/*About*/}
         <div className={"mt-5"}>
           <div className={"font-bold text-xl"}>About</div>
-          <div className={"text-sm text-neutral-400"}>{about}</div>
+          <div className={"mt-2 text-sm text-neutral-400"}>{about}</div>
         </div>
 
         {/*Episodes*/}
@@ -144,9 +145,9 @@ function PodcastPage({title, author, about, tags, img, episodes}) {
           <div className={"font-bold text-xl"}>Episodes</div>
 
           {/*Search and sorters*/}
-          <div className={"flex gap-2 content-center items-center"}>
+          <div className={"mt-3 flex gap-2 content-center items-center"}>
             <input onChange={handleSearch} value={searchValue} placeholder={"Search for a episode"}
-                   className={"mr-6 bg-white text-black"}/>
+                   className={"rounded-lg pl-3 mr-4 bg-white text-black"}/>
 
             {sortButtonsState.map((button, index) => {
               const isSelected = selectedSortButtonIndex === index;
@@ -162,7 +163,7 @@ function PodcastPage({title, author, about, tags, img, episodes}) {
                     else return button.sortFn(b, a)
                   }))
                 }} key={index}
-                text={button.text + ` ${isSelected ? ascending ? '↑' : '↓' : ''} `}
+                text={button.text + ` ${isSelected ? ascending ? <IoIosArrowUp  /> : <IoIosArrowDown /> : ''} `}
                 className={isSelected && "bg-green-500 hover:bg-green-600 active:bg-green-700"}/>
             })}
           </div>

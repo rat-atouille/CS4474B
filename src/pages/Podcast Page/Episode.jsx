@@ -44,7 +44,7 @@ function formatLength(lengthInMinutes) {
 function Episode({episode}) {
   return (
     <div
-      className={"flex flex-nowrap items-center content-stretch gap-[10px] hover:cursor-pointer hover:scale-105 transition-all"}>
+      className={"flex flex-nowrap items-center content-stretch gap-[10px] hover:cursor-pointer hover:scale-105 transition-all hover:bg-[#474747]"}>
       <img className={"flex-shrink h-44"} src={episode.img} alt="Thumbnail"/>
       <div className={"flex flex-col gap-1"}>
         <div className={"font-bold text-xl line-clamp-3"}>{episode.title}</div>
