@@ -1,7 +1,5 @@
-// HomePage.jsx
 import { useState, useEffect } from "react";
 
-// Sample data
 const data = [
   { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
   { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
