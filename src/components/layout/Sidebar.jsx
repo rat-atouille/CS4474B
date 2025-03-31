@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FiChevronsLeft } from "react-icons/fi";
+import { LuChevronsLeft, LuChevronsRight } from "react-icons/lu";
 
 function Sidebar({collapsed, setCollapsed}) {
   // Sample data
@@ -35,20 +35,16 @@ function Sidebar({collapsed, setCollapsed}) {
       <div className={`mt-[10vh] md:mt-[5vw] bg-black z-10 overflow-hidden ${!collapsed ? 'w-1/3' : '1/6'}`}>
       <div className={`bg-black h-full flex flex-col ${!collapsed ? 'mx-6' : 'mx-2 justify-center items-center'} justify-center items-center`}>
         {/* Collapse Toggle */}
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          fill="none" 
-          viewBox="0 0 24 24" 
-          strokeWidth={1.5} 
-          stroke="currentColor" 
-        >
-          
-        </svg>
         <div
           onClick={handleCollapse} 
-          className={`size-5 mb-3 cursor-pointer text-white ${!collapsed ? 'self-end' : 'self-center'}`}
+          className={` size-5 mb-3  flex justify-center items-center
+            cursor-pointer text-white ${!collapsed ? 'self-end' : 'self-center'}`}
         >
-          <FiChevronsLeft />
+          {collapsed ? 
+            <LuChevronsRight  color="white" size={20} />
+            : 
+            <LuChevronsLeft  color="white" size={20} />
+            }
         </div>
         
 
