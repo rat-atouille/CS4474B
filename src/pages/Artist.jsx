@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { IoPlay, IoPause, IoHeart, IoHeartOutline } from "react-icons/io5";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { BsSoundwave } from "react-icons/bs";
+import { FaShuffle } from "react-icons/fa6";
+import { FaPlay } from "react-icons/fa";
+
 
 const Artist = () => {
   const [activeTab, setActiveTab] = useState('Home');
@@ -9,6 +12,8 @@ const Artist = () => {
   const [playIndex, setPlayIndex] = useState(null);
   const [likedSongs, setLikedSongs] = useState([]);
   const [follow, SetFollow] = useState(false);
+  const [shuffle, setShuffle] = useState(false);
+  const [likedAlbums, setLikedAlbums] = useState([]);
 
   // Sample data
   const artistData = {
@@ -41,6 +46,16 @@ const Artist = () => {
     }
   };
 
+  const toggleLikeAl = (e, albumId) => {
+    e.stopPropagation(); // Prevent triggering the parent div's onClick
+    if (likedAlbums.includes(albumId)) {
+      setLikedAlbums(likedAlbums.filter(id => id !== albumId));
+    } else {
+      setLikedAlbums([...likedAlbums, albumId]);
+    }
+  };
+
+
   const togglePlay = (e, index) => {
     e.stopPropagation(); // Prevent triggering the parent div's onClick
     if (playIndex === index) {
@@ -66,9 +81,10 @@ const Artist = () => {
                       key={song.id}
                       onMouseEnter={() => setHoveredIndex(`recent-${index}`)}
                       onMouseLeave={() => setHoveredIndex(null)}
-                      onClick={() => setPlayIndex(`recent-${index}`)}
+                      onClick={(e) => togglePlay(e, `recent-${index}`)}
                       className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                     >
+
                       <div 
                         className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
                         onClick={(e) => togglePlay(e, `recent-${index}`)}
@@ -78,6 +94,8 @@ const Artist = () => {
                           (hoveredIndex === `recent-${index}` ? <IoPlay className="text-lg" /> : index + 1)
                         }                        
                       </div>
+
+                      {/* song title and stuff */}
                       <div className="w-12 h-12 bg-blue-500 mr-3"></div>
                       <div className="flex-1">
                         <p className={`${playIndex === `recent-${index}` ? 'text-green-500' : 'text-white'}`}>
@@ -85,6 +103,8 @@ const Artist = () => {
                         </p>
                         <p className="text-gray-400 text-sm">{song.plays} plays</p>
                       </div>
+
+                      {/* Liked song */}
                       <div 
                         className="text-gray-400 mr-8 cursor-pointer"
                         onClick={(e) => toggleLike(e, song.id)}
@@ -94,6 +114,8 @@ const Artist = () => {
                           (hoveredIndex === `recent-${index}` ? <IoHeartOutline /> : null)
                         }
                       </div>
+
+                      {/* more ... thing */}
                       <div className="text-gray-400 mr-17">{song.duration}</div>
                       {hoveredIndex === `recent-${index}` && (
                         <div 
@@ -107,6 +129,8 @@ const Artist = () => {
                   ))}
                 </div>
               </div>
+
+              {/* popular songs */}
               <div className="flex p-0 mb-4 mt-2 justify-between">
                 <h2 className="text-xl font-bold">Popular</h2>
                 <button className="
@@ -116,52 +140,71 @@ const Artist = () => {
                   onClick={()=>setPlayIndex(0)}
                   >Play All</button>
               </div>
-              <div className="rounded">
-                {songs.map((song, index) => (
-                  <div
-                    key={song.id}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    onClick={() => setPlayIndex(index)}
-                    className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
-                  >
-                    <div 
-                      className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
+
+                <div className="rounded mt-5">
+                  {songs.map((song, index) => (
+                    <div
+                      key={song.id}
+                      onMouseEnter={() => setHoveredIndex(index)}
+                      onMouseLeave={() => setHoveredIndex(null)}
                       onClick={(e) => togglePlay(e, index)}
+                      className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                     >
-                      {playIndex === index ? 
-                        <BsSoundwave className="text-green-500" /> : 
-                        (hoveredIndex === index ? <IoPlay className="text-lg" /> : index + 1)
-                      }                        
-                    </div>
-                    <div className="w-12 h-12 bg-blue-500 mr-3"></div>
-                    <div className="flex-1">
-                      <p className={`${playIndex === index ? 'text-green-500' : 'text-white'}`}>
-                        {song.title}
-                      </p>
-                      <p className="text-gray-400 text-sm">{song.plays} plays</p>
-                    </div>
-                    <div 
-                      className="text-gray-400 mr-8 cursor-pointer"
-                      onClick={(e) => toggleLike(e, song.id)}
-                    >
-                      {likedSongs.includes(song.id) ? 
-                        <IoHeart className="text-red-500" /> : 
-                        (hoveredIndex === index ? <IoHeartOutline /> : null)
-                      }
-                    </div>
-                    <div className="text-gray-400 mr-17">{song.duration}</div>
-                    {hoveredIndex === index && (
                       <div 
-                        className="absolute right-10 text-gray-400 cursor-pointer"
-                        onClick={(e) => e.stopPropagation()}
+                        className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
+                        onClick={() => {
+                          if (playIndex === index) {
+                            setPlayIndex(null);
+                          } else {
+                            setPlayIndex(index);
+                          }
+                        }}
                       >
-                        <HiDotsHorizontal />
+                      <div 
+                        className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
+                        onClick={(e) => togglePlay(e, index)}
+                      >
+                        {playIndex === index ? 
+                          <BsSoundwave className="text-green-500" /> : 
+                          (hoveredIndex === index ? <IoPlay className="text-lg" /> : index + 1)
+                        }                        
                       </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+                      </div>
+
+                      {/* song title and stuff */}
+                      <div className="w-12 h-12 bg-blue-500 mr-3"></div>
+                      <div className="flex-1">
+                        <p className={`${playIndex === index ? 'text-green-500' : 'text-white'}`}>
+                          {song.title}
+                        </p>
+                        <p className="text-gray-400 text-sm">{song.plays} plays</p>
+                      </div>
+
+                      {/* Liked song */}
+                      <div 
+                        className="text-gray-400 mr-8 cursor-pointer"
+                        onClick={(e) => toggleLike(e, song.id)}
+                      >
+                        {likedSongs.includes(song.id) ? 
+                          <IoHeart className="text-red-500" /> : 
+                          (hoveredIndex === index ? <IoHeartOutline /> : null)
+                        }
+                      </div>
+
+                      {/* more ... thing */}
+                      <div className="text-gray-400 mr-17">{song.duration}</div>
+                      {hoveredIndex === index && (
+                        <div 
+                          className="absolute right-10 text-gray-400 cursor-pointer"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <HiDotsHorizontal />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
             </div>
             <div className='ml-3 mr-3'>
               <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
@@ -181,9 +224,9 @@ const Artist = () => {
       case 'Songs':
         return (
           <div>
-            <div className="mb-8">
+            <div className="mb-4">
               <h2 className="text-xl font-bold mb-4">Liked Songs</h2>
-              <div className="bg-gray-800 rounded p-4 mb-6">
+              <div className="bg-gray-700 rounded-md p-4 mb-6">
                 <div className="flex items-center">
                   <div className="w-16 h-16 bg-blue-500 mr-4"></div>
                   <div>
@@ -196,53 +239,61 @@ const Artist = () => {
             
             <div>
               <h2 className="text-xl font-bold mb-4">All Songs</h2>
-              <div className="bg-gray-800 rounded">
-                {songs.map((song, index) => (
-                  <div
-                    key={song.id}
-                    onMouseEnter={() => setHoveredIndex(`song-${index}`)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    onClick={() => setPlayIndex(`song-${index}`)}
-                    className="flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
-                  >
-                    <div 
-                      className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
-                      onClick={(e) => togglePlay(e, `song-${index}`)}
+
+              <div className="rounded mt-5">
+                  {songs.map((song, index) => (
+                    <div
+                      key={song.id}
+                      onMouseEnter={() => setHoveredIndex(index)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      onClick={(e) => togglePlay(e, index)}
+                      className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                     >
-                      {playIndex === `song-${index}` ? 
-                        <BsSoundwave className="text-green-500" /> : 
-                        (hoveredIndex === `song-${index}` ? <IoPlay className="text-lg" /> : index + 1)
-                      }                        
-                    </div>
-                    <div className="w-12 h-12 bg-blue-500 mr-3"></div>
-                    <div className="flex-1">
-                      <p className={`${playIndex === `song-${index}` ? 'text-green-500' : 'text-white'}`}>
-                        {song.title}
-                      </p>
-                      <p className="text-gray-400 text-sm">{song.plays} plays</p>
-                    </div>
-                    <div className="text-gray-400 mr-3">{song.duration}</div>
-                    <div 
-                      className="text-gray-400 mr-8 cursor-pointer"
-                      onClick={(e) => toggleLike(e, song.id)}
-                    >
-                      {likedSongs.includes(song.id) ? 
-                        <IoHeart className="text-red-500" /> : 
-                        (hoveredIndex === `song-${index}` ? <IoHeartOutline /> : null)
-                      }
-                    </div>
-                    {hoveredIndex === `song-${index}` && (
+
                       <div 
-                        className="absolute right-10 text-gray-400 cursor-pointer"
-                        onClick={(e) => e.stopPropagation()}
+                        className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
+                        onClick={(e) => togglePlay(e, index)}
                       >
-                        <HiDotsHorizontal />
+                        {playIndex === index ? 
+                          <BsSoundwave className="text-green-500" /> : 
+                          (hoveredIndex === index ? <IoPlay className="text-lg" /> : index + 1)
+                        }                        
                       </div>
-                    )}
-                  </div>
-                ))}
+
+                      {/* song title and stuff */}
+                      <div className="w-12 h-12 bg-blue-500 mr-3"></div>
+                      <div className="flex-1">
+                        <p className={`${playIndex === index ? 'text-green-500' : 'text-white'}`}>
+                          {song.title}
+                        </p>
+                        <p className="text-gray-400 text-sm">{song.plays} plays</p>
+                      </div>
+
+                      {/* Liked song */}
+                      <div 
+                        className="text-gray-400 mr-8 cursor-pointer"
+                        onClick={(e) => toggleLike(e, song.id)}
+                      >
+                        {likedSongs.includes(song.id) ? 
+                          <IoHeart className="text-red-500" /> : 
+                          (hoveredIndex === index ? <IoHeartOutline /> : null)
+                        }
+                      </div>
+
+                      {/* more ... thing */}
+                      <div className="text-gray-400 mr-17">{song.duration}</div>
+                      {hoveredIndex === index && (
+                        <div 
+                          className="absolute right-10 text-gray-400 cursor-pointer"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <HiDotsHorizontal />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
           </div>
         );
       
@@ -253,7 +304,19 @@ const Artist = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {albums.map(album => (
                 <div key={album.id} className="bg-gray-800 p-4 rounded">
-                  <div className="w-full h-48 bg-purple-500 mb-3 rounded"></div>
+                  <div className="w-full h-48 bg-purple-500 mb-3 relative rounded">
+                    {/* heart */}
+                    <button className=' absolute right-4 top-3 cursor-pointer'
+                      onClick={(e)=>toggleLikeAl(e, album.id)}
+                    >
+                      {likedAlbums.includes(album.id)?
+                        <IoHeart size={30} />
+                      :
+                        <IoHeartOutline size={30} />
+                      }
+                    </button>
+
+                  </div>
                   <p className="text-white font-bold">{album.title}</p>
                   <p className="text-gray-400 text-sm">{album.year} • {album.tracks} tracks</p>
                 </div>
@@ -262,6 +325,42 @@ const Artist = () => {
           </div>
         );
       
+
+      case 'Singles & EPs':
+      return (
+        <div>
+          <h2 className="text-xl font-bold mb-4">Singles & EPs</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {albums.map(album => (
+              <div key={album.id} className="bg-gray-800 p-4 rounded">
+                <div className="w-full h-48 bg-purple-500 mb-3 relative rounded">
+                  {/* heart */}
+                  <button className=' absolute right-4 top-3 cursor-pointer'
+                    onClick={(e)=>toggleLikeAl(e, album.id)}
+                  >
+                    {likedAlbums.includes(album.id)?
+                      <IoHeart size={30} />
+                    :
+                      <IoHeartOutline size={30} />
+                    }
+                  </button>
+
+                </div>
+                <p className="text-white font-bold">{album.title}</p>
+                <p className="text-gray-400 text-sm">Singles • {album.year}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+
+      case 'About':
+        return (
+          <div>
+
+          </div>
+        )
+
       default:
         return <div>Select a tab</div>;
     }
@@ -281,18 +380,29 @@ const Artist = () => {
           <p className="text-sm mt-2 text-[#b3b3b3] select-none">{artistData.monthlyListeners} monthly listeners</p>
         </div>
         
+        {/* Follow button */}
         <button className="hover:scale-110 transition-transform duration-150 hover:border-white hover:text-white
-          text-[#b3b3b3] absolute right-25 bottom-10 pl-4 pr-4 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer"
+          text-[#b3b3b3] absolute right-37 bottom-10 pl-4 pr-4 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer"
           onClick={()=> SetFollow(!follow)}
           >
             {follow? 'Following' : 
             'Follow'}
-              
         </button>
 
+        {/* Shuffle button */}
+        <button className={`hover:scale-110 transition-transform duration-150 rounded-full p-4 z-10 cursor-pointer absolute right-21 bottom-7 ${shuffle ? "text-green-500" : "text-white"}`}
+          onClick={()=>setShuffle(!shuffle)}
+          >
+          <FaShuffle size={25}/>
+        </button>        
+
         {/* Play button */}
-        <button className="hover:scale-110 transition-transform duration-150 rounded-full p-4 z-10 cursor-pointer absolute right-4 bottom-5">
-            <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+        <button className="hover:scale-110 transition-transform duration-150 
+          bg-green-500 flex justify-center items-center
+          rounded-full p-5 z-10 cursor-pointer absolute right-6 bottom-8">
+            <span className='flex justify-center items-center text-black'>
+              <FaPlay />
+            </span>
         </button>
         
         {/* Gradient overlay */}
@@ -302,7 +412,7 @@ const Artist = () => {
       {/* Navigation Tabs */}
       <div className="px-6 border-b border-gray-800">
         <div className="flex space-x-6">
-          {['Home', 'Songs', 'Singles & EPs', 'Albums'].map(tab => (
+          {['Home', 'Songs', 'Singles & EPs', 'Albums', 'About'].map(tab => (
             <button 
               key={tab} 
               onClick={() => setActiveTab(tab)}
