@@ -1,3 +1,4 @@
+// HomePage.jsx
 import { useState, useEffect } from "react";
 
 // Sample data
@@ -12,7 +13,7 @@ const data = [
   { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
 ];
 
-// Carousel Component
+// ===== Carousel Component =====
 function RecentPlayedCarousel({ items }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(1);
@@ -44,51 +45,56 @@ function RecentPlayedCarousel({ items }) {
   };
 
   return (
-    <div className="relative w-19/20 mx-auto">
-      <div className="overflow-hidden">
-        <div
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${(currentIndex * 100) / itemsToShow}%)` }}
-        >
-          {items.map((item, index) => (
-            <div
-              key={index}
-              className="p-2"
-              style={{ flex: `0 0 ${100 / itemsToShow}%` }}
-            >
-              <div className="relative">
-                <img
-                  src={item.image}
-                  alt="Thumbnail"
-                  className="h-36 w-full object-cover rounded"
-                />
-                <button className="absolute bottom-2 right-2">
-                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-white transition-all duration-300 ease-in-out"></i>
-                </button>
-              </div>
-              <h2 className="mt-1 text-xs font-semibold text-gray-200">{item.name}</h2>
-            </div>
-          ))}
+      <div className="relative w-19/20 mx-auto">
+        <div className="overflow-hidden">
+          <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${(currentIndex * 100) / itemsToShow}%)` }}
+          >
+            {items.map((item, index) => (
+                <div
+                    key={index}
+                    className="p-2"
+                    style={{ flex: `0 0 ${100 / itemsToShow}%` }}
+                >
+                  <div className="relative">
+                    <img
+                        src={item.image}
+                        alt="Thumbnail"
+                        className="h-36 w-full object-cover rounded"
+                    />
+                    <button className="absolute bottom-2 right-2">
+                      <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-white transition-all duration-300 ease-in-out"></i>
+                    </button>
+                  </div>
+                  <h2 className="mt-1 text-xs font-semibold text-gray-200">
+                    {item.name}
+                  </h2>
+                </div>
+            ))}
+          </div>
         </div>
+        {/* Navigation Buttons */}
+        <button
+            onClick={goToPrev}
+            className="absolute left-0 top-1/2 transform -translate-x-full -translate-y-1/2
+                   text-3xl text-gray-200 hover:scale-110 transition-transform"
+        >
+          <i className="fa-solid fa-circle-chevron-left"></i>
+        </button>
+        <button
+            onClick={goToNext}
+            className="absolute right-0 top-1/2 transform translate-x-full -translate-y-1/2
+                   text-3xl text-gray-200 hover:scale-110 transition-transform"
+        >
+          <i className="fa-solid fa-circle-chevron-right"></i>
+        </button>
       </div>
-      <button
-        onClick={goToPrev}
-        className="absolute left-0 top-1/2 transform -translate-x-full -translate-y-1/2 text-3xl text-gray-200 hover:scale-110 transition-transform"
-      >
-        <i className="fa-solid fa-circle-chevron-left"></i>
-      </button>
-      <button
-        onClick={goToNext}
-        className="absolute right-0 top-1/2 transform translate-x-full -translate-y-1/2 text-3xl text-gray-200 hover:scale-110 transition-transform"
-      >
-        <i className="fa-solid fa-circle-chevron-right"></i>
-      </button>
-    </div>
   );
 }
 
-// Grid Component
-const GridView = ({ items }) => {
+// ===== Grid Component =====
+function GridView({ items }) {
   const [itemsToShow, setItemsToShow] = useState(2);
 
   useEffect(() => {
@@ -101,99 +107,98 @@ const GridView = ({ items }) => {
         setItemsToShow(2);
       }
     };
-    
-    // Initial check
+
     updateItemsToShow();
-    
-    // Update on resize
     window.addEventListener("resize", updateItemsToShow);
-    
-    // Cleanup on unmount
     return () => window.removeEventListener("resize", updateItemsToShow);
   }, []);
 
   return (
-    <div className="flex relative space-x-2 w-full">
-      {/* Dynamic grid columns based on itemsToShow */}
-      <div 
-        className="p-2 gap-4 w-full"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: `repeat(${itemsToShow}, minmax(0, 1fr))`, // Set the columns dynamically
-        }}
-      >
-        {items.map((item, index) => (
-          <div key={index} className="w-full">
-            <div className="relative">
-              <img
-                src={item.image}
-                alt="Thumbnail"
-                className="h-36 w-full object-cover rounded"
-              />
-              <button className="absolute bottom-2 right-2">
-                <img
-                  src="/play-button.png"
-                  alt="Play"
-                  className="w-14 h-14 hover:scale-105 transition-transform duration-300"
-                />
-              </button>
-            </div>
-            <h2 className="mt-1 text-xs font-semibold text-gray-200">{item.name}</h2>
-          </div>
-        ))}
+      <div className="flex relative space-x-2 w-full">
+        <div
+            className="p-2 gap-4 w-full"
+            style={{
+              display: "grid",
+              gridTemplateColumns: `repeat(${itemsToShow}, minmax(0, 1fr))`,
+            }}
+        >
+          {items.map((item, index) => (
+              <div key={index} className="w-full">
+                <div className="relative">
+                  <img
+                      src={item.image}
+                      alt="Thumbnail"
+                      className="h-36 w-full object-cover rounded"
+                  />
+                  <button className="absolute bottom-2 right-2">
+                    <img
+                        src="/play-button.png"
+                        alt="Play"
+                        className="w-14 h-14 hover:scale-105 transition-transform duration-300"
+                    />
+                  </button>
+                </div>
+                <h2 className="mt-1 text-xs font-semibold text-gray-200">
+                  {item.name}
+                </h2>
+              </div>
+          ))}
+        </div>
       </div>
-    </div>
   );
-};
+}
 
-// Media Component
-const MediaSection = ({ title, items, renderCollapsed, renderExpanded }) => {
+// ===== Media Component =====
+function MediaSection({ title, items, renderCollapsed, renderExpanded }) {
   const [expanded, setExpanded] = useState(true);
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <div className="mt-4">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <h2 className="font-bold tracking-wide">{title}</h2>
-          <button
-            onClick={() => setExpanded(prev => !prev)}
-            className="ml-2 text-xl text-gray-200 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"
-          >
-            {expanded ? (
-              <i className="fa-solid fa-circle-minus"></i>
-            ) : (
-              <i className="fa-solid fa-circle-plus"></i>
-            )}
-          </button>
+      <div className="mt-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <h2 className="font-bold tracking-wide">{title}</h2>
+            <button
+                onClick={() => setExpanded((prev) => !prev)}
+                className="ml-2 text-xl text-gray-200 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"
+            >
+              {expanded ? (
+                  <i className="fa-solid fa-circle-minus"></i>
+              ) : (
+                  <i className="fa-solid fa-circle-plus"></i>
+              )}
+            </button>
+          </div>
+          {expanded && (
+              <a
+                  onClick={() => setShowAll((prev) => !prev)}
+                  className="text-xs text-gray-300 font-semibold hover:underline cursor-pointer transition-all duration-150 ease-in-out"
+              >
+                {showAll ? "Show Less" : "Show All"}
+              </a>
+          )}
         </div>
         {expanded && (
-          <a
-            onClick={() => setShowAll(prev => !prev)}
-            className="text-xs text-gray-300 font-semibold hover:underline cursor-pointer transition-all duration-150 ease-in-out"
-          >
-            {showAll ? "Show Less" : "Show All"}
-          </a>
+            <div className="mt-4">
+              {showAll ? renderExpanded(items) : renderCollapsed(items)}
+            </div>
         )}
       </div>
-      {expanded && (
-        <div className="mt-4">
-          {showAll ? renderExpanded(items) : renderCollapsed(items)}
-        </div>
-      )}
-    </div>
   );
-};
+}
 
-const renderMediaSection = (title, items) => (
-    <MediaSection
-        title={title}
-        items={items}
-        renderCollapsed={(items) => <RecentPlayedCarousel items={items} />}
-        renderExpanded={(items) => <GridView items={items} />}
-    />
-);
+function renderMediaSection(title, items) {
+  return (
+      <MediaSection
+          title={title}
+          items={items}
+          renderCollapsed={(items) => <RecentPlayedCarousel items={items} />}
+          renderExpanded={(items) => <GridView items={items} />}
+      />
+  );
+}
 
+// ===== HomePage Component =====
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [itemsToShow, setItemsToShow] = useState(2);
@@ -209,13 +214,8 @@ export default function HomePage() {
       }
     };
 
-    // Initial check
     updateItemsToShow();
-
-    // Update on resize
     window.addEventListener("resize", updateItemsToShow);
-
-    // Cleanup on unmount
     return () => window.removeEventListener("resize", updateItemsToShow);
   }, []);
 
@@ -225,71 +225,78 @@ export default function HomePage() {
   };
 
   return (
-    <div className="p-8 w-full bg-[#212121]">
+      <div className="p-8 w-full bg-[#212121]">
+        {/* Main Grid Section */}
+        <div className="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+          {data.map((item, index) => (
+              <div
+                  key={index}
+                  className="flex items-center bg-gray-700 hover:bg-gray-600 rounded"
+              >
+                <img
+                    src={item.image}
+                    alt="Thumbnail"
+                    className="h-16 w-16 object-cover"
+                />
+                <h2 className="ml-3 text-sm font-semibold">{item.name}</h2>
+              </div>
+          ))}
+        </div>
 
-      {/* Main Grid Section */}
-      <div className="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {data.map((item, index) => (
-          <div key={index} className="flex items-center bg-gray-700 hover:bg-gray-600 rounded">
-            <img
-              src={item.image}
-              alt="Thumbnail"
-              className="h-16 w-16 object-cover"
-            />
-            <h2 className="ml-3 text-sm font-semibold">{item.name}</h2>
-          </div>
-        ))}
+        {/* Category Buttons */}
+        <div className="mt-7 mb-7 flex flex-wrap gap-3">
+          {["All", "Music", "Podcasts", "Audiobooks"].map((category) => (
+              <button
+                  onClick={() => handleCategory(category)}
+                  key={category}
+                  className={`bg-gray-700 text-sm font-semibold text-gray-300 px-4 py-1 rounded-full
+                cursor-pointer transition-all duration-300 ease-in-out
+                ${
+                      selectedCategory === category
+                          ? "bg-green-500 text-white"
+                          : "hover:bg-gray-500"
+                  }`}
+              >
+                {category}
+              </button>
+          ))}
+        </div>
+
+        {/* Conditional Rendering of Media Sections */}
+        {selectedCategory === "All" && (
+            <>
+              {renderMediaSection("Recently Played", data)}
+              {renderMediaSection("Made For You", data)}
+              {renderMediaSection("Your Top Mixes", data)}
+              {renderMediaSection("Trending Podcasts", data)}
+              {renderMediaSection("Your Latest Episodes", data)}
+              {renderMediaSection("Recommended For You", data)}
+              {renderMediaSection("Audiobook Collection", data)}
+              {renderMediaSection("Your Audiobook Library", data)}
+              {renderMediaSection("Top Audiobooks", data)}
+            </>
+        )}
+        {selectedCategory === "Music" && (
+            <>
+              {renderMediaSection("Recently Played", data)}
+              {renderMediaSection("Made For You", data)}
+              {renderMediaSection("Your Top Mixes", data)}
+            </>
+        )}
+        {selectedCategory === "Podcasts" && (
+            <>
+              {renderMediaSection("Trending Podcasts", data)}
+              {renderMediaSection("Your Latest Episodes", data)}
+              {renderMediaSection("Recommended For You", data)}
+            </>
+        )}
+        {selectedCategory === "Audiobooks" && (
+            <>
+              {renderMediaSection("Audiobook Collection", data)}
+              {renderMediaSection("Your Audiobook Library", data)}
+              {renderMediaSection("Top Audiobooks", data)}
+            </>
+        )}
       </div>
-
-      {/* Category Buttons */}
-      <div className="mt-7 mb-7 flex flex-wrap gap-3">
-        {["All", "Music", "Podcasts", "Audiobooks"].map((category) => (
-          <button
-            onClick={() => handleCategory(category)}
-            key={category}
-            className={`bg-gray-700 text-sm font-semibold text-gray-300 px-4 py-1 rounded-full 
-                cursor-pointer transition-all duration-300 ease-in-out 
-                ${selectedCategory === category ? 'bg-green-500 text-white' : 'hover:bg-gray-500'}`}              
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      {selectedCategory === "All" && (
-        <>
-          {renderMediaSection("Recently Played", data)}
-          {renderMediaSection("Made For You", data)}
-          {renderMediaSection("Your Top Mixes", data)}
-          {renderMediaSection("Trending Podcasts", data)}
-          {renderMediaSection("Your Latest Episodes", data)}
-          {renderMediaSection("Recommended For You", data)}
-          {renderMediaSection("Audiobook Collection", data)}
-          {renderMediaSection("Your Audiobook Library", data)}
-          {renderMediaSection("Top Audiobooks", data)}
-        </>
-      )}
-      {selectedCategory === "Music" && (
-        <>
-          {renderMediaSection("Recently Played", data)}
-          {renderMediaSection("Made For You", data)}
-          {renderMediaSection("Your Top Mixes", data)}
-        </>
-      )}
-      {selectedCategory === "Podcasts" && (
-        <>
-          {renderMediaSection("Trending Podcasts", data)}
-          {renderMediaSection("Your Latest Episodes", data)}
-          {renderMediaSection("Recommended For You", data)}
-        </>
-      )}
-      {selectedCategory === "Audiobooks" && (
-        <>
-          {renderMediaSection("Audiobook Collection", data)}
-          {renderMediaSection("Your Audiobook Library", data)}
-          {renderMediaSection("Top Audiobooks", data)}
-        </>
-      )}
-    </div>
   );
 }
