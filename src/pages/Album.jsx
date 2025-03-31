@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export default function Album() {
+export default function Album({  }) {
   const [activeTab, setActiveTab] = useState('All');
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [playIndex, setPlayIndex] = useState(null);
@@ -19,7 +19,7 @@ export default function Album() {
     ]
   };
 
-  const likedSongs = albumData.songs.slice(0, 3);
+
 
   // Tab content rendering
   const renderTabContent = () => (
