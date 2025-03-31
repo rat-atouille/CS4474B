@@ -61,8 +61,8 @@ function RecentPlayedCarousel({ items }) {
                         alt="Thumbnail"
                         className="h-36 w-full object-cover rounded"
                     />
-                    <button className="absolute bottom-2 right-2">
-                      <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-white transition-all duration-300 ease-in-out"></i>
+                    <button className="absolute bottom-2 right-2 rounded-full bg-black group-hover">
+                      <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-green-400 hover:scale-105 transition-all duration-300 ease-in-out"></i>
                     </button>
                   </div>
                   <h2 className="mt-1 text-xs font-semibold text-gray-200">

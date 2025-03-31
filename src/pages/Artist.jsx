@@ -291,8 +291,8 @@ const Artist = () => {
         </button>
 
         {/* Play button */}
-        <button className="hover:scale-110 transition-transform duration-150 rounded-full p-4 z-10 cursor-pointer absolute right-4 bottom-5">
-            <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+        <button className="rounded-full p-4 z-10 cursor-pointer absolute right-4 bottom-5 group-hover">
+            <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-green-400 hover:scale-105 transition-all duration-300 ease-in-out"></i>
         </button>
         
         {/* Gradient overlay */}

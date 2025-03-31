@@ -26,7 +26,7 @@ export default function Album() {
     <div>
       <div>
         <div className="flex items-center p-0 mb-4 mt-2 text-2xl text-gray-300 space-x-4">
-            <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-white transition-all duration-300 ease-in-out"></i>
+            <i className="fa-solid fa-circle-play text-5xl bg-black text-green-500 hover:text-green-400 hover:scale-105 transition-all duration-300 ease-in-out"></i>
             <i className="fa-solid fa-shuffle hover:text-white transition-all duration-300 ease-in-out"></i>
             <i className="fa-solid fa-plus text-sm border-3 p-1 rounded-full hover:text-white transition-all duration-300 ease-in-out"></i>
             <i className="fa-solid fa-arrow-down text-sm border-3 py-1 px-1.5 rounded-full hover:text-white transition-all duration-300 ease-in-out"></i>
