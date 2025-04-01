@@ -68,7 +68,7 @@ const Artist = () => {
   // Tab content rendering
   const renderTabContent = () => {
     switch(activeTab) {
-      case 'All':
+      case 'Home':
         return (
           <div>
             <div>

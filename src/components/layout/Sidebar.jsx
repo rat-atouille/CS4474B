@@ -117,7 +117,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
                   py-1 md:py-2 rounded cursor-pointer 
                   transition-all duration-300 ease-in-out 
                   ${selectedCategory === category 
-                    ? 'bg-white text-gray-700 hover:text-gray-500' 
+                    ? 'bg-green-500 text-gray-700 hover:text-gray-500' 
                     : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                   }`}
               >
