@@ -1,8 +1,8 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState, useMemo } from "react";
 import spotifyData from "../assets/data/data.json";
 import podcastData from "../assets/data/podcastData.json";
-import {useNavigate} from "react-router-dom";
-import {PlayButton} from "./playButton.jsx";
+import { useNavigate } from "react-router-dom";
+import { PlayButton } from "./playButton.jsx";
 import isPodcast from "../isPodcast.js";
 import { useAlbum } from "../context/AlbumContext.jsx";
 
@@ -62,9 +62,13 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
                 <img
                   src={item.album?.image ?? item.image}
                   alt="Thumbnail"
-                  className="h-36 w-full object-cover rounded"
+                  className="h-36 w-full object-fit rounded"
                 />
-                <PlayButton onClick={() => handlePlay(item)}/>
+                <PlayButton 
+                  onClick={(e) => {
+                    e.stopPropagation();  // Prevents triggering handleAlbumClick
+                    handlePlay(item);
+                  }}/>
               </div>
               <h2 className="mt-1 text-xs font-semibold text-gray-200">
                 {item.album?.name ?? item.podcastName}
@@ -134,9 +138,13 @@ function GridView({ items, handlePlay, handleAlbumClick }) {
               <img
                 src={item.album?.image ?? item.image}
                 alt="Thumbnail"
-                className="h-36 w-full object-cover rounded"
+                className="h-36 w-full object-fit rounded"
               />
-              <PlayButton onClick={() => handlePlay(item)}/>
+              <PlayButton 
+                 onClick={(e) => {
+                  e.stopPropagation();  // Prevents triggering handleAlbumClick
+                  handlePlay(item);
+                }}/>
             </div>
             <h2 className="mt-1 text-xs font-semibold text-gray-200">
               {item.album?.name ?? item.podcastName}
@@ -187,6 +195,15 @@ function MediaSection({title, items, renderCollapsed, renderExpanded}) {
   );
 }
 
+function shuffleArray(array) {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+}
+
 function renderMediaSection(title, items, handlePlay, handleAlbumClick) {
   return (
     <MediaSection
@@ -199,29 +216,18 @@ function renderMediaSection(title, items, handlePlay, handleAlbumClick) {
 }
 
 // ===== HomePage Component =====
-export default function HomePage({setMusicQueue}) {
+export default function HomePage({ setMusicQueue }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [itemsToShow, setItemsToShow] = useState(2);
   const [albums, setAlbums] = useState([]);
-  const [podcasts, setPodcasts] = useState([])
+  const [podcasts, setPodcasts] = useState([]);
+  const [shuffledRecentlyPlayed, setShuffledRecentlyPlayed] = useState([]);
+  const [shuffledMadeForYou, setShuffledMadeForYou] = useState([]);
+  const [shuffledTopMixes, setShuffledTopMixes] = useState([]);
+  const [shuffledTrendingPodcasts, setShuffledTrendingPodcasts] = useState([]);
+  const [shuffledLatestEpisodes, setShuffledLatestEpisodes] = useState([]);
+  const [shuffledRecommended, setShuffledRecommended] = useState([]);
   const [, setCurrentAlbum] = useAlbum();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const updateItemsToShow = () => {
-      if (window.innerWidth >= 1024) {
-        setItemsToShow(5);
-      } else if (window.innerWidth >= 768) {
-        setItemsToShow(3);
-      } else {
-        setItemsToShow(2);
-      }
-    };
-
-    updateItemsToShow();
-    window.addEventListener("resize", updateItemsToShow);
-    return () => window.removeEventListener("resize", updateItemsToShow);
-  }, []);
 
   useEffect(() => {
     if (spotifyData) {
@@ -235,28 +241,32 @@ export default function HomePage({setMusicQueue}) {
     }
 
     if (podcastData) {
-      setPodcasts(Object.entries(podcastData).flatMap(([podcastName, podcast]) => ({podcastName, ...podcast})));
+      setPodcasts(Object.entries(podcastData).flatMap(([podcastName, podcast]) => ({ podcastName, ...podcast })));
     }
   }, []);
 
-  function shuffleArray(array) {
-    const newArray = [...array];
-    for (let i = newArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  useEffect(() => {
+    if (albums.length > 0) {
+      setShuffledRecentlyPlayed(shuffleArray(albums));
+      setShuffledMadeForYou(shuffleArray(albums));
+      setShuffledTopMixes(shuffleArray(albums));
+      setShuffledRecommended(shuffleArray(albums));
     }
-    return newArray;
-  }
+    if (podcasts.length > 0) {
+      setShuffledTrendingPodcasts(shuffleArray(podcasts));
+      setShuffledLatestEpisodes(shuffleArray(podcasts));
+    }
+  }, [albums, podcasts]);
 
   const handleCategory = (category) => {
     setSelectedCategory(category);
   };
 
-  const handlePlay = (album) => {
+  const handlePlay = (item) => {
     if (typeof setMusicQueue === 'function') {
-      setMusicQueue(album);  // Ensure it's an array for a queue
+      setMusicQueue(item);  // Ensure it's an array for a queue
     } else {
-      console.error('setMusicQueue is not a function1');
+      console.error('setMusicQueue is not a function');
     }
   };
 
@@ -269,29 +279,21 @@ export default function HomePage({setMusicQueue}) {
     <div className="p-8 w-full bg-[#212121]">
       {/* Main Grid Section */}
       <div className="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {albums.length > 0 && // ✅ Ensure albums exist before mapping
-          albums.slice(0, 8).map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center bg-gray-700 hover:bg-gray-600 rounded group relative"
-              onClick={() => handleAlbumClick(item)}
+        {albums.length > 0 && albums.slice(0, 8).map((item, index) => (
+          <div key={index} className="flex items-center bg-gray-700 hover:bg-gray-600 rounded group relative" onClick={() => handleAlbumClick(item)}>
+            <img src={item.album.image} alt="Thumbnail" className="h-16 w-16 object-fit" />
+            <h2 className="ml-3 p-1 text-xs font-semibold">{item.album.name}</h2>
+            <button
+              className="absolute bottom-2 right-2 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-all ease-in-out"
+              onClick={(e) => {
+                e.stopPropagation();  // Prevents triggering handleAlbumClick
+                handlePlay(item);
+              }}
             >
-              <img
-                src={item.album.image}
-                alt="Thumbnail"
-                className="h-16 w-16 object-cover"
-              />
-              <h2 className="ml-3 p-1 text-xs font-semibold">{item.album.name}</h2>
-              <button
-                className="absolute bottom-2 right-2 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-all ease-in-out"
-                onClick={() => handlePlay(item)} // Pass the item to the handlePlay function
-              >
-                <i
-                  className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
-              </button>
-            </div>
-          ))
-        }
+              <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+            </button>
+          </div>
+        ))}
       </div>
 
       {/* Category Buttons */}
@@ -302,11 +304,7 @@ export default function HomePage({setMusicQueue}) {
             key={category}
             className={`bg-gray-700 text-sm font-semibold text-gray-300 px-4 py-1 rounded-full
                 cursor-pointer transition-all duration-300 ease-in-out
-                ${
-              selectedCategory === category
-                ? "bg-green-500 text-white"
-                : "hover:bg-gray-500"
-            }`}
+                ${selectedCategory === category ? "bg-green-500 text-white" : "hover:bg-gray-500"}`}
           >
             {category}
           </button>
@@ -316,36 +314,34 @@ export default function HomePage({setMusicQueue}) {
       {/* Conditional Rendering of Media Sections */}
       {selectedCategory === "All" && (
         <>
-          {renderMediaSection("Recently Played", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
-          {renderMediaSection("Made For You", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
-          {renderMediaSection("Your Top Mixes", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
-          {renderMediaSection("Trending Podcasts", shuffleArray(podcasts), handlePlay, handleAlbumClick, navigate)}
-          {renderMediaSection("Your Latest Episodes", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
-          {renderMediaSection("Recommended For You", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
-          {renderMediaSection("Audiobook Collection", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
-          {renderMediaSection("Your Audiobook Library", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
-          {renderMediaSection("Top Audiobooks", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Recently Played", shuffledRecentlyPlayed, handlePlay, handleAlbumClick)}
+          {renderMediaSection("Made For You", shuffledMadeForYou, handlePlay, handleAlbumClick)}
+          {renderMediaSection("Your Top Mixes", shuffledTopMixes, handlePlay, handleAlbumClick)}
+          {renderMediaSection("Trending Podcasts", shuffledTrendingPodcasts, handlePlay, handleAlbumClick)}
+          {renderMediaSection("Your Latest Episodes", shuffledLatestEpisodes, handlePlay, handleAlbumClick)}
+          {renderMediaSection("Recommended For You", shuffledRecommended, handlePlay, handleAlbumClick)}
         </>
       )}
+
       {selectedCategory === "Music" && (
         <>
-          {renderMediaSection("Recently Played", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
-          {renderMediaSection("Made For You", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
-          {renderMediaSection("Your Top Mixes", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Recently Played", shuffledRecentlyPlayed, handlePlay, handleAlbumClick)}
+          {renderMediaSection("Made For You", shuffledMadeForYou, handlePlay, handleAlbumClick)}
+          {renderMediaSection("Your Top Mixes", shuffledTopMixes, handlePlay, handleAlbumClick)}
         </>
       )}
+
       {selectedCategory === "Podcasts" && (
         <>
-          {renderMediaSection("Trending Podcasts", shuffleArray(podcasts), handlePlay, handleAlbumClick, navigate)}
-          {renderMediaSection("Your Latest Episodes", shuffleArray(podcasts), handlePlay, handleAlbumClick, navigate)}
-          {renderMediaSection("Recommended For You", shuffleArray(podcasts), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Trending Podcasts", shuffledTrendingPodcasts, handlePlay, handleAlbumClick)}
+          {renderMediaSection("Your Latest Episodes", shuffledLatestEpisodes, handlePlay, handleAlbumClick)}
         </>
       )}
+
       {selectedCategory === "Audiobooks" && (
         <>
-          {renderMediaSection("Audiobook Collection", shuffleArray(albums), handleAlbumClick, handlePlay, navigate)}
-          {renderMediaSection("Your Audiobook Library", shuffleArray(albums), handleAlbumClick, handlePlay, navigate)}
-          {renderMediaSection("Top Audiobooks", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Audiobook Collection", shuffledRecentlyPlayed, handlePlay, handleAlbumClick)}
+          {renderMediaSection("Your Audiobook Library", shuffledRecentlyPlayed, handlePlay, handleAlbumClick)}
         </>
       )}
     </div>
