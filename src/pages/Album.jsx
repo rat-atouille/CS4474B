@@ -86,7 +86,7 @@ export default function Album({ setMusicQueue }) {
 
             <div className="relative flex justify-between items-center w-full">
               <div>
-                <p className="text-white text-sm w-xs">{song.name}</p>
+                <p className="text-white text-sm w-3/5 md:w-xs">{song.name}</p>
                 <p className="text-gray-400 text-sm hover:underline transition-all duration-300 ease-in-out">{currentAlbum.artist}</p>
               </div>
               <p className="hidden md:block text-sm">1,000,000</p>
@@ -94,10 +94,10 @@ export default function Album({ setMusicQueue }) {
 
               {hoveredIndex === index && (
                 <>
-                  <div className="absolute right-20 top-1/2 transform -translate-y-3/5 text-gray-400 cursor-pointer">
+                  <div className="absolute right-18 md:right-16 lg:right-20 top-1/2 transform -translate-y-3/5 text-gray-400 cursor-pointer">
                     <i className="fa-solid fa-plus text-[6px] border-1 p-1 rounded-full hover:text-white transition-all duration-300 ease-in-out"></i>
                   </div>
-                  <div className="absolute right-4 text-gray-400 text-xs cursor-pointer">•••</div>
+                  <div className="absolute right-0 text-gray-400 text-xs cursor-pointer">•••</div>
                 </>
               )}
             </div>
@@ -107,7 +107,7 @@ export default function Album({ setMusicQueue }) {
 
       <div className="ml-3 mr-3">
         <h2 className="text-xl font-bold mb-4 mt-10">More by {currentAlbum.artist}</h2>
-        <div className="grid grid-cols-3 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-3 lg:grid-cols-5 gap-8">
           {/* Display more albums */}
           {currentAlbum.album.songs.map((album, index) => (
             <div key={index} className="p-3 rounded group">
@@ -136,11 +136,11 @@ export default function Album({ setMusicQueue }) {
         <img 
           src={currentAlbum == null ? "/placeHolders/placeHolderIcon.jpeg" : currentAlbum.album.image}
           alt="Album Image" 
-          className="object-cover rounded w-1/3 md:w-1/6 z-10"
+          className="object-cover rounded w-1/3 md:w-1/4 xl:w-1/6 z-10"
         />
         <div className="relative z-10">
           <span className="text-xs px-2 py-1 rounded-sm mb-1 inline-block select-none">Album</span>
-          <h1 className="text-xl md:text-5xl w-full font-bold">{currentAlbum.album.name}</h1>
+          <h1 className="text-xl sm:text-sm md:text-3xl lg:text-4xl xl:text-5xl w-full font-bold">{currentAlbum.album.name}</h1>
           <p className="text-xs mt-2 text-[#b3b3b3] select-none">
             {currentAlbum.artist} • {currentAlbum.album.releaseDate.substring(0, 4)} • {currentAlbum.album.songs.length} songs • {totalDuration(currentAlbum.album.songs)}
           </p>
