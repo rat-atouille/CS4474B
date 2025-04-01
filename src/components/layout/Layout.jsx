@@ -26,7 +26,7 @@ export default function Layout({ children }) {
   return (
     <AlbumProvider>
       <BrowserRouter>
-        <div className="h-screen w-screen flex flex-col overflow-y-auto bg-black">
+        <div className="h-screen w-screen flex flex-col bg-black">
           {/* Sidebar (Fixed, Always on the Left) */}
           <div
             className={`fixed top-0 left-0 mt-[10vh] md:mt-[5vw] h-full text-white transition-all ${
@@ -37,12 +37,12 @@ export default function Layout({ children }) {
           </div>
 
           {/* Main Content Wrapper (Takes Full Width) */}
-          <div className={`flex flex-col flex-1 min-w-0 transition-all ${collapsed ? "ml-16" : "ml-64"}`}>
+          <div className={`flex flex-col flex-1 min-w-0 transition-all`}>
             {/* Navbar (Full Width, Sticky on Top) */}
             <Navbar showNavBackground={showNavBackground} className="w-full" />
 
             {/* Scrollable Content */}
-            <div className="flex-1 mt-[10vh] md:mt-[5vw]">
+            <div className={`flex-1 mt-[10vh] md:mt-[5vw] overflow-y-auto ${collapsed ? "ml-16" : "ml-64"}`}>
               <Routes>
                 <Route path="/*" element={React.cloneElement(children, { setMusicQueue })} />
               </Routes>
