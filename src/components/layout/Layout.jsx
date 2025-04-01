@@ -9,6 +9,7 @@ export default function Layout({ children }) {
   const [showNavBackground, setShowNavBackground] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [musicQueue, setMusicQueue] = useState();
+  
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
