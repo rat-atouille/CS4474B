@@ -240,10 +240,10 @@ export default function HomePage({setMusicQueue}) {
   }, []);
 
   function shuffleArray(array) {
-    const newArray = [...array]; // Create a copy of the original array
+    const newArray = [...array];
     for (let i = newArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[j]] = [newArray[j], newArray[i]]; // Swap elements
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
     return newArray;
   }
@@ -253,7 +253,6 @@ export default function HomePage({setMusicQueue}) {
   };
 
   const handlePlay = (album) => {
-    // Ensure that setMusicQueue is a function
     if (typeof setMusicQueue === 'function') {
       setMusicQueue(album);  // Ensure it's an array for a queue
     } else {

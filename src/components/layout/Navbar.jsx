@@ -13,15 +13,15 @@ function Navbar({showNavBackground}) {
   }
 
   const handleKeyDown = (e) => {
-    console.log("eopajes")
     if (e.key === "Enter" && searchText.trim() !== "") {
       navigate(`/search?q=${encodeURIComponent(searchText.trim())}`);
     }
   };
 
   return (
-    <div
-      className={`fixed bg-black w-full h-[10vh] md:h-[5vw] z-20 px-4 py-2 flex items-center 
+      <div
+          className={`fixed bg-black w-full h-[10vh] 
+              md:h-[5vw] z-20 px-5 flex items-center 
                   justify-between transition-all 
                   ${showNavBackground && "bg-[#1a1a1a]"}`}
     >
@@ -32,8 +32,8 @@ function Navbar({showNavBackground}) {
                      transition-all duration-150 ease-in-out"
         ></a>
 
-        <div
-          className="relative flex items-center rounded-full py-1 text-white bg-stone-800
+          <div
+              className="relative flex items-center justify-center rounded-full py-1 text-white bg-stone-800
                      hover:bg-stone-600 focus-within:border-2 focus-within:bg-stone-700
                      transition-all duration-150 ease-in-out px-4 w-full
                      max-w-xs sm:max-w-md md:max-w-lg"
@@ -44,18 +44,18 @@ function Navbar({showNavBackground}) {
           <SearchBar searchRef={searchRef} searchText={searchText} setSearchText={setSearchText}
                      onKeyDown={handleKeyDown} delay={500} callBackFn={callBackFn}
                      placeholder={"What do you want to play?"}
-                     classname={"w-full text-sm md:text-md pl-3 pr-4 outline-none bg-transparent"}/>
+                     classname={"select-none w-full text-sm md:text-md pl-3 pr-4 outline-none bg-transparent"}/>
 
-          <div className="h-6 w-px bg-gray-400 mx-2 hidden sm:block"></div>
-          <a
-            href="/browse"
-            className="fa-solid fa-box-archive text-lg md:text-xl hover:text-white hover:scale-110
+            <div className="h-6 w-px bg-gray-400 mx-2 hidden sm:block"></div>
+            <a
+                href="/browse"
+                className="ml-1 mr-1 fa-solid fa-box-archive text-lg md:text-xl hover:text-white hover:scale-110
                        transition-all duration-150 ease-in-out hidden sm:block relative group"
-          >
+            >
             <span
               className="opacity-0 group-hover:opacity-100 transition-opacity duration-200
                          absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-black
-                         text-white px-3 py-1 rounded-md text-sm"
+                         text-white px-3 py-1 rounded-md text-xs font-medium"
             >
               Browse
             </span>
