@@ -71,7 +71,7 @@ async function getPodcasts(access_token) {
         name: episode.name,
         description: episode.html_description,
         image: episode.images[0].url,
-        duration: episode.duration_ms,
+        durationMs: episode.duration_ms,
         releaseDate: episode.release_date
       });
 

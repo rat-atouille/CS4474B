@@ -1,8 +1,13 @@
-import { useState, useEffect } from "react";
+import {useEffect, useState} from "react";
 import spotifyData from "../assets/data/data.json";
+import podcastData from "../assets/data/podcastData.json";
+import {useNavigate} from "react-router-dom";
+import {PlayButton} from "./playButton.jsx";
+import isPodcast from "../isPodcast.js";
+import { useAlbum } from "../context/AlbumContext.jsx";
 
 // ===== Carousel Component =====
-function RecentPlayedCarousel({ items, handlePlay }) {
+function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(1);
 
@@ -33,60 +38,63 @@ function RecentPlayedCarousel({ items, handlePlay }) {
   };
 
   return (
-      <div className="relative w-19/20 mx-auto">
-        <div className="overflow-hidden">
-          <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${(currentIndex * 100) / itemsToShow}%)` }}
-          >
-            {items.map((item, index) => (
-              <div
-                key={index}
-                className="p-2 group"
-                style={{ flex: `0 0 ${100 / itemsToShow}%` }}
-              >
-                <div className="relative">
-                  <img
-                    src={item.album.image}
-                    alt="Thumbnail"
-                    className="h-36 w-full object-cover rounded"
-                  />
-                <button
-                  className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
-                  onClick={() => handlePlay(item)}  // Pass the item to the handlePlay function
-                >
-                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
-                </button>
-                </div>
-                <h2 className="mt-1 text-xs font-semibold text-gray-200">
-                  {item.album.name}
-                </h2>
+    <div className="relative w-19/20 mx-auto">
+      <div className="overflow-hidden">
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{transform: `translateX(-${(currentIndex * 100) / itemsToShow}%)`}}
+        >
+          {items.map((item, index) => (
+            <div
+              onClick={() => {
+                if (isPodcast(item)) {
+                  navigate(`/podcast/?name=${item.podcastName}`);
+                } else {
+                  handleAlbumClick(item);
+                }
+              }}
+              key={index}
+              className="p-2 group"
+              style={{flex: `0 0 ${100 / itemsToShow}%`}}
+            >
+              <div className="relative">
+                <img
+                  src={item.album?.image ?? item.image}
+                  alt="Thumbnail"
+                  className="h-36 w-full object-cover rounded"
+                />
+                <PlayButton onClick={() => handlePlay(item)}/>
               </div>
-            ))}
-          </div>
+              <h2 className="mt-1 text-xs font-semibold text-gray-200">
+                {item.album?.name ?? item.podcastName}
+              </h2>
+            </div>
+          ))}
         </div>
-        {/* Navigation Buttons */}
-        <button
-            onClick={goToPrev}
-            className="absolute left-0 top-1/2 transform -translate-x-full -translate-y-1/2
-                   text-3xl text-gray-200 hover:scale-110 transition-transform"
-        >
-          <i className="fa-solid fa-circle-chevron-left"></i>
-        </button>
-        <button
-            onClick={goToNext}
-            className="absolute right-0 top-1/2 transform translate-x-full -translate-y-1/2
-                   text-3xl text-gray-200 hover:scale-110 transition-transform"
-        >
-          <i className="fa-solid fa-circle-chevron-right"></i>
-        </button>
       </div>
+      {/* Navigation Buttons */}
+      <button
+        onClick={goToPrev}
+        className="absolute left-0 top-1/2 transform -translate-x-full -translate-y-1/2
+                   text-3xl text-gray-200 hover:scale-110 transition-transform"
+      >
+        <i className="fa-solid fa-circle-chevron-left"></i>
+      </button>
+      <button
+        onClick={goToNext}
+        className="absolute right-0 top-1/2 transform translate-x-full -translate-y-1/2
+                   text-3xl text-gray-200 hover:scale-110 transition-transform"
+      >
+        <i className="fa-solid fa-circle-chevron-right"></i>
+      </button>
+    </div>
   );
 }
 
 // ===== Grid Component =====
-function GridView({ items, handlePlay }) {
+function GridView({ items, handlePlay, handleAlbumClick }) {
   const [itemsToShow, setItemsToShow] = useState(2);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const updateItemsToShow = () => {
@@ -105,94 +113,98 @@ function GridView({ items, handlePlay }) {
   }, []);
 
   return (
-      <div className="flex relative space-x-2 w-full">
-        <div
-            className="p-2 gap-4 w-full"
-            style={{
-              display: "grid",
-              gridTemplateColumns: `repeat(${itemsToShow}, minmax(0, 1fr))`,
-            }}
-        >
-          {items.map((item, index) => (
-              <div key={index} className="w-full group">
-                <div className="relative">
-                  <img
-                      src={item.album.image}
-                      alt="Thumbnail"
-                      className="h-36 w-full object-cover rounded"
-                  />
-                <button
-                  className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
-                  onClick={() => handlePlay(item)}  // Pass the item to the handlePlay function
-                >
-                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
-                </button>
-                </div>
-                <h2 className="mt-1 text-xs font-semibold text-gray-200">
-                  {item.album.name}
-                </h2>
-              </div>
-          ))}
-        </div>
+    <div className="flex relative space-x-2 w-full">
+      <div
+        className="p-2 gap-4 w-full"
+        style={{
+          display: "grid",
+          gridTemplateColumns: `repeat(${itemsToShow}, minmax(0, 1fr))`,
+        }}
+      >
+        {items.map((item, index) => (
+          <div onClick={() => {
+            if (isPodcast(item)) {
+              navigate(`/podcast/?name=${item.podcastName}`)
+            } else {
+              handleAlbumClick(item)
+            }
+          }} key={index} className="w-full group">
+            <div className="relative">
+              <img
+                src={item.album?.image ?? item.image}
+                alt="Thumbnail"
+                className="h-36 w-full object-cover rounded"
+              />
+              <PlayButton onClick={() => handlePlay(item)}/>
+            </div>
+            <h2 className="mt-1 text-xs font-semibold text-gray-200">
+              {item.album?.name ?? item.podcastName}
+            </h2>
+          </div>
+        ))}
       </div>
+    </div>
   );
 }
 
 // ===== Media Component =====
-function MediaSection({ title, items, renderCollapsed, renderExpanded }) {
+function MediaSection({title, items, renderCollapsed, renderExpanded}) {
   const [expanded, setExpanded] = useState(true);
   const [showAll, setShowAll] = useState(false);
 
   return (
-      <div className="mt-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <h2 className="font-bold tracking-wide">{title}</h2>
-            <button
-                onClick={() => setExpanded((prev) => !prev)}
-                className="ml-2 text-xl text-gray-200 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"
-            >
-              {expanded ? (
-                  <i className="fa-solid fa-circle-minus"></i>
-              ) : (
-                  <i className="fa-solid fa-circle-plus"></i>
-              )}
-            </button>
-          </div>
-          {expanded && (
-              <a
-                  onClick={() => setShowAll((prev) => !prev)}
-                  className="text-xs text-gray-300 font-semibold hover:underline cursor-pointer transition-all duration-150 ease-in-out"
-              >
-                {showAll ? "Show Less" : "Show All"}
-              </a>
-          )}
+    <div className="mt-4">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center">
+          <h2 className="font-bold tracking-wide">{title}</h2>
+          <button
+            onClick={() => setExpanded((prev) => !prev)}
+            className="ml-2 text-xl text-gray-200 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"
+          >
+            {expanded ? (
+              <i className="fa-solid fa-circle-minus"></i>
+            ) : (
+              <i className="fa-solid fa-circle-plus"></i>
+            )}
+          </button>
         </div>
         {expanded && (
-            <div className="mt-4">
-              {showAll ? renderExpanded(items) : renderCollapsed(items)}
-            </div>
+          <a
+            onClick={() => setShowAll((prev) => !prev)}
+            className="text-xs text-gray-300 font-semibold hover:underline cursor-pointer transition-all duration-150 ease-in-out"
+          >
+            {showAll ? "Show Less" : "Show All"}
+          </a>
         )}
       </div>
+      {expanded && (
+        <div className="mt-4">
+          {showAll ? renderExpanded(items) : renderCollapsed(items)}
+        </div>
+      )}
+    </div>
   );
 }
 
-function renderMediaSection(title, items, handlePlay) {
+function renderMediaSection(title, items, handlePlay, handleAlbumClick) {
   return (
     <MediaSection
       title={title}
       items={items}
-      renderCollapsed={(items) => <RecentPlayedCarousel items={items} handlePlay={handlePlay} />}
-      renderExpanded={(items) => <GridView items={items} handlePlay={handlePlay} />}
+      renderCollapsed={(items) => <RecentPlayedCarousel items={items} handlePlay={handlePlay} handleAlbumClick={handleAlbumClick}/>}
+      renderExpanded={(items) => <GridView items={items} handlePlay={handlePlay} handleAlbumClick={handleAlbumClick}/>}
     />
   );
 }
 
 // ===== HomePage Component =====
-export default function HomePage({ setMusicQueue }) {
+export default function HomePage({setMusicQueue}) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [itemsToShow, setItemsToShow] = useState(2);
   const [albums, setAlbums] = useState([]);
+  const [podcasts, setPodcasts] = useState([])
+  const [, setCurrentAlbum] = useAlbum();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const updateItemsToShow = () => {
@@ -220,6 +232,10 @@ export default function HomePage({ setMusicQueue }) {
       });
       setAlbums(albumList);
     }
+
+    if (podcastData) {
+      setPodcasts(Object.entries(podcastData).flatMap(([podcastName, podcast]) => ({podcastName, ...podcast})));
+    }
   }, []);
 
   function shuffleArray(array) {
@@ -230,7 +246,7 @@ export default function HomePage({ setMusicQueue }) {
     }
     return newArray;
   }
-  
+
   const handleCategory = (category) => {
     setSelectedCategory(category);
   };
@@ -244,88 +260,94 @@ export default function HomePage({ setMusicQueue }) {
     }
   };
 
+  const handleAlbumClick = (album) => {
+    setCurrentAlbum(album);
+    navigate("/album");
+  };
 
   return (
-      <div className="p-8 w-full bg-[#212121]">
-        {/* Main Grid Section */}
-        <div className="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-          {albums.length > 0 && // ✅ Ensure albums exist before mapping
-            albums.slice(0, 8).map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center bg-gray-700 hover:bg-gray-600 rounded group relative"
-              >
-                <img
-                  src={item.album.image}
-                  alt="Thumbnail"
-                  className="h-16 w-16 object-cover"
-                />
-                <h2 className="ml-3 p-1 text-xs font-semibold">{item.album.name}</h2>
-                <button
-                  className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
-                  onClick={() => handlePlay(item)}  // Pass the item to the handlePlay function
-                >
-                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
-                </button>
-              </div>
-            ))
-          }
-        </div>
-
-        {/* Category Buttons */}
-        <div className="mt-7 mb-7 flex flex-wrap gap-3">
-          {["All", "Music", "Podcasts", "Audiobooks"].map((category) => (
+    <div className="p-8 w-full bg-[#212121]">
+      {/* Main Grid Section */}
+      <div className="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+        {albums.length > 0 && // ✅ Ensure albums exist before mapping
+          albums.slice(0, 8).map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center bg-gray-700 hover:bg-gray-600 rounded group relative"
+              onClick={() => handleAlbumClick(item)}
+            >
+              <img
+                src={item.album.image}
+                alt="Thumbnail"
+                className="h-16 w-16 object-cover"
+              />
+              <h2 className="ml-3 p-1 text-xs font-semibold">{item.album.name}</h2>
               <button
-                  onClick={() => handleCategory(category)}
-                  key={category}
-                  className={`bg-gray-700 text-sm font-semibold text-gray-300 px-4 py-1 rounded-full
+                className="absolute bottom-2 right-2 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-all ease-in-out"
+                onClick={() => handlePlay(item)} // Pass the item to the handlePlay function
+              >
+                <i
+                  className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+              </button>
+            </div>
+          ))
+        }
+      </div>
+
+      {/* Category Buttons */}
+      <div className="mt-7 mb-7 flex flex-wrap gap-3">
+        {["All", "Music", "Podcasts", "Audiobooks"].map((category) => (
+          <button
+            onClick={() => handleCategory(category)}
+            key={category}
+            className={`bg-gray-700 text-sm font-semibold text-gray-300 px-4 py-1 rounded-full
                 cursor-pointer transition-all duration-300 ease-in-out
                 ${
-                      selectedCategory === category
-                          ? "bg-green-500 text-white"
-                          : "hover:bg-gray-500"
-                  }`}
-              >
-                {category}
-              </button>
-          ))}
-        </div>
-
-        {/* Conditional Rendering of Media Sections */}
-        {selectedCategory === "All" && (
-            <>
-              {renderMediaSection("Recently Played", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Made For You", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Your Top Mixes", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Trending Podcasts", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Your Latest Episodes", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Recommended For You", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Audiobook Collection", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Your Audiobook Library", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Top Audiobooks", shuffleArray(albums), handlePlay)}
-            </>
-        )}
-        {selectedCategory === "Music" && (
-            <>
-              {renderMediaSection("Recently Played", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Made For You", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Your Top Mixes", shuffleArray(albums), handlePlay)}
-            </>
-        )}
-        {selectedCategory === "Podcasts" && (
-            <>
-              {renderMediaSection("Trending Podcasts", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Your Latest Episodes", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Recommended For You", shuffleArray(albums), handlePlay)}
-            </>
-        )}
-        {selectedCategory === "Audiobooks" && (
-            <>
-              {renderMediaSection("Audiobook Collection", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Your Audiobook Library", shuffleArray(albums), handlePlay)}
-              {renderMediaSection("Top Audiobooks", shuffleArray(albums), handlePlay)}
-            </>
-        )}
+              selectedCategory === category
+                ? "bg-green-500 text-white"
+                : "hover:bg-gray-500"
+            }`}
+          >
+            {category}
+          </button>
+        ))}
       </div>
+
+      {/* Conditional Rendering of Media Sections */}
+      {selectedCategory === "All" && (
+        <>
+          {renderMediaSection("Recently Played", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Made For You", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Your Top Mixes", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Trending Podcasts", shuffleArray(podcasts), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Your Latest Episodes", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Recommended For You", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Audiobook Collection", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Your Audiobook Library", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Top Audiobooks", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+        </>
+      )}
+      {selectedCategory === "Music" && (
+        <>
+          {renderMediaSection("Recently Played", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Made For You", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Your Top Mixes", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+        </>
+      )}
+      {selectedCategory === "Podcasts" && (
+        <>
+          {renderMediaSection("Trending Podcasts", shuffleArray(podcasts), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Your Latest Episodes", shuffleArray(podcasts), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Recommended For You", shuffleArray(podcasts), handlePlay, handleAlbumClick, navigate)}
+        </>
+      )}
+      {selectedCategory === "Audiobooks" && (
+        <>
+          {renderMediaSection("Audiobook Collection", shuffleArray(albums), handleAlbumClick, handlePlay, navigate)}
+          {renderMediaSection("Your Audiobook Library", shuffleArray(albums), handleAlbumClick, handlePlay, navigate)}
+          {renderMediaSection("Top Audiobooks", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+        </>
+      )}
+    </div>
   );
 }

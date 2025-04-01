@@ -1,25 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
+import isPodcast from "../../isPodcast.js";
 
-export default function MusicPlayer({ musicQueue }) {
+export default function MusicPlayer({musicQueue}) {
   const [rangeValue, setRangeValue] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
+  let currentSong;
   // Get current song from musicQueue
-  const currentSong = musicQueue?.album?.songs[currentSongIndex];
-
+  if (!isPodcast(musicQueue)) {
+    currentSong = musicQueue?.album?.songs[currentSongIndex];
+  } else {
+    currentSong = musicQueue?.episodes[currentSongIndex];
+  }
   const handlePlay = () => {
     setIsPlaying((prev) => !prev); // Toggle play/pause
   };
 
+  const albumLength = !isPodcast(musicQueue) ? musicQueue?.album?.songs.length : musicQueue?.episodes.length;
+
   const handleNext = () => {
-    setCurrentSongIndex((prevIndex) => (prevIndex + 1) % musicQueue.album.songs.length);
+    setCurrentSongIndex((prevIndex) => (prevIndex + 1) % albumLength);
     setRangeValue(0); // Reset the range when moving to the next song
   };
 
   const handlePrev = () => {
     setCurrentSongIndex(
-      (prevIndex) => (prevIndex - 1 + musicQueue.album.songs.length) % musicQueue.album.songs.length
+      (prevIndex) => (prevIndex - 1 + albumLength) % albumLength
     );
     setRangeValue(0); // Reset the range when going to the previous song
   };
@@ -47,6 +54,11 @@ export default function MusicPlayer({ musicQueue }) {
   }, [isPlaying, currentSong?.durationMs]); // Dependency on isPlaying and song duration
 
   useEffect(() => {
+    if (musicQueue?.index) {
+      setCurrentSongIndex(musicQueue?.index);
+      setRangeValue(0);
+    }
+
     setIsPlaying((prev) => !prev);
   }, [musicQueue]);
 
@@ -68,19 +80,23 @@ export default function MusicPlayer({ musicQueue }) {
   return (
     <>
       {musicQueue != null && (
-        <div className="fixed bottom-0 bg-black w-full h-[10vh] md:h-[5vw] z-10 px-4 py-2 flex items-center justify-between transition-all">
+        <div
+          className="fixed bottom-0 bg-black w-full h-[10vh] md:h-[5vw] z-10 px-4 py-2 flex items-center justify-between transition-all">
           {/* Song (Left) */}
           <div className="flex items-center space-x-4 h-full">
-            <img 
-              src={musicQueue == null ? "/placeHolders/placeHolderIcon.jpeg" : musicQueue.album.image}
-              alt="Song Image" 
+            <img
+              src={(!isPodcast(musicQueue) ? musicQueue.album?.image : musicQueue.image) ?? "/placeHolders/placeHolderIcon.jpeg"}
+              alt="Song Image"
               className="object-cover rounded h-3/4"
             />
             <div>
-              <span className="text-white font-medium text-[10px] md:text-sm">{musicQueue == null ? "Song Name" : currentSong.name}</span>
-              <div className="text-gray-400 text-[8px] md:text-xs">{musicQueue == null ? "Artist" : musicQueue.artist}</div>
+              <span
+                className="text-white font-medium text-[10px] md:text-sm">{!isPodcast(musicQueue) ? currentSong.name : currentSong.podcastName}</span>
+              <div
+                className="text-gray-400 text-[8px] md:text-xs">{!isPodcast(musicQueue) ? musicQueue.artist : musicQueue.publisher}</div>
             </div>
-            <i className="fa-solid fa-plus text-[8px] md:text-xs border p-1 rounded-full text-gray-300 hover:text-white transition-all duration-300 ease-in-out"></i>
+            <i
+              className="fa-solid fa-plus text-[8px] md:text-xs border p-1 rounded-full text-gray-300 hover:text-white transition-all duration-300 ease-in-out"></i>
           </div>
 
           {/* Player (Center) */}
@@ -88,12 +104,12 @@ export default function MusicPlayer({ musicQueue }) {
             <div className="flex justify-center items-center text-lg space-x-4">
               <i className="fa-solid fa-shuffle hover:text-white transition-all duration-300 ease-in-out"></i>
               <i className="fa-solid fa-backward-step hover:text-white transition-all duration-300 ease-in-out"
-              onClick={handlePrev}></i>
+                 onClick={handlePrev}></i>
               <i className={`fa-solid text-white text-2xl hover:text-white transition-all duration-300 ease-in-out
                 ${!isPlaying ? "fa-circle-play" : "fa-circle-pause"}`}
-                onClick={handlePlay}></i>
+                 onClick={handlePlay}></i>
               <i className="fa-solid fa-forward-step hover:text-white transition-all duration-300 ease-in-out"
-                onClick={handleNext}></i>
+                 onClick={handleNext}></i>
               <i className="fa-solid fa-repeat hover:text-white transition-all duration-300 ease-in-out"></i>
             </div>
             <div className="flex mt-2 items-center w-xs md:w-sm text-xs gap-2">
@@ -127,7 +143,8 @@ export default function MusicPlayer({ musicQueue }) {
                   `}
                 </style>
               </div>
-              <span className='font-thin'>{`${Math.floor(totalDuration / 60)}:${Math.floor(totalDuration % 60).toString().padStart(2, '0')}`}</span>
+              <span
+                className='font-thin'>{`${Math.floor(totalDuration / 60)}:${Math.floor(totalDuration % 60).toString().padStart(2, '0')}`}</span>
             </div>
           </div>
 
@@ -135,9 +152,9 @@ export default function MusicPlayer({ musicQueue }) {
           <div className="flex justify-center items-center space-x-2 text-xs text-gray-300">
             <i className="fa-solid fa-music hover:text-white transition-all duration-300 ease-in-out"></i>
             <i className="fa-solid fa-bars hover:text-white transition-all duration-300 ease-in-out"></i>
-            <span 
+            <span
               className="material-symbols-outlined hover:text-white transition-all duration-300 ease-in-out"
-              style={{ fontSize: '18px', color: '#e3e3e3' }}
+              style={{fontSize: '18px', color: '#e3e3e3'}}
             >
               google_home_devices
             </span>
@@ -175,13 +192,14 @@ export default function MusicPlayer({ musicQueue }) {
                 </style>
               </div>
             </div>
-            <span 
+            <span
               className="material-symbols-outlined hover:text-white transition-all duration-300 ease-in-out"
-              style={{ fontSize: '18px', color: '#e3e3e3' }}
+              style={{fontSize: '18px', color: '#e3e3e3'}}
             >
               picture_in_picture_alt
             </span>
-            <i className="fa-solid fa-up-right-and-down-left-from-center hover:text-white transition-all duration-300 ease-in-out"></i>
+            <i
+              className="fa-solid fa-up-right-and-down-left-from-center hover:text-white transition-all duration-300 ease-in-out"></i>
           </div>
         </div>
       )}
