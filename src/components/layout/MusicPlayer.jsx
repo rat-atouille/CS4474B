@@ -33,29 +33,31 @@ export default function MusicPlayer({musicQueue}) {
       // Start the interval if playing
       interval = setInterval(() => {
         setRangeValue((prev) => {
-          if (prev >= 195) {
+          const maxDuration = currentSong?.durationMs / 1000; // Convert ms to seconds
+          if (prev >= maxDuration) {
             setRangeValue(0); // Reset range value to 0
-            console.log("Interval completed, restarting...");
-            return 195;
+            return maxDuration;
           }
           return prev + 1;
         });
       }, 1000); // 1000ms = 1 second
-    } else {
-      // Pause the animation if not playing
-      clearInterval(interval);
     }
 
     // Clean up interval when the component unmounts or when isPlaying changes
     return () => clearInterval(interval);
-  }, [isPlaying]); // Dependency on isPlaying
+  }, [isPlaying, currentSong?.durationMs]); // Dependency on isPlaying and song duration
 
   useEffect(() => {
+    if (musicQueue?.index) {
+      setCurrentSongIndex(musicQueue?.index);
+      setRangeValue(0);
+    }
+    
     setIsPlaying((prev) => !prev);
   }, [musicQueue]);
 
-  // Convert range value to time (195 seconds max)
-  const totalDuration = 195; // 3:15 in seconds
+  // Convert range value to time
+  const totalDuration = currentSong?.durationMs / 1000 || 195; // Default to 195 seconds if no song
   const currentTimeInSeconds = (rangeValue / totalDuration) * totalDuration;
   const minutes = Math.floor(currentTimeInSeconds / 60);
   const seconds = Math.floor(currentTimeInSeconds % 60);
@@ -65,7 +67,7 @@ export default function MusicPlayer({musicQueue}) {
   const handleRangeClick = (e) => {
     const clickPosition = e.nativeEvent.offsetX;
     const rangeWidth = e.target.offsetWidth;
-    const newRangeValue = (clickPosition / rangeWidth) * 195; // Max value is 195 seconds
+    const newRangeValue = (clickPosition / rangeWidth) * totalDuration; // Max value is song duration
     setRangeValue(newRangeValue);
   };
 
@@ -109,12 +111,12 @@ export default function MusicPlayer({musicQueue}) {
                 <input
                   type="range"
                   min="0"
-                  max="195" // Set max to 195 seconds
+                  max={totalDuration} // Max value is the actual song duration
                   value={rangeValue} // Controlled value
                   step="1"
                   className="w-full h-1 rounded-lg appearance-none cursor-pointer bg-gray-300"
                   style={{
-                    background: `linear-gradient(to right, white ${rangeValue / 195 * 100}%, gray ${rangeValue / 195 * 100}%)`,
+                    background: `linear-gradient(to right, white ${rangeValue / totalDuration * 100}%, gray ${rangeValue / totalDuration * 100}%)`,
                   }}
                   onChange={(e) => setRangeValue(e.target.value)}
                   onClick={handleRangeClick} // Handle range click
@@ -134,7 +136,7 @@ export default function MusicPlayer({musicQueue}) {
                   `}
                 </style>
               </div>
-              <span className='font-thin'>3:15</span>
+              <span className='font-thin'>{`${Math.floor(totalDuration / 60)}:${Math.floor(totalDuration % 60).toString().padStart(2, '0')}`}</span>
             </div>
           </div>
 

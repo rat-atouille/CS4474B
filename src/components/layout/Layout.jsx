@@ -3,11 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./Sidebar.jsx";
 import Navbar from "./Navbar.jsx";
 import MusicPlayer from "./MusicPlayer.jsx";
+import { AlbumProvider } from "../../context/AlbumContext.jsx";
 
 export default function Layout({ children }) {
   const [showNavBackground, setShowNavBackground] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
-  const [musicQueue, setMusicQueue] = useState(); // State to hold the array
+  const [musicQueue, setMusicQueue] = useState();
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -23,29 +24,38 @@ export default function Layout({ children }) {
   }, []);
 
   return (
-    <BrowserRouter>
-      <div className="h-screen">
-        <Navbar showNavBackground={showNavBackground} />
+    <AlbumProvider>
+      <BrowserRouter>
+        <div className="h-screen">
+          <Navbar showNavBackground={showNavBackground} />
 
-        {/* The rest of layout */}
-        <div className="flex flex-row bg-gray-900">
-          <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
-          <div className={`flex flex-col overflow-hidden w-full mt-[10vh] md:mt-[5vw] mb-[10vh] md:mb-[5vw]`}>
-            <div className="flex-grow overflow-auto">
-              {/* Pass the setMusicQueue function to the children via the Routes */}
-              <Routes>
-                <Route
-                  path="/*"
-                  element={React.cloneElement(children, { setMusicQueue })} // Pass the setMusicQueue function
-                />
-              </Routes>
+          {/* The rest of layout */}
+          <div className="flex flex-row bg-gray-900">
+            {/* Sidebar */}
+            <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} setMusicQueue={setMusicQueue}/>
+
+            {/* Content Section */}
+            <div 
+              className={`flex flex-col overflow-hidden ${!collapsed ? 'w-3/4' : 'w-5/6'} 
+                          mt-[10vh] md:mt-[5vw] mb-[10vh] md:mb-[5vw] 
+                          ${!collapsed ? 'ml-[25%]' : 'ml-[16.6667%]'}`}
+            >
+              <div className="flex-grow overflow-auto">
+                {/* Pass the setMusicQueue function to the children via the Routes */}
+                <Routes>
+                  <Route
+                    path="/*"
+                    element={React.cloneElement(children, { setMusicQueue })} // Pass the setMusicQueue function
+                  />
+                </Routes>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Pass the state array to the MusicPlayer */}
-        <MusicPlayer musicQueue={musicQueue} />
-      </div>
-    </BrowserRouter>
+          {/* Pass the state array to the MusicPlayer */}
+          <MusicPlayer musicQueue={musicQueue} />
+        </div>
+      </BrowserRouter>
+    </AlbumProvider>
   );
 }

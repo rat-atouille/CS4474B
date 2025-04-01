@@ -1,7 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { LuChevronsLeft, LuChevronsRight } from "react-icons/lu";
+import spotifyData from "../../assets/data/data.json";
+import { useAlbum } from "../../context/AlbumContext";
 
-function Sidebar({collapsed, setCollapsed}) {
+function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
+  const [albums, setAlbums] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [currentAlbum, setCurrentAlbum] = useAlbum();
+  const navigate = useNavigate();
+
   // Sample data
   const data = [
     { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
@@ -13,8 +21,6 @@ function Sidebar({collapsed, setCollapsed}) {
     { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
     { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2020" },
   ];
-
-  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     console.log("Sidebar collapsed state changed:", collapsed);
@@ -31,8 +37,45 @@ function Sidebar({collapsed, setCollapsed}) {
     setCollapsed((prev) => !prev);
   }
 
+  useEffect(() => {
+    if (spotifyData) {
+      if (typeof setMusicQueue === 'function') {
+        // Flatten and create an album list
+        const albumList = Object.entries(spotifyData).flatMap(([artistName, artist]) => {
+          return artist.albums.map((album) => ({
+            artist: artistName,
+            album: album
+          }));
+        });
+  
+        // Shuffle the album list
+        const shuffledAlbumList = [...albumList]; // Create a copy of the album list
+        for (let i = shuffledAlbumList.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffledAlbumList[i], shuffledAlbumList[j]] = [shuffledAlbumList[j], shuffledAlbumList[i]]; // Swap elements
+        }
+  
+        // Set the shuffled albums list to the state
+        setAlbums(shuffledAlbumList);
+      }
+    }
+  }, [spotifyData]);
+  
+  const handlePlay = (album) => {
+    if (typeof setMusicQueue === 'function') {
+      setMusicQueue(album);
+    } else {
+      console.error('setMusicQueue is not a function');
+    }
+  };
+
+  const handleAlbumClick = (album) => {
+    setCurrentAlbum(album);
+    navigate("/album");
+  };
+
   return (
-      <div className={`mt-[10vh] md:mt-[5vw] bg-black z-10 overflow-hidden ${!collapsed ? 'w-1/3' : '1/6'}`}>
+      <div className={`fixed h-screen overflow-y-auto mt-[10vh] md:mt-[5vw] bg-black z-10 overflow-hidden ${!collapsed ? 'w-1/4' : '1/6'}`}>
       <div className={`bg-black h-full flex flex-col ${!collapsed ? 'mx-6' : 'mx-2 justify-center items-center'} justify-center items-center`}>
         {/* Collapse Toggle */}
         <div
@@ -106,38 +149,40 @@ function Sidebar({collapsed, setCollapsed}) {
         <div className={`flex-grow overflow-hidden w-full`}>
           <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-black">
             <div className={`
-              space-y-4 p-2 bg-black flex flex-col justify-center md:justify-normal
-              ${!collapsed ? 'px-2 mt-2' : 'px-1 mt-8'}
+              space-y-4 bg-black flex flex-col justify-center md:justify-normal
+              ${!collapsed ? 'mt-2' : 'mt-8'}
             `}>
-              {data
-                .filter(item => 
-                  !selectedCategory || 
-                  // You can add more filtering logic here if needed
-                  item.year === selectedCategory
-                )
+              {albums
+                // .filter(item => 
+                //   !selectedCategory || 
+                //   // You can add more filtering logic here if needed
+                //   item.year === selectedCategory
+                // )
                 .map((item, index) => (
                   <div 
                     key={index} 
-                    className="flex items-center space-x-4 hover:bg-gray-800 p-2 rounded-md transition-colors"
+                    className="flex items-center space-x-4 hover:bg-gray-800 p-2 rounded-md transition-colors group"
+                    onClick={() => handleAlbumClick(item)}
                   >
-                    {/* Square Image */}
-                    <img 
-                      src={item.image} 
-                      alt={item.name} 
-                      className={`
-                        object-cover rounded-sm 
-                        ${!collapsed 
-                          ? 'w-14 h-14 2xl:w-20 2xl:h-20' 
-                          : 'w-10 h-10'
-                        }
-                      `}
-                    />
+                    <div className={`relative ${!collapsed ? 'w-14 h-14 2xl:w-20 2xl:h-20' : 'w-10 h-10'}`}
+                    onClick={() => handlePlay(item)}>
+                      {/* Square Image */}
+                      <img 
+                        src={item.album.image} 
+                        alt={item.name} 
+                        className="object-cover rounded-sm"
+                      />
+                      {/* Play Button with opacity effect on hover */}
+                      <div className="absolute inset-0 flex justify-center items-center bg-black opacity-0 group-hover:opacity-50 transition-opacity">
+                        <i className="fa-solid fa-play z-10 text-3xl text-gray-200 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"></i>
+                      </div>
+                    </div>
 
                     {/* Text Info */}
                     {!collapsed && (
-                      <div className="hidden md:block select-none">
-                        <span className="text-white font-semibold 2xl:text-lg text-xs">{item.name}</span>
-                        <div className="text-gray-400 2xl:text-lg text-xs">{item.year}</div>
+                      <div className={`flex-1 ${!collapsed ? 'hidden md:block' : ''} select-none`}>
+                        <span className="text-white font-semibold 2xl:text-lg text-xs break-words">{item.album.name}</span>
+                        <div className="text-gray-400 2xl:text-lg text-xs">{item.artist}</div>
                       </div>
                     )}
                   </div>
