@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"; 
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./Sidebar.jsx";
 import Navbar from "./Navbar.jsx";
@@ -26,36 +26,30 @@ export default function Layout({ children }) {
   return (
     <AlbumProvider>
       <BrowserRouter>
-        <div className="h-screen">
+        <div className="h-screen w-screen flex flex-col overflow-hidden bg-black">
+          {/* Sidebar (Fixed, Always on the Left) */}
+          <div
+            className={`fixed top-0 left-0 mt-[10vh] md:mt-[5vw] h-full text-white transition-all ${
+              collapsed ? "w-16" : "w-64"
+            }`}
+          >
+            <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} setMusicQueue={setMusicQueue} />
+          </div>
 
-          {/* The rest of layout */}
-          <div className="flex flex-row bg-gray-900">
-            {/* Sidebar */}
-            <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} setMusicQueue={setMusicQueue}/>
+          {/* Main Content Wrapper (Takes Full Width) */}
+          <div className={`flex flex-col flex-1 min-w-0 transition-all ${collapsed ? "ml-16" : "ml-64"}`}>
+            {/* Navbar (Full Width, Sticky on Top) */}
+            <Navbar showNavBackground={showNavBackground} className="w-full" />
 
-            <div>
-              {/* content */}
-              <div 
-                className={`flex flex-col overflow-hidden bg-white ${!collapsed ? 'w-3/4' : 'w-5/6'} 
-                           md:mt-[5vw] mb-[10vh] md:mb-[5vw]  
-                            ${!collapsed ? 'ml-1/3' : '10%'}`}
-              >
-                {/* navbar */}
-                <Navbar showNavBackground={showNavBackground} />
-                
-                <div className="flex-grow overflow-auto">
-                  {/* Pass the setMusicQueue function to the children via the Routes */}
-                  <Routes>
-                    <Route
-                      path="/*"
-                      element={React.cloneElement(children, { setMusicQueue })} // Pass the setMusicQueue function
-                    />
-                  </Routes>
-                </div>
-              </div>
+            {/* Scrollable Content */}
+            <div className="flex-1 mt-[10vh] md:mt-[5vw]">
+              <Routes>
+                <Route path="/*" element={React.cloneElement(children, { setMusicQueue })} />
+              </Routes>
             </div>
           </div>
-          {/* Pass the state array to the MusicPlayer */}
+
+          {/* Music Player at Bottom */}
           <MusicPlayer musicQueue={musicQueue} />
         </div>
       </BrowserRouter>

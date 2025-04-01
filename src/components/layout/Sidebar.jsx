@@ -67,7 +67,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
   ];
 
   return (
-    <div className={`fixed h-screen overflow-y-auto mt-[10vh] md:mt-[5vw] bg-black z-10 overflow-hidden transition-all duration-300 ${!collapsed ? 'w-56' : 'w-16'}`}>
+    <div className={`fixed h-screen overflow-y-auto bg-black z-10 overflow-hidden transition-all duration-300 ${!collapsed ? 'w-64' : 'w-16'}`}>
       <div className={`bg-black h-full flex flex-col ${!collapsed ? 'px-4' : 'px-2'}`}>
         {/* Library Header with Library Icon and Add Button */}
         <div className="flex items-center space-x-3 py-4">
