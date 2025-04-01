@@ -31,7 +31,7 @@ export default function Layout({ children }) {
         {/* The rest of layout */}
         <div className="flex flex-row bg-gray-900">
           {/* Sidebar */}
-          <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} setCurrentAlbum={setCurrentAlbum} />
+          <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} setMusicQueue={setMusicQueue} />
 
           {/* Content Section */}
           <div 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { LuChevronsLeft, LuChevronsRight } from "react-icons/lu";
 import spotifyData from "../../assets/data/data.json";
 
-function Sidebar({ collapsed, setCollapsed }) {
+function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
   const [albums, setAlbums] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -35,16 +35,37 @@ function Sidebar({ collapsed, setCollapsed }) {
 
   useEffect(() => {
     if (spotifyData) {
-      const albumList = Object.entries(spotifyData).flatMap(([artistName, artist]) => {
-        return artist.albums.map((album) => ({
-          artist: artistName,
-          album: album
-        }));
-      });
-      console.log(albumList);
-      setAlbums(albumList);
+      if (typeof setMusicQueue === 'function') {
+        // Flatten and create an album list
+        const albumList = Object.entries(spotifyData).flatMap(([artistName, artist]) => {
+          return artist.albums.map((album) => ({
+            artist: artistName,
+            album: album
+          }));
+        });
+  
+        // Shuffle the album list
+        const shuffledAlbumList = [...albumList]; // Create a copy of the album list
+        for (let i = shuffledAlbumList.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffledAlbumList[i], shuffledAlbumList[j]] = [shuffledAlbumList[j], shuffledAlbumList[i]]; // Swap elements
+        }
+  
+        // Set the shuffled albums list to the state
+        setAlbums(shuffledAlbumList);
+      }
     }
-  }, []);
+  }, [spotifyData]); // Include spotifyData in the dependency array to trigger the effect when it changes
+  
+  const handlePlay = (album) => {
+    // Ensure that setMusicQueue is a function
+    if (typeof setMusicQueue === 'function') {
+      setMusicQueue(album);  // Ensure it's an array for a queue
+      console.log(album);
+    } else {
+      console.error('setMusicQueue is not a function1');
+    }
+  };
 
   return (
       <div className={`fixed h-screen overflow-y-auto mt-[10vh] md:mt-[5vw] bg-black z-10 overflow-hidden ${!collapsed ? 'w-1/4' : '1/6'}`}>
@@ -133,25 +154,26 @@ function Sidebar({ collapsed, setCollapsed }) {
                 .map((item, index) => (
                   <div 
                     key={index} 
-                    className="flex items-center space-x-4 hover:bg-gray-800 p-2 rounded-md transition-colors"
+                    className="flex items-center space-x-4 hover:bg-gray-800 p-2 rounded-md transition-colors group"
                   >
-                    {/* Square Image */}
-                    <img 
-                      src={item.album.image} 
-                      alt={item.name} 
-                      className={`
-                        object-cover rounded-sm 
-                        ${!collapsed 
-                          ? 'w-14 h-14 2xl:w-20 2xl:h-20' 
-                          : 'w-10 h-10'
-                        }
-                      `}
-                    />
+                    <div className={`relative ${!collapsed ? 'w-14 h-14 2xl:w-20 2xl:h-20' : 'w-10 h-10'}`}
+                    onClick={() => handlePlay(item)}>
+                      {/* Square Image */}
+                      <img 
+                        src={item.album.image} 
+                        alt={item.name} 
+                        className="object-cover rounded-sm"
+                      />
+                      {/* Play Button with opacity effect on hover */}
+                      <div className="absolute inset-0 flex justify-center items-center bg-black opacity-0 group-hover:opacity-50 transition-opacity">
+                        <i className="fa-solid fa-play z-10 text-3xl text-gray-200 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"></i>
+                      </div>
+                    </div>
 
                     {/* Text Info */}
                     {!collapsed && (
-                      <div className="hidden md:block select-none">
-                        <span className="text-white font-semibold 2xl:text-lg text-xs">{item.album.name}</span>
+                      <div className={`flex-1 ${!collapsed ? 'hidden md:block' : ''} select-none`}>
+                        <span className="text-white font-semibold 2xl:text-lg text-xs break-words">{item.album.name}</span>
                         <div className="text-gray-400 2xl:text-lg text-xs">{item.artist}</div>
                       </div>
                     )}
