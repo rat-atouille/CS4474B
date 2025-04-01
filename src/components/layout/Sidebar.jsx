@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { LuChevronsLeft, LuChevronsRight } from "react-icons/lu";
+import { FaHeart, FaSearch, FaList, FaPlus } from "react-icons/fa";
+import { BsFillGridFill } from "react-icons/bs";
 import spotifyData from "../../assets/data/data.json";
 import { useAlbum } from "../../context/AlbumContext";
 
@@ -10,24 +11,11 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
   const [, setCurrentAlbum] = useAlbum();
   const navigate = useNavigate();
 
-  // Sample data
-  const data = [
-    { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
-    { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2020" },
-    { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2021" },
-    { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2022" },
-    { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2023" },
-    { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2024" },
-    { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2019" },
-    { image: "/placeHolders/placeHolderIcon.jpeg", name: "Anonymous", year: "2020" },
-  ];
-
   useEffect(() => {
     console.log("Sidebar collapsed state changed:", collapsed);
   }, [collapsed]);
 
   const handleCategory = (category) => {
-    // Toggle category selection
     setSelectedCategory(prevCategory => 
       prevCategory === category ? null : category
     );
@@ -35,7 +23,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
 
   const handleCollapse = () => {
     setCollapsed((prev) => !prev);
-  }
+  };
 
   useEffect(() => {
     if (spotifyData) {
@@ -48,20 +36,14 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
           }));
         });
   
-        // Shuffle the album list
-        const shuffledAlbumList = [...albumList]; // Create a copy of the album list
-        for (let i = shuffledAlbumList.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [shuffledAlbumList[i], shuffledAlbumList[j]] = [shuffledAlbumList[j], shuffledAlbumList[i]]; // Swap elements
-        }
-  
-        // Set the shuffled albums list to the state
-        setAlbums(shuffledAlbumList);
+        // Set the albums list to the state
+        setAlbums(albumList);
       }
     }
-  }, [spotifyData]);
+  }, [spotifyData, setMusicQueue]);
   
-  const handlePlay = (album) => {
+  const handlePlay = (album, e) => {
+    e.stopPropagation();
     if (typeof setMusicQueue === 'function') {
       setMusicQueue(album);
     } else {
@@ -74,58 +56,52 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
     navigate("/album");
   };
 
+  // Demo playlists to match the reference images
+  const playlists = [
+    { id: 1, name: "Liked Songs", type: "Playlist", owner: "4 songs", image: null, isLiked: true },
+    { id: 2, name: "My Playlist #4", type: "Playlist", owner: "HP", image: albums[0]?.album.image },
+    { id: 3, name: "DAY6 Mix", type: "Playlist", owner: "Spotify", image: albums[1]?.album.image },
+    { id: 4, name: "Study", type: "Playlist", owner: "HP", image: albums[2]?.album.image },
+    { id: 5, name: "Workout", type: "Playlist", owner: "HP", image: albums[3]?.album.image },
+    { id: 6, name: "Before You Exit", type: "Artist", owner: "", image: albums[4]?.album.image },
+  ];
+
   return (
-      <div className={`fixed h-screen overflow-y-auto mt-[10vh] md:mt-[5vw] bg-black z-10 overflow-hidden ${!collapsed ? 'w-1/4' : '1/6'}`}>
-      <div className={`bg-black h-full flex flex-col ${!collapsed ? 'mx-6' : 'mx-2 justify-center items-center'} justify-center items-center`}>
-        {/* Collapse Toggle */}
-        <div
-          onClick={handleCollapse} 
-          className={` size-5 mb-3  flex justify-center items-center
-            cursor-pointer text-white ${!collapsed ? 'self-end' : 'self-center'}`}
-        >
-          {collapsed ? 
-            <LuChevronsRight  color="white" size={20} />
-            : 
-            <LuChevronsLeft  color="white" size={20} />
-            }
+    <div className={`fixed h-screen overflow-y-auto mt-[10vh] md:mt-[5vw] bg-black z-10 overflow-hidden transition-all duration-300 ${!collapsed ? 'w-56' : 'w-16'}`}>
+      <div className={`bg-black h-full flex flex-col ${!collapsed ? 'px-4' : 'px-2'}`}>
+        {/* Library Header with Library Icon and Add Button */}
+        <div className="flex items-center space-x-3 py-4">
+          <div 
+            className={`flex items-center justify-center cursor-pointer group ${collapsed? 'm-auto':'ml-1'}`}
+            onClick={handleCollapse}
+          >
+            <BsFillGridFill className="text-gray-400 text-xl group-hover:text-white transition-colors" />
+          </div>
+          
+          {!collapsed && (
+            <span className="text-white font-bold">Your Library</span>
+          )}
+
+          {!collapsed && (
+            <div className="ml-auto">
+              <div className="bg-gray-900 hover:bg-gray-800 transition-colors rounded-full p-2 cursor-pointer">
+                <FaPlus className="text-white text-sm" />
+              </div>
+            </div>
+          )}
         </div>
-        
 
-        {/* Header */}
+        {/* Category Tabs - Only show when expanded */}
         {!collapsed && (
-          <div className="flex justify-between items-center mb-6 w-full">
-            <div className="flex items-center space-x-4">
-              <i className="fas fa-book text-white"></i>
-              <span className="hidden md:block text-white font-bold">Your Library</span>
-            </div>
-            <div className="flex space-x-4">
-              <i className="fas fa-plus text-white cursor-pointer"></i>
-              <i className="fas fa-arrow-right text-white cursor-pointer"></i>
-            </div>
-          </div>
-        )}
-
-        {/* Collapsed Header */}
-        {collapsed && (
-          <div className="flex flex-col items-center space-y-4">
-            <i className="fas fa-plus text-white cursor-pointer"></i>
-          </div>
-        )}
-
-        {/* Category Buttons */}
-        {!collapsed && (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-2 mb-6 w-full">
+          <div className="flex gap-2 mt-4 mb-4 overflow-x-auto scrollbar-none">
             {["Playlists", "Artists", "Albums", "Podcasts"].map((category) => (
               <button
                 onClick={() => handleCategory(category)}
                 key={category}
-                className={`
-                  text-2 md:text-3 lg:text-sm font-semibold
-                  py-1 md:py-2 rounded-2xl cursor-pointer 
-                  transition-all duration-300 ease-in-out 
-                  ${selectedCategory === category 
+                className={`truncate px-3 py-1.5 rounded-full text-sm font-medium whitespace-nowrap
+                  ${selectedCategory === category
                     ? 'bg-green-500 text-white hover:text-gray-500' 
-                    : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                    : 'bg-gray-800/70 text-gray-300 hover:bg-gray-700'
                   }`}
               >
                 {category}
@@ -134,62 +110,68 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
           </div>
         )}
 
-        {/* Search and Recents */}
+        {/* Search and Recents - Only show when expanded */}
         {!collapsed && (
-          <div className="flex justify-between items-center w-full mb-4">
-            <i className="fas fa-search text-white cursor-pointer"></i>
-            <div className="flex items-center space-x-2">
-              <span className="hidden md:block text-white">Recents</span>
-              <i className="fas fa-list text-white cursor-pointer"></i>
+          <div className="flex justify-between items-center mb-4">
+            <div className="cursor-pointer hover:bg-gray-800 rounded-full p-1.5">
+              <FaSearch className="text-gray-400 text-sm" />
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-gray-400 text-sm">Recents</span>
+              <div className="cursor-pointer hover:bg-gray-800 rounded-full p-1">
+                <FaList className="text-gray-400 text-sm" />
+              </div>
             </div>
           </div>
         )}
 
-        {/* Item Container with Scrolling */}
-        <div className={`flex-grow overflow-hidden w-full`}>
-          <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-black">
-            <div className={`
-              space-y-4 bg-black flex flex-col justify-center md:justify-normal
-              ${!collapsed ? 'mt-2' : 'mt-8'}
-            `}>
-              {albums
-                // .filter(item => 
-                //   !selectedCategory || 
-                //   // You can add more filtering logic here if needed
-                //   item.year === selectedCategory
-                // )
-                .map((item, index) => (
-                  <div 
-                    key={index} 
-                    className="flex items-center space-x-4 hover:bg-gray-800 p-2 rounded-md transition-colors group"
-                    onClick={() => handleAlbumClick(item)}
-                  >
-                  <div 
-                    className={`relative ${collapsed ? 'w-10 h-10' : 'w-14 h-14 2xl:w-20 2xl:h-20'}`} 
-                    onClick={() => (collapsed ? handleAlbumClick(item) : handlePlay(item))}>
-                      {/* Square Image */}
-                      <img 
-                        src={item.album.image} 
-                        alt={item.name} 
-                        className="object-cover rounded-sm"
-                      />
-                      {/* Play Button with opacity effect on hover */}
-                      <div className={`${!collapsed ? "block" : "hidden"} absolute inset-0 flex justify-center items-center bg-black opacity-0 group-hover:opacity-50 transition-opacity`}></div>
-                      <div className={`${!collapsed ? "block" : "hidden"} absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity`}>
-                        <i className="fa-solid fa-play z-10 text-3xl text-gray-100 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"></i>
-                      </div>
-                      
+        {/* Playlist Items */}
+        <div className="flex-grow overflow-hidden">
+          <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
+            <div className="bg-green-200 m-auto space-y-2">
+            {collapsed && (
+                <button className="bg-gray-900 hover:bg-gray-800 transition-colors rounded-full p-2 cursor-pointer">
+                <FaPlus className="text-white text-sm" />
+              </button>
+            )}
+              {playlists.map((item) => (
+                <div 
+                  key={item.id} 
+                  className={`flex items-center gap-3 p-2 ${!collapsed ? 'hover:bg-gray-800/50' : 'm-auto hover:bg-gray-800'} rounded-md cursor-pointer transition-colors`}
+                  onClick={() => handleAlbumClick(item)}
+                >
+                  {/* Images or Icon */}
+                  {item.isLiked ? (
+                    <div className={`flex-shrink-0 ${collapsed ? 'w-10 h-10' : 'm-auto w-12 h-12'} bg-gradient-to-br from-purple-600 to-blue-400 flex items-center justify-center rounded-sm`}>
+                      <FaHeart className="text-white text-lg" />
                     </div>
-
-                    {/* Text Info */}
-                    {!collapsed && (
-                      <div className={`flex-1 ${!collapsed ? 'hidden md:block' : ''} select-none`}>
-                        <span className="text-white font-semibold 2xl:text-lg text-xs break-words">{item.album.name}</span>
-                        <div className="text-gray-400 2xl:text-lg text-xs">{item.artist}</div>
+                  ) : (
+                    <div className={`flex-shrink-0 ${collapsed ? 'w-10 h-10' : 'm-auto w-12 h-12'}`}>
+                      <img 
+                        src={item.image || "/placeHolders/placeHolderIcon.jpeg"} 
+                        alt={item.name} 
+                        className={`object-cover ${item.type === "Artist" ? "rounded-full" : "rounded-sm"} w-full h-full`}
+                      />
+                    </div>
+                  )}
+                  
+                  {/* Text Info - Only show when expanded */}
+                  {!collapsed && (
+                    <div className="flex-1 min-w-0">
+                      <div className="text-white font-medium text-sm truncate">{item.name}</div>
+                      <div className="text-gray-400 text-xs flex items-center">
+                        <span>{item.type}</span>
+                        {item.owner && (
+                          <>
+                            <span className="mx-1">•</span>
+                            <span>{item.owner}</span>
+                          </>
+                        )}
                       </div>
-                    )}
-                  </div>
-                ))}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
