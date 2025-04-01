@@ -81,7 +81,7 @@ export default function MusicPlayer({musicQueue}) {
     <>
       {musicQueue != null && (
         <div
-          className="fixed bottom-0 bg-black w-full h-[10vh] md:h-[5vw] z-10 px-4 py-2 flex items-center justify-between transition-all">
+          className="fixed bottom-0 bg-black w-full h-[10vh] md:h-[5vw] overflow-x-hidden z-10 px-4 py-2 flex items-center justify-between transition-all">
           {/* Song (Left) */}
           <div className="flex items-center space-x-4 h-full">
             <img
