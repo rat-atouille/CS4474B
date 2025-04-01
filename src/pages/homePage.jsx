@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import spotifyData from "../assets/data/data.json";
 import podcastData from "../assets/data/podcastData.json";
 import {useNavigate} from "react-router-dom";
-import {PlayButton} from "./playButton.jsx";
+import {PlayButton} from "../components/playButton.jsx";
 import isPodcast from "../isPodcast.js";
 import { useAlbum } from "../context/AlbumContext.jsx";
 

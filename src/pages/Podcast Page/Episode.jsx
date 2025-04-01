@@ -1,5 +1,5 @@
 import genericThumbnail from "../../assets/Podcast/genericThumbnail.jpg";
-import {PlayButton} from "../playButton.jsx";
+import {PlayButton} from "../../components/playButton.jsx";
 
 // interface episode {
 //   title: string,

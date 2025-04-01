@@ -1,12 +1,13 @@
 import Tag from "./Tag.jsx";
 import Button from "./Button.jsx";
 import Episode from "./Episode.jsx";
-import {useState, useRef, useEffect} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import Grade from 'grade-js'
-import useDebounce from './UseDebounce.jsx';
+import useDebounce from '../../components/SearchBar.jsx';
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io";
 import genericThumbnail from "../../assets/Podcast/genericThumbnail.jpg"
 import podcastData from "../../assets/data/podcastData.json";
+import SearchBar from "../../components/SearchBar.jsx";
 
 // interface episode {
 //   name: string,
@@ -21,7 +22,11 @@ function PodcastPage() {
   const podcast = podcastData[podcastName];
 
   const sortButtons = [
-    {text: "Date", sortFn: (a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime(), ascending: true},
+    {
+      text: "Date",
+      sortFn: (a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime(),
+      ascending: true
+    },
     {text: "Title", sortFn: (a, b) => a.name.localeCompare(b.name), ascending: true},
     {text: "Length", sortFn: (a, b) => b.durationMs - a.durationMs, ascending: true},
   ]
@@ -45,20 +50,14 @@ function PodcastPage() {
 
   const [searchValue, setSearchValue] = useState('');
 
-  function handleSearch(e) {
-    setSearchValue(e.target.value);
-  }
-
-  // Runs similar to useEffect, whenever searchValue changes, wait 800 ms then run callback fn
-  // might wanna add loading cus design??
-  useDebounce(() => {
+  const debounceCallbackFn = () => {
     setEpisodesState([...podcast.episodes].filter(episode => {
       if (episode.name.toLowerCase().includes(searchValue.toLowerCase())
         || episode.description.toLowerCase().includes(searchValue.toLowerCase())) {
         return episode;
       }
     }))
-  }, [searchValue], 500)
+  }
 
   const topRef = useRef(null);
   useEffect(() => {
@@ -109,8 +108,17 @@ function PodcastPage() {
 
           {/*Search and sorters*/}
           <div className={"mt-3 flex gap-2 content-center items-center"}>
-            <input onChange={handleSearch} value={searchValue} placeholder={"Search for a episode"}
-                   className={"rounded-lg pl-3 mr-4 bg-white text-black"}/>
+            <div
+              className="relative flex items-center rounded-full text-white bg-black
+                     hover:bg-stone-900 focus-within:bg-stone-950
+                     transition-all duration-150 ease-in-out px-4 py-2
+                     max-w-xs sm:max-w-md md:max-w-lg">
+              <i className="fa-solid fa-search text-lg md:text-xl hover:text-white
+                       hover:scale-110 transition-all duration-150 ease-in-out"/>
+              <SearchBar searchText={searchValue} setSearchText={setSearchValue} callBackFn={debounceCallbackFn}
+                         delay={500} placeholder={"Search episode"}
+                         className={"w-full text-sm md:text-md pl-3 pr-4 outline-none bg-transparent"}/>
+            </div>
 
             {sortButtonsState.map((button, index) => {
               const isSelected = selectedSortButtonIndex === index;
@@ -134,11 +142,13 @@ function PodcastPage() {
 
           {/*Episodes grid*/}
           <div className={"w-full grid grid-cols-2 grid-rows-1 gap-x-14 gap-y-10 mt-7"}>
-            {episodesState.map((episode, index) => <Episode key={index} episodes={podcast.episodes} episode={episode}></Episode>)}
+            {episodesState.map((episode, index) => <Episode key={index} episodes={podcast.episodes}
+                                                            episode={episode}></Episode>)}
           </div>
         </div>
       </div>
-    </div>)
+    </div>
+  )
 }
 
 export default PodcastPage;
