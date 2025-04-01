@@ -44,24 +44,28 @@ function formatLength(lengthInMs) {
 }
 
 
-function Episode({episode}) {
+function EpisodeGrid({episodes}) {
   return (
-    <div
-      className={"flex flex-nowrap items-center gap-[10px] hover:cursor-pointer hover:scale-105 transition-all hover:bg-[#474747] p-0.5"}>
-      <div className={"group relative size-36 flex-shrink-0"}>
-        <img className={"size-full object-cover"} src={episode?.image ?? genericThumbnail}
-             alt="Thumbnail"/>
-        <PlayButton/>
-      </div>
-      <div className={"flex flex-col gap-0.5 min-w-0"}>
-        <div className={"font-bold text-lg line-clamp-2"}>{episode.name}</div>
-        <div dangerouslySetInnerHTML={{__html: episode.description}}
-             className={"text-neutral-400 text-xs line-clamp-3"}></div>
-        <div
-          className={"mt-2 text-sm font-bold line-clamp-1"}>{formatDate(episode.releaseDate)} • {formatLength(episode.durationMs)}</div>
-      </div>
+    <div className={"w-full grid grid-cols-2 grid-rows-1 gap-x-14 gap-y-10 mt-7"}>
+      {episodes.map((episode, index) =>
+        <div key={index}
+          className={"flex flex-nowrap items-center gap-[10px] hover:cursor-pointer hover:scale-105 transition-all hover:bg-[#474747] p-0.5"}>
+          <div className={"group relative size-36 flex-shrink-0"}>
+            <img className={"size-full object-cover"} src={episode?.image ?? genericThumbnail}
+                 alt="Thumbnail"/>
+            <PlayButton/>
+          </div>
+          <div className={"flex flex-col gap-0.5 min-w-0"}>
+            <div className={"font-bold text-lg line-clamp-2"}>{episode.name}</div>
+            <div dangerouslySetInnerHTML={{__html: episode.description}}
+                 className={"text-neutral-400 text-xs line-clamp-3"}></div>
+            <div
+              className={"mt-2 text-sm font-bold line-clamp-1"}>{formatDate(episode.releaseDate)} • {formatLength(episode.durationMs)}</div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
 
-export default Episode;
+export default EpisodeGrid;

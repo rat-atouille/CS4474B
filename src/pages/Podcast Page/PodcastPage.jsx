@@ -1,13 +1,18 @@
 import Tag from "./Tag.jsx";
 import Button from "./Button.jsx";
-import Episode from "./Episode.jsx";
+import episodeGrid from "./EpisodeGrid.jsx";
 import React, {useState, useRef, useEffect} from "react";
 import Grade from 'grade-js'
-import useDebounce from '../../components/SearchBar.jsx';
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io";
 import genericThumbnail from "../../assets/Podcast/genericThumbnail.jpg"
 import podcastData from "../../assets/data/podcastData.json";
 import SearchBar from "../../components/SearchBar.jsx";
+import {FaList} from "react-icons/fa";
+import {IoGridOutline} from "react-icons/io5";
+import {GiHamburgerMenu} from "react-icons/gi";
+import {FcCheckmark} from "react-icons/fc";
+import EpisodeGrid from "./EpisodeGrid.jsx";
+import EpisodeList from "./EpisodeList.jsx";
 
 // interface episode {
 //   name: string,
@@ -32,6 +37,8 @@ function PodcastPage() {
   ]
   const [sortButtonsState, setSortButtonsState] = useState(sortButtons);
   const [selectedSortButtonIndex, setSelectedSortButtonIndex] = useState(0);
+  const [showViewDropdown, setShowViewDropdown] = useState(false)
+  const [view, setView] = useState("Grid")
 
   function setAscendingState(index, ascending) {
     const clonedButton = {...sortButtonsState[index]}
@@ -49,7 +56,6 @@ function PodcastPage() {
   const [episodesState, setEpisodesState] = useState(podcast.episodes)
 
   const [searchValue, setSearchValue] = useState('');
-
   const debounceCallbackFn = () => {
     setEpisodesState([...podcast.episodes].filter(episode => {
       if (episode.name.toLowerCase().includes(searchValue.toLowerCase())
@@ -58,6 +64,10 @@ function PodcastPage() {
       }
     }))
   }
+
+  const dropdownViewButtons = [
+    {text: "Grid", icon: <IoGridOutline size={20}/>},
+    {text: "List", icon: <GiHamburgerMenu size={20}/>}]
 
   const topRef = useRef(null);
   useEffect(() => {
@@ -138,13 +148,24 @@ function PodcastPage() {
                 text={[button.text, arrow]}
                 className={isSelected && "bg-green-500 hover:bg-green-600 active:bg-green-700"}/>
             })}
+
+            <div className="relative select-none cursor-pointer ml-8">
+              <FaList size={"30"} onClick={() => setShowViewDropdown(!showViewDropdown)}
+                      className="text-gray-400 text-lg hover:bg-stone-700 p-1 rounded-lg shadow-2xl"/>
+              <ul hidden={showViewDropdown} className={"absolute w-36 shadow-2xl bg-[#343434] right-4 z-10 rounded"}>
+                {(dropdownViewButtons.map((item, index) =>
+                  <li className={"flex items-center gap-2 p-2 hover:bg-stone-700 active:bg-stone-800 rounded-lg"}
+                      key={index} onClick={() => setView(item.text)}>
+                    <div className={item.text === view ? "text-green-500" : ''}>{item.icon}</div>
+                    <div className={item.text === view ? "text-green-500" : ''}>{item.text}</div>
+                    {item.text === view && <FcCheckmark size={20} className={"ml-auto mb-1"}/>}
+                  </li>))}
+              </ul>
+            </div>
           </div>
 
           {/*Episodes grid*/}
-          <div className={"w-full grid grid-cols-2 grid-rows-1 gap-x-14 gap-y-10 mt-7"}>
-            {episodesState.map((episode, index) => <Episode key={index} episodes={podcast.episodes}
-                                                            episode={episode}></Episode>)}
-          </div>
+          {view === "Grid" ? <EpisodeGrid episodes={episodesState}/> : <EpisodeList episodes={episodesState}/>}
         </div>
       </div>
     </div>
