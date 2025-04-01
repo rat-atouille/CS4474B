@@ -7,7 +7,7 @@ import { FaPlay } from "react-icons/fa";
 
 
 const Artist = () => {
-  const [activeTab, setActiveTab] = useState('All');
+  const [activeTab, setActiveTab] = useState('Home');
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [playIndex, setPlayIndex] = useState(null);
   const [likedSongs, setLikedSongs] = useState([]);
@@ -369,7 +369,7 @@ const Artist = () => {
   return (
     <div className="bg-[#212121] text-white w-full">
       {/* Header with artist info */}
-      <div className="relative h-48 bg-purple-900 p-6 flex items-end">
+      <div className="relative h-55 bg-purple-900 p-6 flex items-end">
         <div className="relative z-10">
           {artistData.verified && (
             <span className="text-xs px-2 py-1 rounded-sm mb-1 inline-block select-none">
