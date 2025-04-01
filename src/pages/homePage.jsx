@@ -4,13 +4,12 @@ import podcastData from "../assets/data/podcastData.json";
 import {useNavigate} from "react-router-dom";
 import {PlayButton} from "./playButton.jsx";
 import isPodcast from "../isPodcast.js";
-
+import { useAlbum } from "../context/AlbumContext.jsx";
 
 // ===== Carousel Component =====
-function RecentPlayedCarousel({items, handlePlay}) {
+function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(1);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const updateItemsToShow = () => {
@@ -48,8 +47,11 @@ function RecentPlayedCarousel({items, handlePlay}) {
           {items.map((item, index) => (
             <div
               onClick={() => {
-                if (isPodcast(item))
-                  navigate(`/podcast/?name=${item.podcastName}`)
+                if (isPodcast(item)) {
+                  navigate(`/podcast/?name=${item.podcastName}`);
+                } else {
+                  handleAlbumClick(item);
+                }
               }}
               key={index}
               className="p-2 group"
@@ -90,7 +92,7 @@ function RecentPlayedCarousel({items, handlePlay}) {
 }
 
 // ===== Grid Component =====
-function GridView({items, handlePlay}) {
+function GridView({ items, handlePlay, handleAlbumClick }) {
   const [itemsToShow, setItemsToShow] = useState(2);
   const navigate = useNavigate();
 
@@ -121,8 +123,11 @@ function GridView({items, handlePlay}) {
       >
         {items.map((item, index) => (
           <div onClick={() => {
-            if (isPodcast(item))
+            if (isPodcast(item)) {
               navigate(`/podcast/?name=${item.podcastName}`)
+            } else {
+              handleAlbumClick(item)
+            }
           }} key={index} className="w-full group">
             <div className="relative">
               <img
@@ -181,13 +186,13 @@ function MediaSection({title, items, renderCollapsed, renderExpanded}) {
   );
 }
 
-function renderMediaSection(title, items, handlePlay) {
+function renderMediaSection(title, items, handlePlay, handleAlbumClick) {
   return (
     <MediaSection
       title={title}
       items={items}
-      renderCollapsed={(items) => <RecentPlayedCarousel items={items} handlePlay={handlePlay}/>}
-      renderExpanded={(items) => <GridView items={items} handlePlay={handlePlay}/>}
+      renderCollapsed={(items) => <RecentPlayedCarousel items={items} handlePlay={handlePlay} handleAlbumClick={handleAlbumClick}/>}
+      renderExpanded={(items) => <GridView items={items} handlePlay={handlePlay} handleAlbumClick={handleAlbumClick}/>}
     />
   );
 }
@@ -198,6 +203,8 @@ export default function HomePage({setMusicQueue}) {
   const [itemsToShow, setItemsToShow] = useState(2);
   const [albums, setAlbums] = useState([]);
   const [podcasts, setPodcasts] = useState([])
+  const [, setCurrentAlbum] = useAlbum();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const updateItemsToShow = () => {
@@ -253,6 +260,11 @@ export default function HomePage({setMusicQueue}) {
     }
   };
 
+  const handleAlbumClick = (album) => {
+    setCurrentAlbum(album);
+    navigate("/album");
+  };
+
   return (
     <div className="p-8 w-full bg-[#212121]">
       {/* Main Grid Section */}
@@ -262,6 +274,7 @@ export default function HomePage({setMusicQueue}) {
             <div
               key={index}
               className="flex items-center bg-gray-700 hover:bg-gray-600 rounded group relative"
+              onClick={() => handleAlbumClick(item)}
             >
               <img
                 src={item.album.image}
@@ -303,36 +316,36 @@ export default function HomePage({setMusicQueue}) {
       {/* Conditional Rendering of Media Sections */}
       {selectedCategory === "All" && (
         <>
-          {renderMediaSection("Recently Played", shuffleArray(albums), handlePlay)}
-          {renderMediaSection("Made For You", shuffleArray(albums), handlePlay)}
-          {renderMediaSection("Your Top Mixes", shuffleArray(albums), handlePlay)}
-          {renderMediaSection("Trending Podcasts", shuffleArray(podcasts), handlePlay)}
-          {renderMediaSection("Your Latest Episodes", shuffleArray(albums), handlePlay)}
-          {renderMediaSection("Recommended For You", shuffleArray(albums), handlePlay)}
-          {renderMediaSection("Audiobook Collection", shuffleArray(albums), handlePlay)}
-          {renderMediaSection("Your Audiobook Library", shuffleArray(albums), handlePlay)}
-          {renderMediaSection("Top Audiobooks", shuffleArray(albums), handlePlay)}
+          {renderMediaSection("Recently Played", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Made For You", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Your Top Mixes", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Trending Podcasts", shuffleArray(podcasts), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Your Latest Episodes", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Recommended For You", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Audiobook Collection", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Your Audiobook Library", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Top Audiobooks", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
         </>
       )}
       {selectedCategory === "Music" && (
         <>
-          {renderMediaSection("Recently Played", shuffleArray(albums), handlePlay)}
-          {renderMediaSection("Made For You", shuffleArray(albums), handlePlay)}
-          {renderMediaSection("Your Top Mixes", shuffleArray(albums), handlePlay)}
+          {renderMediaSection("Recently Played", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Made For You", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Your Top Mixes", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
         </>
       )}
       {selectedCategory === "Podcasts" && (
         <>
-          {renderMediaSection("Trending Podcasts", shuffleArray(podcasts), handlePlay)}
-          {renderMediaSection("Your Latest Episodes", shuffleArray(podcasts), handlePlay)}
-          {renderMediaSection("Recommended For You", shuffleArray(podcasts), handlePlay)}
+          {renderMediaSection("Trending Podcasts", shuffleArray(podcasts), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Your Latest Episodes", shuffleArray(podcasts), handlePlay, handleAlbumClick, navigate)}
+          {renderMediaSection("Recommended For You", shuffleArray(podcasts), handlePlay, handleAlbumClick, navigate)}
         </>
       )}
       {selectedCategory === "Audiobooks" && (
         <>
-          {renderMediaSection("Audiobook Collection", shuffleArray(albums), handlePlay)}
-          {renderMediaSection("Your Audiobook Library", shuffleArray(albums), handlePlay)}
-          {renderMediaSection("Top Audiobooks", shuffleArray(albums), handlePlay)}
+          {renderMediaSection("Audiobook Collection", shuffleArray(albums), handleAlbumClick, handlePlay, navigate)}
+          {renderMediaSection("Your Audiobook Library", shuffleArray(albums), handleAlbumClick, handlePlay, navigate)}
+          {renderMediaSection("Top Audiobooks", shuffleArray(albums), handlePlay, handleAlbumClick, navigate)}
         </>
       )}
     </div>

@@ -7,7 +7,7 @@ import { useAlbum } from "../../context/AlbumContext";
 function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
   const [albums, setAlbums] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [currentAlbum, setCurrentAlbum] = useAlbum();
+  const [, setCurrentAlbum] = useAlbum();
   const navigate = useNavigate();
 
   // Sample data
