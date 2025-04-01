@@ -9,15 +9,11 @@ export default function SearchPage() {
     const [searchParam, setSearchParam] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
 
-    // Helper to remove duplicates by *name* only
     function deduplicateByName(items) {
         const seen = new Set();
         return items.filter((item) => {
-            // Use name in lowercase as the key to identify duplicates
-            const key = item.name.toLowerCase();
-            if (seen.has(key)) {
-                return false;
-            }
+            const key = item.name.trim().toLowerCase();
+            if (seen.has(key)) return false;
             seen.add(key);
             return true;
         });
@@ -29,29 +25,18 @@ export default function SearchPage() {
         setSearchParam(query);
     }, [location.search]);
 
-    // Base single items
+    // ---------- Base Data ----------
     const baseTopResult = {
         name: "Meow-meow",
         type: "Playlist • Spotify",
         image: rockImage,
     };
 
-    // Base arrays
-    const baseArtists = [
-        { name: "Rocky the cat", image: rockImage },
-    ];
+    const baseArtists = [{ name: "Rocky the cat", image: rockImage }];
+    const baseSongs = [{ name: "I'm cat and you?", image: rockImage }];
+    const basePlaylists = [{ name: "Meow-meow", image: rockImage }];
 
-    const baseSongs = [
-        { name: "I'm cat and you?", image: rockImage },
-    ];
-
-    const basePlaylists = [
-        { name: "Meow-meow", image: rockImage },
-    ];
-
-    // ---------- Merge Extra Data from JSON ----------
-    // The JSON structure is an object keyed by artist name.
-    // We'll extract extra artists, songs, and playlists.
+    // ---------- Extract Extra Data from JSON ----------
     const extraArtists = Object.entries(jsonData).map(([artistName, details]) => ({
         name: artistName,
         image: details.image,
@@ -62,7 +47,7 @@ export default function SearchPage() {
     Object.values(jsonData).forEach((artist) => {
         if (artist.albums) {
             artist.albums.forEach((album) => {
-                // Each album is effectively a 'playlist' item
+                // Treat each album as a 'playlist' item
                 extraPlaylists.push({
                     name: album.name,
                     image: album.image,
@@ -79,14 +64,13 @@ export default function SearchPage() {
         }
     });
 
-    // Merge base + extra, then deduplicate by name
+    // ---------- Merge and Deduplicate ----------
     const artists = deduplicateByName([...baseArtists, ...extraArtists]);
     const songs = deduplicateByName([...baseSongs, ...extraSongs]);
     const playlists = deduplicateByName([...basePlaylists, ...extraPlaylists]);
 
-    // Category tabs
+    // ---------- Category Tabs ----------
     const categories = ["All", "Songs", "Playlists", "Artists", "Podcasts", "Audiobooks"];
-
     const handleTagClick = (category) => {
         setActiveCategory(category);
     };
@@ -112,10 +96,10 @@ export default function SearchPage() {
                 ))}
             </div>
 
-            {/* ALL PAGE */}
+            {/* =================================== ALL PAGE =================================== */}
             {activeCategory === "All" && (
                 <>
-                    {/* Top Result */}
+                    {/* Top Result (Only for All) */}
                     <div className="mt-6">
                         <h2 className="font-semibold text-xl mb-2">Top Result</h2>
                         <div className="flex items-center space-x-4">
@@ -136,7 +120,13 @@ export default function SearchPage() {
                         <h2 className="font-semibold text-xl mb-2 mt-6">Artists</h2>
                         <div className="grid grid-cols-6 gap-8">
                             {artists.map((artist, index) => (
-                                <div key={index} className="flex flex-col items-center">
+                                <div
+                                    key={index}
+                                    className="flex flex-col items-center cursor-pointer"
+                                    onClick={() =>
+                                        navigate(`/artist?name=${encodeURIComponent(artist.name)}`)
+                                    }
+                                >
                                     <img
                                         src={artist.image}
                                         alt={artist.name}
@@ -155,7 +145,10 @@ export default function SearchPage() {
                             {songs.map((song, index) => (
                                 <div
                                     key={index}
-                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center"
+                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                    onClick={() =>
+                                        navigate(`/song?title=${encodeURIComponent(song.name)}`)
+                                    }
                                 >
                                     <img
                                         src={song.image}
@@ -175,7 +168,10 @@ export default function SearchPage() {
                             {playlists.map((pl, index) => (
                                 <div
                                     key={index}
-                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center"
+                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                    onClick={() =>
+                                        navigate(`/playlist?name=${encodeURIComponent(pl.name)}`)
+                                    }
                                 >
                                     <img
                                         src={pl.image}
@@ -190,7 +186,7 @@ export default function SearchPage() {
                 </>
             )}
 
-            {/* SONGS PAGE */}
+            {/* =================================== SONGS PAGE =================================== */}
             {activeCategory === "Songs" && (
                 <div>
                     <h2 className="font-semibold text-xl mb-2 mt-6">Songs Page</h2>
@@ -198,7 +194,10 @@ export default function SearchPage() {
                         {songs.map((song, index) => (
                             <div
                                 key={index}
-                                className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center"
+                                className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                onClick={() =>
+                                    navigate(`/song?title=${encodeURIComponent(song.name)}`)
+                                }
                             >
                                 <img
                                     src={song.image}
@@ -212,7 +211,7 @@ export default function SearchPage() {
                 </div>
             )}
 
-            {/* PLAYLISTS PAGE */}
+            {/* =================================== PLAYLISTS PAGE =================================== */}
             {activeCategory === "Playlists" && (
                 <div>
                     <h2 className="font-semibold text-xl mb-2 mt-6">Playlists Page</h2>
@@ -220,7 +219,10 @@ export default function SearchPage() {
                         {playlists.map((pl, index) => (
                             <div
                                 key={index}
-                                className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center"
+                                className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                onClick={() =>
+                                    navigate(`/playlist?name=${encodeURIComponent(pl.name)}`)
+                                }
                             >
                                 <img
                                     src={pl.image}
@@ -234,13 +236,19 @@ export default function SearchPage() {
                 </div>
             )}
 
-            {/* ARTISTS PAGE */}
+            {/* =================================== ARTISTS PAGE =================================== */}
             {activeCategory === "Artists" && (
                 <div>
                     <h2 className="font-semibold text-xl mb-2 mt-6">Artists Page</h2>
                     <div className="grid grid-cols-6 gap-8">
                         {artists.map((artist, index) => (
-                            <div key={index} className="flex flex-col items-center">
+                            <div
+                                key={index}
+                                className="flex flex-col items-center cursor-pointer"
+                                onClick={() =>
+                                    navigate(`/artist?name=${encodeURIComponent(artist.name)}`)
+                                }
+                            >
                                 <img
                                     src={artist.image}
                                     alt="Artist"
@@ -253,7 +261,7 @@ export default function SearchPage() {
                 </div>
             )}
 
-            {/* PODCASTS PAGE */}
+            {/* =================================== PODCASTS PAGE =================================== */}
             {activeCategory === "Podcasts" && (
                 <div>
                     <h2 className="font-semibold text-xl mb-2 mt-6">Podcasts</h2>
@@ -261,7 +269,7 @@ export default function SearchPage() {
                 </div>
             )}
 
-            {/* AUDIOBOOKS PAGE */}
+            {/* =================================== AUDIOBOOKS PAGE =================================== */}
             {activeCategory === "Audiobooks" && (
                 <div>
                     <h2 className="font-semibold text-xl mb-2 mt-6">Audiobooks</h2>
