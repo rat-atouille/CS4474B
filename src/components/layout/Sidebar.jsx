@@ -164,8 +164,9 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
                     className="flex items-center space-x-4 hover:bg-gray-800 p-2 rounded-md transition-colors group"
                     onClick={() => handleAlbumClick(item)}
                   >
-                    <div className={`relative ${!collapsed ? 'w-14 h-14 2xl:w-20 2xl:h-20' : 'w-10 h-10'}`}
-                    onClick={() => handlePlay(item)}>
+                  <div 
+                    className={`relative ${collapsed ? 'w-10 h-10' : 'w-14 h-14 2xl:w-20 2xl:h-20'}`} 
+                    onClick={() => (collapsed ? handleAlbumClick(item) : handlePlay(item))}>
                       {/* Square Image */}
                       <img 
                         src={item.album.image} 
@@ -173,9 +174,11 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
                         className="object-cover rounded-sm"
                       />
                       {/* Play Button with opacity effect on hover */}
-                      <div className="absolute inset-0 flex justify-center items-center bg-black opacity-0 group-hover:opacity-50 transition-opacity">
-                        <i className="fa-solid fa-play z-10 text-3xl text-gray-200 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"></i>
+                      <div className={`${!collapsed ? "block" : "hidden"} absolute inset-0 flex justify-center items-center bg-black opacity-0 group-hover:opacity-50 transition-opacity`}></div>
+                      <div className={`${!collapsed ? "block" : "hidden"} absolute inset-0 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity`}>
+                        <i className="fa-solid fa-play z-10 text-3xl text-gray-100 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"></i>
                       </div>
+                      
                     </div>
 
                     {/* Text Info */}
