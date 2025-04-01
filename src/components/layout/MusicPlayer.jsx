@@ -47,6 +47,11 @@ export default function MusicPlayer({ musicQueue }) {
   }, [isPlaying, currentSong?.durationMs]); // Dependency on isPlaying and song duration
 
   useEffect(() => {
+    if (musicQueue?.index) {
+      setCurrentSongIndex(musicQueue?.index);
+      setRangeValue(0);
+    }
+    
     setIsPlaying((prev) => !prev);
   }, [musicQueue]);
 

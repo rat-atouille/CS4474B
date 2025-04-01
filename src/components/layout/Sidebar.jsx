@@ -1,10 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { LuChevronsLeft, LuChevronsRight } from "react-icons/lu";
 import spotifyData from "../../assets/data/data.json";
+import { useAlbum } from "../../context/AlbumContext";
 
 function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
   const [albums, setAlbums] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [currentAlbum, setCurrentAlbum] = useAlbum();
+  const navigate = useNavigate();
 
   // Sample data
   const data = [
@@ -55,16 +59,19 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
         setAlbums(shuffledAlbumList);
       }
     }
-  }, [spotifyData]); // Include spotifyData in the dependency array to trigger the effect when it changes
+  }, [spotifyData]);
   
   const handlePlay = (album) => {
-    // Ensure that setMusicQueue is a function
     if (typeof setMusicQueue === 'function') {
-      setMusicQueue(album);  // Ensure it's an array for a queue
-      console.log(album);
+      setMusicQueue(album);
     } else {
-      console.error('setMusicQueue is not a function1');
+      console.error('setMusicQueue is not a function');
     }
+  };
+
+  const handleAlbumClick = (album) => {
+    setCurrentAlbum(album);
+    navigate("/album");
   };
 
   return (
@@ -142,8 +149,8 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
         <div className={`flex-grow overflow-hidden w-full`}>
           <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-black">
             <div className={`
-              space-y-4 p-2 bg-black flex flex-col justify-center md:justify-normal
-              ${!collapsed ? 'px-2 mt-2' : 'px-1 mt-8'}
+              space-y-4 bg-black flex flex-col justify-center md:justify-normal
+              ${!collapsed ? 'mt-2' : 'mt-8'}
             `}>
               {albums
                 // .filter(item => 
@@ -155,6 +162,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
                   <div 
                     key={index} 
                     className="flex items-center space-x-4 hover:bg-gray-800 p-2 rounded-md transition-colors group"
+                    onClick={() => handleAlbumClick(item)}
                   >
                     <div className={`relative ${!collapsed ? 'w-14 h-14 2xl:w-20 2xl:h-20' : 'w-10 h-10'}`}
                     onClick={() => handlePlay(item)}>
