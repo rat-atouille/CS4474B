@@ -31,6 +31,16 @@ export default function Album({ setMusicQueue }) {
     }
   };  
 
+  const togglePlay = (e, index) => {
+    e.stopPropagation();
+    if (playIndex === index) {
+      setPlayIndex(null);
+    } else {
+      setPlayIndex(index);
+    }
+  };
+  
+
   // Render tab content
   const renderTabContent = () => (
     <div>
@@ -60,16 +70,18 @@ export default function Album({ setMusicQueue }) {
             key={index}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
+            onClick={(e) => togglePlay(e, index)}
             className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
           >
             <div
               className="w-8 text-center text-gray-400 text-xs mr-3"
-              onClick={() => handlePlay(currentAlbum, index)}
+              onClick={() => {handlePlay(currentAlbum, index);
+                (e) => togglePlay(e, index);}}
             >
               {playIndex === index ? 
                 <BsSoundwave className="text-green-500 text-lg ml-2" /> : 
                 (hoveredIndex === index ? <IoPlay className="text-lg ml-2" /> : index + 1)
-              }   
+              }
             </div>
 
             <div className="relative flex justify-between items-center w-full">

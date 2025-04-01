@@ -270,7 +270,7 @@ export default function HomePage({setMusicQueue}) {
               />
               <h2 className="ml-3 p-1 text-xs font-semibold">{item.album.name}</h2>
               <button
-                className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
+                className="absolute bottom-2 right-2 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-all ease-in-out"
                 onClick={() => handlePlay(item)} // Pass the item to the handlePlay function
               >
                 <i
