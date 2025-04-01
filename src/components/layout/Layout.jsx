@@ -9,6 +9,7 @@ export default function Layout({ children }) {
   const [showNavBackground, setShowNavBackground] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [musicQueue, setMusicQueue] = useState();
+  
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -26,7 +27,7 @@ export default function Layout({ children }) {
   return (
     <AlbumProvider>
       <BrowserRouter>
-        <div className="h-screen w-screen flex flex-col bg-black">
+        <div className="h-screen w-screen overflow-x-hidden flex flex-col bg-black">
           {/* Sidebar (Fixed, Always on the Left) */}
           <div
             className={`fixed top-0 left-0 mt-[10vh] md:mt-[5vw] h-full text-white transition-all ${
