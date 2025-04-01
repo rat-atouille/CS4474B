@@ -10,6 +10,7 @@ import { useAlbum } from "../context/AlbumContext.jsx";
 function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const updateItemsToShow = () => {

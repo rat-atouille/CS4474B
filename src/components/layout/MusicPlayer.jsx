@@ -91,7 +91,7 @@ export default function MusicPlayer({musicQueue}) {
             />
             <div>
               <span
-                className="text-white font-medium text-[10px] md:text-sm">{!isPodcast(musicQueue) ? currentSong.name : currentSong.podcastName}</span>
+                className="text-white font-medium text-[10px] md:text-sm">{currentSong.name}</span>
               <div
                 className="text-gray-400 text-[8px] md:text-xs">{!isPodcast(musicQueue) ? musicQueue.artist : musicQueue.publisher}</div>
             </div>
