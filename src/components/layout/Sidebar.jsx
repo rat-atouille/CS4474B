@@ -120,11 +120,11 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
                 onClick={() => handleCategory(category)}
                 key={category}
                 className={`
-                  text-2 md:text-3 lg:text-xs font-semibold
-                  py-1 md:py-2 rounded cursor-pointer 
+                  text-2 md:text-3 lg:text-sm font-semibold
+                  py-1 md:py-2 rounded-2xl cursor-pointer 
                   transition-all duration-300 ease-in-out 
                   ${selectedCategory === category 
-                    ? 'bg-green-500 text-gray-700 hover:text-gray-500' 
+                    ? 'bg-green-500 text-white hover:text-gray-500' 
                     : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                   }`}
               >
