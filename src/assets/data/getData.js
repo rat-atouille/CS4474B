@@ -20,6 +20,8 @@ const finalJson = {};
 const CLIENT_ID = "1500e4eb90b34eecb403201c86d3611e";
 const CLIENT_SECRET = "ea2e38c9737a43e7a6735c17315b7e7d";
 
+const sampleAbout = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
 async function getAccessToken() {
   let url = "https://accounts.spotify.com/api/token";
   let options = {
@@ -69,7 +71,8 @@ async function getArtistData(access_token) {
       albums: albums.map(album => ({
         name: album.name, image: album.images[0].url, releaseDate: album.release_date,
         songs: []
-      }))
+      })),
+      about: sampleAbout
     }
 
     // ------ GETTING SONGS FROM ALBUMS -----------

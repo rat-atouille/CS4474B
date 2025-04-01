@@ -1,6 +1,6 @@
 {
   "The All-American Rejects": {
-    "followers": 2797343,
+    "followers": 2799170,
     "genres": [
       "pop punk",
       "emo",
@@ -168,180 +168,11 @@
           }
         ]
       }
-    ]
-  },
-  "All That Remains": {
-    "followers": 1416115,
-    "genres": [
-      "metalcore",
-      "metal"
     ],
-    "image": "https://i.scdn.co/image/ab6761610000e5ebb4d9c699a6e892bab3121226",
-    "albums": [
-      {
-        "name": "AntiFragile",
-        "image": "https://i.scdn.co/image/ab67616d0000b2731a96f5952589527c8d054aaa",
-        "releaseDate": "2025-01-31",
-        "songs": [
-          {
-            "name": "Divine",
-            "durationMs": 219676,
-            "image": "https://i.scdn.co/image/ab67616d0000b2731a96f5952589527c8d054aaa"
-          },
-          {
-            "name": "Kerosene",
-            "durationMs": 263622,
-            "image": "https://i.scdn.co/image/ab67616d0000b2731a96f5952589527c8d054aaa"
-          },
-          {
-            "name": "No Tomorrow",
-            "durationMs": 280251,
-            "image": "https://i.scdn.co/image/ab67616d0000b2731a96f5952589527c8d054aaa"
-          },
-          {
-            "name": "The Piper",
-            "durationMs": 262801,
-            "image": "https://i.scdn.co/image/ab67616d0000b2731a96f5952589527c8d054aaa"
-          },
-          {
-            "name": "AntiFragile",
-            "durationMs": 270578,
-            "image": "https://i.scdn.co/image/ab67616d0000b2731a96f5952589527c8d054aaa"
-          }
-        ]
-      },
-      {
-        "name": "Victim of the New Disease",
-        "image": "https://i.scdn.co/image/ab67616d0000b27363b2c8a48d3d0029a68f5eac",
-        "releaseDate": "2018-11-09",
-        "songs": [
-          {
-            "name": "Fuck Love",
-            "durationMs": 178213,
-            "image": "https://i.scdn.co/image/ab67616d0000b27363b2c8a48d3d0029a68f5eac"
-          },
-          {
-            "name": "Everything’s Wrong",
-            "durationMs": 250280,
-            "image": "https://i.scdn.co/image/ab67616d0000b27363b2c8a48d3d0029a68f5eac"
-          },
-          {
-            "name": "Blood I Spill",
-            "durationMs": 219520,
-            "image": "https://i.scdn.co/image/ab67616d0000b27363b2c8a48d3d0029a68f5eac"
-          },
-          {
-            "name": "Wasteland",
-            "durationMs": 290266,
-            "image": "https://i.scdn.co/image/ab67616d0000b27363b2c8a48d3d0029a68f5eac"
-          },
-          {
-            "name": "Alone In The Darkness",
-            "durationMs": 209853,
-            "image": "https://i.scdn.co/image/ab67616d0000b27363b2c8a48d3d0029a68f5eac"
-          }
-        ]
-      },
-      {
-        "name": "Madness",
-        "image": "https://i.scdn.co/image/ab67616d0000b2735f862a70fc02032666e11995",
-        "releaseDate": "2017-04-28",
-        "songs": [
-          {
-            "name": "Safe House",
-            "durationMs": 216773,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735f862a70fc02032666e11995"
-          },
-          {
-            "name": "Madness",
-            "durationMs": 203800,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735f862a70fc02032666e11995"
-          },
-          {
-            "name": "Nothing I Can Do",
-            "durationMs": 219720,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735f862a70fc02032666e11995"
-          },
-          {
-            "name": "If I'm Honest",
-            "durationMs": 262280,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735f862a70fc02032666e11995"
-          },
-          {
-            "name": "Halo",
-            "durationMs": 242866,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735f862a70fc02032666e11995"
-          }
-        ]
-      },
-      {
-        "name": "The Order Of Things",
-        "image": "https://i.scdn.co/image/ab67616d0000b2735a19e91366aa45fa3efeef12",
-        "releaseDate": "2015-02-24",
-        "songs": [
-          {
-            "name": "This Probably Won’t End Well",
-            "durationMs": 228680,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735a19e91366aa45fa3efeef12"
-          },
-          {
-            "name": "No Knock",
-            "durationMs": 168746,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735a19e91366aa45fa3efeef12"
-          },
-          {
-            "name": "Divide",
-            "durationMs": 198186,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735a19e91366aa45fa3efeef12"
-          },
-          {
-            "name": "The Greatest Generation",
-            "durationMs": 240600,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735a19e91366aa45fa3efeef12"
-          },
-          {
-            "name": "For You",
-            "durationMs": 256279,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735a19e91366aa45fa3efeef12"
-          }
-        ]
-      },
-      {
-        "name": "A War You Cannot Win",
-        "image": "https://i.scdn.co/image/ab67616d0000b273838c8e2b7c01e762bec4b7bf",
-        "releaseDate": "2012-11-06",
-        "songs": [
-          {
-            "name": "Down Through The Ages",
-            "durationMs": 212000,
-            "image": "https://i.scdn.co/image/ab67616d0000b273838c8e2b7c01e762bec4b7bf"
-          },
-          {
-            "name": "You Can't Fill My Shadow",
-            "durationMs": 213040,
-            "image": "https://i.scdn.co/image/ab67616d0000b273838c8e2b7c01e762bec4b7bf"
-          },
-          {
-            "name": "Stand Up",
-            "durationMs": 240920,
-            "image": "https://i.scdn.co/image/ab67616d0000b273838c8e2b7c01e762bec4b7bf"
-          },
-          {
-            "name": "A Call To All Non-Believers",
-            "durationMs": 164280,
-            "image": "https://i.scdn.co/image/ab67616d0000b273838c8e2b7c01e762bec4b7bf"
-          },
-          {
-            "name": "Asking Too Much",
-            "durationMs": 208400,
-            "image": "https://i.scdn.co/image/ab67616d0000b273838c8e2b7c01e762bec4b7bf"
-          }
-        ]
-      }
-    ]
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   "A.R. Rahman": {
-    "followers": 61247507,
+    "followers": 61379999,
     "genres": [
       "tamil pop",
       "kollywood",
@@ -513,10 +344,11 @@
           }
         ]
       }
-    ]
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   "All Time Low": {
-    "followers": 3130044,
+    "followers": 3131142,
     "genres": [
       "pop punk",
       "emo",
@@ -685,10 +517,82 @@
           }
         ]
       }
-    ]
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  "ALLEYCVT": {
+    "followers": 63370,
+    "genres": [
+      "dubstep",
+      "edm"
+    ],
+    "image": "https://i.scdn.co/image/ab6761610000e5eb8baea6ec2bdee7f383771cd1",
+    "albums": [
+      {
+        "name": "Dawn",
+        "image": "https://i.scdn.co/image/ab67616d0000b273c8d902886a8bc0fedcb3c06d",
+        "releaseDate": "2025-03-26",
+        "songs": [
+          {
+            "name": "Dawn",
+            "durationMs": 192000,
+            "image": "https://i.scdn.co/image/ab67616d0000b273c8d902886a8bc0fedcb3c06d"
+          }
+        ]
+      },
+      {
+        "name": "STRANGERS",
+        "image": "https://i.scdn.co/image/ab67616d0000b273d153a80ec773dc48b4519423",
+        "releaseDate": "2025-03-19",
+        "songs": [
+          {
+            "name": "STRANGERS",
+            "durationMs": 218482,
+            "image": "https://i.scdn.co/image/ab67616d0000b273d153a80ec773dc48b4519423"
+          }
+        ]
+      },
+      {
+        "name": "STRATOSPHERE",
+        "image": "https://i.scdn.co/image/ab67616d0000b273272e2935a626422a798f43be",
+        "releaseDate": "2024-10-03",
+        "songs": [
+          {
+            "name": "STRATOSPHERE",
+            "durationMs": 198041,
+            "image": "https://i.scdn.co/image/ab67616d0000b273272e2935a626422a798f43be"
+          }
+        ]
+      },
+      {
+        "name": "FEEL IT",
+        "image": "https://i.scdn.co/image/ab67616d0000b273b1cf807b165338d84caf4811",
+        "releaseDate": "2024-09-05",
+        "songs": [
+          {
+            "name": "FEEL IT",
+            "durationMs": 184489,
+            "image": "https://i.scdn.co/image/ab67616d0000b273b1cf807b165338d84caf4811"
+          }
+        ]
+      },
+      {
+        "name": "ONE FOR YOU",
+        "image": "https://i.scdn.co/image/ab67616d0000b273e536201349dc9758d5729824",
+        "releaseDate": "2024-07-12",
+        "songs": [
+          {
+            "name": "ONE FOR YOU",
+            "durationMs": 152516,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e536201349dc9758d5729824"
+          }
+        ]
+      }
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   "Wolfgang Amadeus Mozart": {
-    "followers": 5737802,
+    "followers": 5740497,
     "genres": [
       "classical",
       "requiem",
@@ -699,9 +603,73 @@
     "image": "https://i.scdn.co/image/ab6761610000e5eb7fa9108c6dadb8c3ec21da88",
     "albums": [
       {
+        "name": "L'atelier des pianistes (The Pianists' Workshop)",
+        "image": "https://i.scdn.co/image/ab67616d0000b27392219c9633174ff1591833b5",
+        "releaseDate": "2025-04-01",
+        "songs": [
+          {
+            "name": "Bach: 5 Little Preludes: No. 1 in C Major, BWV 939",
+            "durationMs": 33293,
+            "image": "https://i.scdn.co/image/ab67616d0000b27392219c9633174ff1591833b5"
+          },
+          {
+            "name": "Bach: Notebook for Anna Magdalena Bach: Minuet in F Major, BWV Anh. 113",
+            "durationMs": 95040,
+            "image": "https://i.scdn.co/image/ab67616d0000b27392219c9633174ff1591833b5"
+          },
+          {
+            "name": "Bach: Notebook for Anna Magdalena Bach: Minuet in D Minor, BWV Anh. 132",
+            "durationMs": 54960,
+            "image": "https://i.scdn.co/image/ab67616d0000b27392219c9633174ff1591833b5"
+          },
+          {
+            "name": "CPE Bach: Notebook for Anna Magdalena Bach: March in D Major (Formerly Attributed to JS Bach as BWV Anh. 122)",
+            "durationMs": 66000,
+            "image": "https://i.scdn.co/image/ab67616d0000b27392219c9633174ff1591833b5"
+          },
+          {
+            "name": "Petzold: Notebook for Anna Magdalena Bach: Minuet in G Major (Formerly Attributed to JS Bach as BWV Anh. 114)",
+            "durationMs": 85133,
+            "image": "https://i.scdn.co/image/ab67616d0000b27392219c9633174ff1591833b5"
+          }
+        ]
+      },
+      {
+        "name": "Flute Concertos",
+        "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644",
+        "releaseDate": "2025-04-01",
+        "songs": [
+          {
+            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: I. Larghetto (Transcr. of Organ Concerto)",
+            "durationMs": 149333,
+            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
+          },
+          {
+            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: II. Allegro (Transcr. of Organ Concerto)",
+            "durationMs": 125880,
+            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
+          },
+          {
+            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: III. Alla siciliana (Transcr. of Organ Concerto)",
+            "durationMs": 78813,
+            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
+          },
+          {
+            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: IV. Presto (Transcr. of Organ Concerto)",
+            "durationMs": 129280,
+            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
+          },
+          {
+            "name": "Vivaldi: Flute Concerto in F Major, Op. 10 No. 1, RV 433 \"La tempesta di mare\": I. Allegro",
+            "durationMs": 173600,
+            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
+          }
+        ]
+      },
+      {
         "name": "Eugene Ormandy & Friends",
         "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b",
-        "releaseDate": "2025-03-30",
+        "releaseDate": "2025-04-01",
         "songs": [
           {
             "name": "Barber: Adagio for Strings, Op. 11",
@@ -731,133 +699,70 @@
         ]
       },
       {
-        "name": "\"Prélude à la nuit\" - Lullabies for a Quiet Evening",
-        "image": "https://i.scdn.co/image/ab67616d0000b273d5d8d27065e79a8f58843bb7",
-        "releaseDate": "2025-03-30",
+        "name": "\"Nocturne\" - Calm & Relaxation",
+        "image": "https://i.scdn.co/image/ab67616d0000b273db70378b8bc1452d357a70d5",
+        "releaseDate": "2025-04-01",
         "songs": [
           {
-            "name": "La fille aux cheveux de lin",
-            "durationMs": 162120,
-            "image": "https://i.scdn.co/image/ab67616d0000b273d5d8d27065e79a8f58843bb7"
+            "name": "Bruyères",
+            "durationMs": 179506,
+            "image": "https://i.scdn.co/image/ab67616d0000b273db70378b8bc1452d357a70d5"
           },
           {
             "name": "Gnossienne No. 3",
             "durationMs": 132066,
-            "image": "https://i.scdn.co/image/ab67616d0000b273d5d8d27065e79a8f58843bb7"
+            "image": "https://i.scdn.co/image/ab67616d0000b273db70378b8bc1452d357a70d5"
           },
           {
             "name": "Sonata in D Minor, K. 32 (Arr. for Guitar by Michael Lewin)",
             "durationMs": 172880,
-            "image": "https://i.scdn.co/image/ab67616d0000b273d5d8d27065e79a8f58843bb7"
+            "image": "https://i.scdn.co/image/ab67616d0000b273db70378b8bc1452d357a70d5"
+          },
+          {
+            "name": "Keyboard Concerto No. 5 in F Minor, BWV 1056: II. Largo",
+            "durationMs": 177186,
+            "image": "https://i.scdn.co/image/ab67616d0000b273db70378b8bc1452d357a70d5"
           },
           {
             "name": "Carnival of the Animals, R. 125: The Swan",
             "durationMs": 186453,
-            "image": "https://i.scdn.co/image/ab67616d0000b273d5d8d27065e79a8f58843bb7"
-          },
-          {
-            "name": "Ma mère l'oye, M. 62: III. Pavane de la belle au bois dormant",
-            "durationMs": 151880,
-            "image": "https://i.scdn.co/image/ab67616d0000b273d5d8d27065e79a8f58843bb7"
+            "image": "https://i.scdn.co/image/ab67616d0000b273db70378b8bc1452d357a70d5"
           }
         ]
       },
       {
-        "name": "Springtime Symphonies",
-        "image": "https://i.scdn.co/image/ab67616d0000b273aa4ae65784746a64cdf673f2",
-        "releaseDate": "2025-03-29",
+        "name": "Seiji Ozawa & Friends - Classical Variations",
+        "image": "https://i.scdn.co/image/ab67616d0000b273394d716d5324c76a1001e5a7",
+        "releaseDate": "2025-03-31",
         "songs": [
           {
-            "name": "Eine Alpensinfonie, Op. 64: I. Nacht",
-            "durationMs": 212893,
-            "image": "https://i.scdn.co/image/ab67616d0000b273aa4ae65784746a64cdf673f2"
+            "name": "Bizet / Arr. Guiraud: Carmen Suite No. 1: VI. Les toréadors",
+            "durationMs": 127773,
+            "image": "https://i.scdn.co/image/ab67616d0000b273394d716d5324c76a1001e5a7"
           },
           {
-            "name": "Eine Alpensinfonie, Op. 64: II. Sonnenaufgang",
-            "durationMs": 87440,
-            "image": "https://i.scdn.co/image/ab67616d0000b273aa4ae65784746a64cdf673f2"
+            "name": "Bizet / Arr. Guiraud: Carmen Suite No. 1: I. Prélude",
+            "durationMs": 81426,
+            "image": "https://i.scdn.co/image/ab67616d0000b273394d716d5324c76a1001e5a7"
           },
           {
-            "name": "Eine Alpensinfonie, Op. 64: III. Der Anstieg",
-            "durationMs": 142000,
-            "image": "https://i.scdn.co/image/ab67616d0000b273aa4ae65784746a64cdf673f2"
+            "name": "Bizet / Arr. Guiraud: Carmen Suite No. 1: II. Aragonaise",
+            "durationMs": 146693,
+            "image": "https://i.scdn.co/image/ab67616d0000b273394d716d5324c76a1001e5a7"
           },
           {
-            "name": "Eine Alpensinfonie, Op. 64: IV. Eintritt in den Wald",
-            "durationMs": 317960,
-            "image": "https://i.scdn.co/image/ab67616d0000b273aa4ae65784746a64cdf673f2"
+            "name": "Bizet / Arr. Guiraud: Carmen Suite No. 1: III. Intermezzo",
+            "durationMs": 151080,
+            "image": "https://i.scdn.co/image/ab67616d0000b273394d716d5324c76a1001e5a7"
           },
           {
-            "name": "Eine Alpensinfonie, Op. 64: V. Wanderung neben dem Bache",
-            "durationMs": 44973,
-            "image": "https://i.scdn.co/image/ab67616d0000b273aa4ae65784746a64cdf673f2"
-          }
-        ]
-      },
-      {
-        "name": "Mozart: Piano Variations, Vol. 1",
-        "image": "https://i.scdn.co/image/ab67616d0000b2739b44e4eeef06fbeb94e77d2d",
-        "releaseDate": "2025-03-29",
-        "songs": [
-          {
-            "name": "12 Variations on \"Ah, vous dirai-je maman\", K. 265: Theme",
-            "durationMs": 54680,
-            "image": "https://i.scdn.co/image/ab67616d0000b2739b44e4eeef06fbeb94e77d2d"
-          },
-          {
-            "name": "12 Variations on \"Ah, vous dirai-je maman\", K. 265: Var. 1",
-            "durationMs": 53333,
-            "image": "https://i.scdn.co/image/ab67616d0000b2739b44e4eeef06fbeb94e77d2d"
-          },
-          {
-            "name": "12 Variations on \"Ah, vous dirai-je maman\", K. 265: Var. 2",
-            "durationMs": 50626,
-            "image": "https://i.scdn.co/image/ab67616d0000b2739b44e4eeef06fbeb94e77d2d"
-          },
-          {
-            "name": "12 Variations on \"Ah, vous dirai-je maman\", K. 265: Var. 3",
-            "durationMs": 52306,
-            "image": "https://i.scdn.co/image/ab67616d0000b2739b44e4eeef06fbeb94e77d2d"
-          },
-          {
-            "name": "12 Variations on \"Ah, vous dirai-je maman\", K. 265: Var. 4",
-            "durationMs": 49933,
-            "image": "https://i.scdn.co/image/ab67616d0000b2739b44e4eeef06fbeb94e77d2d"
-          }
-        ]
-      },
-      {
-        "name": "Flute Concertos",
-        "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644",
-        "releaseDate": "2025-03-29",
-        "songs": [
-          {
-            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: I. Larghetto (Transcr. of Organ Concerto)",
-            "durationMs": 149333,
-            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
-          },
-          {
-            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: II. Allegro (Transcr. of Organ Concerto)",
-            "durationMs": 125880,
-            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
-          },
-          {
-            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: III. Alla siciliana (Transcr. of Organ Concerto)",
-            "durationMs": 78813,
-            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
-          },
-          {
-            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: IV. Presto (Transcr. of Organ Concerto)",
-            "durationMs": 129280,
-            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
-          },
-          {
-            "name": "Vivaldi: Flute Concerto in F Major, Op. 10 No. 1, RV 433 \"La tempesta di mare\": I. Allegro",
-            "durationMs": 173600,
-            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
+            "name": "Bizet / Arr. Guiraud: Carmen Suite No. 2: II. Habanera",
+            "durationMs": 126880,
+            "image": "https://i.scdn.co/image/ab67616d0000b273394d716d5324c76a1001e5a7"
           }
         ]
       }
-    ]
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   }
 }
