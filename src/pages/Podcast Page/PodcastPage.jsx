@@ -23,7 +23,7 @@ function PodcastPage() {
   const sortButtons = [
     {text: "Date", sortFn: (a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime(), ascending: true},
     {text: "Title", sortFn: (a, b) => a.name.localeCompare(b.name), ascending: true},
-    {text: "Length", sortFn: (a, b) => b.duration - a.duration, ascending: true},
+    {text: "Length", sortFn: (a, b) => b.durationMs - a.durationMs, ascending: true},
   ]
   const [sortButtonsState, setSortButtonsState] = useState(sortButtons);
   const [selectedSortButtonIndex, setSelectedSortButtonIndex] = useState(0);
@@ -62,12 +62,14 @@ function PodcastPage() {
 
   const topRef = useRef(null);
   useEffect(() => {
-    Grade(topRef.current, null, (data) => {
-      const element = data[0].element
-      const gradientData = data[0].gradientData;
-      gradientData[0].rgba.pop();
-      element.style.backgroundColor = `rgb(${gradientData[0].rgba.toString().replaceAll(",", " ")})`
-    })
+    setTimeout(() => {
+      Grade(topRef.current, null, (data) => {
+        const element = data[0].element
+        const gradientData = data[0].gradientData;
+        gradientData[0].rgba.pop();
+        element.style.backgroundColor = `rgb(${gradientData[0].rgba.toString().replaceAll(",", " ")})`
+      })
+    }, 500)
   }, []);
 
   return (
@@ -132,7 +134,7 @@ function PodcastPage() {
 
           {/*Episodes grid*/}
           <div className={"w-full grid grid-cols-2 grid-rows-1 gap-x-14 gap-y-10 mt-7"}>
-            {episodesState.map((episode, index) => <Episode key={index} episode={episode}></Episode>)}
+            {episodesState.map((episode, index) => <Episode key={index} episodes={podcast.episodes} episode={episode}></Episode>)}
           </div>
         </div>
       </div>

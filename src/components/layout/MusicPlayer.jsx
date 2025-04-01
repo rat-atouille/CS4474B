@@ -1,25 +1,32 @@
 import React, {useState, useEffect} from 'react';
+import isPodcast from "../../isPodcast.js";
 
 export default function MusicPlayer({musicQueue}) {
   const [rangeValue, setRangeValue] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
+  let currentSong;
   // Get current song from musicQueue
-  const currentSong = musicQueue?.album?.songs[currentSongIndex];
-
+  if (!isPodcast(musicQueue)) {
+    currentSong = musicQueue?.album?.songs[currentSongIndex];
+  } else {
+    currentSong = musicQueue?.episodes[currentSongIndex];
+  }
   const handlePlay = () => {
     setIsPlaying((prev) => !prev); // Toggle play/pause
   };
 
+  const albumLength = !isPodcast(musicQueue) ? musicQueue?.album?.songs.length : musicQueue?.episodes.length;
+
   const handleNext = () => {
-    setCurrentSongIndex((prevIndex) => (prevIndex + 1) % musicQueue.album.songs.length);
+    setCurrentSongIndex((prevIndex) => (prevIndex + 1) % albumLength);
     setRangeValue(0); // Reset the range when moving to the next song
   };
 
   const handlePrev = () => {
     setCurrentSongIndex(
-      (prevIndex) => (prevIndex - 1 + musicQueue.album.songs.length) % musicQueue.album.songs.length
+      (prevIndex) => (prevIndex - 1 + albumLength) % albumLength
     );
     setRangeValue(0); // Reset the range when going to the previous song
   };
@@ -78,15 +85,15 @@ export default function MusicPlayer({musicQueue}) {
           {/* Song (Left) */}
           <div className="flex items-center space-x-4 h-full">
             <img
-              src={musicQueue == null ? "/placeHolders/placeHolderIcon.jpeg" : musicQueue.album.image}
+              src={(!isPodcast(musicQueue) ? musicQueue.album?.image : musicQueue.image) ?? "/placeHolders/placeHolderIcon.jpeg"}
               alt="Song Image"
               className="object-cover rounded h-3/4"
             />
             <div>
               <span
-                className="text-white font-medium text-[10px] md:text-sm">{musicQueue == null ? "Song Name" : currentSong.name}</span>
+                className="text-white font-medium text-[10px] md:text-sm">{!isPodcast(musicQueue) ? currentSong.name : currentSong.podcastName}</span>
               <div
-                className="text-gray-400 text-[8px] md:text-xs">{musicQueue == null ? "Artist" : musicQueue.artist}</div>
+                className="text-gray-400 text-[8px] md:text-xs">{!isPodcast(musicQueue) ? musicQueue.artist : musicQueue.publisher}</div>
             </div>
             <i
               className="fa-solid fa-plus text-[8px] md:text-xs border p-1 rounded-full text-gray-300 hover:text-white transition-all duration-300 ease-in-out"></i>

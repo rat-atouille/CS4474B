@@ -1,14 +1,16 @@
-import {useState, useEffect} from "react";
+import {useEffect, useState} from "react";
 import spotifyData from "../assets/data/data.json";
 import podcastData from "../assets/data/podcastData.json";
 import {useNavigate} from "react-router-dom";
+import {PlayButton} from "./playButton.jsx";
+import isPodcast from "../isPodcast.js";
 
 
 // ===== Carousel Component =====
 function RecentPlayedCarousel({items, handlePlay}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(1);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const updateItemsToShow = () => {
@@ -46,7 +48,7 @@ function RecentPlayedCarousel({items, handlePlay}) {
           {items.map((item, index) => (
             <div
               onClick={() => {
-                if (item.image)
+                if (isPodcast(item))
                   navigate(`/podcast/?name=${item.podcastName}`)
               }}
               key={index}
@@ -59,13 +61,7 @@ function RecentPlayedCarousel({items, handlePlay}) {
                   alt="Thumbnail"
                   className="h-36 w-full object-cover rounded"
                 />
-                <button
-                  className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
-                  onClick={() => handlePlay(item)}  // Pass the item to the handlePlay function
-                >
-                  <i
-                    className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
-                </button>
+                <PlayButton onClick={() => handlePlay(item)}/>
               </div>
               <h2 className="mt-1 text-xs font-semibold text-gray-200">
                 {item.album?.name ?? item.podcastName}
@@ -96,6 +92,7 @@ function RecentPlayedCarousel({items, handlePlay}) {
 // ===== Grid Component =====
 function GridView({items, handlePlay}) {
   const [itemsToShow, setItemsToShow] = useState(2);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const updateItemsToShow = () => {
@@ -124,25 +121,19 @@ function GridView({items, handlePlay}) {
       >
         {items.map((item, index) => (
           <div onClick={() => {
-            if (item.image)
+            if (isPodcast(item))
               navigate(`/podcast/?name=${item.podcastName}`)
           }} key={index} className="w-full group">
             <div className="relative">
               <img
-                src={item.album.image}
+                src={item.album?.image ?? item.image}
                 alt="Thumbnail"
                 className="h-36 w-full object-cover rounded"
               />
-              <button
-                className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
-                onClick={() => handlePlay(item)}  // Pass the item to the handlePlay function
-              >
-                <i
-                  className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
-              </button>
+              <PlayButton onClick={() => handlePlay(item)}/>
             </div>
             <h2 className="mt-1 text-xs font-semibold text-gray-200">
-              {item.album.name}
+              {item.album?.name ?? item.podcastName}
             </h2>
           </div>
         ))}
