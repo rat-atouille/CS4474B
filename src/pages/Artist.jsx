@@ -74,7 +74,8 @@ const Artist = ({setMusicQueue}) => {
               plays: formatNumber(Math.floor(Math.random() * 10000000)), // Random number of plays for demo
               duration: formatDuration(song.durationMs),
               image: song.image || album.image,
-              albumName: album.name
+              albumName: album.name,
+              albumIndex: songIndex
             });
           });
         });
@@ -168,7 +169,7 @@ const Artist = ({setMusicQueue}) => {
                         onMouseLeave={() => setHoveredIndex(null)}
                         onClick={(e) => {
                         togglePlay(e, `recent-${index}`);
-                        handlePlay(song.albumName, index);
+                        handlePlay(song.albumName, song.albumIndex);
                       }}
                         className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                       >
@@ -176,7 +177,7 @@ const Artist = ({setMusicQueue}) => {
                           className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
                           onClick={(e) => {
                           togglePlay(e, `recent-${index}`);
-                          handlePlay(song.albumName, index);
+                          handlePlay(song.albumName, song.albumIndex);
                         }}
                         >
                           {playIndex === `recent-${index}` ?
@@ -257,7 +258,7 @@ const Artist = ({setMusicQueue}) => {
                       onMouseLeave={() => setHoveredIndex(null)}
                       onClick={(e) => {
                       togglePlay(e, index);
-                      handlePlay(song.albumName, index)
+                      handlePlay(song.albumName, song.albumIndex)
                     }}
                       className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                     >
@@ -265,7 +266,7 @@ const Artist = ({setMusicQueue}) => {
                         className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
                         onClick={(e) => {
                         togglePlay(e, index);
-                        handlePlay(song.albumName, index)
+                        handlePlay(song.albumName, song.albumIndex)
                       }}
                       >
                         {playIndex === index ?
@@ -387,7 +388,7 @@ const Artist = ({setMusicQueue}) => {
                   onMouseLeave={() => setHoveredIndex(null)}
                   onClick={(e) => {
                     togglePlay(e, index);
-                    handlePlay(song.albumName, index);
+                    handlePlay(song.albumName, song.albumIndex);
                   }}
                   className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                 >
@@ -395,7 +396,7 @@ const Artist = ({setMusicQueue}) => {
                     className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
                     onClick={(e) => {
                       togglePlay(e, index);
-                      handlePlay(song.albumName, index);
+                      handlePlay(song.albumName, song.albumIndex);
                     }}
                   >
                     {playIndex === index ?

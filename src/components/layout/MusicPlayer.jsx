@@ -82,14 +82,16 @@ export default function MusicPlayer({ musicQueue }) {
   return (
       <>
         {musicQueue && (
-            <div className="fixed bottom-0 bg-black w-full h-[10vh] md:h-[5vw] overflow-x-hidden z-10 px-4 py-2 flex items-center justify-between transition-all">
+            <div className="hover:opacity-70 fixed bottom-0 bg-black w-full h-[10vh] md:h-[5vw] overflow-x-hidden z-10 px-4 py-2 flex items-center justify-between transition-all">
               {/* Left Section: Song Info */}
               <div className="flex items-center space-x-4 md:w-1/5 h-full">
-                <img
-                    src={currentSong?.image || "/placeHolders/placeHolderIcon.jpeg"}
-                    alt="Song Cover"
-                    className="object-cover rounded h-3/4"
-                />
+                <div className={"h-3/4"}>
+                  <img
+                  src={currentSong?.image || "/placeHolders/placeHolderIcon.jpeg"}
+                  alt="Song Cover"
+                  className="object-cover rounded h-full"
+                  />
+                </div>
                 <div>
                 <span className="text-white font-medium text-[10px]" title={currentSong?.trackTitle}>
                   {currentSong?.trackTitle.length > 30
@@ -97,9 +99,9 @@ export default function MusicPlayer({ musicQueue }) {
                     : currentSong?.trackTitle}
                 </span>
 
-                  <div className="text-gray-400 text-[8px] md:text-[10px]">
+                  <a href={`/artist/?name=${currentSong?.author}`} className="block text-gray-400 text-[8px] md:text-[10px] hover:underline">
                     {currentSong?.author}
-                  </div>
+                  </a>
                 </div>
                 <i className="fa-solid fa-plus text-[8px] md:text-xs border p-1 rounded-full text-gray-300 hover:text-white transition-all duration-300 ease-in-out"></i>
               </div>
