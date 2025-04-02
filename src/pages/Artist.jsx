@@ -320,7 +320,7 @@ const Artist = ({setMusicQueue}) => {
                 <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
                 <div className="mx-5  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                   {albums.slice(0, 5).map(album => (
-                    <div key={album.id} className="p-3 rounded hover:bg-gray-700 transition-all">
+                    <a href={`/album/?name=${album.title}`} key={album.id} className="p-3 rounded hover:bg-gray-700 transition-all hover:bg-neutral-600">
                       {/* Square Album Cover */}
                       <div className="w-full aspect-square mb-2 rounded overflow-hidden">
                         <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
@@ -329,7 +329,7 @@ const Artist = ({setMusicQueue}) => {
                       <p className="text-white truncate font-semibold">{album.title}</p>
                       {/* Album Year */}
                       <p className="text-gray-400 text-sm">{album.year}</p>
-                    </div>
+                    </a>
                   ))}
                 </div>
               </div>
@@ -452,10 +452,11 @@ const Artist = ({setMusicQueue}) => {
         return (
           <div>
             <h2 className="text-xl font-bold mb-4">Albums</h2>
-              <div className="mx-5  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <div className=" mx-5 p-0 m-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                 {albums.map(album => (
-                  <div key={album.id} className="p-3 rounded hover:bg-gray-700 transition-all">
+                  <div key={album.id} className="p-3 m-0 rounded hover:bg-gray-700 transition-all">
                     {/* Square Album Cover */}
+                    <a href={`/album/?name=${album.title}`} key={album.id} className="">
                     <div className="w-full relative aspect-square mb-2 rounded overflow-hidden">
                       <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
                       <button className="absolute right-4 top-3 cursor-pointer"
@@ -470,10 +471,10 @@ const Artist = ({setMusicQueue}) => {
                     {/* Album Title, year, # of songs */}
                     <p className="text-white font-bold">{album.title}</p>
                     <p className="text-gray-400 text-sm">{album.year} • {album.tracks} tracks</p>
+                    </a>
                   </div>
                 ))}
               </div>
-
           </div>
         );
 

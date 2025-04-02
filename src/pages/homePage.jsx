@@ -1,10 +1,9 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import spotifyData from "../assets/data/data.json";
 import podcastData from "../assets/data/podcastData.json";
 import { useNavigate } from "react-router-dom";
 import { PlayButton } from "../components/playButton.jsx";
 import isPodcast from "../isPodcast.js";
-import { useAlbum } from "../context/AlbumContext.jsx";
 import getStructuredData from "../getStructuredData.js";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 
@@ -53,7 +52,7 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
                 if (isPodcast(item)) {
                   navigate(`/podcast/?name=${item.podcastName}`);
                 } else {
-                  handleAlbumClick(item);
+                  handleAlbumClick(item.album.name);
                 }
               }}
               key={index}
@@ -137,7 +136,7 @@ function GridView({ items, handlePlay, handleAlbumClick }) {
             if (isPodcast(item)) {
               navigate(`/podcast/?name=${item.podcastName}`)
             } else {
-              handleAlbumClick(item)
+              handleAlbumClick(item.album.name)
             }
           }} key={index} className="w-full group">
             <div className="relative bg-green-300">
@@ -237,7 +236,6 @@ export default function HomePage({ setMusicQueue }) {
   const [shuffledTrendingPodcasts, setShuffledTrendingPodcasts] = useState([]);
   const [shuffledLatestEpisodes, setShuffledLatestEpisodes] = useState([]);
   const [shuffledRecommended, setShuffledRecommended] = useState([]);
-  const [, setCurrentAlbum] = useAlbum();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -281,9 +279,8 @@ export default function HomePage({ setMusicQueue }) {
     }
   };
 
-  const handleAlbumClick = (album) => {
-    setCurrentAlbum(album);
-    navigate("/album");
+  const handleAlbumClick = (name) => {
+    navigate(`/album/?name=${name}`);
   };
 
   return (
@@ -291,7 +288,7 @@ export default function HomePage({ setMusicQueue }) {
       {/* Main Grid Section */}
       <div className="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-4">
         {albums.length > 0 && albums.slice(0, 8).map((item, index) => (
-          <div key={index} className="flex items-center bg-gray-700 hover:bg-gray-600 rounded group relative" onClick={() => handleAlbumClick(item)}>
+          <div key={index} className="flex items-center bg-gray-700 hover:bg-gray-600 rounded group relative" onClick={() => handleAlbumClick(item.album.name)}>
             <img src={item.album.image} alt="Thumbnail" className="h-16 w-16 object-fit" />
             <h2 className="ml-3 p-1 text-xs font-semibold">{item.album.name}</h2>
             <button
