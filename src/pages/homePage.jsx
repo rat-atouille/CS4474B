@@ -62,7 +62,7 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
                 <img
                   src={item.album?.image ?? item.image}
                   alt="Thumbnail"
-                  className="h-36 w-full object-fit rounded"
+                  className="h-42 w-42 object-fit rounded"
                 />
                 <PlayButton 
                   onClick={(e) => {
