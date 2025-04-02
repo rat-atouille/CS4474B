@@ -5,6 +5,8 @@ export default function MusicPlayer({ musicQueue }) {
   const [rangeValue, setRangeValue] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [shuffle, setShuffle] = useState(false);
+  const [repeat, setRepeat] = useState(false);
 
   // Get current song from musicQueue (use album songs for non-podcast items)
   let currentSong;
@@ -102,7 +104,9 @@ export default function MusicPlayer({ musicQueue }) {
               {/* Center Section: Playback Controls */}
               <div className="flex flex-col text-gray-300">
                 <div className="flex justify-center items-center text-lg space-x-4">
-                  <i className="fa-solid fa-shuffle hover:text-white transition-all duration-300 ease-in-out"></i>
+                  <i
+                    onClick={() => setShuffle(!shuffle)} 
+                    className={`fa-solid fa-shuffle hover:text-white transition-all duration-300 ease-in-out ${shuffle? "text-green-500": ""}`}></i>
                   <i
                       className="fa-solid fa-backward-step hover:text-white transition-all duration-300 ease-in-out"
                       onClick={handlePrev}
@@ -111,7 +115,7 @@ export default function MusicPlayer({ musicQueue }) {
                       className={`fa-solid text-white text-2xl hover:text-white transition-all duration-300 ease-in-out ${
                           !isPlaying ? "fa-circle-play" : "fa-circle-pause"
                       }`}
-                      onClick={() => setIsPlaying(true)}
+                      onClick={() => setIsPlaying(!isPlaying)}
                   ></i>
                   <i
                       className="fa-solid fa-forward-step hover:text-white transition-all duration-300 ease-in-out"

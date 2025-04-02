@@ -165,7 +165,7 @@ function MediaSection({title, items, renderCollapsed, renderExpanded}) {
     <div className="mt-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <h2 className="font-bold tracking-wide">{title}</h2>
+          <h2 className="font-bold text-lg tracking-wide">{title}</h2>
           <button
             onClick={() => setExpanded((prev) => !prev)}
             className="ml-2 text-xl text-gray-200 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"
@@ -180,7 +180,7 @@ function MediaSection({title, items, renderCollapsed, renderExpanded}) {
         {expanded && (
           <a
             onClick={() => setShowAll((prev) => !prev)}
-            className="text-xs text-gray-300 font-semibold hover:underline cursor-pointer transition-all duration-150 ease-in-out"
+            className="text-sm text-gray-300 font-semibold hover:underline cursor-pointer transition-all duration-150 ease-in-out"
           >
             {showAll ? "Show Less" : "Show All"}
           </a>
