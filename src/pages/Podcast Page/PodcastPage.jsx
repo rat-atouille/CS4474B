@@ -21,7 +21,7 @@ import EpisodeList from "./EpisodeList.jsx";
 //   img: string
 // }
 
-function PodcastPage({setMusicQueue}) {
+function PodcastPage({setMusicQueue, musicQueue}) {
   const podcastName = new URL(window.location.href).searchParams.get("name");
   const podcast = podcastData[podcastName];
 
