@@ -20,7 +20,7 @@ export default function MusicPlayer({ musicQueue }) {
 
   // When a new musicQueue is set (i.e. a new song is clicked), reset tracker and auto-play
   useEffect(() => {
-    setCurrentSongIndex(0);
+    setCurrentSongIndex(musicQueue?.index ?? 0);
     setRangeValue(0);
     setIsPlaying(true);
   }, [musicQueue]);

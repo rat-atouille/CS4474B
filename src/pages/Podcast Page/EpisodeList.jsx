@@ -1,6 +1,4 @@
 import genericThumbnail from "../../assets/Podcast/genericThumbnail.jpg";
-import {PlayButton} from "../../components/playButton.jsx";
-import Table from "daisyui/components/table/index.js";
 import {AiFillPicture} from "react-icons/ai";
 import {useEffect, useRef} from "react";
 
@@ -71,7 +69,7 @@ function EpisodeList({episodes, handlePlay, togglePlay, playIndex}) {
         <tr onClick={(e) => {
           handlePlay(index);
           togglePlay(e, index)
-        }} className={"hover:bg-[#474747] cursor-pointer"} key={index}>
+        }} className={`hover:bg-[#474747] cursor-pointer ${index === playIndex && "text-green-500"}`} key={index}>
           <td className={"py-1.5"}><img className={"size-8"} src={episode?.image ?? genericThumbnail} alt={"Thumbnail"}/></td>
           <td className={"py-1.5"}>{episode.name}</td>
           <td className={"py-1.5"}>{formatDate(episode.releaseDate)}</td>
