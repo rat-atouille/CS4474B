@@ -13,8 +13,8 @@
       "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
     }
   ],
-  "Albums" : {
-    "Unreal Unearth: Unending" :{
+  "Albums": {
+    "Unreal Unearth: Unending": {
       "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222",
       "releaseDate": "2024-12-06",
       "songs": [
@@ -71,36 +71,43 @@
       ]
     }
   },
-  "Podcasts": [
-    "TED Talks Daily",
-    "Matt and Shane's Secret Podcast"
-  ],
-  "Playlist" : {
-    "Soft" : [
+  "Podcasts": {
+    "TED Talks Daily":{
+      "image": "https://i.scdn.co/image/ab6765630000ba8a1eef8dcabec3dca77ace07c8"
+    },
+    "Matt and Shane's Secret Podcast":{
+      "image": "https://i.scdn.co/image/ab6765630000ba8af45e40b00c170103a0d74a46"
+    }
+  },
+  "Playlist": {
+    "Soft": [
       {
         "name": "K.",
         "artist": "Cigarettes After Sex",
         "durationMs": 319560,
         "image": "https://i.scdn.co/image/ab67616d0000b273dfed999f959177dfc4f33cdc"
-      }, {
+      },
+      {
         "name": "BIRDS OF A FEATHER",
         "artist": "Billie Ellish",
         "durationMs": 210373,
         "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
-      }, {
-          "name": "Fortnight (feat. Post Malone)",
-          "artist": "Taylor Swift",
-          "durationMs": 228965,
-          "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+      },
+      {
+        "name": "Fortnight (feat. Post Malone)",
+        "artist": "Taylor Swift",
+        "durationMs": 228965,
+        "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
       }
     ],
-    "Workout" : [
+    "Workout": [
       {
         "name": "OKLOSER",
         "artist": "Doja Cat",
         "durationMs": 169053,
         "image": "https://i.scdn.co/image/ab67616d0000b273cf5685eced152b546f7833ce"
-      },          {
+      },
+      {
         "name": "Paint The Town Red",
         "artist": "Doja Cat",
         "durationMs": 230480,
@@ -108,9 +115,9 @@
       }
     ]
   },
-  "Artist" : {
-    "Billie Ellish" : {
-      "image": "https://i.scdn.co/image/ab6761610000e5eb4a21b4760d2ecb7b0dcdc8da",
+  "Artist": {
+    "Billie Ellish": {
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4a21b4760d2ecb7b0dcdc8da"
     }
-  }   
+  }
 }
