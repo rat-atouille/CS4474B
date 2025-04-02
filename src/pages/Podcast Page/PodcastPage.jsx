@@ -1,6 +1,5 @@
 import Tag from "./Tag.jsx";
 import Button from "./Button.jsx";
-import episodeGrid from "./EpisodeGrid.jsx";
 import React, {useState, useRef, useEffect} from "react";
 import Grade from 'grade-js'
 import {IoIosArrowDown, IoIosArrowUp} from "react-icons/io";
@@ -81,6 +80,22 @@ function PodcastPage() {
     }, 500)
   }, []);
 
+  useEffect(() => {
+    const handleClick = (event) => {
+      if (event.target.closest('.ignore-click')) {
+        return; // Do nothing if click is inside .ignore-click
+      }
+      setShowViewDropdown(false);
+    };
+
+    window.addEventListener('click', handleClick);
+
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener('click', handleClick);
+    };
+  }, []);
+
   return (
     <div className="pb-7 bg-[#212121]">
       {/*Top section*/}
@@ -89,7 +104,7 @@ function PodcastPage() {
         <section className={"justify-end flex flex-col gap-2"}>
           <div className={"flex gap-2 content-center line-clamp-1"}>
             <div>Podcast</div>
-            <div>{podcast.tags?.map(tag => <Tag key={tag} tag={tag}></Tag>)}</div>
+            <div className={"flex gap-1.5"}>{podcast.genres?.map(tag => <Tag key={tag} tag={tag}></Tag>)}</div>
           </div>
           <div className={"text-4xl font-sans font-bold italic line-clamp-2"}>{podcastName}</div>
           <div className={"text-xl font-bold line-clamp-1"}>{podcast.publisher}</div>
@@ -151,8 +166,9 @@ function PodcastPage() {
 
             <div className="relative select-none cursor-pointer ml-8">
               <FaList size={"30"} onClick={() => setShowViewDropdown(!showViewDropdown)}
-                      className="text-gray-400 text-lg hover:bg-stone-700 p-1 rounded-lg shadow-2xl"/>
-              <ul hidden={showViewDropdown} className={"absolute w-36 shadow-2xl bg-[#343434] right-4 z-10 rounded"}>
+                      className="text-gray-400 text-lg hover:bg-stone-700 p-1 rounded-lg shadow-2xl ignore-click"/>
+              <ul hidden={!showViewDropdown}
+                  className={"absolute w-36 shadow-2xl bg-[#343434] right-4 z-10 rounded ignore-click"}>
                 {(dropdownViewButtons.map((item, index) =>
                   <li className={"flex items-center gap-2 p-2 hover:bg-stone-700 active:bg-stone-800 rounded-lg"}
                       key={index} onClick={() => setView(item.text)}>
