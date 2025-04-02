@@ -7,10 +7,11 @@ import { FaPlay } from "react-icons/fa";
 
 // Import the data from the specified path
 import data from "../assets/data/data.json";
+import getStructuredData from "../getStructuredData.js";
 
 // navigate(`/artist/?name=${item.artistName}`);
 
-const Artist = () => {
+const Artist = ({setMusicQueue}) => {
   const [activeTab, setActiveTab] = useState('Home');
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [playIndex, setPlayIndex] = useState(null);
@@ -36,10 +37,10 @@ const Artist = () => {
         key => key.toLowerCase() === artistName?.toLowerCase()
       );
       const artist = data[artistKey];
-      
+
       if (artist) {
         console.log("Loaded artist:", artistKey, artist);
-        
+
         // Set artist info
         setArtistData({
           name: artistKey,
@@ -69,7 +70,8 @@ const Artist = () => {
               title: song.name,
               plays: formatNumber(Math.floor(Math.random() * 10000000)), // Random number of plays for demo
               duration: formatDuration(song.durationMs),
-              image: song.image || album.image
+              image: song.image || album.image,
+              albumName: album.name
             });
           });
         });
@@ -95,7 +97,7 @@ const Artist = () => {
     const seconds = Math.floor((ms % 60000) / 1000);
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
-  
+
   const toggleLike = (e, songId) => {
     e.stopPropagation(); // Prevent triggering the parent div's onClick
     if (likedSongs.includes(songId)) {
@@ -122,7 +124,15 @@ const Artist = () => {
       setPlayIndex(index);
     }
   };
-  
+
+  const handlePlay = (name, index) => {
+    if (typeof setMusicQueue === 'function') {
+      setMusicQueue(getStructuredData("album", name, index));
+    } else {
+      console.error('setMusicQueue is not a function');
+    }
+  };
+
   // Tab content rendering
   const renderTabContent = () => {
     if (!artistData) {
@@ -143,24 +153,30 @@ const Artist = () => {
                       key={song.id}
                       onMouseEnter={() => setHoveredIndex(`recent-${index}`)}
                       onMouseLeave={() => setHoveredIndex(null)}
-                      onClick={(e) => togglePlay(e, `recent-${index}`)}
+                      onClick={(e) => {
+                        togglePlay(e, `recent-${index}`);
+                        handlePlay(song.albumName, index);
+                      }}
                       className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                     >
-                      <div 
+                      <div
                         className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
-                        onClick={(e) => togglePlay(e, `recent-${index}`)}
+                        onClick={(e) => {
+                          togglePlay(e, `recent-${index}`);
+                          handlePlay(song.albumName, index);
+                        }}
                       >
-                        {playIndex === `recent-${index}` ? 
-                          <BsSoundwave className="text-green-500" /> : 
+                        {playIndex === `recent-${index}` ?
+                          <BsSoundwave className="text-green-500" /> :
                           (hoveredIndex === `recent-${index}` ? <IoPlay className="text-lg" /> : index + 1)
-                        }                        
+                        }
                       </div>
 
                       {/* Song image */}
                       <div className="w-12 h-12 mr-3 overflow-hidden rounded">
                         <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
                       </div>
-                      
+
                       {/* Song details */}
                       <div className="flex-1">
                         <p className={`${playIndex === `recent-${index}` ? 'text-green-500' : 'text-white'}`}>
@@ -170,12 +186,12 @@ const Artist = () => {
                       </div>
 
                       {/* Liked song */}
-                      <div 
+                      <div
                         className="text-gray-400 mr-8 cursor-pointer"
                         onClick={(e) => toggleLike(e, song.id)}
                       >
-                        {likedSongs.includes(song.id) ? 
-                          <IoHeart className="text-red-500" /> : 
+                        {likedSongs.includes(song.id) ?
+                          <IoHeart className="text-red-500" /> :
                           (hoveredIndex === `recent-${index}` ? <IoHeartOutline /> : null)
                         }
                       </div>
@@ -183,7 +199,7 @@ const Artist = () => {
                       {/* Duration and more options */}
                       <div className="text-gray-400 mr-17">{song.duration}</div>
                       {hoveredIndex === `recent-${index}` && (
-                        <div 
+                        <div
                           className="absolute right-10 text-gray-400 cursor-pointer"
                           onClick={(e) => e.stopPropagation()}
                         >
@@ -214,24 +230,30 @@ const Artist = () => {
                     key={song.id}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
-                    onClick={(e) => togglePlay(e, index)}
+                    onClick={(e) => {
+                      togglePlay(e, index);
+                      handlePlay(song.albumName, index)
+                    }}
                     className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                   >
-                    <div 
+                    <div
                       className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
-                      onClick={(e) => togglePlay(e, index)}
+                      onClick={(e) => {
+                        togglePlay(e, index);
+                        handlePlay(song.albumName, index)
+                      }}
                     >
-                      {playIndex === index ? 
-                        <BsSoundwave className="text-green-500" /> : 
+                      {playIndex === index ?
+                        <BsSoundwave className="text-green-500" /> :
                         (hoveredIndex === index ? <IoPlay className="text-lg" /> : index + 1)
-                      }                        
+                      }
                     </div>
 
                     {/* Song image */}
                     <div className="w-12 h-12 mr-3 overflow-hidden rounded">
                       <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
                     </div>
-                    
+
                     {/* Song details */}
                     <div className="flex-1">
                       <p className={`${playIndex === index ? 'text-green-500' : 'text-white'}`}>
@@ -241,12 +263,12 @@ const Artist = () => {
                     </div>
 
                     {/* Liked song */}
-                    <div 
+                    <div
                       className="text-gray-400 mr-8 cursor-pointer"
                       onClick={(e) => toggleLike(e, song.id)}
                     >
-                      {likedSongs.includes(song.id) ? 
-                        <IoHeart className="text-red-500" /> : 
+                      {likedSongs.includes(song.id) ?
+                        <IoHeart className="text-red-500" /> :
                         (hoveredIndex === index ? <IoHeartOutline /> : null)
                       }
                     </div>
@@ -254,7 +276,7 @@ const Artist = () => {
                     {/* Duration and more options */}
                     <div className="text-gray-400 mr-17">{song.duration}</div>
                     {hoveredIndex === index && (
-                      <div 
+                      <div
                         className="absolute right-10 text-gray-400 cursor-pointer"
                         onClick={(e) => e.stopPropagation()}
                       >
@@ -265,7 +287,7 @@ const Artist = () => {
                 ))}
               </div>
             </div>
-            
+
             <div className="ml-3 mr-3">
               <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -282,7 +304,7 @@ const Artist = () => {
             </div>
           </div>
         );
-      
+
       case 'Songs':
         return (
           <div>
@@ -300,7 +322,7 @@ const Artist = () => {
                 </div>
               </div>
             </div>
-            
+
             <div>
               <div className='flex p-0 justify-between'>
                 <h2 className="text-xl font-bold">All Songs</h2>
@@ -319,24 +341,30 @@ const Artist = () => {
                     key={song.id}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
-                    onClick={(e) => togglePlay(e, index)}
+                    onClick={(e) => {
+                      togglePlay(e, index);
+                      handlePlay(song.albumName, index);
+                    }}
                     className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                   >
-                    <div 
+                    <div
                       className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
-                      onClick={(e) => togglePlay(e, index)}
+                      onClick={(e) => {
+                        togglePlay(e, index);
+                        handlePlay(song.albumName, index);
+                      }}
                     >
-                      {playIndex === index ? 
-                        <BsSoundwave className="text-green-500" /> : 
+                      {playIndex === index ?
+                        <BsSoundwave className="text-green-500" /> :
                         (hoveredIndex === index ? <IoPlay className="text-lg" /> : index + 1)
-                      }                        
+                      }
                     </div>
 
                     {/* Song image */}
                     <div className="w-12 h-12 mr-3 overflow-hidden rounded">
                       <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
                     </div>
-                    
+
                     {/* Song details */}
                     <div className="flex-1">
                       <p className={`${playIndex === index ? 'text-green-500' : 'text-white'}`}>
@@ -346,12 +374,12 @@ const Artist = () => {
                     </div>
 
                     {/* Liked song */}
-                    <div 
+                    <div
                       className="text-gray-400 mr-8 cursor-pointer"
                       onClick={(e) => toggleLike(e, song.id)}
                     >
-                      {likedSongs.includes(song.id) ? 
-                        <IoHeart className="text-red-500" /> : 
+                      {likedSongs.includes(song.id) ?
+                        <IoHeart className="text-red-500" /> :
                         (hoveredIndex === index ? <IoHeartOutline /> : null)
                       }
                     </div>
@@ -359,7 +387,7 @@ const Artist = () => {
                     {/* Duration and more options */}
                     <div className="text-gray-400 mr-17">{song.duration}</div>
                     {hoveredIndex === index && (
-                      <div 
+                      <div
                         className="absolute right-10 text-gray-400 cursor-pointer"
                         onClick={(e) => e.stopPropagation()}
                       >
@@ -372,7 +400,7 @@ const Artist = () => {
             </div>
           </div>
         );
-      
+
       case 'Albums':
         return (
           <div>
@@ -399,7 +427,7 @@ const Artist = () => {
             </div>
           </div>
         );
-      
+
       case 'Singles & EPs':
         return (
           <div>
@@ -455,7 +483,7 @@ const Artist = () => {
         return <div>Select a tab</div>;
     }
   };
-  
+
   return (
     <div className="bg-[#212121] text-white w-full">
       {/* Header with artist info */}
@@ -470,7 +498,7 @@ const Artist = () => {
             <h1 className="text-4xl font-bold">{artistData.name}</h1>
             <p className="text-sm mt-2 text-[#b3b3b3] select-none">{artistData.monthlyListeners} monthly listeners</p>
           </div>
-          
+
           {/* Follow button */}
           <button className="hover:scale-110 transition-transform duration-150 hover:border-white hover:text-white
             text-[#b3b3b3] absolute right-37 bottom-10 pl-4 pr-4 pt-1 pb-1 border-2 rounded-3xl border-solid border-[#b3b3b3] z-10 cursor-pointer"
@@ -484,7 +512,7 @@ const Artist = () => {
             onClick={() => setShuffle(!shuffle)}
           >
             <FaShuffle size={25}/>
-          </button>        
+          </button>
 
           {/* Play button */}
           <button className="hover:scale-110 transition-transform duration-150 
@@ -494,9 +522,9 @@ const Artist = () => {
               <FaPlay />
             </span>
           </button>
-          
+
           {/* Gradient overlay */}
-          <div 
+          <div
             className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"
             style={{
               backgroundImage: `url(${artistData.profileImage})`,
@@ -508,13 +536,13 @@ const Artist = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
         </div>
       )}
-      
+
       {/* Navigation Tabs */}
       <div className="px-6 border-b border-gray-800">
         <div className="flex space-x-6">
           {['Home', 'Songs', 'Singles & EPs', 'Albums', 'About'].map(tab => (
-            <button 
-              key={tab} 
+            <button
+              key={tab}
               onClick={() => setActiveTab(tab)}
               className={`py-4 px-2 relative ${activeTab === tab ? 'text-white' : 'text-gray-400'}`}
             >
@@ -526,7 +554,7 @@ const Artist = () => {
           ))}
         </div>
       </div>
-      
+
       {/* Content Area */}
       <div className="p-6">
         {renderTabContent()}
