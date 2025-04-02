@@ -10,17 +10,19 @@ export default function MusicPlayer({ musicQueue }) {
   const [shuffle, setShuffle] = useState(false);
   const [repeat, setRepeat] = useState(false);
 
-  // Get current song from musicQueue (use album songs for non-podcast items)
-  let currentSong;
-  if (!isPodcast(musicQueue)) {
-    currentSong = musicQueue?.album?.songs[currentSongIndex];
-  } else {
-    currentSong = musicQueue?.episodes[currentSongIndex];
-  }
+  // Get current song from musicQueue (use album tracks for non-podcast items)
+  let currentSong = musicQueue?.structuredData[0]?.tracks[currentSongIndex];
+
+  // Convert trackDuration (e.g., "2:06") to total seconds
+  const convertDurationToSeconds = (duration) => {
+    const [minutes, seconds] = duration.split(':').map(Number);
+    return minutes * 60 + seconds;
+  };
 
   // When a new musicQueue is set (i.e. a new song is clicked), reset tracker and auto-play
   useEffect(() => {
-    setCurrentSongIndex(musicQueue?.index ?? 0);
+    setCurrentSongIndex(musicQueue?.index || 0);
+    console.log(musicQueue)
     setRangeValue(0);
     setIsPlaying(true);
   }, [musicQueue]);
@@ -31,7 +33,7 @@ export default function MusicPlayer({ musicQueue }) {
     if (isPlaying) {
       interval = setInterval(() => {
         setRangeValue(prev => {
-          const maxDuration = currentSong?.durationMs / 1000;
+          const maxDuration = currentSong?.trackDuration ? convertDurationToSeconds(currentSong.trackDuration) : 0;
           if (prev >= maxDuration) {
             setRangeValue(0);
             return maxDuration;
@@ -41,11 +43,9 @@ export default function MusicPlayer({ musicQueue }) {
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [isPlaying, currentSong?.durationMs]);
+  }, [isPlaying, currentSong?.trackDuration]);
 
-  const albumLength = !isPodcast(musicQueue)
-      ? musicQueue?.album?.songs.length
-      : musicQueue?.episodes.length;
+  const albumLength = musicQueue?.structuredData[0]?.tracks.length;
 
   const handleNext = () => {
     setCurrentSongIndex(prevIndex => (prevIndex + 1) % albumLength);
@@ -62,12 +62,12 @@ export default function MusicPlayer({ musicQueue }) {
   const toggleShuffle = () => {
     setIsShuffling((prev) => !prev);
   }
-  
+
   const toggleLoop = () => {
     setIsRepeating((prev) => !prev);
   }
 
-  const totalDuration = currentSong?.durationMs / 1000 || 195;
+  const totalDuration = currentSong ? convertDurationToSeconds(currentSong.trackDuration) : 195;
   const minutes = Math.floor(rangeValue / 60);
   const seconds = Math.floor(rangeValue % 60);
   const timeFormatted = `${minutes.toString().padStart(2, '0')}:${seconds
@@ -88,27 +88,19 @@ export default function MusicPlayer({ musicQueue }) {
               {/* Left Section: Song Info */}
               <div className="flex items-center space-x-4 md:w-1/5 h-full">
                 <img
-                    src={
-                        currentSong?.image ||
-                        (!isPodcast(musicQueue)
-                            ? musicQueue.album?.image
-                            : musicQueue.image) ||
-                        "/placeHolders/placeHolderIcon.jpeg"
-                    }
+                    src={currentSong?.image || "/placeHolders/placeHolderIcon.jpeg"}
                     alt="Song Cover"
                     className="object-cover rounded h-3/4"
                 />
                 <div>
-                <span className="text-white font-medium text-[10px] md:text-[12px]" title={currentSong?.name}>
-                  {currentSong?.name.length > 30 
-                    ? `${currentSong.name.substring(0, 30)}...` 
-                    : currentSong?.name}
+                <span className="text-white font-medium text-[10px]" title={currentSong?.trackTitle}>
+                  {currentSong?.trackTitle.length > 30
+                    ? `${currentSong.trackTitle.substring(0, 30)}...`
+                    : currentSong?.trackTitle}
                 </span>
 
                   <div className="text-gray-400 text-[8px] md:text-[10px]">
-                    {!isPodcast(musicQueue)
-                        ? musicQueue.artist
-                        : musicQueue.publisher}
+                    {currentSong?.author}
                   </div>
                 </div>
                 <i className="fa-solid fa-plus text-[8px] md:text-xs border p-1 rounded-full text-gray-300 hover:text-white transition-all duration-300 ease-in-out"></i>
@@ -128,7 +120,7 @@ export default function MusicPlayer({ musicQueue }) {
                       className={`fa-solid text-white text-2xl hover:text-white transition-all duration-300 ease-in-out ${
                           !isPlaying ? "fa-circle-play" : "fa-circle-pause"
                       }`}
-                      onClick={() => setIsPlaying(!isPlaying)}
+                      onClick={() => setIsPlaying(true)}
                   ></i>
                   <i
                       className="fa-solid fa-forward-step hover:text-white transition-all duration-300 ease-in-out"
