@@ -316,7 +316,7 @@ const Artist = ({setMusicQueue}) => {
 
             </div>
 
-            <div className="ml-3 mr-3">
+            <div className="">
                 <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
                 <div className="mx-5  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                   {albums.slice(0, 5).map(album => (
