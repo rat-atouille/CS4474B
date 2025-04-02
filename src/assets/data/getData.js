@@ -12,7 +12,7 @@ const ALBUMS_LIMIT = "5";
 const SONGS_LIMIT = "7";
 
 // The search query that we use to get the ARTISTS. Details found here: https://developer.spotify.com/documentation/web-api/reference/search
-const QUERY = "Billie Eilish";
+const QUERY = "Doja Cat";
 
 
 const finalJson = {};
