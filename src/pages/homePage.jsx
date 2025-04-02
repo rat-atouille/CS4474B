@@ -134,7 +134,7 @@ function GridView({ items, handlePlay, handleAlbumClick }) {
               handleAlbumClick(item)
             }
           }} key={index} className="w-full group">
-            <div className="relative">
+            <div className="relative bg-green-300">
               <img
                 src={item.album?.image ?? item.image}
                 alt="Thumbnail"

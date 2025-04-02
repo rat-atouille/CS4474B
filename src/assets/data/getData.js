@@ -7,12 +7,12 @@ import axios from 'axios';
 // BE CAREFUL: albums are pulled from artists, songs pulled from albums. So for 1 artist, you'll get
 // ALBUMS_LIMIT number of albums, and for 1 album, you'll get SONGS_LIMIT number of songs. exponential growth!
 // API key is not infinite so keep that in mind. Recommended: ARTISTS > ALBUMS
-const ARTISTS_LIMIT = "5";
+const ARTISTS_LIMIT = "3";
 const ALBUMS_LIMIT = "5";
-const SONGS_LIMIT = "5";
+const SONGS_LIMIT = "7";
 
 // The search query that we use to get the ARTISTS. Details found here: https://developer.spotify.com/documentation/web-api/reference/search
-const QUERY = "all"
+const QUERY = "Billie Eilish";
 
 
 const finalJson = {};
@@ -100,7 +100,7 @@ async function getArtistData(access_token) {
   await getArtistData(access_token);
 
   console.log(finalJson)
-  writeFileSync("data.json", JSON.stringify(finalJson));
+  writeFileSync("newData.json", JSON.stringify(finalJson));
 })();
 
 

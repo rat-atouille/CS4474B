@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useAlbum } from '../context/AlbumContext';
-import { IoPlay } from "react-icons/io5";
+import { IoPlay, IoPause, IoHeart, IoHeartOutline } from "react-icons/io5";
 import { BsSoundwave } from "react-icons/bs";
 
 export default function Album({ setMusicQueue }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [playIndex, setPlayIndex] = useState(null);
   const [currentAlbum] = useAlbum();
+  const [likedSongs, setLikedSongs] = useState([]);
 
   if (!currentAlbum) return <div className="flex justify-center items-center h-screen text-5xl text-red-500 font-extrabold tracking-widest">ERROR 404</div>;
 
@@ -40,6 +41,14 @@ export default function Album({ setMusicQueue }) {
     }
   };
   
+  const toggleLike = (e, songId) => {
+    e.stopPropagation(); // Prevent triggering the parent div's onClick
+    if (likedSongs.includes(songId)) {
+      setLikedSongs(likedSongs.filter(id => id !== songId));
+    } else {
+      setLikedSongs([...likedSongs, songId]);
+    }
+  };
 
   // Render tab content
   const renderTabContent = () => (
@@ -92,14 +101,16 @@ export default function Album({ setMusicQueue }) {
               <p className="hidden md:block text-sm">1,000,000</p>
               <div className="text-gray-400 mr-7 text-sm">{convertToMMSS(song.durationMs)}</div>
 
-              {hoveredIndex === index && (
-                <>
-                  <div className="absolute right-18 md:right-16 lg:right-20 top-1/2 transform -translate-y-3/5 text-gray-400 cursor-pointer">
-                    <i className="fa-solid fa-plus text-[6px] border-1 p-1 rounded-full hover:text-white transition-all duration-300 ease-in-out"></i>
-                  </div>
-                  <div className="absolute right-0 text-gray-400 text-xs cursor-pointer">•••</div>
-                </>
-              )}
+              {/* Liked song */}
+              <div 
+                className="text-gray-400 mr-8 cursor-pointer"
+                onClick={(e) => toggleLike(e, song.id)}
+              >
+                {likedSongs.includes(song.id) ? 
+                  <IoHeart className="text-red-500" /> : 
+                  (hoveredIndex === `recent-${index}` ? <IoHeartOutline /> : null)
+                }
+              </div>
             </div>
           </div>
         ))}

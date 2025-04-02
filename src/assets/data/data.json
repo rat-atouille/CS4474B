@@ -1,525 +1,1541 @@
 {
-  "The All-American Rejects": {
-    "followers": 2799170,
-    "genres": [
-      "pop punk",
-      "emo",
-      "emo pop"
-    ],
-    "image": "https://i.scdn.co/image/ab6761610000e5ebb18bd56871c0ce8c8d6c8fa7",
+  "Hozier": {
+    "followers": 8636201,
+    "genres": [],
+    "image": "https://i.scdn.co/image/ab6761610000e5ebad85a585103dfc2f3439119a",
     "albums": [
       {
-        "name": "Kids In The Street (Deluxe Version)",
-        "image": "https://i.scdn.co/image/ab67616d0000b27365428c7d90b9ae9e0c710388",
-        "releaseDate": "2012-01-01",
+        "name": "Unreal Unearth: Unending",
+        "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222",
+        "releaseDate": "2024-12-06",
         "songs": [
           {
-            "name": "Someday's Gone",
-            "durationMs": 205080,
-            "image": "https://i.scdn.co/image/ab67616d0000b27365428c7d90b9ae9e0c710388"
+            "name": "Nobody's Soldier",
+            "durationMs": 237200,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
           },
           {
-            "name": "Beekeeper’s Daughter",
-            "durationMs": 213520,
-            "image": "https://i.scdn.co/image/ab67616d0000b27365428c7d90b9ae9e0c710388"
+            "name": "July",
+            "durationMs": 214426,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
           },
           {
-            "name": "Fast & Slow",
-            "durationMs": 240386,
-            "image": "https://i.scdn.co/image/ab67616d0000b27365428c7d90b9ae9e0c710388"
+            "name": "That You Are",
+            "durationMs": 256519,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
           },
           {
-            "name": "Heartbeat Slowing Down",
-            "durationMs": 284280,
-            "image": "https://i.scdn.co/image/ab67616d0000b27365428c7d90b9ae9e0c710388"
+            "name": "Swan Upon Leda",
+            "durationMs": 222026,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
           },
           {
-            "name": "Walk Over Me",
-            "durationMs": 238720,
-            "image": "https://i.scdn.co/image/ab67616d0000b27365428c7d90b9ae9e0c710388"
+            "name": "Hymn to Virgil",
+            "durationMs": 202937,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+          },
+          {
+            "name": "Too Sweet",
+            "durationMs": 251424,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+          },
+          {
+            "name": "Wildflower and Barley (feat. Allison Russell)",
+            "durationMs": 222177,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+          },
+          {
+            "name": "Empire Now",
+            "durationMs": 178196,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+          },
+          {
+            "name": "Fare Well",
+            "durationMs": 188454,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+          },
+          {
+            "name": "Through Me (The Flood)",
+            "durationMs": 227746,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
           }
         ]
       },
       {
-        "name": "Kids In The Street",
-        "image": "https://i.scdn.co/image/ab67616d0000b273342eeefed9d0c9472cc71b33",
-        "releaseDate": "2012-01-01",
+        "name": "Unreal Unearth: Unaired",
+        "image": "https://i.scdn.co/image/ab67616d0000b2735aa29751874ca4ba06da8877",
+        "releaseDate": "2024-08-19",
         "songs": [
           {
-            "name": "Someday's Gone",
-            "durationMs": 205080,
-            "image": "https://i.scdn.co/image/ab67616d0000b273342eeefed9d0c9472cc71b33"
+            "name": "Nobody's Soldier",
+            "durationMs": 237200,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735aa29751874ca4ba06da8877"
           },
           {
-            "name": "Beekeeper’s Daughter",
-            "durationMs": 213520,
-            "image": "https://i.scdn.co/image/ab67616d0000b273342eeefed9d0c9472cc71b33"
+            "name": "July",
+            "durationMs": 214426,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735aa29751874ca4ba06da8877"
           },
           {
-            "name": "Fast & Slow",
-            "durationMs": 240386,
-            "image": "https://i.scdn.co/image/ab67616d0000b273342eeefed9d0c9472cc71b33"
+            "name": "That You Are",
+            "durationMs": 256519,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735aa29751874ca4ba06da8877"
           },
           {
-            "name": "Heartbeat Slowing Down",
-            "durationMs": 284280,
-            "image": "https://i.scdn.co/image/ab67616d0000b273342eeefed9d0c9472cc71b33"
+            "name": "Too Sweet",
+            "durationMs": 251424,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735aa29751874ca4ba06da8877"
           },
           {
-            "name": "Walk Over Me",
-            "durationMs": 238720,
-            "image": "https://i.scdn.co/image/ab67616d0000b273342eeefed9d0c9472cc71b33"
+            "name": "Wildflower and Barley (feat. Allison Russell)",
+            "durationMs": 222177,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735aa29751874ca4ba06da8877"
+          },
+          {
+            "name": "Empire Now",
+            "durationMs": 178196,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735aa29751874ca4ba06da8877"
+          },
+          {
+            "name": "Fare Well",
+            "durationMs": 188454,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735aa29751874ca4ba06da8877"
+          },
+          {
+            "name": "De Selby (Part 1)",
+            "durationMs": 219693,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735aa29751874ca4ba06da8877"
+          },
+          {
+            "name": "De Selby (Part 2)",
+            "durationMs": 227826,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735aa29751874ca4ba06da8877"
+          },
+          {
+            "name": "First Time",
+            "durationMs": 233173,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735aa29751874ca4ba06da8877"
           }
         ]
       },
       {
-        "name": "When The World Comes Down",
-        "image": "https://i.scdn.co/image/ab67616d0000b2738f6b4035c82eb9cf42e9d8d7",
-        "releaseDate": "2008-01-01",
+        "name": "Unreal Unearth",
+        "image": "https://i.scdn.co/image/ab67616d0000b273a63bdfd4a6e9b3c9f4f2e91d",
+        "releaseDate": "2023-08-18",
         "songs": [
           {
-            "name": "I Wanna",
-            "durationMs": 208600,
-            "image": "https://i.scdn.co/image/ab67616d0000b2738f6b4035c82eb9cf42e9d8d7"
+            "name": "De Selby (Part 1)",
+            "durationMs": 219693,
+            "image": "https://i.scdn.co/image/ab67616d0000b273a63bdfd4a6e9b3c9f4f2e91d"
           },
           {
-            "name": "Fallin' Apart",
-            "durationMs": 206986,
-            "image": "https://i.scdn.co/image/ab67616d0000b2738f6b4035c82eb9cf42e9d8d7"
+            "name": "De Selby (Part 2)",
+            "durationMs": 227826,
+            "image": "https://i.scdn.co/image/ab67616d0000b273a63bdfd4a6e9b3c9f4f2e91d"
           },
           {
-            "name": "Damn Girl",
-            "durationMs": 231466,
-            "image": "https://i.scdn.co/image/ab67616d0000b2738f6b4035c82eb9cf42e9d8d7"
+            "name": "First Time",
+            "durationMs": 233173,
+            "image": "https://i.scdn.co/image/ab67616d0000b273a63bdfd4a6e9b3c9f4f2e91d"
           },
           {
-            "name": "Gives You Hell",
-            "durationMs": 213106,
-            "image": "https://i.scdn.co/image/ab67616d0000b2738f6b4035c82eb9cf42e9d8d7"
+            "name": "Francesca",
+            "durationMs": 270066,
+            "image": "https://i.scdn.co/image/ab67616d0000b273a63bdfd4a6e9b3c9f4f2e91d"
           },
           {
-            "name": "Mona Lisa (When The World Comes Down)",
-            "durationMs": 194800,
-            "image": "https://i.scdn.co/image/ab67616d0000b2738f6b4035c82eb9cf42e9d8d7"
+            "name": "I, Carrion (Icarian)",
+            "durationMs": 196613,
+            "image": "https://i.scdn.co/image/ab67616d0000b273a63bdfd4a6e9b3c9f4f2e91d"
+          },
+          {
+            "name": "Eat Your Young",
+            "durationMs": 243946,
+            "image": "https://i.scdn.co/image/ab67616d0000b273a63bdfd4a6e9b3c9f4f2e91d"
+          },
+          {
+            "name": "Damage Gets Done (feat. Brandi Carlile)",
+            "durationMs": 268653,
+            "image": "https://i.scdn.co/image/ab67616d0000b273a63bdfd4a6e9b3c9f4f2e91d"
+          },
+          {
+            "name": "Who We Are",
+            "durationMs": 245666,
+            "image": "https://i.scdn.co/image/ab67616d0000b273a63bdfd4a6e9b3c9f4f2e91d"
+          },
+          {
+            "name": "Son of Nyx",
+            "durationMs": 199013,
+            "image": "https://i.scdn.co/image/ab67616d0000b273a63bdfd4a6e9b3c9f4f2e91d"
+          },
+          {
+            "name": "All Things End",
+            "durationMs": 216693,
+            "image": "https://i.scdn.co/image/ab67616d0000b273a63bdfd4a6e9b3c9f4f2e91d"
           }
         ]
       },
       {
-        "name": "When The World Comes Down (International Version)",
-        "image": "https://i.scdn.co/image/ab67616d0000b2738ee0a80b00d2c3c8c7a3ee55",
-        "releaseDate": "2008",
+        "name": "Wasteland, Baby! (Special Edition)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2737a94b104abe524434e70a759",
+        "releaseDate": "2019-03-01",
         "songs": [
           {
-            "name": "I Wanna",
-            "durationMs": 208600,
-            "image": "https://i.scdn.co/image/ab67616d0000b2738ee0a80b00d2c3c8c7a3ee55"
+            "name": "Nina Cried Power (feat. Mavis Staples)",
+            "durationMs": 225306,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737a94b104abe524434e70a759"
           },
           {
-            "name": "Fallin' Apart",
-            "durationMs": 206986,
-            "image": "https://i.scdn.co/image/ab67616d0000b2738ee0a80b00d2c3c8c7a3ee55"
+            "name": "Almost (Sweet Music)",
+            "durationMs": 217480,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737a94b104abe524434e70a759"
           },
           {
-            "name": "Damn Girl",
-            "durationMs": 231466,
-            "image": "https://i.scdn.co/image/ab67616d0000b2738ee0a80b00d2c3c8c7a3ee55"
+            "name": "Movement",
+            "durationMs": 237800,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737a94b104abe524434e70a759"
           },
           {
-            "name": "Gives You Hell",
-            "durationMs": 213106,
-            "image": "https://i.scdn.co/image/ab67616d0000b2738ee0a80b00d2c3c8c7a3ee55"
+            "name": "No Plan",
+            "durationMs": 331013,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737a94b104abe524434e70a759"
           },
           {
-            "name": "Mona Lisa (When The World Comes Down)",
-            "durationMs": 194800,
-            "image": "https://i.scdn.co/image/ab67616d0000b2738ee0a80b00d2c3c8c7a3ee55"
+            "name": "Nobody",
+            "durationMs": 210573,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737a94b104abe524434e70a759"
+          },
+          {
+            "name": "To Noise Making (Sing)",
+            "durationMs": 206920,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737a94b104abe524434e70a759"
+          },
+          {
+            "name": "As It Was",
+            "durationMs": 207653,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737a94b104abe524434e70a759"
+          },
+          {
+            "name": "Shrike",
+            "durationMs": 298880,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737a94b104abe524434e70a759"
+          },
+          {
+            "name": "Talk",
+            "durationMs": 206546,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737a94b104abe524434e70a759"
+          },
+          {
+            "name": "Be",
+            "durationMs": 289066,
+            "image": "https://i.scdn.co/image/ab67616d0000b2737a94b104abe524434e70a759"
           }
         ]
       },
       {
-        "name": "Move Along (Deluxe Edition)",
-        "image": "https://i.scdn.co/image/ab67616d0000b273beb649016c1174ff8262d2f4",
-        "releaseDate": "2006-01-01",
+        "name": "Wasteland, Baby!",
+        "image": "https://i.scdn.co/image/ab67616d0000b2735795e01c151ba5a8ce4bd295",
+        "releaseDate": "2019-03-01",
         "songs": [
           {
-            "name": "Dirty Little Secret",
-            "durationMs": 193653,
-            "image": "https://i.scdn.co/image/ab67616d0000b273beb649016c1174ff8262d2f4"
+            "name": "Nina Cried Power (feat. Mavis Staples)",
+            "durationMs": 225306,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735795e01c151ba5a8ce4bd295"
           },
           {
-            "name": "Stab My Back",
-            "durationMs": 189306,
-            "image": "https://i.scdn.co/image/ab67616d0000b273beb649016c1174ff8262d2f4"
+            "name": "Almost (Sweet Music)",
+            "durationMs": 217480,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735795e01c151ba5a8ce4bd295"
           },
           {
-            "name": "Move Along",
-            "durationMs": 238880,
-            "image": "https://i.scdn.co/image/ab67616d0000b273beb649016c1174ff8262d2f4"
+            "name": "Movement",
+            "durationMs": 237800,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735795e01c151ba5a8ce4bd295"
           },
           {
-            "name": "It Ends Tonight",
-            "durationMs": 244826,
-            "image": "https://i.scdn.co/image/ab67616d0000b273beb649016c1174ff8262d2f4"
+            "name": "No Plan",
+            "durationMs": 331013,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735795e01c151ba5a8ce4bd295"
           },
           {
-            "name": "Change Your Mind",
-            "durationMs": 220040,
-            "image": "https://i.scdn.co/image/ab67616d0000b273beb649016c1174ff8262d2f4"
+            "name": "Nobody",
+            "durationMs": 210573,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735795e01c151ba5a8ce4bd295"
+          },
+          {
+            "name": "To Noise Making (Sing)",
+            "durationMs": 206920,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735795e01c151ba5a8ce4bd295"
+          },
+          {
+            "name": "As It Was",
+            "durationMs": 207653,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735795e01c151ba5a8ce4bd295"
+          },
+          {
+            "name": "Shrike",
+            "durationMs": 298880,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735795e01c151ba5a8ce4bd295"
+          },
+          {
+            "name": "Talk",
+            "durationMs": 206546,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735795e01c151ba5a8ce4bd295"
+          },
+          {
+            "name": "Be",
+            "durationMs": 289066,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735795e01c151ba5a8ce4bd295"
           }
         ]
       }
     ],
     "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
-  "A.R. Rahman": {
-    "followers": 61379999,
-    "genres": [
-      "tamil pop",
-      "kollywood",
-      "sufi",
-      "bollywood",
-      "hindi pop",
-      "desi",
-      "tamil dance"
-    ],
-    "image": "https://i.scdn.co/image/ab6761610000e5ebb19af0ea736c6228d6eb539c",
+  "Andrew Hozier-Byrne": {
+    "followers": 2956,
+    "genres": [],
+    "image": "https://i.scdn.co/image/ab67616d0000b273f06deed58ebd41c319d90f79",
     "albums": [
       {
-        "name": "Chhaava (Telugu) [Original Motion Picture Soundtrack]",
-        "image": "https://i.scdn.co/image/ab67616d0000b273c62fa46c489ea613391052bc",
-        "releaseDate": "2025-03-27",
+        "name": "Les Goes Top Forty!",
+        "image": "https://i.scdn.co/image/ab67616d0000b273f06deed58ebd41c319d90f79",
+        "releaseDate": "2016-09-30",
         "songs": [
           {
-            "name": "Praanamlo",
-            "durationMs": 284791,
-            "image": "https://i.scdn.co/image/ab67616d0000b273c62fa46c489ea613391052bc"
+            "name": "Blank Space (Karaoke)",
+            "durationMs": 232509,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f06deed58ebd41c319d90f79"
           },
           {
-            "name": "Jai Shambho",
-            "durationMs": 279659,
-            "image": "https://i.scdn.co/image/ab67616d0000b273c62fa46c489ea613391052bc"
+            "name": "I'm Not the Only One (Karaoke)",
+            "durationMs": 237270,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f06deed58ebd41c319d90f79"
           },
           {
-            "name": "O Veeruda",
-            "durationMs": 305973,
-            "image": "https://i.scdn.co/image/ab67616d0000b273c62fa46c489ea613391052bc"
+            "name": "Lips Are Movin' (Karaoke)",
+            "durationMs": 183060,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f06deed58ebd41c319d90f79"
           },
           {
-            "name": "Jeevinchaali",
-            "durationMs": 185909,
-            "image": "https://i.scdn.co/image/ab67616d0000b273c62fa46c489ea613391052bc"
+            "name": "The Heart Wants What It Wants (Karaoke)",
+            "durationMs": 228937,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f06deed58ebd41c319d90f79"
           },
           {
-            "name": "The Roar",
-            "durationMs": 192625,
-            "image": "https://i.scdn.co/image/ab67616d0000b273c62fa46c489ea613391052bc"
+            "name": "Rude (Karaoke)",
+            "durationMs": 223399,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f06deed58ebd41c319d90f79"
+          },
+          {
+            "name": "All About That Bass (Karaoke)",
+            "durationMs": 189354,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f06deed58ebd41c319d90f79"
+          },
+          {
+            "name": "Take Me to Church (Karaoke)",
+            "durationMs": 239751,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f06deed58ebd41c319d90f79"
+          },
+          {
+            "name": "I Bet My Life (Karaoke)",
+            "durationMs": 190589,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f06deed58ebd41c319d90f79"
           }
         ]
       },
       {
-        "name": "Chhaava (Original Motion Picture Soundtrack)",
-        "image": "https://i.scdn.co/image/ab67616d0000b273e5551dc0359b1ce82ef078f4",
-        "releaseDate": "2025-02-13",
+        "name": "Take Me to Church (Cello Version)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2739ef22a5498e926e8392c2a74",
+        "releaseDate": "2015-03-31",
         "songs": [
           {
-            "name": "Jaane Tu (From \"Chhaava\")",
-            "durationMs": 284721,
-            "image": "https://i.scdn.co/image/ab67616d0000b273e5551dc0359b1ce82ef078f4"
-          },
-          {
-            "name": "Aaya Re Toofan (From \"Chhaava\")",
-            "durationMs": 279659,
-            "image": "https://i.scdn.co/image/ab67616d0000b273e5551dc0359b1ce82ef078f4"
-          },
-          {
-            "name": "Zinda Rahey (From \"Chhaava\")",
-            "durationMs": 308076,
-            "image": "https://i.scdn.co/image/ab67616d0000b273e5551dc0359b1ce82ef078f4"
-          },
-          {
-            "name": "Teri Chaahat (From \"Chhaava\")",
-            "durationMs": 185909,
-            "image": "https://i.scdn.co/image/ab67616d0000b273e5551dc0359b1ce82ef078f4"
-          },
-          {
-            "name": "The Roar (From \"Chhaava\")",
-            "durationMs": 192625,
-            "image": "https://i.scdn.co/image/ab67616d0000b273e5551dc0359b1ce82ef078f4"
+            "name": "Take Me to Church (Cello Version)",
+            "durationMs": 236696,
+            "image": "https://i.scdn.co/image/ab67616d0000b2739ef22a5498e926e8392c2a74"
           }
         ]
       },
       {
-        "name": "Pemwatha (Original Motion Picture Soundtrack)",
-        "image": "https://i.scdn.co/image/ab67616d0000b273f83ca04a1c2ef00014aa37c3",
-        "releaseDate": "2025-01-21",
+        "name": "In Your Own Sweet Time",
+        "image": "https://i.scdn.co/image/ab67616d0000b273c14395c1a15178e05e45fdc7",
+        "releaseDate": "2014-03-24",
         "songs": [
           {
-            "name": "Jeewithe",
-            "durationMs": 325528,
-            "image": "https://i.scdn.co/image/ab67616d0000b273f83ca04a1c2ef00014aa37c3"
-          },
-          {
-            "name": "Sadhawathiye",
-            "durationMs": 270723,
-            "image": "https://i.scdn.co/image/ab67616d0000b273f83ca04a1c2ef00014aa37c3"
-          },
-          {
-            "name": "Heena Re",
-            "durationMs": 259953,
-            "image": "https://i.scdn.co/image/ab67616d0000b273f83ca04a1c2ef00014aa37c3"
-          },
-          {
-            "name": "Kirilliye",
-            "durationMs": 75728,
-            "image": "https://i.scdn.co/image/ab67616d0000b273f83ca04a1c2ef00014aa37c3"
-          },
-          {
-            "name": "Paata Paata",
-            "durationMs": 282392,
-            "image": "https://i.scdn.co/image/ab67616d0000b273f83ca04a1c2ef00014aa37c3"
+            "name": "In Your Own Sweet Time",
+            "durationMs": 272185,
+            "image": "https://i.scdn.co/image/ab67616d0000b273c14395c1a15178e05e45fdc7"
           }
         ]
       },
       {
-        "name": "Husma (Original Motion Picture Soundtrack)",
-        "image": "https://i.scdn.co/image/ab67616d0000b2730b2bae730a89b8661efec1da",
-        "releaseDate": "2025-01-21",
+        "name": "Chilled Acoustic Guitar",
+        "image": "https://i.scdn.co/image/ab67616d0000b273af40af47e48ab29c5b0e975d",
+        "releaseDate": "2020-03-01",
         "songs": [
           {
-            "name": "Man Enawa",
-            "durationMs": 362706,
-            "image": "https://i.scdn.co/image/ab67616d0000b2730b2bae730a89b8661efec1da"
+            "name": "Babylon (Arr. for Guitar)",
+            "durationMs": 279857,
+            "image": "https://i.scdn.co/image/ab67616d0000b273af40af47e48ab29c5b0e975d"
           },
           {
-            "name": "Nil Ahasa Waage",
-            "durationMs": 260737,
-            "image": "https://i.scdn.co/image/ab67616d0000b2730b2bae730a89b8661efec1da"
+            "name": "Philadelphia (Arr. for Guitar)",
+            "durationMs": 305304,
+            "image": "https://i.scdn.co/image/ab67616d0000b273af40af47e48ab29c5b0e975d"
           },
           {
-            "name": "Podha",
-            "durationMs": 284605,
-            "image": "https://i.scdn.co/image/ab67616d0000b2730b2bae730a89b8661efec1da"
+            "name": "Half the World Away (Arr. for Guitar)",
+            "durationMs": 245757,
+            "image": "https://i.scdn.co/image/ab67616d0000b273af40af47e48ab29c5b0e975d"
           },
           {
-            "name": "Saajan",
-            "durationMs": 376037,
-            "image": "https://i.scdn.co/image/ab67616d0000b2730b2bae730a89b8661efec1da"
+            "name": "Road Trippin' (Arr. for Guitar)",
+            "durationMs": 217653,
+            "image": "https://i.scdn.co/image/ab67616d0000b273af40af47e48ab29c5b0e975d"
           },
           {
-            "name": "Chil Vanna Epa",
-            "durationMs": 270798,
-            "image": "https://i.scdn.co/image/ab67616d0000b2730b2bae730a89b8661efec1da"
+            "name": "MR. Tambourine Man (Arr. for Guitar)",
+            "durationMs": 239428,
+            "image": "https://i.scdn.co/image/ab67616d0000b273af40af47e48ab29c5b0e975d"
+          },
+          {
+            "name": "Your Song (Arr. for Guitar)",
+            "durationMs": 256451,
+            "image": "https://i.scdn.co/image/ab67616d0000b273af40af47e48ab29c5b0e975d"
+          },
+          {
+            "name": "Chasing Cars (Arr. for Guitar)",
+            "durationMs": 174255,
+            "image": "https://i.scdn.co/image/ab67616d0000b273af40af47e48ab29c5b0e975d"
+          },
+          {
+            "name": "Fall at Your Feet (Arr. for Guitar)",
+            "durationMs": 208775,
+            "image": "https://i.scdn.co/image/ab67616d0000b273af40af47e48ab29c5b0e975d"
+          },
+          {
+            "name": "Father and Son (Arr. for Guitar)",
+            "durationMs": 229672,
+            "image": "https://i.scdn.co/image/ab67616d0000b273af40af47e48ab29c5b0e975d"
+          },
+          {
+            "name": "3 Libras (Arr. for Guitar)",
+            "durationMs": 209577,
+            "image": "https://i.scdn.co/image/ab67616d0000b273af40af47e48ab29c5b0e975d"
           }
         ]
       },
       {
-        "name": "Jodi (Original Motion Picture Soundtrack)",
-        "image": "https://i.scdn.co/image/ab67616d0000b2733d542f2acaff189e2f844368",
-        "releaseDate": "2025-01-08",
+        "name": "Relaxing Acoustic Guitar Covers",
+        "image": "https://i.scdn.co/image/ab67616d0000b2731e92096fd6b633d1ab1d58a1",
+        "releaseDate": "2019-12-22",
         "songs": [
           {
-            "name": "Andaala Jeeva",
-            "durationMs": 326922,
-            "image": "https://i.scdn.co/image/ab67616d0000b2733d542f2acaff189e2f844368"
+            "name": "Ain't No Sunshine (Arr. for Guitar)",
+            "durationMs": 127250,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731e92096fd6b633d1ab1d58a1"
           },
           {
-            "name": "Hrudayanni Muripinchu",
-            "durationMs": 68832,
-            "image": "https://i.scdn.co/image/ab67616d0000b2733d542f2acaff189e2f844368"
+            "name": "Half the World Away (Arr. for Guitar)",
+            "durationMs": 245757,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731e92096fd6b633d1ab1d58a1"
           },
           {
-            "name": "Kadile Kaalame",
-            "durationMs": 294870,
-            "image": "https://i.scdn.co/image/ab67616d0000b2733d542f2acaff189e2f844368"
+            "name": "The Scientist (Arr. for Guitar)",
+            "durationMs": 261000,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731e92096fd6b633d1ab1d58a1"
           },
           {
-            "name": "Naa Kanne Hamsa",
-            "durationMs": 243722,
-            "image": "https://i.scdn.co/image/ab67616d0000b2733d542f2acaff189e2f844368"
+            "name": "Knockin' on Heaven's Door (Arr. for Guitar)",
+            "durationMs": 155142,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731e92096fd6b633d1ab1d58a1"
           },
           {
-            "name": "Nanu Preminchananu Maata (Female Vocals)",
-            "durationMs": 360724,
-            "image": "https://i.scdn.co/image/ab67616d0000b2733d542f2acaff189e2f844368"
+            "name": "Where Is My Mind? (Arr. for Guitar)",
+            "durationMs": 230769,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731e92096fd6b633d1ab1d58a1"
+          },
+          {
+            "name": "Fix You (Arr. for Guitar)",
+            "durationMs": 280000,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731e92096fd6b633d1ab1d58a1"
+          },
+          {
+            "name": "Chandelier (Arr. for Guitar)",
+            "durationMs": 218597,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731e92096fd6b633d1ab1d58a1"
+          },
+          {
+            "name": "When the Party's Over (Arr. for Guitar)",
+            "durationMs": 202767,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731e92096fd6b633d1ab1d58a1"
+          },
+          {
+            "name": "Cherry Wine (Arr. for Guitar)",
+            "durationMs": 243500,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731e92096fd6b633d1ab1d58a1"
+          },
+          {
+            "name": "Everlong (Arr. for Guitar)",
+            "durationMs": 255857,
+            "image": "https://i.scdn.co/image/ab67616d0000b2731e92096fd6b633d1ab1d58a1"
           }
         ]
       }
     ],
     "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
-  "All Time Low": {
-    "followers": 3131142,
-    "genres": [
-      "pop punk",
-      "emo",
-      "emo pop",
-      "punk"
-    ],
-    "image": "https://i.scdn.co/image/ab6761610000e5ebc42923f098c078d2caace1b7",
+  "Benson Boone": {
+    "followers": 5168652,
+    "genres": [],
+    "image": "https://i.scdn.co/image/ab6761610000e5eb9a39ecd2481c38174aa36260",
     "albums": [
       {
-        "name": "The Forever Sessions (Vol. 1)",
-        "image": "https://i.scdn.co/image/ab67616d0000b27356f2427fd44a78601aeaefb3",
-        "releaseDate": "2024-08-23",
+        "name": "Fireworks & Rollerblades",
+        "image": "https://i.scdn.co/image/ab67616d0000b27301ded87e3a4c8cfa9798e75e",
+        "releaseDate": "2024-04-05",
         "songs": [
           {
-            "name": "Dear Maria, Count Me In - ATL's Version",
-            "durationMs": 187266,
-            "image": "https://i.scdn.co/image/ab67616d0000b27356f2427fd44a78601aeaefb3"
+            "name": "Intro",
+            "durationMs": 62287,
+            "image": "https://i.scdn.co/image/ab67616d0000b27301ded87e3a4c8cfa9798e75e"
           },
           {
-            "name": "Coffee Shop Soundtrack - ATL's Version",
-            "durationMs": 176491,
-            "image": "https://i.scdn.co/image/ab67616d0000b27356f2427fd44a78601aeaefb3"
+            "name": "Be Someone",
+            "durationMs": 224862,
+            "image": "https://i.scdn.co/image/ab67616d0000b27301ded87e3a4c8cfa9798e75e"
           },
           {
-            "name": "Damned If I Do Ya, Damned If I Don't - ATL's Version",
-            "durationMs": 185124,
-            "image": "https://i.scdn.co/image/ab67616d0000b27356f2427fd44a78601aeaefb3"
+            "name": "Slow It Down",
+            "durationMs": 161831,
+            "image": "https://i.scdn.co/image/ab67616d0000b27301ded87e3a4c8cfa9798e75e"
           },
           {
-            "name": "Six Feet Under The Stars - ATL's Version",
-            "durationMs": 215268,
-            "image": "https://i.scdn.co/image/ab67616d0000b27356f2427fd44a78601aeaefb3"
+            "name": "Beautiful Things",
+            "durationMs": 180304,
+            "image": "https://i.scdn.co/image/ab67616d0000b27301ded87e3a4c8cfa9798e75e"
           },
           {
-            "name": "Weightless - ATL's Version",
-            "durationMs": 202712,
-            "image": "https://i.scdn.co/image/ab67616d0000b27356f2427fd44a78601aeaefb3"
+            "name": "Cry",
+            "durationMs": 186359,
+            "image": "https://i.scdn.co/image/ab67616d0000b27301ded87e3a4c8cfa9798e75e"
+          },
+          {
+            "name": "Forever and a Day",
+            "durationMs": 225234,
+            "image": "https://i.scdn.co/image/ab67616d0000b27301ded87e3a4c8cfa9798e75e"
+          },
+          {
+            "name": "In The Stars",
+            "durationMs": 216410,
+            "image": "https://i.scdn.co/image/ab67616d0000b27301ded87e3a4c8cfa9798e75e"
+          },
+          {
+            "name": "Drunk In My Mind",
+            "durationMs": 227569,
+            "image": "https://i.scdn.co/image/ab67616d0000b27301ded87e3a4c8cfa9798e75e"
+          },
+          {
+            "name": "My Greatest Fear",
+            "durationMs": 213006,
+            "image": "https://i.scdn.co/image/ab67616d0000b27301ded87e3a4c8cfa9798e75e"
+          },
+          {
+            "name": "There She Goes",
+            "durationMs": 204035,
+            "image": "https://i.scdn.co/image/ab67616d0000b27301ded87e3a4c8cfa9798e75e"
           }
         ]
       },
       {
-        "name": "Tell Me I'm Alive",
-        "image": "https://i.scdn.co/image/ab67616d0000b27351c5a0490ea847ecb7b8b164",
-        "releaseDate": "2023-03-17",
+        "name": "Sorry I'm Here For Someone Else",
+        "image": "https://i.scdn.co/image/ab67616d0000b27355bf59fe2cd3437613d031c7",
+        "releaseDate": "2025-02-27",
         "songs": [
           {
-            "name": "Tell Me I’m Alive",
-            "durationMs": 155562,
-            "image": "https://i.scdn.co/image/ab67616d0000b27351c5a0490ea847ecb7b8b164"
-          },
-          {
-            "name": "Modern Love",
-            "durationMs": 194959,
-            "image": "https://i.scdn.co/image/ab67616d0000b27351c5a0490ea847ecb7b8b164"
-          },
-          {
-            "name": "Are You There?",
-            "durationMs": 192659,
-            "image": "https://i.scdn.co/image/ab67616d0000b27351c5a0490ea847ecb7b8b164"
-          },
-          {
-            "name": "Sleepwalking",
-            "durationMs": 187344,
-            "image": "https://i.scdn.co/image/ab67616d0000b27351c5a0490ea847ecb7b8b164"
-          },
-          {
-            "name": "Calm Down",
-            "durationMs": 194227,
-            "image": "https://i.scdn.co/image/ab67616d0000b27351c5a0490ea847ecb7b8b164"
+            "name": "Sorry I'm Here For Someone Else",
+            "durationMs": 156582,
+            "image": "https://i.scdn.co/image/ab67616d0000b27355bf59fe2cd3437613d031c7"
           }
         ]
       },
       {
-        "name": "Wake Up, Sunshine",
-        "image": "https://i.scdn.co/image/ab67616d0000b27328c24b54e9149cab239ac1cd",
-        "releaseDate": "2020-04-03",
+        "name": "Pretty Slowly",
+        "image": "https://i.scdn.co/image/ab67616d0000b273b42f7c00cad0723ad163292f",
+        "releaseDate": "2024-08-15",
         "songs": [
           {
-            "name": "Some Kind of Disaster",
-            "durationMs": 223994,
-            "image": "https://i.scdn.co/image/ab67616d0000b27328c24b54e9149cab239ac1cd"
-          },
-          {
-            "name": "Sleeping In",
-            "durationMs": 180599,
-            "image": "https://i.scdn.co/image/ab67616d0000b27328c24b54e9149cab239ac1cd"
-          },
-          {
-            "name": "Getaway Green",
-            "durationMs": 167041,
-            "image": "https://i.scdn.co/image/ab67616d0000b27328c24b54e9149cab239ac1cd"
-          },
-          {
-            "name": "Melancholy Kaleidoscope",
-            "durationMs": 174895,
-            "image": "https://i.scdn.co/image/ab67616d0000b27328c24b54e9149cab239ac1cd"
-          },
-          {
-            "name": "Trouble Is...",
-            "durationMs": 147059,
-            "image": "https://i.scdn.co/image/ab67616d0000b27328c24b54e9149cab239ac1cd"
+            "name": "Pretty Slowly",
+            "durationMs": 261420,
+            "image": "https://i.scdn.co/image/ab67616d0000b273b42f7c00cad0723ad163292f"
           }
         ]
       },
       {
-        "name": "It's Still Nothing Personal: A Ten Year Tribute (Live In The Studio)",
-        "image": "https://i.scdn.co/image/ab67616d0000b2735ca2efae3bbbc594c29bd7c5",
-        "releaseDate": "2019-11-08",
+        "name": "Death Wish Love (From Twisters: The Album)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2734f71c3c2228f0b86a83d4ecd",
+        "releaseDate": "2024-07-19",
         "songs": [
           {
-            "name": "Weightless - Live In The Studio",
-            "durationMs": 209488,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735ca2efae3bbbc594c29bd7c5"
-          },
-          {
-            "name": "Break Your Little Heart - Live In The Studio",
-            "durationMs": 178496,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735ca2efae3bbbc594c29bd7c5"
-          },
-          {
-            "name": "Damned If I Do Ya (Damned If I Don't) - Live In The Studio",
-            "durationMs": 179221,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735ca2efae3bbbc594c29bd7c5"
-          },
-          {
-            "name": "Lost in Stereo - Live In The Studio",
-            "durationMs": 220880,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735ca2efae3bbbc594c29bd7c5"
-          },
-          {
-            "name": "Stella - Live In The Studio",
-            "durationMs": 199210,
-            "image": "https://i.scdn.co/image/ab67616d0000b2735ca2efae3bbbc594c29bd7c5"
+            "name": "Death Wish Love (From Twisters: The Album)",
+            "durationMs": 223955,
+            "image": "https://i.scdn.co/image/ab67616d0000b2734f71c3c2228f0b86a83d4ecd"
           }
         ]
       },
       {
-        "name": "Last Young Renegade",
-        "image": "https://i.scdn.co/image/ab67616d0000b273634ebb5b4796e92c00da986f",
-        "releaseDate": "2017-06-02",
+        "name": "Slow It Down",
+        "image": "https://i.scdn.co/image/ab67616d0000b273f824b0f45489f0f3388d5398",
+        "releaseDate": "2024-03-21",
         "songs": [
           {
-            "name": "Last Young Renegade",
-            "durationMs": 214093,
-            "image": "https://i.scdn.co/image/ab67616d0000b273634ebb5b4796e92c00da986f"
+            "name": "Slow It Down",
+            "durationMs": 161831,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f824b0f45489f0f3388d5398"
+          }
+        ]
+      }
+    ],
+    "about": "In September 2013, when Irish solo artist Andrew Hozier-Byrne released his debut single - a song called ‘Take Me To Church’ - which he had mostly recorded in the attic of his parent’s house in Wicklow (his father a blues musician, his mother an artist), little did he know about the hurricane-strength surge in public interest that the song would spark, carrying him to international stardom. // 10 years and billions of streams later, Hozier still calls Wicklow home. While his music takes him all over the world, it is Ireland, its people and places, the weather and landscape that calls him back to where he feels he naturally belongs. // The much anticipated follow up to Hozier’s debut album, ‘Wasteland, Baby!’ was released to massive critical acclaim in 2019, entering the Billboard Top 200 Chart at #1. 2023 was a big year for Hozier, as his debut single Take Me To Church was the 30th song ever to reach 1 billion streams. He released his third album ‘Unreal Unearth’, which charted #1 in the UK, Ireland, and Top 5 in the US, Netherlands, Germany & New Zealand. // The last decade has brought both public and critical acclaim. Multi-platinum album sales, number one records, multiple awards including a Grammy-nomination, film and video game soundtracks and countless sold-out live shows all over the world. But as Hozier prepares for 2024, his passion for his art is undimmed, and his curiosity about our world - and all that is good and bad about it - remains undiminished."
+  },
+  
+  "Cigarettes After Sex": {
+    "followers": 15295863,
+    "genres": [
+      "dream pop"
+    ],
+    "image": "https://i.scdn.co/image/ab6761610000e5eb0e871e0389b9722cc12a4118",
+    "albums": [
+      {
+        "name": "X's",
+        "image": "https://i.scdn.co/image/ab67616d0000b273967004d2f641e38309a0b547",
+        "releaseDate": "2024-07-12",
+        "songs": [
+          {
+            "name": "X's",
+            "durationMs": 183761,
+            "image": "https://i.scdn.co/image/ab67616d0000b273967004d2f641e38309a0b547"
           },
           {
-            "name": "Drugs & Candy",
-            "durationMs": 217680,
-            "image": "https://i.scdn.co/image/ab67616d0000b273634ebb5b4796e92c00da986f"
+            "name": "Tejano Blue",
+            "durationMs": 234453,
+            "image": "https://i.scdn.co/image/ab67616d0000b273967004d2f641e38309a0b547"
           },
           {
-            "name": "Dirty Laundry",
-            "durationMs": 197640,
-            "image": "https://i.scdn.co/image/ab67616d0000b273634ebb5b4796e92c00da986f"
+            "name": "Silver Sable",
+            "durationMs": 231933,
+            "image": "https://i.scdn.co/image/ab67616d0000b273967004d2f641e38309a0b547"
           },
           {
-            "name": "Good Times",
-            "durationMs": 224946,
-            "image": "https://i.scdn.co/image/ab67616d0000b273634ebb5b4796e92c00da986f"
+            "name": "Hideaway",
+            "durationMs": 276640,
+            "image": "https://i.scdn.co/image/ab67616d0000b273967004d2f641e38309a0b547"
           },
           {
-            "name": "Nice2KnoU",
-            "durationMs": 196506,
-            "image": "https://i.scdn.co/image/ab67616d0000b273634ebb5b4796e92c00da986f"
+            "name": "Holding you, Holding me",
+            "durationMs": 210213,
+            "image": "https://i.scdn.co/image/ab67616d0000b273967004d2f641e38309a0b547"
+          },
+          {
+            "name": "Dark Vacay",
+            "durationMs": 213413,
+            "image": "https://i.scdn.co/image/ab67616d0000b273967004d2f641e38309a0b547"
+          },
+          {
+            "name": "Baby Blue Movie",
+            "durationMs": 244733,
+            "image": "https://i.scdn.co/image/ab67616d0000b273967004d2f641e38309a0b547"
+          }
+        ]
+      },
+      {
+        "name": "Cry",
+        "image": "https://i.scdn.co/image/ab67616d0000b2738324db1ae37be249aed887e7",
+        "releaseDate": "2019-10-25",
+        "songs": [
+          {
+            "name": "Don't Let Me Go",
+            "durationMs": 262560,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738324db1ae37be249aed887e7"
+          },
+          {
+            "name": "Kiss It Off Me",
+            "durationMs": 269933,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738324db1ae37be249aed887e7"
+          },
+          {
+            "name": "Heavenly",
+            "durationMs": 286773,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738324db1ae37be249aed887e7"
+          },
+          {
+            "name": "You're the Only Good Thing in My Life",
+            "durationMs": 275186,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738324db1ae37be249aed887e7"
+          },
+          {
+            "name": "Touch",
+            "durationMs": 292853,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738324db1ae37be249aed887e7"
+          },
+          {
+            "name": "Hentai",
+            "durationMs": 285146,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738324db1ae37be249aed887e7"
+          },
+          {
+            "name": "Cry",
+            "durationMs": 256799,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738324db1ae37be249aed887e7"
+          }
+        ]
+      },
+      {
+        "name": "Cigarettes After Sex",
+        "image": "https://i.scdn.co/image/ab67616d0000b273dfed999f959177dfc4f33cdc",
+        "releaseDate": "2017-06-09",
+        "songs": [
+          {
+            "name": "K.",
+            "durationMs": 319560,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dfed999f959177dfc4f33cdc"
+          },
+          {
+            "name": "Each Time You Fall in Love",
+            "durationMs": 290160,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dfed999f959177dfc4f33cdc"
+          },
+          {
+            "name": "Sunsetz",
+            "durationMs": 214680,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dfed999f959177dfc4f33cdc"
+          },
+          {
+            "name": "Apocalypse",
+            "durationMs": 290146,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dfed999f959177dfc4f33cdc"
+          },
+          {
+            "name": "Flash",
+            "durationMs": 274106,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dfed999f959177dfc4f33cdc"
+          },
+          {
+            "name": "Sweet",
+            "durationMs": 291640,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dfed999f959177dfc4f33cdc"
+          },
+          {
+            "name": "Opera House",
+            "durationMs": 364680,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dfed999f959177dfc4f33cdc"
+          }
+        ]
+      },
+      {
+        "name": "Baby Blue Movie",
+        "image": "https://i.scdn.co/image/ab67616d0000b273d7149fd2df2384c39dd5ab11",
+        "releaseDate": "2024-06-04",
+        "songs": [
+          {
+            "name": "Baby Blue Movie",
+            "durationMs": 244733,
+            "image": "https://i.scdn.co/image/ab67616d0000b273d7149fd2df2384c39dd5ab11"
+          }
+        ]
+      },
+      {
+        "name": "Dark Vacay",
+        "image": "https://i.scdn.co/image/ab67616d0000b273b28402d28ca387f7230ed88d",
+        "releaseDate": "2024-04-16",
+        "songs": [
+          {
+            "name": "Dark Vacay",
+            "durationMs": 213413,
+            "image": "https://i.scdn.co/image/ab67616d0000b273b28402d28ca387f7230ed88d"
           }
         ]
       }
     ],
     "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
+  "Lost": {
+    "followers": 40486,
+    "genres": [],
+    "image": "https://i.scdn.co/image/ab6761610000e5eb8cf47e135f85279287374dc4",
+    "albums": [
+      {
+        "name": "Bonhomme Pendu 4 (Chapitre Perdu)",
+        "image": "https://i.scdn.co/image/ab67616d0000b273f6345405bf195ae8233f3b4c",
+        "releaseDate": "2024-09-13",
+        "songs": [
+          {
+            "name": "BP4",
+            "durationMs": 136810,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f6345405bf195ae8233f3b4c"
+          },
+          {
+            "name": "OT",
+            "durationMs": 188000,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f6345405bf195ae8233f3b4c"
+          },
+          {
+            "name": "Guerrier",
+            "durationMs": 218410,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f6345405bf195ae8233f3b4c"
+          },
+          {
+            "name": "Somnifères",
+            "durationMs": 168789,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f6345405bf195ae8233f3b4c"
+          },
+          {
+            "name": "Parades Photos",
+            "durationMs": 238595,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f6345405bf195ae8233f3b4c"
+          },
+          {
+            "name": "Trompé par le temps",
+            "durationMs": 158523,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f6345405bf195ae8233f3b4c"
+          },
+          {
+            "name": "Chica",
+            "durationMs": 172117,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f6345405bf195ae8233f3b4c"
+          }
+        ]
+      },
+      {
+        "name": "Portrait robot",
+        "image": "https://i.scdn.co/image/ab67616d0000b273f8a51a92b1757ec5f8b7cc44",
+        "releaseDate": "2024-05-03",
+        "songs": [
+          {
+            "name": "Hier encore",
+            "durationMs": 183480,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f8a51a92b1757ec5f8b7cc44"
+          },
+          {
+            "name": "Abribus",
+            "durationMs": 219160,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f8a51a92b1757ec5f8b7cc44"
+          },
+          {
+            "name": "Sur parole",
+            "durationMs": 198066,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f8a51a92b1757ec5f8b7cc44"
+          },
+          {
+            "name": "Goodfellaz",
+            "durationMs": 144920,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f8a51a92b1757ec5f8b7cc44"
+          },
+          {
+            "name": "Gratte-ciel",
+            "durationMs": 203893,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f8a51a92b1757ec5f8b7cc44"
+          },
+          {
+            "name": "Pression",
+            "durationMs": 179200,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f8a51a92b1757ec5f8b7cc44"
+          },
+          {
+            "name": "Hibou",
+            "durationMs": 164226,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f8a51a92b1757ec5f8b7cc44"
+          }
+        ]
+      },
+      {
+        "name": "HÉRITAGE (Deluxe)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2736033f64a9e8f776e8a3e5a19",
+        "releaseDate": "2023-12-15",
+        "songs": [
+          {
+            "name": "TUPAC AMARU",
+            "durationMs": 243919,
+            "image": "https://i.scdn.co/image/ab67616d0000b2736033f64a9e8f776e8a3e5a19"
+          },
+          {
+            "name": "BUSINESS CLASS",
+            "durationMs": 167641,
+            "image": "https://i.scdn.co/image/ab67616d0000b2736033f64a9e8f776e8a3e5a19"
+          },
+          {
+            "name": "PDG",
+            "durationMs": 191070,
+            "image": "https://i.scdn.co/image/ab67616d0000b2736033f64a9e8f776e8a3e5a19"
+          },
+          {
+            "name": "FTG",
+            "durationMs": 183443,
+            "image": "https://i.scdn.co/image/ab67616d0000b2736033f64a9e8f776e8a3e5a19"
+          },
+          {
+            "name": "MIKE TANGO LIMA - Version longue",
+            "durationMs": 209228,
+            "image": "https://i.scdn.co/image/ab67616d0000b2736033f64a9e8f776e8a3e5a19"
+          },
+          {
+            "name": "PONT CHAMPLAIN",
+            "durationMs": 210075,
+            "image": "https://i.scdn.co/image/ab67616d0000b2736033f64a9e8f776e8a3e5a19"
+          },
+          {
+            "name": "TIKI TAKA",
+            "durationMs": 154347,
+            "image": "https://i.scdn.co/image/ab67616d0000b2736033f64a9e8f776e8a3e5a19"
+          }
+        ]
+      },
+      {
+        "name": "HÉRITAGE",
+        "image": "https://i.scdn.co/image/ab67616d0000b27327c74452d850fa1ac2c5b368",
+        "releaseDate": "2023-04-28",
+        "songs": [
+          {
+            "name": "LE RÉVEIL D'ODIN",
+            "durationMs": 126135,
+            "image": "https://i.scdn.co/image/ab67616d0000b27327c74452d850fa1ac2c5b368"
+          },
+          {
+            "name": "MIKE TANGO LIMA",
+            "durationMs": 144893,
+            "image": "https://i.scdn.co/image/ab67616d0000b27327c74452d850fa1ac2c5b368"
+          },
+          {
+            "name": "PONT CHAMPLAIN",
+            "durationMs": 210075,
+            "image": "https://i.scdn.co/image/ab67616d0000b27327c74452d850fa1ac2c5b368"
+          },
+          {
+            "name": "TIKI TAKA",
+            "durationMs": 154347,
+            "image": "https://i.scdn.co/image/ab67616d0000b27327c74452d850fa1ac2c5b368"
+          },
+          {
+            "name": "F3MMES",
+            "durationMs": 221065,
+            "image": "https://i.scdn.co/image/ab67616d0000b27327c74452d850fa1ac2c5b368"
+          },
+          {
+            "name": "90s BABY",
+            "durationMs": 156952,
+            "image": "https://i.scdn.co/image/ab67616d0000b27327c74452d850fa1ac2c5b368"
+          },
+          {
+            "name": "MLK",
+            "durationMs": 228837,
+            "image": "https://i.scdn.co/image/ab67616d0000b27327c74452d850fa1ac2c5b368"
+          }
+        ]
+      },
+      {
+        "name": "LOSTALGIK (2LUXE)",
+        "image": "https://i.scdn.co/image/ab67616d0000b27370752a85d38f5881a9432a37",
+        "releaseDate": "2021-06-18",
+        "songs": [
+          {
+            "name": "Power Move",
+            "durationMs": 147561,
+            "image": "https://i.scdn.co/image/ab67616d0000b27370752a85d38f5881a9432a37"
+          },
+          {
+            "name": "Dollars Canadiens",
+            "durationMs": 157548,
+            "image": "https://i.scdn.co/image/ab67616d0000b27370752a85d38f5881a9432a37"
+          },
+          {
+            "name": "Perdu le contrôle",
+            "durationMs": 212150,
+            "image": "https://i.scdn.co/image/ab67616d0000b27370752a85d38f5881a9432a37"
+          },
+          {
+            "name": "Sixième sens",
+            "durationMs": 198349,
+            "image": "https://i.scdn.co/image/ab67616d0000b27370752a85d38f5881a9432a37"
+          },
+          {
+            "name": "Rockstar",
+            "durationMs": 189232,
+            "image": "https://i.scdn.co/image/ab67616d0000b27370752a85d38f5881a9432a37"
+          },
+          {
+            "name": "64NG",
+            "durationMs": 176821,
+            "image": "https://i.scdn.co/image/ab67616d0000b27370752a85d38f5881a9432a37"
+          },
+          {
+            "name": "Contre le monde",
+            "durationMs": 230099,
+            "image": "https://i.scdn.co/image/ab67616d0000b27370752a85d38f5881a9432a37"
+          }
+        ]
+      }
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  "TALK": {
+    "followers": 221253,
+    "genres": [],
+    "image": "https://i.scdn.co/image/ab6761610000e5ebf23f7c5c527f51443f65de56",
+    "albums": [
+      {
+        "name": "Lord of the Flies & Birds & Bees",
+        "image": "https://i.scdn.co/image/ab67616d0000b2735b04ad0c8344aac97ebbaeb8",
+        "releaseDate": "2023-10-20",
+        "songs": [
+          {
+            "name": "Fall For You",
+            "durationMs": 192431,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735b04ad0c8344aac97ebbaeb8"
+          },
+          {
+            "name": "Talking To Aliens",
+            "durationMs": 205210,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735b04ad0c8344aac97ebbaeb8"
+          },
+          {
+            "name": "A Little Bit Happy",
+            "durationMs": 195278,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735b04ad0c8344aac97ebbaeb8"
+          },
+          {
+            "name": "Run Away to Mars",
+            "durationMs": 213753,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735b04ad0c8344aac97ebbaeb8"
+          },
+          {
+            "name": "Afraid of the Dark",
+            "durationMs": 227940,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735b04ad0c8344aac97ebbaeb8"
+          },
+          {
+            "name": "Wasteland",
+            "durationMs": 173736,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735b04ad0c8344aac97ebbaeb8"
+          },
+          {
+            "name": "This Is It",
+            "durationMs": 195341,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735b04ad0c8344aac97ebbaeb8"
+          }
+        ]
+      },
+      {
+        "name": "La Ziguezon (Live)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2732faafe22333d5b6c27fd68a7",
+        "releaseDate": "2023-12-15",
+        "songs": [
+          {
+            "name": "La Ziguezon - Live",
+            "durationMs": 127698,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732faafe22333d5b6c27fd68a7"
+          }
+        ]
+      },
+      {
+        "name": "I'm One Of The Rest (From CBS Original Series \"Tracker\")",
+        "image": "https://i.scdn.co/image/ab67616d0000b2738378406b0f7ce5585a7b2b66",
+        "releaseDate": "2023-12-14",
+        "songs": [
+          {
+            "name": "I'm One Of The Rest - From CBS Original Series \"Tracker\"",
+            "durationMs": 289736,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738378406b0f7ce5585a7b2b66"
+          }
+        ]
+      },
+      {
+        "name": "Spotify Singles",
+        "image": "https://i.scdn.co/image/ab67616d0000b2735b1f6e0df6c0e6e16fc6a968",
+        "releaseDate": "2023-11-08",
+        "songs": [
+          {
+            "name": "A Little Bit Happy - Spotify Singles",
+            "durationMs": 205433,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735b1f6e0df6c0e6e16fc6a968"
+          },
+          {
+            "name": "Creep - Spotify Singles",
+            "durationMs": 302736,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735b1f6e0df6c0e6e16fc6a968"
+          }
+        ]
+      },
+      {
+        "name": "Wasteland",
+        "image": "https://i.scdn.co/image/ab67616d0000b2732b14520e87a0c8d0f790dc90",
+        "releaseDate": "2023-09-22",
+        "songs": [
+          {
+            "name": "Wasteland",
+            "durationMs": 173736,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732b14520e87a0c8d0f790dc90"
+          },
+          {
+            "name": "A Little Bit Happy",
+            "durationMs": 195278,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732b14520e87a0c8d0f790dc90"
+          },
+          {
+            "name": "Afraid of the Dark",
+            "durationMs": 227940,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732b14520e87a0c8d0f790dc90"
+          },
+          {
+            "name": "Run Away to Mars",
+            "durationMs": 213753,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732b14520e87a0c8d0f790dc90"
+          }
+        ]
+      }
+    ],
+    "about": "Ten years ago Greg Gonzalez was having a really rough Valentine’s Day. Freshly heartbroken with no hope of reconciliation, he spent two hours driving from his hometown El Paso to play a show, and he listened to Sade’s “By Your Side” on repeat both ways. “The experience that day stuck in my bones—it was an idea that I couldn’t forget,” says Gonzalez, the frontman of Cigarettes After Sex. “I thought, how do I make a record that feels like that?” // With each record—the initial 2012 EP, 2017’s eponymous debut album, and 2019’s Cry— Gonzalez has been faithful to his muse: love. In raw, imagistic vignettes set to entrancing, slow-burn pop songs, Gonzalez captures every emotion a romantic arc inspires. But where previous albums have drawn from an amalgam of relationships, for the most part, their third, eagerly anticipated LP, X’s, centralises on just one relationship that spanned four years."
+  },
+
+  "Billie Eilish": {
+    "followers": 109739467,
+    "genres": [],
+    "image": "https://i.scdn.co/image/ab6761610000e5eb4a21b4760d2ecb7b0dcdc8da",
+    "albums": [
+      {
+        "name": "HIT ME HARD AND SOFT",
+        "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62",
+        "releaseDate": "2024-05-17",
+        "songs": [
+          {
+            "name": "SKINNY",
+            "durationMs": 219733,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          },
+          {
+            "name": "LUNCH",
+            "durationMs": 179586,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          },
+          {
+            "name": "CHIHIRO",
+            "durationMs": 303440,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          },
+          {
+            "name": "BIRDS OF A FEATHER",
+            "durationMs": 210373,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          },
+          {
+            "name": "WILDFLOWER",
+            "durationMs": 261466,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          },
+          {
+            "name": "THE GREATEST",
+            "durationMs": 293840,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          },
+          {
+            "name": "L’AMOUR DE MA VIE",
+            "durationMs": 333986,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          }
+        ]
+      },
+      {
+        "name": "Happier Than Ever",
+        "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e",
+        "releaseDate": "2021-07-30",
+        "songs": [
+          {
+            "name": "Getting Older",
+            "durationMs": 244221,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          },
+          {
+            "name": "I Didn't Change My Number",
+            "durationMs": 158463,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          },
+          {
+            "name": "Billie Bossa Nova",
+            "durationMs": 196730,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          },
+          {
+            "name": "my future",
+            "durationMs": 210005,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          },
+          {
+            "name": "Oxytocin",
+            "durationMs": 210232,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          },
+          {
+            "name": "GOLDWING",
+            "durationMs": 151536,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          },
+          {
+            "name": "Lost Cause",
+            "durationMs": 212496,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          }
+        ]
+      },
+      {
+        "name": "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?",
+        "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce",
+        "releaseDate": "2019-03-29",
+        "songs": [
+          {
+            "name": "!!!!!!!",
+            "durationMs": 13578,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          },
+          {
+            "name": "bad guy",
+            "durationMs": 194087,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          },
+          {
+            "name": "xanny",
+            "durationMs": 243725,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          },
+          {
+            "name": "you should see me in a crown",
+            "durationMs": 180952,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          },
+          {
+            "name": "all the good girls go to hell",
+            "durationMs": 168839,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          },
+          {
+            "name": "wish you were gay",
+            "durationMs": 221543,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          },
+          {
+            "name": "when the party's over",
+            "durationMs": 196077,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          }
+        ]
+      },
+      {
+        "name": "Guess featuring billie eilish",
+        "image": "https://i.scdn.co/image/ab67616d0000b273dca19fcb7a25410224da080b",
+        "releaseDate": "2024-08-01",
+        "songs": [
+          {
+            "name": "Guess featuring billie eilish",
+            "durationMs": 143330,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dca19fcb7a25410224da080b"
+          }
+        ]
+      },
+      {
+        "name": "L’AMOUR DE MA VIE [OVER NOW EXTENDED EDIT]",
+        "image": "https://i.scdn.co/image/ab67616d0000b273b4f4348caa31224b51b95dfe",
+        "releaseDate": "2024-05-21",
+        "songs": [
+          {
+            "name": "L’AMOUR DE MA VIE [OVER NOW EXTENDED EDIT]",
+            "durationMs": 271969,
+            "image": "https://i.scdn.co/image/ab67616d0000b273b4f4348caa31224b51b95dfe"
+          }
+        ]
+      }
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  "Taylor Swift": {
+    "followers": 135035188,
+    "genres": ["Pop", "Country", "Rock"],
+    "image": "https://i.scdn.co/image/ab6761610000e5ebe672b5f553298dcdccb0e676",
+    "albums": [
+      {
+        "name": "THE TORTURED POETS DEPARTMENT: THE ANTHOLOGY",
+        "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa",
+        "releaseDate": "2024-04-19",
+        "songs": [
+          {
+            "name": "Fortnight (feat. Post Malone)",
+            "durationMs": 228965,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          },
+          {
+            "name": "The Tortured Poets Department",
+            "durationMs": 293048,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          },
+          {
+            "name": "My Boy Only Breaks His Favorite Toys",
+            "durationMs": 203801,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          },
+          {
+            "name": "Down Bad",
+            "durationMs": 261228,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          },
+          {
+            "name": "So Long, London",
+            "durationMs": 262974,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          },
+          {
+            "name": "But Daddy I Love Him",
+            "durationMs": 340428,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          },
+          {
+            "name": "Fresh Out The Slammer",
+            "durationMs": 210789,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          }
+        ]
+      },
+      {
+        "name": "THE TORTURED POETS DEPARTMENT",
+        "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33",
+        "releaseDate": "2024-04-18",
+        "songs": [
+          {
+            "name": "Fortnight (feat. Post Malone)",
+            "durationMs": 228965,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          },
+          {
+            "name": "The Tortured Poets Department",
+            "durationMs": 293048,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          },
+          {
+            "name": "My Boy Only Breaks His Favorite Toys",
+            "durationMs": 203801,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          },
+          {
+            "name": "Down Bad",
+            "durationMs": 261228,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          },
+          {
+            "name": "So Long, London",
+            "durationMs": 262974,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          },
+          {
+            "name": "But Daddy I Love Him",
+            "durationMs": 340428,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          },
+          {
+            "name": "Fresh Out The Slammer",
+            "durationMs": 210789,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          }
+        ]
+      },
+      {
+        "name": "1989 (Taylor's Version) [Deluxe]",
+        "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949",
+        "releaseDate": "2023-10-27",
+        "songs": [
+          {
+            "name": "Welcome To New York (Taylor's Version)",
+            "durationMs": 212600,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          },
+          {
+            "name": "Blank Space (Taylor's Version)",
+            "durationMs": 231833,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          },
+          {
+            "name": "Style (Taylor's Version)",
+            "durationMs": 231000,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          },
+          {
+            "name": "Out Of The Woods (Taylor's Version)",
+            "durationMs": 235800,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          },
+          {
+            "name": "All You Had To Do Was Stay (Taylor's Version)",
+            "durationMs": 193289,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          },
+          {
+            "name": "Shake It Off (Taylor's Version)",
+            "durationMs": 219209,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          },
+          {
+            "name": "I Wish You Would (Taylor's Version)",
+            "durationMs": 207650,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          }
+        ]
+      },
+      {
+        "name": "1989 (Taylor's Version)",
+        "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac",
+        "releaseDate": "2023-10-26",
+        "songs": [
+          {
+            "name": "Welcome To New York (Taylor's Version)",
+            "durationMs": 212600,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          },
+          {
+            "name": "Blank Space (Taylor's Version)",
+            "durationMs": 231833,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          },
+          {
+            "name": "Style (Taylor's Version)",
+            "durationMs": 231000,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          },
+          {
+            "name": "Out Of The Woods (Taylor's Version)",
+            "durationMs": 235800,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          },
+          {
+            "name": "All You Had To Do Was Stay (Taylor's Version)",
+            "durationMs": 193289,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          },
+          {
+            "name": "Shake It Off (Taylor's Version)",
+            "durationMs": 219209,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          },
+          {
+            "name": "I Wish You Would (Taylor's Version)",
+            "durationMs": 207650,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          }
+        ]
+      },
+      {
+        "name": "Speak Now (Taylor's Version)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481",
+        "releaseDate": "2023-07-07",
+        "songs": [
+          {
+            "name": "Mine (Taylor's Version)",
+            "durationMs": 231706,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          },
+          {
+            "name": "Sparks Fly (Taylor’s Version)",
+            "durationMs": 261230,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          },
+          {
+            "name": "Back To December (Taylor's Version)",
+            "durationMs": 294189,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          },
+          {
+            "name": "Speak Now (Taylor's Version)",
+            "durationMs": 242473,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          },
+          {
+            "name": "Dear John (Taylor's Version)",
+            "durationMs": 405906,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          },
+          {
+            "name": "Mean (Taylor's Version)",
+            "durationMs": 238693,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          },
+          {
+            "name": "The Story Of Us (Taylor's Version)",
+            "durationMs": 267653,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          }
+        ]
+      }
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  "Billie Eilish O'Connell": {
+    "followers": 2833,
+    "genres": ["Pop"],
+    "image": "https://i.scdn.co/image/ab67616d0000b273e062064f339d499a3cc83cc3",
+    "albums": [
+      {
+        "name": "No Time to Die (Arr. for Solo Cello by Christian-Pierre La Marca)",
+        "image": "https://i.scdn.co/image/ab67616d0000b273cd03a2a2d055b4278d4c656f",
+        "releaseDate": "2024-01-19",
+        "songs": [
+          {
+            "name": "No Time to Die - Arr. for Solo Cello by Christian-Pierre La Marca",
+            "durationMs": 237294,
+            "image": "https://i.scdn.co/image/ab67616d0000b273cd03a2a2d055b4278d4c656f"
+          }
+        ]
+      },
+      {
+        "name": "I Love You (Piano Cover)",
+        "image": "https://i.scdn.co/image/ab67616d0000b273b53efaf839ab87a987ab7dfc",
+        "releaseDate": "2023-10-09",
+        "songs": [
+          {
+            "name": "I Love You - Piano Cover",
+            "durationMs": 294874,
+            "image": "https://i.scdn.co/image/ab67616d0000b273b53efaf839ab87a987ab7dfc"
+          }
+        ]
+      },
+      {
+        "name": "What Was I Made For? (From \"Barbie\") [Piano Instrumental Version]",
+        "image": "https://i.scdn.co/image/ab67616d0000b27304a80cac8f5495233448c5f8",
+        "releaseDate": "2023-09-01",
+        "songs": [
+          {
+            "name": "What Was I Made For? (From \"Barbie\") - Piano Instrumental Version",
+            "durationMs": 215781,
+            "image": "https://i.scdn.co/image/ab67616d0000b27304a80cac8f5495233448c5f8"
+          }
+        ]
+      },
+      {
+        "name": "No Time to Die",
+        "image": "https://i.scdn.co/image/ab67616d0000b2735aa3dfd0d00dc41166119364",
+        "releaseDate": "2022-12-16",
+        "songs": [
+          {
+            "name": "No Time to Die",
+            "durationMs": 196853,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735aa3dfd0d00dc41166119364"
+          }
+        ]
+      },
+      {
+        "name": "No Time to Die",
+        "image": "https://i.scdn.co/image/ab67616d0000b273c1b2858b0332457519cb0ca4",
+        "releaseDate": "2021-11-19",
+        "songs": []
+      }
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  
+
   "ALLEYCVT": {
     "followers": 63370,
     "genres": [

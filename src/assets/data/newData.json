@@ -1,0 +1,440 @@
+{
+  "Billie Eilish": {
+    "followers": 109739467,
+    "genres": [],
+    "image": "https://i.scdn.co/image/ab6761610000e5eb4a21b4760d2ecb7b0dcdc8da",
+    "albums": [
+      {
+        "name": "HIT ME HARD AND SOFT",
+        "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62",
+        "releaseDate": "2024-05-17",
+        "songs": [
+          {
+            "name": "SKINNY",
+            "durationMs": 219733,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          },
+          {
+            "name": "LUNCH",
+            "durationMs": 179586,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          },
+          {
+            "name": "CHIHIRO",
+            "durationMs": 303440,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          },
+          {
+            "name": "BIRDS OF A FEATHER",
+            "durationMs": 210373,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          },
+          {
+            "name": "WILDFLOWER",
+            "durationMs": 261466,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          },
+          {
+            "name": "THE GREATEST",
+            "durationMs": 293840,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          },
+          {
+            "name": "L’AMOUR DE MA VIE",
+            "durationMs": 333986,
+            "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+          }
+        ]
+      },
+      {
+        "name": "Happier Than Ever",
+        "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e",
+        "releaseDate": "2021-07-30",
+        "songs": [
+          {
+            "name": "Getting Older",
+            "durationMs": 244221,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          },
+          {
+            "name": "I Didn't Change My Number",
+            "durationMs": 158463,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          },
+          {
+            "name": "Billie Bossa Nova",
+            "durationMs": 196730,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          },
+          {
+            "name": "my future",
+            "durationMs": 210005,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          },
+          {
+            "name": "Oxytocin",
+            "durationMs": 210232,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          },
+          {
+            "name": "GOLDWING",
+            "durationMs": 151536,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          },
+          {
+            "name": "Lost Cause",
+            "durationMs": 212496,
+            "image": "https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e"
+          }
+        ]
+      },
+      {
+        "name": "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?",
+        "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce",
+        "releaseDate": "2019-03-29",
+        "songs": [
+          {
+            "name": "!!!!!!!",
+            "durationMs": 13578,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          },
+          {
+            "name": "bad guy",
+            "durationMs": 194087,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          },
+          {
+            "name": "xanny",
+            "durationMs": 243725,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          },
+          {
+            "name": "you should see me in a crown",
+            "durationMs": 180952,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          },
+          {
+            "name": "all the good girls go to hell",
+            "durationMs": 168839,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          },
+          {
+            "name": "wish you were gay",
+            "durationMs": 221543,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          },
+          {
+            "name": "when the party's over",
+            "durationMs": 196077,
+            "image": "https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce"
+          }
+        ]
+      },
+      {
+        "name": "Guess featuring billie eilish",
+        "image": "https://i.scdn.co/image/ab67616d0000b273dca19fcb7a25410224da080b",
+        "releaseDate": "2024-08-01",
+        "songs": [
+          {
+            "name": "Guess featuring billie eilish",
+            "durationMs": 143330,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dca19fcb7a25410224da080b"
+          }
+        ]
+      },
+      {
+        "name": "L’AMOUR DE MA VIE [OVER NOW EXTENDED EDIT]",
+        "image": "https://i.scdn.co/image/ab67616d0000b273b4f4348caa31224b51b95dfe",
+        "releaseDate": "2024-05-21",
+        "songs": [
+          {
+            "name": "L’AMOUR DE MA VIE [OVER NOW EXTENDED EDIT]",
+            "durationMs": 271969,
+            "image": "https://i.scdn.co/image/ab67616d0000b273b4f4348caa31224b51b95dfe"
+          }
+        ]
+      }
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  "Taylor Swift": {
+    "followers": 135035188,
+    "genres": [],
+    "image": "https://i.scdn.co/image/ab6761610000e5ebe672b5f553298dcdccb0e676",
+    "albums": [
+      {
+        "name": "THE TORTURED POETS DEPARTMENT: THE ANTHOLOGY",
+        "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa",
+        "releaseDate": "2024-04-19",
+        "songs": [
+          {
+            "name": "Fortnight (feat. Post Malone)",
+            "durationMs": 228965,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          },
+          {
+            "name": "The Tortured Poets Department",
+            "durationMs": 293048,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          },
+          {
+            "name": "My Boy Only Breaks His Favorite Toys",
+            "durationMs": 203801,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          },
+          {
+            "name": "Down Bad",
+            "durationMs": 261228,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          },
+          {
+            "name": "So Long, London",
+            "durationMs": 262974,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          },
+          {
+            "name": "But Daddy I Love Him",
+            "durationMs": 340428,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          },
+          {
+            "name": "Fresh Out The Slammer",
+            "durationMs": 210789,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+          }
+        ]
+      },
+      {
+        "name": "THE TORTURED POETS DEPARTMENT",
+        "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33",
+        "releaseDate": "2024-04-18",
+        "songs": [
+          {
+            "name": "Fortnight (feat. Post Malone)",
+            "durationMs": 228965,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          },
+          {
+            "name": "The Tortured Poets Department",
+            "durationMs": 293048,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          },
+          {
+            "name": "My Boy Only Breaks His Favorite Toys",
+            "durationMs": 203801,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          },
+          {
+            "name": "Down Bad",
+            "durationMs": 261228,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          },
+          {
+            "name": "So Long, London",
+            "durationMs": 262974,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          },
+          {
+            "name": "But Daddy I Love Him",
+            "durationMs": 340428,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          },
+          {
+            "name": "Fresh Out The Slammer",
+            "durationMs": 210789,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735076e4160d018e378f488c33"
+          }
+        ]
+      },
+      {
+        "name": "1989 (Taylor's Version) [Deluxe]",
+        "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949",
+        "releaseDate": "2023-10-27",
+        "songs": [
+          {
+            "name": "Welcome To New York (Taylor's Version)",
+            "durationMs": 212600,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          },
+          {
+            "name": "Blank Space (Taylor's Version)",
+            "durationMs": 231833,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          },
+          {
+            "name": "Style (Taylor's Version)",
+            "durationMs": 231000,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          },
+          {
+            "name": "Out Of The Woods (Taylor's Version)",
+            "durationMs": 235800,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          },
+          {
+            "name": "All You Had To Do Was Stay (Taylor's Version)",
+            "durationMs": 193289,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          },
+          {
+            "name": "Shake It Off (Taylor's Version)",
+            "durationMs": 219209,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          },
+          {
+            "name": "I Wish You Would (Taylor's Version)",
+            "durationMs": 207650,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc2bacae1dca83d26e2b1949"
+          }
+        ]
+      },
+      {
+        "name": "1989 (Taylor's Version)",
+        "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac",
+        "releaseDate": "2023-10-26",
+        "songs": [
+          {
+            "name": "Welcome To New York (Taylor's Version)",
+            "durationMs": 212600,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          },
+          {
+            "name": "Blank Space (Taylor's Version)",
+            "durationMs": 231833,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          },
+          {
+            "name": "Style (Taylor's Version)",
+            "durationMs": 231000,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          },
+          {
+            "name": "Out Of The Woods (Taylor's Version)",
+            "durationMs": 235800,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          },
+          {
+            "name": "All You Had To Do Was Stay (Taylor's Version)",
+            "durationMs": 193289,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          },
+          {
+            "name": "Shake It Off (Taylor's Version)",
+            "durationMs": 219209,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          },
+          {
+            "name": "I Wish You Would (Taylor's Version)",
+            "durationMs": 207650,
+            "image": "https://i.scdn.co/image/ab67616d0000b273904445d70d04eb24d6bb79ac"
+          }
+        ]
+      },
+      {
+        "name": "Speak Now (Taylor's Version)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481",
+        "releaseDate": "2023-07-07",
+        "songs": [
+          {
+            "name": "Mine (Taylor's Version)",
+            "durationMs": 231706,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          },
+          {
+            "name": "Sparks Fly (Taylor’s Version)",
+            "durationMs": 261230,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          },
+          {
+            "name": "Back To December (Taylor's Version)",
+            "durationMs": 294189,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          },
+          {
+            "name": "Speak Now (Taylor's Version)",
+            "durationMs": 242473,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          },
+          {
+            "name": "Dear John (Taylor's Version)",
+            "durationMs": 405906,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          },
+          {
+            "name": "Mean (Taylor's Version)",
+            "durationMs": 238693,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          },
+          {
+            "name": "The Story Of Us (Taylor's Version)",
+            "durationMs": 267653,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481"
+          }
+        ]
+      }
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  "Billie Eilish O'Connell": {
+    "followers": 2833,
+    "genres": [],
+    "image": "https://i.scdn.co/image/ab67616d0000b273e062064f339d499a3cc83cc3",
+    "albums": [
+      {
+        "name": "No Time to Die (Arr. for Solo Cello by Christian-Pierre La Marca)",
+        "image": "https://i.scdn.co/image/ab67616d0000b273cd03a2a2d055b4278d4c656f",
+        "releaseDate": "2024-01-19",
+        "songs": [
+          {
+            "name": "No Time to Die - Arr. for Solo Cello by Christian-Pierre La Marca",
+            "durationMs": 237294,
+            "image": "https://i.scdn.co/image/ab67616d0000b273cd03a2a2d055b4278d4c656f"
+          }
+        ]
+      },
+      {
+        "name": "I Love You (Piano Cover)",
+        "image": "https://i.scdn.co/image/ab67616d0000b273b53efaf839ab87a987ab7dfc",
+        "releaseDate": "2023-10-09",
+        "songs": [
+          {
+            "name": "I Love You - Piano Cover",
+            "durationMs": 294874,
+            "image": "https://i.scdn.co/image/ab67616d0000b273b53efaf839ab87a987ab7dfc"
+          }
+        ]
+      },
+      {
+        "name": "What Was I Made For? (From \"Barbie\") [Piano Instrumental Version]",
+        "image": "https://i.scdn.co/image/ab67616d0000b27304a80cac8f5495233448c5f8",
+        "releaseDate": "2023-09-01",
+        "songs": [
+          {
+            "name": "What Was I Made For? (From \"Barbie\") - Piano Instrumental Version",
+            "durationMs": 215781,
+            "image": "https://i.scdn.co/image/ab67616d0000b27304a80cac8f5495233448c5f8"
+          }
+        ]
+      },
+      {
+        "name": "No Time to Die",
+        "image": "https://i.scdn.co/image/ab67616d0000b2735aa3dfd0d00dc41166119364",
+        "releaseDate": "2022-12-16",
+        "songs": [
+          {
+            "name": "No Time to Die",
+            "durationMs": 196853,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735aa3dfd0d00dc41166119364"
+          }
+        ]
+      },
+      {
+        "name": "No Time to Die",
+        "image": "https://i.scdn.co/image/ab67616d0000b273c1b2858b0332457519cb0ca4",
+        "releaseDate": "2021-11-19",
+        "songs": []
+      }
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  }
+}
