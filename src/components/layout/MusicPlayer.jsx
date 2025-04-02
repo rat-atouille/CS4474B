@@ -7,6 +7,8 @@ export default function MusicPlayer({ musicQueue }) {
   const [isShuffling, setIsShuffling] = useState(false);
   const [isRepeating, setIsRepeating] = useState(false);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [shuffle, setShuffle] = useState(false);
+  const [repeat, setRepeat] = useState(false);
 
   // Get current song from musicQueue (use album songs for non-podcast items)
   let currentSong;
@@ -123,7 +125,7 @@ export default function MusicPlayer({ musicQueue }) {
                       className={`fa-solid text-white text-2xl hover:text-white transition-all duration-300 ease-in-out ${
                           !isPlaying ? "fa-circle-play" : "fa-circle-pause"
                       }`}
-                      onClick={() => setIsPlaying(true)}
+                      onClick={() => setIsPlaying(!isPlaying)}
                   ></i>
                   <i
                       className="fa-solid fa-forward-step hover:text-white transition-all duration-300 ease-in-out"
