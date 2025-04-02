@@ -1,7 +1,7 @@
 {
   "Hozier": {
     "followers": 8636201,
-    "genres": [],
+    "genres": ["blue","soul", "indie"],
     "image": "https://i.scdn.co/image/ab6761610000e5ebad85a585103dfc2f3439119a",
     "albums": [
       {
@@ -294,7 +294,7 @@
   },
   "Andrew Hozier-Byrne": {
     "followers": 2956,
-    "genres": [],
+    "genres": ["folk","soul","blue"],
     "image": "https://i.scdn.co/image/ab67616d0000b273f06deed58ebd41c319d90f79",
     "albums": [
       {
@@ -487,7 +487,7 @@
   },
   "Benson Boone": {
     "followers": 5168652,
-    "genres": [],
+    "genres": ["pop"],
     "image": "https://i.scdn.co/image/ab6761610000e5eb9a39ecd2481c38174aa36260",
     "albums": [
       {
@@ -602,7 +602,7 @@
   "Cigarettes After Sex": {
     "followers": 15295863,
     "genres": [
-      "dream pop"
+      "dream pop", "indie", "alternative"
     ],
     "image": "https://i.scdn.co/image/ab6761610000e5eb0e871e0389b9722cc12a4118",
     "albums": [
@@ -979,7 +979,7 @@
   },
   "TALK": {
     "followers": 221253,
-    "genres": [],
+    "genres": ["alternative", "indie"],
     "image": "https://i.scdn.co/image/ab6761610000e5ebf23f7c5c527f51443f65de56",
     "albums": [
       {
@@ -1086,7 +1086,7 @@
 
   "Billie Eilish": {
     "followers": 109739467,
-    "genres": [],
+    "genres": ["pop"],
     "image": "https://i.scdn.co/image/ab6761610000e5eb4a21b4760d2ecb7b0dcdc8da",
     "albums": [
       {
@@ -1244,7 +1244,7 @@
   },
   "Taylor Swift": {
     "followers": 135035188,
-    "genres": ["Pop", "Country", "Rock"],
+    "genres": ["pop", "country", "rock"],
     "image": "https://i.scdn.co/image/ab6761610000e5ebe672b5f553298dcdccb0e676",
     "albums": [
       {
@@ -1462,7 +1462,7 @@
   },
   "Billie Eilish O'Connell": {
     "followers": 2833,
-    "genres": ["Pop"],
+    "genres": ["pop"],
     "image": "https://i.scdn.co/image/ab67616d0000b273e062064f339d499a3cc83cc3",
     "albums": [
       {
@@ -1525,7 +1525,7 @@
   
   "Doja Cat": {
     "followers": 33001330,
-    "genres": [],
+    "genres": ["hip hop"],
     "image": "https://i.scdn.co/image/ab6761610000e5ebe94f88ff74ae4ddcab961f97",
     "albums": [
       {
@@ -1744,7 +1744,7 @@
   "Dojo Cuts": {
     "followers": 78347,
     "genres": [
-      "retro soul"
+      "retro soul", "soul", "r&b"
     ],
     "image": "https://i.scdn.co/image/ab6761610000e5eb6af8ec7a1e413f4cbdd18fda",
     "albums": [
@@ -2185,7 +2185,7 @@
     "followers": 63370,
     "genres": [
       "dubstep",
-      "edm"
+      "edm", "dance"
     ],
     "image": "https://i.scdn.co/image/ab6761610000e5eb8baea6ec2bdee7f383771cd1",
     "albums": [
