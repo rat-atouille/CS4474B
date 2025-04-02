@@ -23,7 +23,7 @@ const Artist = ({setMusicQueue}) => {
   const [artistData, setArtistData] = useState(null);
   const [songs, setSongs] = useState([]);
   const [albums, setAlbums] = useState([]);
-  const [expanded, setExpanded] = useState([]);
+  const [expanded, setExpanded] = useState(['all', 'recent', 'popular']); // State to track expanded sections
 
   useEffect(() => {
     // Load artist data when component mounts
@@ -48,7 +48,8 @@ const Artist = ({setMusicQueue}) => {
           name: artistKey,
           verified: true,
           monthlyListeners: formatNumber(artist.followers),
-          profileImage: artist.image
+          profileImage: artist.image,
+          about: artist.about
         });
 
         // Process albums and extract songs
@@ -316,19 +317,22 @@ const Artist = ({setMusicQueue}) => {
             </div>
 
             <div className="ml-3 mr-3">
-              <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                {albums.slice(0, 4).map(album => (
-                  <div key={album.id} className="p-3 rounded">
-                    <div className="w-full h-38 mb-2 rounded overflow-hidden">
-                      <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
+                <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
+                <div className="mx-5  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                  {albums.slice(0, 5).map(album => (
+                    <div key={album.id} className="p-3 rounded hover:bg-gray-700 transition-all">
+                      {/* Square Album Cover */}
+                      <div className="w-full aspect-square mb-2 rounded overflow-hidden">
+                        <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
+                      </div>
+                      {/* Album Title */}
+                      <p className="text-white truncate font-semibold">{album.title}</p>
+                      {/* Album Year */}
+                      <p className="text-gray-400 text-sm">{album.year}</p>
                     </div>
-                    <p className="text-white truncate font-semibold">{album.title}</p>
-                    <p className="text-gray-400 text-sm">{album.year}</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
           </div>
         );
 
@@ -352,85 +356,94 @@ const Artist = ({setMusicQueue}) => {
 
             <div>
               <div className='flex p-0 justify-between'>
-                <div className='flex items-center gap-4'>
-                  <h2 className="text-xl font-bold">All Songs</h2>
-                  <button className="transition-all hover:bg-green-500 flex items-center justify-center rounded-full p-2">
-                    
-                    
-                    <IoChevronDown size={20} />
-                  </button>
-                </div>
+              <div
+                  onClick={() => setExpanded(expanded.includes('all') ? expanded.filter(e => e !== 'all') : [...expanded, 'all'])} 
+                  className='hover:text-green-500 transition-all'
+                >
+                  <h2 className="select-none text-xl font-bold flex">All Songs
+                  <button className="ml-1 flex items-center justify-center rounded-full p-2">
+                      {expanded.includes('all') ? <FaMinus size={10} />  : <FaPlus size={10} />} 
+                    </button>
+                  </h2>
+              </div>
                 <button className="
                     cursor-pointer text-[#b3b3b3]
                     hover:scale-105 transition-transform duration-150 hover:border-white hover:text-white
-                    pl-3 pr-3 pt-1 pb-1 text-sm font-md border-[#b3b3b3] border border-2 rounded-2xl"
+                    pl-3 pr-3 pt-1 pb-1 mr-5 text-sm font-md border-[#b3b3b3] border border-2 rounded-2xl"
                     onClick={()=>setPlayIndex(0)}
                   >
                     Play All
                   </button>
               </div>
-              <div className="rounded mt-5">
-                {songs.map((song, index) => (
+
+              {/* All songs contents */}
+            {expanded.includes('all') && (
+              <div className='mt-5 '>
+              <div className="rounded">
+              {songs.map((song, index) => (
+                <div
+                  key={song.id}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  onClick={(e) => {
+                    togglePlay(e, index);
+                    handlePlay(song.albumName, index);
+                  }}
+                  className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
+                >
                   <div
-                    key={song.id}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
+                    className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
                     onClick={(e) => {
                       togglePlay(e, index);
                       handlePlay(song.albumName, index);
                     }}
-                    className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                   >
-                    <div
-                      className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
-                      onClick={(e) => {
-                        togglePlay(e, index);
-                        handlePlay(song.albumName, index);
-                      }}
-                    >
-                      {playIndex === index ?
-                        <BsSoundwave className="text-green-500" /> :
-                        (hoveredIndex === index ? <IoPlay className="text-lg" /> : index + 1)
-                      }
-                    </div>
-
-                    {/* Song image */}
-                    <div className="w-12 h-12 mr-3 overflow-hidden rounded">
-                      <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
-                    </div>
-
-                    {/* Song details */}
-                    <div className="flex-1">
-                      <p className={`${playIndex === index ? 'text-green-500' : 'text-white'}`}>
-                        {song.title}
-                      </p>
-                      <p className="text-gray-400 text-sm">{song.plays} plays</p>
-                    </div>
-
-                    {/* Liked song */}
-                    <div
-                      className="text-gray-400 mr-8 cursor-pointer"
-                      onClick={(e) => toggleLike(e, song.id)}
-                    >
-                      {likedSongs.includes(song.id) ?
-                        <IoHeart className="text-red-500" /> :
-                        (hoveredIndex === index ? <IoHeartOutline /> : null)
-                      }
-                    </div>
-
-                    {/* Duration and more options */}
-                    <div className="text-gray-400 mr-17">{song.duration}</div>
-                    {hoveredIndex === index && (
-                      <div
-                        className="absolute right-10 text-gray-400 cursor-pointer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <HiDotsHorizontal />
-                      </div>
-                    )}
+                    {playIndex === index ?
+                      <BsSoundwave className="text-green-500" /> :
+                      (hoveredIndex === index ? <IoPlay className="text-lg" /> : index + 1)
+                    }
                   </div>
-                ))}
+
+                  {/* Song image */}
+                  <div className="w-12 h-12 mr-3 overflow-hidden rounded">
+                    <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
+                  </div>
+
+                  {/* Song details */}
+                  <div className="flex-1">
+                    <p className={`${playIndex === index ? 'text-green-500' : 'text-white'}`}>
+                      {song.title}
+                    </p>
+                    <p className="text-gray-400 text-sm">{song.plays} plays</p>
+                  </div>
+
+                  {/* Liked song */}
+                  <div
+                    className="text-gray-400 mr-8 cursor-pointer"
+                    onClick={(e) => toggleLike(e, song.id)}
+                  >
+                    {likedSongs.includes(song.id) ?
+                      <IoHeart className="text-red-500" /> :
+                      (hoveredIndex === index ? <IoHeartOutline /> : null)
+                    }
+                  </div>
+
+                  {/* Duration and more options */}
+                  <div className="text-gray-400 mr-17">{song.duration}</div>
+                  {hoveredIndex === index && (
+                    <div
+                      className="absolute right-10 text-gray-400 cursor-pointer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <HiDotsHorizontal />
+                    </div>
+                  )}
+                </div>
+              ))}
               </div>
+            </div>
+              )}
+
             </div>
           </div>
         );
@@ -439,26 +452,28 @@ const Artist = ({setMusicQueue}) => {
         return (
           <div>
             <h2 className="text-xl font-bold mb-4">Albums</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {albums.map(album => (
-                <div key={album.id} className="bg-gray-800 p-4 rounded">
-                  <div className="w-full h-48 mb-3 relative rounded overflow-hidden">
-                    <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
-                    {/* Heart button */}
-                    <button className="absolute right-4 top-3 cursor-pointer"
+              <div className="mx-5  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                {albums.map(album => (
+                  <div key={album.id} className="p-3 rounded hover:bg-gray-700 transition-all">
+                    {/* Square Album Cover */}
+                    <div className="w-full relative aspect-square mb-2 rounded overflow-hidden">
+                      <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
+                      <button className="absolute right-4 top-3 cursor-pointer"
                       onClick={(e) => toggleLikeAlbum(e, album.id)}
                     >
                       {likedAlbums.includes(album.id) ?
-                        <IoHeart size={30} className="text-white" /> :
-                        <IoHeartOutline size={30} className="text-white" />
+                        <IoHeart size={25} className="text-white drop-shadow-md" /> :
+                        <IoHeartOutline size={25} className="text-white drop-shadow-mdy" />
                       }
                     </button>
+                    </div>
+                    {/* Album Title, year, # of songs */}
+                    <p className="text-white font-bold">{album.title}</p>
+                    <p className="text-gray-400 text-sm">{album.year} • {album.tracks} tracks</p>
                   </div>
-                  <p className="text-white font-bold">{album.title}</p>
-                  <p className="text-gray-400 text-sm">{album.year} • {album.tracks} tracks</p>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+
           </div>
         );
 
@@ -495,10 +510,8 @@ const Artist = ({setMusicQueue}) => {
             <h2 className="text-xl font-bold mb-4">About {artistData.name}</h2>
             <div className="mb-6 flex">
               <div>
-                <h3 className="text-lg font-semibold mb-2">Biography</h3>
                 <p className="text-gray-300 mb-4">
-                  {artistData.name} is an acclaimed artist with {formatNumber(artistData.monthlyListeners)} monthly listeners.
-                  Known for powerful vocals and poetic lyrics, their music spans folk, rock, and blues influences.
+                  {artistData.about}
                 </p>
                 <div className="mb-4">
                   <h4 className="font-medium mb-1">Monthly Listeners</h4>
@@ -549,7 +562,9 @@ const Artist = ({setMusicQueue}) => {
           </button>
 
           {/* Play button */}
-          <button className="hover:scale-110 transition-transform duration-150 
+          <button 
+            onClick={() => handlePlay(albums[0].title, 0)}
+            className="hover:scale-110 transition-transform duration-150 
             bg-green-500 flex justify-center items-center
             rounded-full p-5 z-10 cursor-pointer absolute right-6 bottom-8">
             <span className="flex justify-center items-center text-black">
@@ -573,7 +588,7 @@ const Artist = ({setMusicQueue}) => {
 
       {/* Navigation Tabs */}
       <div className="px-6 border-b border-gray-800">
-        <div className="flex space-x-6">
+        <div className="flex space-x-6 ">
           {['Home', 'Songs', 'Singles & EPs', 'Albums', 'About'].map(tab => (
             <button
               key={tab}
