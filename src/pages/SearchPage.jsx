@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import rockImage from "../assets/Rocky the cat.png";
 import jsonData from "../assets/data/data.json";
 
-export default function SearchPage() {
+export default function SearchPage({ setMusicQueue }) {
     const location = useLocation();
     const navigate = useNavigate();
     const [searchParam, setSearchParam] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
 
+    // Helper: deduplicate items by name (ignoring case)
     function deduplicateByName(items) {
         const seen = new Set();
         return items.filter((item) => {
@@ -44,10 +45,14 @@ export default function SearchPage() {
 
     const extraSongs = [];
     const extraPlaylists = [];
+    const extraAlbums = []; // For independent album section
     Object.values(jsonData).forEach((artist) => {
         if (artist.albums) {
             artist.albums.forEach((album) => {
-                // Treat each album as a 'playlist' item
+                extraAlbums.push({
+                    artist: artist.name,
+                    album: album
+                });
                 extraPlaylists.push({
                     name: album.name,
                     image: album.image,
@@ -57,6 +62,7 @@ export default function SearchPage() {
                         extraSongs.push({
                             name: song.name,
                             image: song.image,
+                            durationMs: song.durationMs,
                         });
                     });
                 }
@@ -64,15 +70,40 @@ export default function SearchPage() {
         }
     });
 
-    // ---------- Merge and Deduplicate ----------
     const artists = deduplicateByName([...baseArtists, ...extraArtists]);
     const songs = deduplicateByName([...baseSongs, ...extraSongs]);
     const playlists = deduplicateByName([...basePlaylists, ...extraPlaylists]);
+    const albums = extraAlbums;
 
     // ---------- Category Tabs ----------
-    const categories = ["All", "Songs", "Playlists", "Artists", "Podcasts", "Audiobooks"];
-    const handleTagClick = (category) => {
-        setActiveCategory(category);
+    const categories = [
+        "All",
+        "Songs",
+        "Playlists",
+        "Artists",
+        "Albums",
+        "Podcasts",
+        "Audiobooks",
+    ];
+    const handleTagClick = (category) => setActiveCategory(category);
+
+    // ---------- Navigation Handlers ----------
+    const handleArtistClick = (artist) => {
+        navigate(`/artist?name=${encodeURIComponent(artist.name)}`);
+    };
+
+    const handleSongClick = (song) => {
+        setMusicQueue({ album: { songs: [song] } });
+    };
+
+    const handlePlaylistClick = (pl) => {
+        navigate(`/playlist?name=${encodeURIComponent(pl.name)}`);
+    };
+
+
+    // NOT DONE YET
+    const handleAlbumClick = (item) => {
+        navigate("/album");
     };
 
     return (
@@ -87,7 +118,9 @@ export default function SearchPage() {
                     <button
                         key={category}
                         className={`px-4 py-1 rounded-full text-sm ${
-                            activeCategory === category ? "bg-green-500" : "bg-gray-700 hover:bg-gray-600"
+                            activeCategory === category
+                                ? "bg-green-500"
+                                : "bg-gray-700 hover:bg-gray-600"
                         }`}
                         onClick={() => handleTagClick(category)}
                     >
@@ -99,7 +132,7 @@ export default function SearchPage() {
             {/* =================================== ALL PAGE =================================== */}
             {activeCategory === "All" && (
                 <>
-                    {/* Top Result (Only for All) */}
+                    {/* Top Result */}
                     <div className="mt-6">
                         <h2 className="font-semibold text-xl mb-2">Top Result</h2>
                         <div className="flex items-center space-x-4">
@@ -123,9 +156,7 @@ export default function SearchPage() {
                                 <div
                                     key={index}
                                     className="flex flex-col items-center cursor-pointer"
-                                    onClick={() =>
-                                        navigate(`/artist?name=${encodeURIComponent(artist.name)}`)
-                                    }
+                                    onClick={() => handleArtistClick(artist)}
                                 >
                                     <img
                                         src={artist.image}
@@ -146,9 +177,7 @@ export default function SearchPage() {
                                 <div
                                     key={index}
                                     className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                    onClick={() =>
-                                        navigate(`/song?title=${encodeURIComponent(song.name)}`)
-                                    }
+                                    onClick={() => handleSongClick(song)}
                                 >
                                     <img
                                         src={song.image}
@@ -169,9 +198,7 @@ export default function SearchPage() {
                                 <div
                                     key={index}
                                     className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                    onClick={() =>
-                                        navigate(`/playlist?name=${encodeURIComponent(pl.name)}`)
-                                    }
+                                    onClick={() => handlePlaylistClick(pl)}
                                 >
                                     <img
                                         src={pl.image}
@@ -179,6 +206,27 @@ export default function SearchPage() {
                                         className="w-24 h-24 object-cover rounded mb-2"
                                     />
                                     <p className="text-xs font-semibold">{pl.name}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Albums */}
+                    <div>
+                        <h2 className="font-semibold text-xl mb-2 mt-6">Albums</h2>
+                        <div className="grid grid-cols-6 gap-4">
+                            {albums.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                    onClick={() => handleAlbumClick(item)}
+                                >
+                                    <img
+                                        src={item.album.image}
+                                        alt="Album Cover"
+                                        className="w-24 h-24 object-cover rounded mb-2"
+                                    />
+                                    <p className="text-xs font-semibold">{item.album.name}</p>
                                 </div>
                             ))}
                         </div>
@@ -195,9 +243,7 @@ export default function SearchPage() {
                             <div
                                 key={index}
                                 className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                onClick={() =>
-                                    navigate(`/song?title=${encodeURIComponent(song.name)}`)
-                                }
+                                onClick={() => handleSongClick(song)}
                             >
                                 <img
                                     src={song.image}
@@ -220,9 +266,7 @@ export default function SearchPage() {
                             <div
                                 key={index}
                                 className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                onClick={() =>
-                                    navigate(`/playlist?name=${encodeURIComponent(pl.name)}`)
-                                }
+                                onClick={() => handlePlaylistClick(pl)}
                             >
                                 <img
                                     src={pl.image}
@@ -245,9 +289,7 @@ export default function SearchPage() {
                             <div
                                 key={index}
                                 className="flex flex-col items-center cursor-pointer"
-                                onClick={() =>
-                                    navigate(`/artist?name=${encodeURIComponent(artist.name)}`)
-                                }
+                                onClick={() => handleArtistClick(artist)}
                             >
                                 <img
                                     src={artist.image}
