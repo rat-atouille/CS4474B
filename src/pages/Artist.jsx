@@ -6,7 +6,7 @@ import { FaShuffle } from "react-icons/fa6";
 import { FaPlay } from "react-icons/fa";
 
 // Import the data from the specified path
-import playlistData from "../assets/data/myPlaylist.json";
+import playlistData from "../assets/data/data.json";
 
 const Artist = () => {
   const [activeTab, setActiveTab] = useState('Home');
@@ -18,7 +18,7 @@ const Artist = () => {
   const [likedAlbums, setLikedAlbums] = useState([]);
   const [artistData, setArtistData] = useState(null);
   const [songs, setSongs] = useState([]);
-  const [albums, setSingles] = useState([]);
+  const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
     // Load artist data when component mounts
@@ -27,13 +27,16 @@ const Artist = () => {
 
   const loadArtistData = () => {
     try {
-      // Assuming "Hozier" is the artist key we want to use from the playlistData
-      const artist = playlistData["Hozier"];
+      // Get first artist from the data
+      const artistKey = Object.keys(playlistData)[0];
+      const artist = playlistData[artistKey];
       
       if (artist) {
+        console.log("Loaded artist:", artistKey, artist);
+        
         // Set artist info
         setArtistData({
-          name: "Hozier",
+          name: artistKey,
           verified: true,
           monthlyListeners: formatNumber(artist.followers),
           profileImage: artist.image
@@ -66,7 +69,9 @@ const Artist = () => {
         });
 
         setSongs(allSongs);
-        setSingles(artistAlbums);
+        setAlbums(artistAlbums);
+      } else {
+        console.error("No artist data found");
       }
     } catch (error) {
       console.error("Error loading artist data:", error);
