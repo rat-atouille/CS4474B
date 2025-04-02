@@ -6,7 +6,9 @@ import { FaShuffle } from "react-icons/fa6";
 import { FaPlay } from "react-icons/fa";
 
 // Import the data from the specified path
-import playlistData from "../assets/data/data.json";
+import data from "../assets/data/data.json";
+
+// navigate(`/artist/?name=${item.artistName}`);
 
 const Artist = () => {
   const [activeTab, setActiveTab] = useState('Home');
@@ -28,8 +30,12 @@ const Artist = () => {
   const loadArtistData = () => {
     try {
       // Get first artist from the data
-      const artistKey = Object.keys(playlistData)[0];
-      const artist = playlistData[artistKey];
+      const artistName = new URL(window.location.href).searchParams.get("name");
+
+      const artistKey = Object.keys(data).find(
+        key => key.toLowerCase() === artistName?.toLowerCase()
+      );
+      const artist = data[artistKey];
       
       if (artist) {
         console.log("Loaded artist:", artistKey, artist);
@@ -203,7 +209,7 @@ const Artist = () => {
               </div>
 
               <div className="rounded mt-5">
-                {songs.map((song, index) => (
+                {songs.slice(0,5).map((song, index) => (
                   <div
                     key={song.id}
                     onMouseEnter={() => setHoveredIndex(index)}
@@ -296,8 +302,17 @@ const Artist = () => {
             </div>
             
             <div>
-              <h2 className="text-xl font-bold mb-4">All Songs</h2>
-
+              <div className='flex p-0 justify-between'>
+                <h2 className="text-xl font-bold">All Songs</h2>
+                <button className="
+                    cursor-pointer text-[#b3b3b3]
+                    hover:scale-105 transition-transform duration-150 hover:border-white hover:text-white
+                    pl-3 pr-3 pt-1 pb-1 text-sm font-md border-[#b3b3b3] border border-2 rounded-2xl"
+                    onClick={()=>setPlayIndex(0)}
+                  >
+                    Play All
+                  </button>
+              </div>
               <div className="rounded mt-5">
                 {songs.map((song, index) => (
                   <div
@@ -390,7 +405,7 @@ const Artist = () => {
           <div>
             <h2 className="text-xl font-bold mb-4">Singles & EPs</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {albums.filter(album => album.tracks <= 4).map(album => (
+              {albums.filter(album => album.songs <= 1).map(album => (
                 <div key={album.id} className="bg-gray-800 p-4 rounded">
                   <div className="w-full h-48 mb-3 relative rounded overflow-hidden">
                     <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
@@ -417,9 +432,6 @@ const Artist = () => {
           <div className="max-w-3xl">
             <h2 className="text-xl font-bold mb-4">About {artistData.name}</h2>
             <div className="mb-6 flex">
-              <div className="w-64 h-64 rounded overflow-hidden mr-6">
-                <img src={artistData.profileImage} alt={artistData.name} className="w-full h-full object-cover" />
-              </div>
               <div>
                 <h3 className="text-lg font-semibold mb-2">Biography</h3>
                 <p className="text-gray-300 mb-4">
