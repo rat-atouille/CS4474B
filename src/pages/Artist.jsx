@@ -292,13 +292,13 @@ const Artist = ({setMusicQueue}) => {
               <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {albums.slice(0, 4).map(album => (
-                  <div key={album.id} className="p-3 rounded">
+                  <a href={`/album/?name=${album.title}`} key={album.id} className="p-3 rounded hover:bg-neutral-600">
                     <div className="w-full h-38 mb-2 rounded overflow-hidden">
                       <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
                     </div>
                     <p className="text-white truncate font-semibold">{album.title}</p>
                     <p className="text-gray-400 text-sm">{album.year}</p>
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -407,8 +407,8 @@ const Artist = ({setMusicQueue}) => {
             <h2 className="text-xl font-bold mb-4">Albums</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {albums.map(album => (
-                <div key={album.id} className="bg-gray-800 p-4 rounded">
-                  <div className="w-full h-48 mb-3 relative rounded overflow-hidden">
+                <a href={`/album/?name=${album.title}`} key={album.id} className="p-4 rounded hover:bg-neutral-600">
+                  <div className="w-full h-48 mb-3 relative rounded overflow-hidden ">
                     <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
                     {/* Heart button */}
                     <button className="absolute right-4 top-3 cursor-pointer"
@@ -422,7 +422,7 @@ const Artist = ({setMusicQueue}) => {
                   </div>
                   <p className="text-white font-bold">{album.title}</p>
                   <p className="text-gray-400 text-sm">{album.year} • {album.tracks} tracks</p>
-                </div>
+                </a>
               ))}
             </div>
           </div>
