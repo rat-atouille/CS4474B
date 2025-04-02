@@ -28,9 +28,9 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
   const sortDropdownRef = useRef(null);
   const viewDropdownRef = useRef(null);
 
-  useEffect(() => {
-    console.log("Sidebar collapsed state changed:", collapsed);
-  }, [collapsed]);
+  // useEffect(() => {
+  //   console.log("Sidebar collapsed state changed:", collapsed);
+  // }, [collapsed]);
   
   // Handle clicking outside dropdowns
   useEffect(() => {

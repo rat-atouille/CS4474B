@@ -17,6 +17,45 @@ const finalJson = {};
 const CLIENT_ID = "1500e4eb90b34eecb403201c86d3611e";
 const CLIENT_SECRET = "ea2e38c9737a43e7a6735c17315b7e7d";
 
+const podcastGenres = [
+  "True Crime",
+  "Comedy",
+  "News & Politics",
+  "Health & Fitness",
+  "Business & Finance",
+  "Technology",
+  "Education",
+  "History",
+  "Sports",
+  "Entertainment",
+  "Science",
+  "Fiction/Storytelling",
+  "Parenting",
+  "Self-Improvement",
+  "Gaming",
+  "Arts & Culture",
+  "Religion & Spirituality",
+  "Lifestyle",
+  "Miscellaneous"
+];
+
+function shuffle(array) {
+  let currentIndex = array.length;
+
+  // While there remain elements to shuffle...
+  while (currentIndex !== 0) {
+
+    // Pick a remaining element...
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+}
+
+
 async function getAccessToken() {
   let url = "https://accounts.spotify.com/api/token";
   let options = {
@@ -51,13 +90,14 @@ async function getPodcasts(access_token) {
   // in spotify, shows are podcasts
   const {data: {shows: {items}}} = await axios.get(url.toString(), options);
   await Promise.all(items.map(async podcast => {
-
+    shuffle(podcastGenres)
     finalJson[podcast.name] = {
       about: podcast.html_description,
       image: podcast.images[0].url,
       publisher: podcast.publisher,
       totalEpisodes: podcast.total_episodes,
-      episodes: []
+      episodes: [],
+      genres: [podcastGenres[0], podcastGenres[1]],
     };
 
     url = new URL(`https://api.spotify.com/v1/shows/${podcast.id}/episodes`);
@@ -74,12 +114,9 @@ async function getPodcasts(access_token) {
         durationMs: episode.duration_ms,
         releaseDate: episode.release_date
       });
-
     });
     foundPodcast.episodes = foundPodcast.episodes.filter(episode => episode != null);
   }));
-
-
 }
 
 (async () => {

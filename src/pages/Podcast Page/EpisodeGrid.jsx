@@ -1,5 +1,7 @@
 import genericThumbnail from "../../assets/Podcast/genericThumbnail.jpg";
 import {PlayButton} from "../../components/playButton.jsx";
+import {BsSoundwave} from "react-icons/bs";
+import React from "react";
 
 // interface episode {
 //   title: string,
@@ -44,23 +46,28 @@ function formatLength(lengthInMs) {
 }
 
 
-function EpisodeGrid({episodes}) {
+function EpisodeGrid({episodes, handlePlay, togglePlay, playIndex}) {
   return (
     <div className={"w-full grid grid-cols-2 grid-rows-1 gap-x-14 gap-y-10 mt-7"}>
       {episodes.map((episode, index) =>
-        <div key={index}
-          className={"flex flex-nowrap items-center gap-[10px] hover:cursor-pointer hover:scale-105 transition-all hover:bg-[#474747] p-0.5"}>
-          <div className={"group relative size-36 flex-shrink-0"}>
+        <div key={index} onClick={(e) => {
+          handlePlay(index);
+          togglePlay(e, index);
+        }}
+             className={"group flex flex-nowrap items-center gap-[10px] hover:cursor-pointer hover:scale-105 transition-all hover:bg-[#474747] p-0.5"}>
+          <div className={"relative size-36 flex-shrink-0"}>
             <img className={"size-full object-cover"} src={episode?.image ?? genericThumbnail}
                  alt="Thumbnail"/>
             <PlayButton/>
           </div>
           <div className={"flex flex-col gap-0.5 min-w-0"}>
-            <div className={"font-bold text-lg line-clamp-2"}>{episode.name}</div>
+            <div
+              className={`font-bold text-lg line-clamp-2 ${playIndex === index && 'text-green-500'}`}>{episode.name}</div>
             <div dangerouslySetInnerHTML={{__html: episode.description}}
                  className={"text-neutral-400 text-xs line-clamp-3"}></div>
             <div
-              className={"mt-2 text-sm font-bold line-clamp-1"}>{formatDate(episode.releaseDate)} • {formatLength(episode.durationMs)}</div>
+              className={"mt-2 text-sm font-bold line-clamp-1 flex gap-1"}>{formatDate(episode.releaseDate)} • {formatLength(episode.durationMs)}
+              {playIndex === index && <BsSoundwave size={20} className="text-green-500 text-lg ml-auto mr-2"/>}</div>
           </div>
         </div>
       )}
