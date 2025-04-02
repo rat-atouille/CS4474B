@@ -43,7 +43,7 @@ export default function Layout({ children }) {
             <Navbar showNavBackground={showNavBackground} className="w-full" />
 
             {/* Scrollable Content */}
-            <div className={`flex-1 mt-[10vh] md:mt-[5vw] overflow-y-auto ${collapsed ? "ml-16" : "ml-64"}`}>
+            <div className={`flex-1 mt-[10vh] md:mt-[5vw] overflow-y-auto bg-[#212121] ${collapsed ? "ml-16" : "ml-64"}`}>
               <Routes>
                 <Route path="/*" element={React.cloneElement(children, { setMusicQueue })} />
               </Routes>
