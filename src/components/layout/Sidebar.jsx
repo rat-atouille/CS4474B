@@ -88,9 +88,8 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
   };
 
   const handleAlbumClick = (item) => {
-    console.log(item)
     setCurrentAlbum(item);
-    //navigate("/album");
+    navigate("/album");
   };
   
   const toggleSortDropdown = () => {
