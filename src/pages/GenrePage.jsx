@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import data from '../assets/data/data.json';
 import podcastThumbnail from '../assets/Podcast/sample_thumbnail.png';
 import { IoChevronBackOutline } from "react-icons/io5";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
 
 const GenrePage = () => {
   const { genre } = useParams();
@@ -67,11 +69,11 @@ const GenrePage = () => {
         >
           <IoChevronBackOutline className="mr-1" /> Back
         </button>
-        <h1 className="ml-2 font-bold text-2xl capitalize">{genre}</h1>      
+        <h1 className="ml-2 font-bold text-2xl capitalize text-white">{genre}</h1>      
       </div>
       
       {filteredSongs.length === 0 ? (
-        <p className="text-xl p-6">
+        <p className="text-xl p-6 text-white">
           No content found for this genre.
         </p>
       ) : genre.toLowerCase() === 'sport' ? (
@@ -94,18 +96,33 @@ const GenrePage = () => {
               className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 relative group" 
               key={index}
             >
-              <div className="bg-[#2a2a2a] rounded-lg overflow-hidden hover:bg-[#3a3a3a] transition-colors cursor-pointer h-full flex flex-col">
-                <div className="p-4 pb-2">
+              <div className="rounded-lg overflow-hidden cursor-pointer h-full flex flex-col items-center relative">
+                {/* Image container with play button */}
+                <div className="p-2 relative">
                   <img 
                     src={song.image} 
                     alt={`${song.name} cover`} 
-                    className="w-full aspect-square object-cover rounded-md mx-auto max-w-[120px]"
+                    className="w-full aspect-square object-cover rounded-md mx-auto max-w-[120px] group-hover:opacity-70 transition-opacity"
                   />
+                  <div 
+                    className="absolute bottom-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-all ease-in-out"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      // Add play functionality here
+                    }}
+                  >
+                    <FontAwesomeIcon 
+                      icon={faCirclePlay} 
+                      className="text-3xl text-green-500 hover:scale-105 transition-transform" 
+                    />
+                  </div>
                 </div>
-                <div className="p-3 pt-0 flex-grow">
-                  <p className="font-medium truncate text-white text-center">{song.name}</p>
-                  <p className="text-xs text-gray-400 truncate text-center">{song.artist}</p>
-                  <p className="text-xs text-gray-500 truncate text-center mt-1">{song.album}</p>
+                
+                {/* Text info */}
+                <div className="p-2 text-center w-full">
+                  <p className="font-medium truncate text-white">{song.name}</p>
+                  <p className="text-sm text-gray-400 truncate">{song.artist}</p>
+                  <p className="text-xs text-gray-500 truncate mt-1">{song.album}</p>
                 </div>
               </div>
             </div>
