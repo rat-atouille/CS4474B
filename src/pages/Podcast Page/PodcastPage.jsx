@@ -21,9 +21,29 @@ import EpisodeList from "./EpisodeList.jsx";
 //   img: string
 // }
 
-function PodcastPage() {
+function PodcastPage({setMusicQueue}) {
   const podcastName = new URL(window.location.href).searchParams.get("name");
   const podcast = podcastData[podcastName];
+
+  const [playIndex, setPlayIndex] = useState(null);
+
+  const handlePlay = (index) => {
+    console.log(index)
+    if (typeof setMusicQueue === 'function') {
+      setMusicQueue({...podcast, index});
+    } else {
+      console.error('setMusicQueue is not a function');
+    }
+  };
+
+  const togglePlay = (e, index) => {
+    e.stopPropagation();
+    if (playIndex === index) {
+      setPlayIndex(null);
+    } else {
+      setPlayIndex(index);
+    }
+  };
 
   const sortButtons = [
     {
@@ -181,7 +201,8 @@ function PodcastPage() {
           </div>
 
           {/*Episodes grid*/}
-          {view === "Grid" ? <EpisodeGrid episodes={episodesState}/> : <EpisodeList episodes={episodesState}/>}
+          {view === "Grid" ? <EpisodeGrid togglePlay={togglePlay} playIndex={playIndex} handlePlay={handlePlay} episodes={episodesState}/> :
+            <EpisodeList togglePlay={togglePlay} playIndex={playIndex} handlePlay={handlePlay} episodes={episodesState}/>}
         </div>
       </div>
     </div>

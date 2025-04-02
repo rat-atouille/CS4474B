@@ -46,18 +46,17 @@ function formatLength(lengthInMs) {
   }
 }
 
-function EpisodeList({episodes}) {
+function EpisodeList({episodes, handlePlay, togglePlay, playIndex}) {
   const tableBody = useRef(null)
 
   useEffect(() => {
     const topRowTds = tableBody.current.children[1].children;
 
-    console.log(topRowTds);
     for (let i = 0; i < topRowTds.length; i++) {
       topRowTds[i].classList.add("pt-4")
     }
 
-  }, [])
+  }, []);
   return (
     <table className={"w-full mt-7"}>
       <tbody ref={tableBody}>
@@ -69,11 +68,14 @@ function EpisodeList({episodes}) {
       </tr>
 
       {episodes.map((episode, index) =>
-        <tr key={index}>
-          <td className={"pb-2"}><img className={"size-8"} src={episode?.image ?? genericThumbnail} alt={"Thumbnail"}/></td>
-          <td className={"pb-2"}>{episode.name}</td>
-          <td className={"pb-2"}>{formatDate(episode.releaseDate)}</td>
-          <td className={"pb-2"}>{formatLength(episode.durationMs)}</td>
+        <tr onClick={(e) => {
+          handlePlay(index);
+          togglePlay(e, index)
+        }} className={"hover:bg-[#474747] cursor-pointer"} key={index}>
+          <td className={"py-1.5"}><img className={"size-8"} src={episode?.image ?? genericThumbnail} alt={"Thumbnail"}/></td>
+          <td className={"py-1.5"}>{episode.name}</td>
+          <td className={"py-1.5"}>{formatDate(episode.releaseDate)}</td>
+          <td className={"py-1.5"}>{formatLength(episode.durationMs)}</td>
         </tr>
       )}
       </tbody>
