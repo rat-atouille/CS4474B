@@ -84,7 +84,7 @@ export default function MusicPlayer({ musicQueue }) {
         {musicQueue && (
             <div className="fixed bottom-0 bg-black w-full h-[10vh] md:h-[5vw] overflow-x-hidden z-10 px-4 py-2 flex items-center justify-between transition-all">
               {/* Left Section: Song Info */}
-              <div className="flex items-center space-x-4 h-full">
+              <div className="flex items-center space-x-4 md:w-1/5 h-full">
                 <img
                     src={
                         currentSong?.image ||
@@ -97,10 +97,13 @@ export default function MusicPlayer({ musicQueue }) {
                     className="object-cover rounded h-3/4"
                 />
                 <div>
-              <span className="text-white font-medium text-[10px] md:text-sm">
-                {currentSong?.name}
-              </span>
-                  <div className="text-gray-400 text-[8px] md:text-xs">
+                <span className="text-white font-medium text-[10px] md:text-[12px]" title={currentSong?.name}>
+                  {currentSong?.name.length > 30 
+                    ? `${currentSong.name.substring(0, 30)}...` 
+                    : currentSong?.name}
+                </span>
+
+                  <div className="text-gray-400 text-[8px] md:text-[10px]">
                     {!isPodcast(musicQueue)
                         ? musicQueue.artist
                         : musicQueue.publisher}
@@ -133,7 +136,7 @@ export default function MusicPlayer({ musicQueue }) {
                   ${isRepeating ? "text-green-500 hover:text-green-300" : "text=gray-300 hover:text-white"}`}
                   onClick={toggleLoop}></i>
                 </div>
-                <div className="flex mt-2 items-center w-xs md:w-sm text-xs gap-2">
+                <div className="flex mt-2 items-center md:w-sm text-xs gap-2">
                   <span className="font-thin">{timeFormatted}</span>
                   <div className="flex w-full items-center gap-2">
                     <input

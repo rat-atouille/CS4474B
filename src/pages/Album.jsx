@@ -53,7 +53,7 @@ export default function Album({ setMusicQueue }) {
   // Render tab content
   const renderTabContent = () => (
     <div>
-      <div className="flex items-center p-0 mb-4 mt-2 text-2xl text-gray-300 space-x-4">
+      <div className="flex items-center p-0 mt-2 mb-8 text-2xl text-gray-300 space-x-4">
         <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-green-400 hover:scale-105 transition-all duration-300 ease-in-out"
         onClick={() => handlePlay(currentAlbum)}></i>
         <i className="fa-solid fa-shuffle hover:text-white transition-all duration-300 ease-in-out"></i>
@@ -62,14 +62,13 @@ export default function Album({ setMusicQueue }) {
         <i className="text-sm hover:text-white transition-all duration-300 ease-in-out">•••</i>
       </div>
       <div className="rounded">
-        <div className="rounded-lg p-3 mb-2 border-b border-gray-700">
-          <div className="flex justify-between ml-3 text-gray-400">
-            <div className="flex space-x-5">
-              <p>#</p>
-              <p>Title</p>
+        <div className="rounded-lg mb-2 border-b border-gray-700">
+          <div className="flex justify-between text-gray-400">
+            <div className="flex">
+              <p className='w-8 px-2 text-center'>#</p>
+              <p className='ml-4'>Title</p>
             </div>
-            <div className="hidden md:block ml-66">Plays</div>
-            <div className="mr-8"><i className="fa-regular fa-clock"></i></div>
+            <div><i className="fa-regular fa-clock mr-9"></i></div>
           </div>
         </div>
 
@@ -80,27 +79,26 @@ export default function Album({ setMusicQueue }) {
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
             onClick={(e) => togglePlay(e, index)}
-            className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
+            className="rounded-lg flex items-center py-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
           >
             <div
-              className="w-8 text-center text-gray-400 text-xs mr-3"
+              className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white"
               onClick={() => {handlePlay(currentAlbum, index);
                 (e) => togglePlay(e, index);}}
             >
               {playIndex === index ? 
-                <BsSoundwave className="text-green-500 text-lg ml-2" /> : 
-                (hoveredIndex === index ? <IoPlay className="text-lg ml-2" /> : index + 1)
+                <BsSoundwave className="text-green-500 text-lg" /> : 
+                (hoveredIndex === index ? <IoPlay className="text-lg ml-1" /> : index + 1)
               }
             </div>
 
             <div className="relative flex justify-between items-center w-full">
-              <div>
-                <p className="text-white text-sm w-3/5 md:w-xs">{song.name}</p>
+              <div className='ml-5'>
+                <p className={`text-sm w-3/5 md:w-xs ${playIndex === index ? 'text-green-500' : 'text-white'}`}>{song.name}</p>
                 <p className="text-gray-400 text-sm hover:underline transition-all duration-300 ease-in-out">{currentAlbum.artist}</p>
               </div>
-              <p className="hidden md:block text-sm">1,000,000</p>
-              <div className="text-gray-400 mr-7 text-sm">{convertToMMSS(song.durationMs)}</div>
-
+              <div className="text-gray-400 text-sm">{convertToMMSS(song.durationMs)}</div>
+            </div>
               {/* Liked song */}
               <div 
                 className="text-gray-400 mr-8 cursor-pointer"
@@ -111,7 +109,6 @@ export default function Album({ setMusicQueue }) {
                   (hoveredIndex === `recent-${index}` ? <IoHeartOutline /> : null)
                 }
               </div>
-            </div>
           </div>
         ))}
       </div>

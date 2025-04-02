@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { PlayButton } from "../components/playButton.jsx";
 import isPodcast from "../isPodcast.js";
 import { useAlbum } from "../context/AlbumContext.jsx";
+import getStructuredData from "../getStructuredData.js";
 
 // ===== Carousel Component =====
 function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
@@ -13,6 +14,8 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(getStructuredData("playlist-liked", "Liked Songs", 0))
+
     const updateItemsToShow = () => {
       if (window.innerWidth >= 1024) {
         setItemsToShow(5);

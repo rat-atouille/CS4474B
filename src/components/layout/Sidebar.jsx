@@ -6,7 +6,7 @@ import { HiViewGrid, HiMenu } from "react-icons/hi";
 import { useAlbum } from "../../context/AlbumContext";
 
 // Import the data from the specified path
-import playlistData from "../../assets/data/myPlaylist.json";
+import playlistData from "../../assets/data/playlistData.json";
 
 function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
