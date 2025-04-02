@@ -1025,18 +1025,6 @@
         ]
       },
       {
-        "name": "La Ziguezon (Live)",
-        "image": "https://i.scdn.co/image/ab67616d0000b2732faafe22333d5b6c27fd68a7",
-        "releaseDate": "2023-12-15",
-        "songs": [
-          {
-            "name": "La Ziguezon - Live",
-            "durationMs": 127698,
-            "image": "https://i.scdn.co/image/ab67616d0000b2732faafe22333d5b6c27fd68a7"
-          }
-        ]
-      },
-      {
         "name": "I'm One Of The Rest (From CBS Original Series \"Tracker\")",
         "image": "https://i.scdn.co/image/ab67616d0000b2738378406b0f7ce5585a7b2b66",
         "releaseDate": "2023-12-14",
@@ -1535,7 +1523,664 @@
     "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   
-
+  "Doja Cat": {
+    "followers": 33001330,
+    "genres": [],
+    "image": "https://i.scdn.co/image/ab6761610000e5ebe94f88ff74ae4ddcab961f97",
+    "albums": [
+      {
+        "name": "Scarlet 2 CLAUDE",
+        "image": "https://i.scdn.co/image/ab67616d0000b273cf5685eced152b546f7833ce",
+        "releaseDate": "2024-05-17",
+        "songs": [
+          {
+            "name": "ACKNOWLEDGE ME",
+            "durationMs": 190613,
+            "image": "https://i.scdn.co/image/ab67616d0000b273cf5685eced152b546f7833ce"
+          },
+          {
+            "name": "DISRESPECTFUL",
+            "durationMs": 156240,
+            "image": "https://i.scdn.co/image/ab67616d0000b273cf5685eced152b546f7833ce"
+          },
+          {
+            "name": "URRRGE!!!!!!!!!! (feat. A$AP Rocky)",
+            "durationMs": 152653,
+            "image": "https://i.scdn.co/image/ab67616d0000b273cf5685eced152b546f7833ce"
+          },
+          {
+            "name": "OKLOSER",
+            "durationMs": 169053,
+            "image": "https://i.scdn.co/image/ab67616d0000b273cf5685eced152b546f7833ce"
+          },
+          {
+            "name": "MASC (feat. Teezo Touchdown)",
+            "durationMs": 205920,
+            "image": "https://i.scdn.co/image/ab67616d0000b273cf5685eced152b546f7833ce"
+          },
+          {
+            "name": "PISS",
+            "durationMs": 155373,
+            "image": "https://i.scdn.co/image/ab67616d0000b273cf5685eced152b546f7833ce"
+          },
+          {
+            "name": "HEADHIGH",
+            "durationMs": 199480,
+            "image": "https://i.scdn.co/image/ab67616d0000b273cf5685eced152b546f7833ce"
+          }
+        ]
+      },
+      {
+        "name": "Scarlet",
+        "image": "https://i.scdn.co/image/ab67616d0000b27394203dd82d27b494c777d07c",
+        "releaseDate": "2023-09-22",
+        "songs": [
+          {
+            "name": "Paint The Town Red",
+            "durationMs": 230480,
+            "image": "https://i.scdn.co/image/ab67616d0000b27394203dd82d27b494c777d07c"
+          },
+          {
+            "name": "Demons",
+            "durationMs": 195573,
+            "image": "https://i.scdn.co/image/ab67616d0000b27394203dd82d27b494c777d07c"
+          },
+          {
+            "name": "Wet Vagina",
+            "durationMs": 192240,
+            "image": "https://i.scdn.co/image/ab67616d0000b27394203dd82d27b494c777d07c"
+          },
+          {
+            "name": "Fuck The Girls (FTG)",
+            "durationMs": 152866,
+            "image": "https://i.scdn.co/image/ab67616d0000b27394203dd82d27b494c777d07c"
+          },
+          {
+            "name": "Ouchies",
+            "durationMs": 122186,
+            "image": "https://i.scdn.co/image/ab67616d0000b27394203dd82d27b494c777d07c"
+          },
+          {
+            "name": "97",
+            "durationMs": 177666,
+            "image": "https://i.scdn.co/image/ab67616d0000b27394203dd82d27b494c777d07c"
+          },
+          {
+            "name": "Gun",
+            "durationMs": 176840,
+            "image": "https://i.scdn.co/image/ab67616d0000b27394203dd82d27b494c777d07c"
+          }
+        ]
+      },
+      {
+        "name": "Planet Her (Deluxe)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2733b017bad9fa5f880745c59cc",
+        "releaseDate": "2021-06-27",
+        "songs": [
+          {
+            "name": "Woman",
+            "durationMs": 172626,
+            "image": "https://i.scdn.co/image/ab67616d0000b2733b017bad9fa5f880745c59cc"
+          },
+          {
+            "name": "Naked",
+            "durationMs": 223560,
+            "image": "https://i.scdn.co/image/ab67616d0000b2733b017bad9fa5f880745c59cc"
+          },
+          {
+            "name": "Payday (feat. Young Thug)",
+            "durationMs": 212946,
+            "image": "https://i.scdn.co/image/ab67616d0000b2733b017bad9fa5f880745c59cc"
+          },
+          {
+            "name": "Get Into It (Yuh)",
+            "durationMs": 138293,
+            "image": "https://i.scdn.co/image/ab67616d0000b2733b017bad9fa5f880745c59cc"
+          },
+          {
+            "name": "Need to Know",
+            "durationMs": 210560,
+            "image": "https://i.scdn.co/image/ab67616d0000b2733b017bad9fa5f880745c59cc"
+          },
+          {
+            "name": "I Don't Do Drugs (feat. Ariana Grande)",
+            "durationMs": 188893,
+            "image": "https://i.scdn.co/image/ab67616d0000b2733b017bad9fa5f880745c59cc"
+          },
+          {
+            "name": "Love To Dream",
+            "durationMs": 216853,
+            "image": "https://i.scdn.co/image/ab67616d0000b2733b017bad9fa5f880745c59cc"
+          }
+        ]
+      },
+      {
+        "name": "Planet Her",
+        "image": "https://i.scdn.co/image/ab67616d0000b273be841ba4bc24340152e3a79a",
+        "releaseDate": "2021-06-25",
+        "songs": [
+          {
+            "name": "Woman",
+            "durationMs": 172626,
+            "image": "https://i.scdn.co/image/ab67616d0000b273be841ba4bc24340152e3a79a"
+          },
+          {
+            "name": "Naked",
+            "durationMs": 223560,
+            "image": "https://i.scdn.co/image/ab67616d0000b273be841ba4bc24340152e3a79a"
+          },
+          {
+            "name": "Payday (feat. Young Thug)",
+            "durationMs": 212946,
+            "image": "https://i.scdn.co/image/ab67616d0000b273be841ba4bc24340152e3a79a"
+          },
+          {
+            "name": "Get Into It (Yuh)",
+            "durationMs": 138293,
+            "image": "https://i.scdn.co/image/ab67616d0000b273be841ba4bc24340152e3a79a"
+          },
+          {
+            "name": "Need to Know",
+            "durationMs": 210560,
+            "image": "https://i.scdn.co/image/ab67616d0000b273be841ba4bc24340152e3a79a"
+          },
+          {
+            "name": "I Don't Do Drugs (feat. Ariana Grande)",
+            "durationMs": 188893,
+            "image": "https://i.scdn.co/image/ab67616d0000b273be841ba4bc24340152e3a79a"
+          },
+          {
+            "name": "Love To Dream",
+            "durationMs": 216853,
+            "image": "https://i.scdn.co/image/ab67616d0000b273be841ba4bc24340152e3a79a"
+          }
+        ]
+      },
+      {
+        "name": "Hot Pink",
+        "image": "https://i.scdn.co/image/ab67616d0000b273f14aa81116510d3a6df8432b",
+        "releaseDate": "2019-11-07",
+        "songs": [
+          {
+            "name": "Cyber Sex",
+            "durationMs": 165733,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f14aa81116510d3a6df8432b"
+          },
+          {
+            "name": "Won't Bite (feat. Smino)",
+            "durationMs": 195213,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f14aa81116510d3a6df8432b"
+          },
+          {
+            "name": "Rules",
+            "durationMs": 187040,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f14aa81116510d3a6df8432b"
+          },
+          {
+            "name": "Bottom Bitch",
+            "durationMs": 197933,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f14aa81116510d3a6df8432b"
+          },
+          {
+            "name": "Say So",
+            "durationMs": 237893,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f14aa81116510d3a6df8432b"
+          },
+          {
+            "name": "Like That (feat. Gucci Mane)",
+            "durationMs": 163173,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f14aa81116510d3a6df8432b"
+          },
+          {
+            "name": "Talk Dirty",
+            "durationMs": 241480,
+            "image": "https://i.scdn.co/image/ab67616d0000b273f14aa81116510d3a6df8432b"
+          }
+        ]
+      }
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  "Dojo Cuts": {
+    "followers": 78347,
+    "genres": [
+      "retro soul"
+    ],
+    "image": "https://i.scdn.co/image/ab6761610000e5eb6af8ec7a1e413f4cbdd18fda",
+    "albums": [
+      {
+        "name": "Tomorrow's Gonna Come (2024 Deluxe)",
+        "image": "https://i.scdn.co/image/ab67616d0000b273e30d10ed748f02b37b79b3c0",
+        "releaseDate": "2024-07-19",
+        "songs": [
+          {
+            "name": "Rome - Deluxe LP Version",
+            "durationMs": 225386,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e30d10ed748f02b37b79b3c0"
+          },
+          {
+            "name": "Falling In Love Again - Deluxe LP Version",
+            "durationMs": 232320,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e30d10ed748f02b37b79b3c0"
+          },
+          {
+            "name": "I Don't Want To Wait - Deluxe LP Version",
+            "durationMs": 212017,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e30d10ed748f02b37b79b3c0"
+          },
+          {
+            "name": "Take What's Mine - Deluxe LP Version",
+            "durationMs": 188106,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e30d10ed748f02b37b79b3c0"
+          },
+          {
+            "name": "Don't You See - Deluxe LP Extra",
+            "durationMs": 156466,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e30d10ed748f02b37b79b3c0"
+          },
+          {
+            "name": "Tomorrow's Gonna Come - Deluxe LP Version",
+            "durationMs": 212939,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e30d10ed748f02b37b79b3c0"
+          },
+          {
+            "name": "This Life - Deluxe LP Version",
+            "durationMs": 208676,
+            "image": "https://i.scdn.co/image/ab67616d0000b273e30d10ed748f02b37b79b3c0"
+          }
+        ]
+      },
+      {
+        "name": "Dojo Cuts Instrumentals, Vol. 2",
+        "image": "https://i.scdn.co/image/ab67616d0000b2738cbc5c491e0efb44b5062c6d",
+        "releaseDate": "2021-10-29",
+        "songs": [
+          {
+            "name": "Days Like These",
+            "durationMs": 191682,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738cbc5c491e0efb44b5062c6d"
+          },
+          {
+            "name": "I've Been Waiting All My Life For You",
+            "durationMs": 159821,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738cbc5c491e0efb44b5062c6d"
+          },
+          {
+            "name": "Return of the Son of Switchblade",
+            "durationMs": 212673,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738cbc5c491e0efb44b5062c6d"
+          },
+          {
+            "name": "Sonny's Applause",
+            "durationMs": 203545,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738cbc5c491e0efb44b5062c6d"
+          },
+          {
+            "name": "You'll Be Sorry - Instrumental Version",
+            "durationMs": 209460,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738cbc5c491e0efb44b5062c6d"
+          },
+          {
+            "name": "Wahala dey o",
+            "durationMs": 166336,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738cbc5c491e0efb44b5062c6d"
+          },
+          {
+            "name": "Take From Me - Instrumental Version",
+            "durationMs": 253500,
+            "image": "https://i.scdn.co/image/ab67616d0000b2738cbc5c491e0efb44b5062c6d"
+          }
+        ]
+      },
+      {
+        "name": "King Street Days (The Lost Tapes) [Demo Version]",
+        "image": "https://i.scdn.co/image/ab67616d0000b2734d9ba35293f47a3bc1ef28a2",
+        "releaseDate": "2021-08-20",
+        "songs": [
+          {
+            "name": "Broke, Sad and Sorry - Demo Version",
+            "durationMs": 199791,
+            "image": "https://i.scdn.co/image/ab67616d0000b2734d9ba35293f47a3bc1ef28a2"
+          },
+          {
+            "name": "Lift Me Up - Demo Version",
+            "durationMs": 176500,
+            "image": "https://i.scdn.co/image/ab67616d0000b2734d9ba35293f47a3bc1ef28a2"
+          },
+          {
+            "name": "Change - Demo Version",
+            "durationMs": 170057,
+            "image": "https://i.scdn.co/image/ab67616d0000b2734d9ba35293f47a3bc1ef28a2"
+          },
+          {
+            "name": "It's So Easy - Demo Version",
+            "durationMs": 235500,
+            "image": "https://i.scdn.co/image/ab67616d0000b2734d9ba35293f47a3bc1ef28a2"
+          },
+          {
+            "name": "When's It Gonna End - Demo Version",
+            "durationMs": 215833,
+            "image": "https://i.scdn.co/image/ab67616d0000b2734d9ba35293f47a3bc1ef28a2"
+          },
+          {
+            "name": "Shake Your Body - Demo Version",
+            "durationMs": 155237,
+            "image": "https://i.scdn.co/image/ab67616d0000b2734d9ba35293f47a3bc1ef28a2"
+          },
+          {
+            "name": "The DC Strut - Demo Version",
+            "durationMs": 185750,
+            "image": "https://i.scdn.co/image/ab67616d0000b2734d9ba35293f47a3bc1ef28a2"
+          }
+        ]
+      },
+      {
+        "name": "Dojo Cuts Instrumentals, Vol. 1",
+        "image": "https://i.scdn.co/image/ab67616d0000b273aab989767062017e70f42b32",
+        "releaseDate": "2020-02-14",
+        "songs": [
+          {
+            "name": "Rome - Instrumental",
+            "durationMs": 230649,
+            "image": "https://i.scdn.co/image/ab67616d0000b273aab989767062017e70f42b32"
+          },
+          {
+            "name": "Easy to Come Home - Instrumental",
+            "durationMs": 214000,
+            "image": "https://i.scdn.co/image/ab67616d0000b273aab989767062017e70f42b32"
+          },
+          {
+            "name": "Philosophy - Instrumental",
+            "durationMs": 209230,
+            "image": "https://i.scdn.co/image/ab67616d0000b273aab989767062017e70f42b32"
+          },
+          {
+            "name": "Dream in Super 8 - Instrumental",
+            "durationMs": 219230,
+            "image": "https://i.scdn.co/image/ab67616d0000b273aab989767062017e70f42b32"
+          },
+          {
+            "name": "Falling in Love Again - Instrumental",
+            "durationMs": 235645,
+            "image": "https://i.scdn.co/image/ab67616d0000b273aab989767062017e70f42b32"
+          },
+          {
+            "name": "Out Sounds from Way In",
+            "durationMs": 126346,
+            "image": "https://i.scdn.co/image/ab67616d0000b273aab989767062017e70f42b32"
+          },
+          {
+            "name": "Nigeria Special - Instrumental",
+            "durationMs": 134000,
+            "image": "https://i.scdn.co/image/ab67616d0000b273aab989767062017e70f42b32"
+          }
+        ]
+      },
+      {
+        "name": "Tomorrow's Gonna Come",
+        "image": "https://i.scdn.co/image/ab67616d0000b2730db4f617c93e31f0ab6148ef",
+        "releaseDate": "2019-11-08",
+        "songs": [
+          {
+            "name": "Rome",
+            "durationMs": 218613,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730db4f617c93e31f0ab6148ef"
+          },
+          {
+            "name": "I Don't Want to Wait",
+            "durationMs": 214000,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730db4f617c93e31f0ab6148ef"
+          },
+          {
+            "name": "Games",
+            "durationMs": 227280,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730db4f617c93e31f0ab6148ef"
+          },
+          {
+            "name": "Take What's Mine",
+            "durationMs": 186173,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730db4f617c93e31f0ab6148ef"
+          },
+          {
+            "name": "Falling in Love Again",
+            "durationMs": 230920,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730db4f617c93e31f0ab6148ef"
+          },
+          {
+            "name": "This Life",
+            "durationMs": 201680,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730db4f617c93e31f0ab6148ef"
+          },
+          {
+            "name": "The River",
+            "durationMs": 169066,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730db4f617c93e31f0ab6148ef"
+          }
+        ]
+      }
+    ],
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  "Dua Lipa": {
+    "followers": 45769015,
+    "genres": [
+      "pop"
+    ],
+    "image": "https://i.scdn.co/image/ab6761610000e5eb0c68f6c95232e716f0abee8d",
+    "albums": [
+      {
+        "name": "Dua Lipa Live from the Royal Albert Hall",
+        "image": "https://i.scdn.co/image/ab67616d0000b273dc48ee97d2cd26768fd85bce",
+        "releaseDate": "2024-12-06",
+        "songs": [
+          {
+            "name": "Overture (Live from the Royal Albert Hall)",
+            "durationMs": 106863,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc48ee97d2cd26768fd85bce"
+          },
+          {
+            "name": "End Of An Era (Live from the Royal Albert Hall)",
+            "durationMs": 239990,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc48ee97d2cd26768fd85bce"
+          },
+          {
+            "name": "Houdini (Live from the Royal Albert Hall)",
+            "durationMs": 216522,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc48ee97d2cd26768fd85bce"
+          },
+          {
+            "name": "Training Season (Live from the Royal Albert Hall)",
+            "durationMs": 220937,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc48ee97d2cd26768fd85bce"
+          },
+          {
+            "name": "These Walls (Live from the Royal Albert Hall)",
+            "durationMs": 230702,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc48ee97d2cd26768fd85bce"
+          },
+          {
+            "name": "Whatcha Doing (Live from the Royal Albert Hall)",
+            "durationMs": 238578,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc48ee97d2cd26768fd85bce"
+          },
+          {
+            "name": "French Exit (Live from the Royal Albert Hall)",
+            "durationMs": 225553,
+            "image": "https://i.scdn.co/image/ab67616d0000b273dc48ee97d2cd26768fd85bce"
+          }
+        ]
+      },
+      {
+        "name": "Radical Optimism (Extended Versions)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2735f530395ba026f49363c6d11",
+        "releaseDate": "2024-06-28",
+        "songs": [
+          {
+            "name": "End Of An Era - Extended",
+            "durationMs": 276437,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735f530395ba026f49363c6d11"
+          },
+          {
+            "name": "Houdini - Extended",
+            "durationMs": 353808,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735f530395ba026f49363c6d11"
+          },
+          {
+            "name": "Training Season - Extended",
+            "durationMs": 295870,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735f530395ba026f49363c6d11"
+          },
+          {
+            "name": "These Walls - Extended",
+            "durationMs": 340309,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735f530395ba026f49363c6d11"
+          },
+          {
+            "name": "Whatcha Doing - Extended",
+            "durationMs": 307896,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735f530395ba026f49363c6d11"
+          },
+          {
+            "name": "French Exit - Extended",
+            "durationMs": 317764,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735f530395ba026f49363c6d11"
+          },
+          {
+            "name": "Illusion - Extended",
+            "durationMs": 263840,
+            "image": "https://i.scdn.co/image/ab67616d0000b2735f530395ba026f49363c6d11"
+          }
+        ]
+      },
+      {
+        "name": "Radical Optimism",
+        "image": "https://i.scdn.co/image/ab67616d0000b273778c1e4660aa23f6728b32a1",
+        "releaseDate": "2024-05-03",
+        "songs": [
+          {
+            "name": "End Of An Era",
+            "durationMs": 196218,
+            "image": "https://i.scdn.co/image/ab67616d0000b273778c1e4660aa23f6728b32a1"
+          },
+          {
+            "name": "Houdini",
+            "durationMs": 185917,
+            "image": "https://i.scdn.co/image/ab67616d0000b273778c1e4660aa23f6728b32a1"
+          },
+          {
+            "name": "Training Season",
+            "durationMs": 209487,
+            "image": "https://i.scdn.co/image/ab67616d0000b273778c1e4660aa23f6728b32a1"
+          },
+          {
+            "name": "These Walls",
+            "durationMs": 217783,
+            "image": "https://i.scdn.co/image/ab67616d0000b273778c1e4660aa23f6728b32a1"
+          },
+          {
+            "name": "Whatcha Doing",
+            "durationMs": 198198,
+            "image": "https://i.scdn.co/image/ab67616d0000b273778c1e4660aa23f6728b32a1"
+          },
+          {
+            "name": "French Exit",
+            "durationMs": 201286,
+            "image": "https://i.scdn.co/image/ab67616d0000b273778c1e4660aa23f6728b32a1"
+          },
+          {
+            "name": "Illusion",
+            "durationMs": 188143,
+            "image": "https://i.scdn.co/image/ab67616d0000b273778c1e4660aa23f6728b32a1"
+          }
+        ]
+      },
+      {
+        "name": "Future Nostalgia (The Moonlight Edition)",
+        "image": "https://i.scdn.co/image/ab67616d0000b2730533e671385ca40f4998d308",
+        "releaseDate": "2021-02-11",
+        "songs": [
+          {
+            "name": "Future Nostalgia",
+            "durationMs": 184881,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730533e671385ca40f4998d308"
+          },
+          {
+            "name": "Don't Start Now",
+            "durationMs": 183290,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730533e671385ca40f4998d308"
+          },
+          {
+            "name": "Cool",
+            "durationMs": 209583,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730533e671385ca40f4998d308"
+          },
+          {
+            "name": "Physical",
+            "durationMs": 193829,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730533e671385ca40f4998d308"
+          },
+          {
+            "name": "Levitating",
+            "durationMs": 203807,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730533e671385ca40f4998d308"
+          },
+          {
+            "name": "Pretty Please",
+            "durationMs": 194607,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730533e671385ca40f4998d308"
+          },
+          {
+            "name": "Hallucinate",
+            "durationMs": 208505,
+            "image": "https://i.scdn.co/image/ab67616d0000b2730533e671385ca40f4998d308"
+          }
+        ]
+      },
+      {
+        "name": "Club Future Nostalgia (DJ Mix)",
+        "image": "https://i.scdn.co/image/ab67616d0000b27357fe88ee748288269959a018",
+        "releaseDate": "2020-08-28",
+        "songs": [
+          {
+            "name": "Future Nostalgia (Joe Goddard Remix) [Mixed]",
+            "durationMs": 174240,
+            "image": "https://i.scdn.co/image/ab67616d0000b27357fe88ee748288269959a018"
+          },
+          {
+            "name": "Cool (Jayda G Remix) [Mixed]",
+            "durationMs": 126373,
+            "image": "https://i.scdn.co/image/ab67616d0000b27357fe88ee748288269959a018"
+          },
+          {
+            "name": "Good In Bed (Zach Witness & Gen Hoshino Remixes) [Mixed]",
+            "durationMs": 238346,
+            "image": "https://i.scdn.co/image/ab67616d0000b27357fe88ee748288269959a018"
+          },
+          {
+            "name": "Pretty Please (Midland Refix) [Mixed]",
+            "durationMs": 88813,
+            "image": "https://i.scdn.co/image/ab67616d0000b27357fe88ee748288269959a018"
+          },
+          {
+            "name": "Pretty Please (Masters at Work Remix) [Mixed]",
+            "durationMs": 114386,
+            "image": "https://i.scdn.co/image/ab67616d0000b27357fe88ee748288269959a018"
+          },
+          {
+            "name": "Boys Will Be Boys (Zach Witness Remix) [Mixed]",
+            "durationMs": 209746,
+            "image": "https://i.scdn.co/image/ab67616d0000b27357fe88ee748288269959a018"
+          },
+          {
+            "name": "Love Again (Horse Meat Disco Remix) [Mixed]",
+            "durationMs": 175693,
+            "image": "https://i.scdn.co/image/ab67616d0000b27357fe88ee748288269959a018"
+          }
+        ]
+      }
+    ],
+    "about": "Born and raised in L.A., Doja Cat made her first upload to Soundcloud in 2013 at just 16-years-old. She developed a knack for music by studying piano and dance as a kid and listening to the likes of Busta Rhymes, Erykah Badu, Nicki Minaj, Drake, and more. Soon, she went from obsessing over Catwoman (the Halle Berry version) to “crate digging” on YouTube. Signed to Kemosabe/RCA during 2014, she unveiled her acclaimed Purrr! EP. Its lead single “So High” impressively racked up over 30 million cumulative streams and garnered praise from tastemakers such as Fader, Vibe, Paper, Pigeons & Planes, and more. // Cooking up vibrantly, candy-coated beats, dropping bars doubled-up on double entendre, and singing with claws out, Amala unlocks a sweetly sexy world soundtracked by wild hip-hop, twisted pop, and smoked-out R&B. Asserting a feline-esque dominance and a style that can only be described as every color in a box of crayons, Doja Cat’s unapologetic charisma, charm, and confidence immediately take center stage. In August 2018, she released what would become her viral hit “Mooo!” which enjoyed over 10 million views on YouTube and Twitter in just a couple of days and was met with critical acclaim. In March 2019, she released the Amala Deluxe album which included her brand new song “Juicy.” With the releases of , , , and , Doja’s ability to create hit records that are uniquely her own are what will continue to make her a standout act."
+  },
   "ALLEYCVT": {
     "followers": 63370,
     "genres": [
@@ -1601,180 +2246,6 @@
             "name": "ONE FOR YOU",
             "durationMs": 152516,
             "image": "https://i.scdn.co/image/ab67616d0000b273e536201349dc9758d5729824"
-          }
-        ]
-      }
-    ],
-    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  "Wolfgang Amadeus Mozart": {
-    "followers": 5740497,
-    "genres": [
-      "classical",
-      "requiem",
-      "opera",
-      "classical piano",
-      "chamber music"
-    ],
-    "image": "https://i.scdn.co/image/ab6761610000e5eb7fa9108c6dadb8c3ec21da88",
-    "albums": [
-      {
-        "name": "L'atelier des pianistes (The Pianists' Workshop)",
-        "image": "https://i.scdn.co/image/ab67616d0000b27392219c9633174ff1591833b5",
-        "releaseDate": "2025-04-01",
-        "songs": [
-          {
-            "name": "Bach: 5 Little Preludes: No. 1 in C Major, BWV 939",
-            "durationMs": 33293,
-            "image": "https://i.scdn.co/image/ab67616d0000b27392219c9633174ff1591833b5"
-          },
-          {
-            "name": "Bach: Notebook for Anna Magdalena Bach: Minuet in F Major, BWV Anh. 113",
-            "durationMs": 95040,
-            "image": "https://i.scdn.co/image/ab67616d0000b27392219c9633174ff1591833b5"
-          },
-          {
-            "name": "Bach: Notebook for Anna Magdalena Bach: Minuet in D Minor, BWV Anh. 132",
-            "durationMs": 54960,
-            "image": "https://i.scdn.co/image/ab67616d0000b27392219c9633174ff1591833b5"
-          },
-          {
-            "name": "CPE Bach: Notebook for Anna Magdalena Bach: March in D Major (Formerly Attributed to JS Bach as BWV Anh. 122)",
-            "durationMs": 66000,
-            "image": "https://i.scdn.co/image/ab67616d0000b27392219c9633174ff1591833b5"
-          },
-          {
-            "name": "Petzold: Notebook for Anna Magdalena Bach: Minuet in G Major (Formerly Attributed to JS Bach as BWV Anh. 114)",
-            "durationMs": 85133,
-            "image": "https://i.scdn.co/image/ab67616d0000b27392219c9633174ff1591833b5"
-          }
-        ]
-      },
-      {
-        "name": "Flute Concertos",
-        "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644",
-        "releaseDate": "2025-04-01",
-        "songs": [
-          {
-            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: I. Larghetto (Transcr. of Organ Concerto)",
-            "durationMs": 149333,
-            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
-          },
-          {
-            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: II. Allegro (Transcr. of Organ Concerto)",
-            "durationMs": 125880,
-            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
-          },
-          {
-            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: III. Alla siciliana (Transcr. of Organ Concerto)",
-            "durationMs": 78813,
-            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
-          },
-          {
-            "name": "Handel: Flute Concerto in F Major, Op. 4 No. 5, HWV 293: IV. Presto (Transcr. of Organ Concerto)",
-            "durationMs": 129280,
-            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
-          },
-          {
-            "name": "Vivaldi: Flute Concerto in F Major, Op. 10 No. 1, RV 433 \"La tempesta di mare\": I. Allegro",
-            "durationMs": 173600,
-            "image": "https://i.scdn.co/image/ab67616d0000b273961eec10d4e60bc203f86644"
-          }
-        ]
-      },
-      {
-        "name": "Eugene Ormandy & Friends",
-        "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b",
-        "releaseDate": "2025-04-01",
-        "songs": [
-          {
-            "name": "Barber: Adagio for Strings, Op. 11",
-            "durationMs": 381533,
-            "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b"
-          },
-          {
-            "name": "Bartók: Suite from the Miraculous Mandarin, Op. 19, Sz. 73: I. Beginning - Curtain Rises",
-            "durationMs": 84053,
-            "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b"
-          },
-          {
-            "name": "Bartók: Suite from the Miraculous Mandarin, Op. 19, Sz. 73: II. First Seduction Game",
-            "durationMs": 75653,
-            "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b"
-          },
-          {
-            "name": "Bartók: Suite from the Miraculous Mandarin, Op. 19, Sz. 73: III. Second Seduction Game",
-            "durationMs": 239373,
-            "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b"
-          },
-          {
-            "name": "Bartók: Suite from the Miraculous Mandarin, Op. 19, Sz. 73: IV. Third Seduction Game - The Mandarin Appears",
-            "durationMs": 209053,
-            "image": "https://i.scdn.co/image/ab67616d0000b2737d93a2a4e051b72e12e8de7b"
-          }
-        ]
-      },
-      {
-        "name": "\"Nocturne\" - Calm & Relaxation",
-        "image": "https://i.scdn.co/image/ab67616d0000b273db70378b8bc1452d357a70d5",
-        "releaseDate": "2025-04-01",
-        "songs": [
-          {
-            "name": "Bruyères",
-            "durationMs": 179506,
-            "image": "https://i.scdn.co/image/ab67616d0000b273db70378b8bc1452d357a70d5"
-          },
-          {
-            "name": "Gnossienne No. 3",
-            "durationMs": 132066,
-            "image": "https://i.scdn.co/image/ab67616d0000b273db70378b8bc1452d357a70d5"
-          },
-          {
-            "name": "Sonata in D Minor, K. 32 (Arr. for Guitar by Michael Lewin)",
-            "durationMs": 172880,
-            "image": "https://i.scdn.co/image/ab67616d0000b273db70378b8bc1452d357a70d5"
-          },
-          {
-            "name": "Keyboard Concerto No. 5 in F Minor, BWV 1056: II. Largo",
-            "durationMs": 177186,
-            "image": "https://i.scdn.co/image/ab67616d0000b273db70378b8bc1452d357a70d5"
-          },
-          {
-            "name": "Carnival of the Animals, R. 125: The Swan",
-            "durationMs": 186453,
-            "image": "https://i.scdn.co/image/ab67616d0000b273db70378b8bc1452d357a70d5"
-          }
-        ]
-      },
-      {
-        "name": "Seiji Ozawa & Friends - Classical Variations",
-        "image": "https://i.scdn.co/image/ab67616d0000b273394d716d5324c76a1001e5a7",
-        "releaseDate": "2025-03-31",
-        "songs": [
-          {
-            "name": "Bizet / Arr. Guiraud: Carmen Suite No. 1: VI. Les toréadors",
-            "durationMs": 127773,
-            "image": "https://i.scdn.co/image/ab67616d0000b273394d716d5324c76a1001e5a7"
-          },
-          {
-            "name": "Bizet / Arr. Guiraud: Carmen Suite No. 1: I. Prélude",
-            "durationMs": 81426,
-            "image": "https://i.scdn.co/image/ab67616d0000b273394d716d5324c76a1001e5a7"
-          },
-          {
-            "name": "Bizet / Arr. Guiraud: Carmen Suite No. 1: II. Aragonaise",
-            "durationMs": 146693,
-            "image": "https://i.scdn.co/image/ab67616d0000b273394d716d5324c76a1001e5a7"
-          },
-          {
-            "name": "Bizet / Arr. Guiraud: Carmen Suite No. 1: III. Intermezzo",
-            "durationMs": 151080,
-            "image": "https://i.scdn.co/image/ab67616d0000b273394d716d5324c76a1001e5a7"
-          },
-          {
-            "name": "Bizet / Arr. Guiraud: Carmen Suite No. 2: II. Habanera",
-            "durationMs": 126880,
-            "image": "https://i.scdn.co/image/ab67616d0000b273394d716d5324c76a1001e5a7"
           }
         ]
       }

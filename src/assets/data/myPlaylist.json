@@ -1,9 +1,116 @@
 {
-  "Liked Songs": {
-
+  "Liked Songs": [
+    {
+      "name": "Take Me to Church (Cello Version)",
+      "artist": "Hozier",
+      "durationMs": 236696,
+      "image": "https://i.scdn.co/image/ab67616d0000b2739ef22a5498e926e8392c2a74"
+    },
+    {
+      "name": "CHIHIRO",
+      "artist": "Billie Ellish",
+      "durationMs": 303440,
+      "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+    }
+  ],
+  "Albums" : {
+    "Unreal Unearth: Unending" :{
+      "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222",
+      "releaseDate": "2024-12-06",
+      "songs": [
+        {
+          "name": "Nobody's Soldier",
+          "durationMs": 237200,
+          "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+        },
+        {
+          "name": "July",
+          "durationMs": 214426,
+          "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+        },
+        {
+          "name": "That You Are",
+          "durationMs": 256519,
+          "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+        },
+        {
+          "name": "Swan Upon Leda",
+          "durationMs": 222026,
+          "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+        },
+        {
+          "name": "Hymn to Virgil",
+          "durationMs": 202937,
+          "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+        },
+        {
+          "name": "Too Sweet",
+          "durationMs": 251424,
+          "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+        },
+        {
+          "name": "Wildflower and Barley (feat. Allison Russell)",
+          "durationMs": 222177,
+          "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+        },
+        {
+          "name": "Empire Now",
+          "durationMs": 178196,
+          "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+        },
+        {
+          "name": "Fare Well",
+          "durationMs": 188454,
+          "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+        },
+        {
+          "name": "Through Me (The Flood)",
+          "durationMs": 227746,
+          "image": "https://i.scdn.co/image/ab67616d0000b2738044f38f15837e87e2b65222"
+        }
+      ]
+    }
   },
-  "Hozier" {
-
+  "Podcasts": [
+    "TED Talks Daily",
+    "Matt and Shane's Secret Podcast"
+  ],
+  "Playlist" : {
+    "Soft" : [
+      {
+        "name": "K.",
+        "artist": "Cigarettes After Sex",
+        "durationMs": 319560,
+        "image": "https://i.scdn.co/image/ab67616d0000b273dfed999f959177dfc4f33cdc"
+      }, {
+        "name": "BIRDS OF A FEATHER",
+        "artist": "Billie Ellish",
+        "durationMs": 210373,
+        "image": "https://i.scdn.co/image/ab67616d0000b27371d62ea7ea8a5be92d3c1f62"
+      }, {
+          "name": "Fortnight (feat. Post Malone)",
+          "artist": "Taylor Swift",
+          "durationMs": 228965,
+          "image": "https://i.scdn.co/image/ab67616d0000b2738ecc33f195df6aa257c39eaa"
+      }
+    ],
+    "Workout" : [
+      {
+        "name": "OKLOSER",
+        "artist": "Doja Cat",
+        "durationMs": 169053,
+        "image": "https://i.scdn.co/image/ab67616d0000b273cf5685eced152b546f7833ce"
+      },          {
+        "name": "Paint The Town Red",
+        "artist": "Doja Cat",
+        "durationMs": 230480,
+        "image": "https://i.scdn.co/image/ab67616d0000b27394203dd82d27b494c777d07c"
+      }
+    ]
   },
-
+  "Artist" : {
+    "Billie Ellish" : {
+      "image": "https://i.scdn.co/image/ab6761610000e5eb4a21b4760d2ecb7b0dcdc8da",
+    }
+  }   
 }
