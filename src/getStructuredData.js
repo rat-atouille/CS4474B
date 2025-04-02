@@ -50,13 +50,33 @@ const getStructuredData = (type, name, index) => {
         case "genre":
             // Handle Liked Songs playlist
             if (genreData[name] && Array.isArray(genreData[name])) {
-                structuredData = genreData[name].map(song => formatSongData(song.artist, song.image, name, song));
+                structuredData = [{
+                    tracks: genreData[name].map(song =>
+                        formatSongData(song.artist, song.image, name, song)
+                    )
+                }];
             }
+            break;
+        case "playlist":
+            if (playlistData.Playlist) {
+                const playlistKey = Object.keys(playlistData.Playlist)
+                    .find(key => key.toLowerCase() === name.toLowerCase());
+            
+                if (playlistKey) {
+                    structuredData = [{
+                        tracks: playlistData.Playlist[playlistKey].map(song =>
+                            formatSongData(song.artist, song.image, playlistKey, song)
+                        )
+                    }];
+                }
+            }                 
             break;
         case "playlist-liked":
             // Handle Liked Songs playlist
             if (playlistData["Liked Songs"] && Array.isArray(playlistData["Liked Songs"])) {
-                structuredData = playlistData["Liked Songs"].map(song => formatSongData(song.artist, song.image, "Liked Songs", song));
+                structuredData = [{
+                    tracks: playlistData["Liked Songs"].map(song => formatSongData(song.artist, song.image, "Liked Songs", song))
+                }];
             }
             break;
         case "playlist-album":
@@ -72,16 +92,17 @@ const getStructuredData = (type, name, index) => {
         case "playlist-artist":
             structuredData = Object.entries(albumData)
             .filter(([artistName]) => artistName.toLowerCase() === (name.toLowerCase()))
-            .flatMap(([artistName, artist]) => 
-                artist.albums.length > 0 
-                    ? artist.albums[0].songs.map(song => formatSongData(artistName, artist.albums[0].image, artist.albums[0].name, song))
+            .flatMap(([artistName, artist]) =>
+                artist.albums.length > 0
+                    ? [{
+                        tracks: artist.albums[0].songs.map(song => formatSongData(artistName, artist.albums[0].image, artist.albums[0].name, song))
+                    }]
                     : []
             );
             break;
         default:
             break;
     }
-
     return { type, structuredData, index };
 };
 

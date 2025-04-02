@@ -4,6 +4,7 @@ import { FaHeart, FaSearch, FaList, FaPlus, FaCheck, FaTimes } from "react-icons
 import { BsFillGridFill } from "react-icons/bs";
 import { HiViewGrid, HiMenu } from "react-icons/hi";
 import { useAlbum } from "../../context/AlbumContext";
+import getStructuredData from "../../../src/getStructuredData.js";
 
 // Import the data from the specified path
 import playlistData from "../../assets/data/playlistData.json";
@@ -65,19 +66,31 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
   const handleCollapse = () => {
     setCollapsed((prev) => !prev);
   };
-
-  const handlePlay = (album, e) => {
-    e.stopPropagation();
+  
+  const handlePlay = (type, name) => {
     if (typeof setMusicQueue === 'function') {
-      setMusicQueue(album);
+      if (type === "Album") {
+        setMusicQueue(getStructuredData("playlist-album", name, 0));
+      } else if (type === "Artist") {
+        setMusicQueue(getStructuredData("playlist-artist", name, 0));
+      } else if (type === "Playlist") {
+        if (name === "Liked Songs") {
+          setMusicQueue(getStructuredData("playlist-liked", name, 0));
+        } else {
+          setMusicQueue(getStructuredData("playlist", name, 0));
+        }
+      } else {
+        console.log("Error with content type.");
+      }
     } else {
       console.error('setMusicQueue is not a function');
     }
   };
 
   const handleAlbumClick = (item) => {
+    console.log(item)
     setCurrentAlbum(item);
-    navigate("/album");
+    //navigate("/album");
   };
   
   const toggleSortDropdown = () => {
@@ -192,52 +205,52 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
       });
     }
     
-    // Add Audiobooks (new category)
-    if (playlistData["Audiobooks"]) {
-      Object.entries(playlistData["Audiobooks"]).forEach(([bookName, bookDetails], index) => {
-        items.push({
-          id: `audiobook-${index}`,
-          name: bookName,
-          type: "Audiobook",
-          owner: bookDetails.author || "Unknown Author",
-          image: bookDetails.image || "/placeHolders/placeHolderIcon.jpeg",
-          data: { 
-            name: bookName,
-            ...bookDetails 
-          }
-        });
-      });
-    } else {
-      // Add sample audiobooks if none in data
-      const sampleAudiobooks = [
-        {
-          id: "audiobook-sample-1",
-          name: "The Great Gatsby",
-          type: "Audiobook",
-          owner: "F. Scott Fitzgerald",
-          image: "/placeHolders/placeHolderIcon.jpeg",
-          data: { 
-            name: "The Great Gatsby",
-            author: "F. Scott Fitzgerald",
-            duration: "6h 42m"
-          }
-        },
-        {
-          id: "audiobook-sample-2",
-          name: "To Kill a Mockingbird",
-          type: "Audiobook",
-          owner: "Harper Lee",
-          image: "/placeHolders/placeHolderIcon.jpeg",
-          data: { 
-            name: "To Kill a Mockingbird",
-            author: "Harper Lee",
-            duration: "12h 17m"
-          }
-        }
-      ];
+    // // Add Audiobooks (new category)
+    // if (playlistData["Audiobooks"]) {
+    //   Object.entries(playlistData["Audiobooks"]).forEach(([bookName, bookDetails], index) => {
+    //     items.push({
+    //       id: `audiobook-${index}`,
+    //       name: bookName,
+    //       type: "Audiobook",
+    //       owner: bookDetails.author || "Unknown Author",
+    //       image: bookDetails.image || "/placeHolders/placeHolderIcon.jpeg",
+    //       data: { 
+    //         name: bookName,
+    //         ...bookDetails 
+    //       }
+    //     });
+    //   });
+    // } else {
+    //   // Add sample audiobooks if none in data
+    //   const sampleAudiobooks = [
+    //     {
+    //       id: "audiobook-sample-1",
+    //       name: "The Great Gatsby",
+    //       type: "Audiobook",
+    //       owner: "F. Scott Fitzgerald",
+    //       image: "/placeHolders/placeHolderIcon.jpeg",
+    //       data: { 
+    //         name: "The Great Gatsby",
+    //         author: "F. Scott Fitzgerald",
+    //         duration: "6h 42m"
+    //       }
+    //     },
+    //     {
+    //       id: "audiobook-sample-2",
+    //       name: "To Kill a Mockingbird",
+    //       type: "Audiobook",
+    //       owner: "Harper Lee",
+    //       image: "/placeHolders/placeHolderIcon.jpeg",
+    //       data: { 
+    //         name: "To Kill a Mockingbird",
+    //         author: "Harper Lee",
+    //         duration: "12h 17m"
+    //       }
+    //     }
+    //   ];
       
-      items.push(...sampleAudiobooks);
-    }
+    //   items.push(...sampleAudiobooks);
+    // }
 
     // Filter items based on search query if search is active
     let filteredItems = items;
@@ -258,7 +271,6 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
         "Artist": "Artists",
         "Album": "Albums",
         "Podcast": "Podcasts",
-        "Audiobook": "Audiobooks"
       };
       
       // Get plural form for matching
@@ -343,7 +355,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
         {/* Category Tabs - Only show when expanded */}
         {!collapsed && (
           <div className="flex gap-2 mt-4 mb-4 overflow-x-auto scrollbar-none">
-            {["Playlists", "Artists", "Albums", "Podcasts", "Audiobooks"].map((category) => (
+            {["Playlists", "Artists", "Albums", "Podcasts"].map((category) => (
               <button
                 onClick={() => handleCategory(category)}
                 key={category}
@@ -473,10 +485,20 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
               <div className="grid grid-cols-2 gap-4">
                 {sidebarItems.map((item) => (
                   <div 
-                    key={item.id} 
-                    className="cursor-pointer"
-                    onClick={() => handleAlbumClick(item)}
-                  >
+                  key={item.id} 
+                  className="cursor-pointer ${!collapsed ? 'hover:bg-gray-800/50' : 'hover:bg-gray-800'} rounded-lg relative group"
+                  onClick={() => handleAlbumClick(item)}
+                >
+                  {/* Play button container, appears on hover */}
+                  <div className="absolute inset-0 flex justify-center items-start pointer-events-none">
+                    <button className="mt-7 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out pointer-events-auto"
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevents click from bubbling up
+                        handlePlay(item.type, item.name);
+                      }}>
+                      <i className="fa-solid fa-play text-5xl text-white transform transition-transform duration-150 ease-in-out hover:scale-110"></i>
+                    </button>
+                  </div>
                     {/* Grid View Item */}
                     <div className="rounded-md overflow-hidden bg-gray-800/30 hover:bg-gray-800/70 transition-colors">
                       {item.isLiked ? (
@@ -518,9 +540,19 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
                 {sidebarItems.map((item) => (
                   <div 
                     key={item.id} 
-                    className={`flex items-center gap-3 p-2 ${!collapsed ? 'hover:bg-gray-800/50' : 'hover:bg-gray-800'} rounded-md cursor-pointer transition-colors`}
+                    className={`flex items-center gap-3 p-2 relative group ${!collapsed ? 'hover:bg-gray-800/50' : 'hover:bg-gray-800'} rounded-md cursor-pointer transition-colors`}
                     onClick={() => handleAlbumClick(item)}
                   >
+                  {/* Play button container, appears on hover */}
+                  <div className="absolute inset-0 flex pointer-events-none">
+                    <button className="mt-1 ml-5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 ease-in-out pointer-events-auto"
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevents click from bubbling up
+                        handlePlay(item.type, item.name);
+                      }}>
+                      <i className="fa-solid fa-play text-3xl text-white transform transition-transform duration-150 ease-in-out hover:scale-110"></i>
+                    </button>
+                  </div>
                     {/* Images or Icon */}
                     {item.isLiked ? (
                       <div className={`flex-shrink-0 ${collapsed ? 'w-10 h-10' : 'w-12 h-12'} bg-gradient-to-br from-purple-600 to-blue-400 flex items-center justify-center rounded-sm`}>
