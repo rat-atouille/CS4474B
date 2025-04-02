@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { IoPlay, IoPause, IoHeart, IoHeartOutline } from "react-icons/io5";
+import { IoPlay, IoPause, IoHeart, IoHeartOutline, IoChevronDown, IoChevronUpOutline } from "react-icons/io5";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { BsSoundwave } from "react-icons/bs";
-import { FaShuffle } from "react-icons/fa6";
+import { FaMinus, FaShuffle } from "react-icons/fa6";
 import { FaPlay } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 
 // Import the data from the specified path
 import data from "../assets/data/data.json";
@@ -22,6 +23,7 @@ const Artist = ({setMusicQueue}) => {
   const [artistData, setArtistData] = useState(null);
   const [songs, setSongs] = useState([]);
   const [albums, setAlbums] = useState([]);
+  const [expanded, setExpanded] = useState([]);
 
   useEffect(() => {
     // Load artist data when component mounts
@@ -145,46 +147,145 @@ const Artist = ({setMusicQueue}) => {
           <div>
             <div>
               <div className="flex p-0 mb-4 mt-2 justify-between flex-col">
-                <h2 className="text-xl font-bold">Recently Played</h2>
+                <div
+                  onClick={() => setExpanded(expanded.includes('recent') ? expanded.filter(e => e !== 'recent') : [...expanded, 'recent'])} 
+                  className='hover:text-green-500 transition-all'>
+                  <h2 className="select-none text-xl font-bold flex">Recently Played
+                  <button className="ml-1 flex items-center justify-center p-2">
+                      {expanded.includes('recent') ? <FaMinus size={10} />  : <FaPlus size={10} />} 
+                    </button>
+                </h2>
+
+                </div>
                 {/* Recently played contents - limited to 3 songs */}
+                {expanded.includes('recent') && (
                 <div className="rounded mt-5">
-                  {songs.slice(0, 3).map((song, index) => (
-                    <div
-                      key={song.id}
-                      onMouseEnter={() => setHoveredIndex(`recent-${index}`)}
-                      onMouseLeave={() => setHoveredIndex(null)}
-                      onClick={(e) => {
+                    {songs.slice(0, 3).map((song, index) => (
+                      <div
+                        key={song.id}
+                        onMouseEnter={() => setHoveredIndex(`recent-${index}`)}
+                        onMouseLeave={() => setHoveredIndex(null)}
+                        onClick={(e) => {
                         togglePlay(e, `recent-${index}`);
                         handlePlay(song.albumName, index);
                       }}
+                        className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
+                      >
+                        <div
+                          className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
+                          onClick={(e) => {
+                          togglePlay(e, `recent-${index}`);
+                          handlePlay(song.albumName, index);
+                        }}
+                        >
+                          {playIndex === `recent-${index}` ?
+                            <BsSoundwave className="text-green-500" /> :
+                            (hoveredIndex === `recent-${index}` ? <IoPlay className="text-lg" /> : index + 1)
+                          }
+                        </div>
+
+                        {/* Song image */}
+                        <div className="w-12 h-12 mr-3 overflow-hidden rounded">
+                          <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
+                        </div>
+  
+                        {/* Song details */}
+                        <div className="flex-1">
+                          <p className={`${playIndex === `recent-${index}` ? 'text-green-500' : 'text-white'}`}>
+                            {song.title}
+                          </p>
+                          <p className="text-gray-400 text-sm">{song.plays} plays</p>
+                        </div>
+
+                        {/* Liked song */}
+                        <div
+                          className="text-gray-400 mr-8 cursor-pointer"
+                          onClick={(e) => toggleLike(e, song.id)}
+                        >
+                          {likedSongs.includes(song.id) ?
+                            <IoHeart className="text-red-500" /> :
+                            (hoveredIndex === `recent-${index}` ? <IoHeartOutline /> : null)
+                          }
+                        </div>
+
+                        {/* Duration and more options */}
+                        <div className="text-gray-400 mr-17">{song.duration}</div>
+                        {hoveredIndex === `recent-${index}` && (
+                          <div
+                            className="absolute right-10 text-gray-400 cursor-pointer"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <HiDotsHorizontal />
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>                
+                )}
+
+              </div>
+
+              {/* popular songs */}
+              <div className="flex p-0 mb-4 mt-2 justify-between">
+                <div
+                    onClick={() => setExpanded(expanded.includes('popular') ? expanded.filter(e => e !== 'popular') : [...expanded, 'popular'])} 
+                    className='hover:text-green-500 transition-all'
+                  >
+                    <h2 className="select-none text-xl font-bold flex">Popular
+                    <button className="ml-1 flex items-center justify-center rounded-full p-2">
+                        {expanded.includes('popular') ? <FaMinus size={10} />  : <FaPlus size={10} />} 
+                      </button>
+                    </h2>
+                  </div>
+                <button className="
+                  cursor-pointer text-[#b3b3b3]
+                  hover:scale-105 transition-transform duration-150 hover:border-white hover:text-white
+                  pl-2 pr-2 pt-1 pb-1 text-sm font-md border-[#b3b3b3] border border-2 rounded-2xl mr-5"
+                  onClick={()=>setPlayIndex(0)}
+                >
+                  Play All
+                </button>
+              </div>
+              {
+                expanded.includes('popular') && (
+                  <div className="rounded mt-5">
+                  {songs.slice(0,5).map((song, index) => (
+                    <div
+                      key={song.id}
+                      onMouseEnter={() => setHoveredIndex(index)}
+                      onMouseLeave={() => setHoveredIndex(null)}
+                      onClick={(e) => {
+                      togglePlay(e, index);
+                      handlePlay(song.albumName, index)
+                    }}
                       className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                     >
                       <div
                         className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
                         onClick={(e) => {
-                          togglePlay(e, `recent-${index}`);
-                          handlePlay(song.albumName, index);
-                        }}
+                        togglePlay(e, index);
+                        handlePlay(song.albumName, index)
+                      }}
                       >
-                        {playIndex === `recent-${index}` ?
+                        {playIndex === index ?
                           <BsSoundwave className="text-green-500" /> :
-                          (hoveredIndex === `recent-${index}` ? <IoPlay className="text-lg" /> : index + 1)
+                          (hoveredIndex === index ? <IoPlay className="text-lg" /> : index + 1)
                         }
                       </div>
-
+  
                       {/* Song image */}
                       <div className="w-12 h-12 mr-3 overflow-hidden rounded">
                         <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
                       </div>
-
+  
                       {/* Song details */}
                       <div className="flex-1">
-                        <p className={`${playIndex === `recent-${index}` ? 'text-green-500' : 'text-white'}`}>
+                        <p className={`${playIndex === index ? 'text-green-500' : 'text-white'}`}>
                           {song.title}
                         </p>
                         <p className="text-gray-400 text-sm">{song.plays} plays</p>
                       </div>
-
+  
                       {/* Liked song */}
                       <div
                         className="text-gray-400 mr-8 cursor-pointer"
@@ -192,13 +293,13 @@ const Artist = ({setMusicQueue}) => {
                       >
                         {likedSongs.includes(song.id) ?
                           <IoHeart className="text-red-500" /> :
-                          (hoveredIndex === `recent-${index}` ? <IoHeartOutline /> : null)
+                          (hoveredIndex === index ? <IoHeartOutline /> : null)
                         }
                       </div>
-
+  
                       {/* Duration and more options */}
                       <div className="text-gray-400 mr-17">{song.duration}</div>
-                      {hoveredIndex === `recent-${index}` && (
+                      {hoveredIndex === index && (
                         <div
                           className="absolute right-10 text-gray-400 cursor-pointer"
                           onClick={(e) => e.stopPropagation()}
@@ -209,83 +310,9 @@ const Artist = ({setMusicQueue}) => {
                     </div>
                   ))}
                 </div>
-              </div>
+                )
+              }
 
-              {/* popular songs */}
-              <div className="flex p-0 mb-4 mt-2 justify-between">
-                <h2 className="text-xl font-bold">Popular</h2>
-                <button className="
-                  cursor-pointer text-[#b3b3b3]
-                  hover:scale-105 transition-transform duration-150 hover:border-white hover:text-white
-                  pl-3 pr-3 pt-1 pb-1 text-sm font-md border-[#b3b3b3] border border-2 rounded-2xl"
-                  onClick={()=>setPlayIndex(0)}
-                >
-                  Play All
-                </button>
-              </div>
-
-              <div className="rounded mt-5">
-                {songs.slice(0,5).map((song, index) => (
-                  <div
-                    key={song.id}
-                    onMouseEnter={() => setHoveredIndex(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
-                    onClick={(e) => {
-                      togglePlay(e, index);
-                      handlePlay(song.albumName, index)
-                    }}
-                    className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
-                  >
-                    <div
-                      className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
-                      onClick={(e) => {
-                        togglePlay(e, index);
-                        handlePlay(song.albumName, index)
-                      }}
-                    >
-                      {playIndex === index ?
-                        <BsSoundwave className="text-green-500" /> :
-                        (hoveredIndex === index ? <IoPlay className="text-lg" /> : index + 1)
-                      }
-                    </div>
-
-                    {/* Song image */}
-                    <div className="w-12 h-12 mr-3 overflow-hidden rounded">
-                      <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
-                    </div>
-
-                    {/* Song details */}
-                    <div className="flex-1">
-                      <p className={`${playIndex === index ? 'text-green-500' : 'text-white'}`}>
-                        {song.title}
-                      </p>
-                      <p className="text-gray-400 text-sm">{song.plays} plays</p>
-                    </div>
-
-                    {/* Liked song */}
-                    <div
-                      className="text-gray-400 mr-8 cursor-pointer"
-                      onClick={(e) => toggleLike(e, song.id)}
-                    >
-                      {likedSongs.includes(song.id) ?
-                        <IoHeart className="text-red-500" /> :
-                        (hoveredIndex === index ? <IoHeartOutline /> : null)
-                      }
-                    </div>
-
-                    {/* Duration and more options */}
-                    <div className="text-gray-400 mr-17">{song.duration}</div>
-                    {hoveredIndex === index && (
-                      <div
-                        className="absolute right-10 text-gray-400 cursor-pointer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <HiDotsHorizontal />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
             </div>
 
             <div className="ml-3 mr-3">
@@ -325,7 +352,14 @@ const Artist = ({setMusicQueue}) => {
 
             <div>
               <div className='flex p-0 justify-between'>
-                <h2 className="text-xl font-bold">All Songs</h2>
+                <div className='flex items-center gap-4'>
+                  <h2 className="text-xl font-bold">All Songs</h2>
+                  <button className="transition-all hover:bg-green-500 flex items-center justify-center rounded-full p-2">
+                    
+                    
+                    <IoChevronDown size={20} />
+                  </button>
+                </div>
                 <button className="
                     cursor-pointer text-[#b3b3b3]
                     hover:scale-105 transition-transform duration-150 hover:border-white hover:text-white

@@ -7,8 +7,6 @@ export default function MusicPlayer({ musicQueue }) {
   const [isShuffling, setIsShuffling] = useState(false);
   const [isRepeating, setIsRepeating] = useState(false);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
-  const [shuffle, setShuffle] = useState(false);
-  const [repeat, setRepeat] = useState(false);
 
   // Get current song from musicQueue (use album tracks for non-podcast items)
   let currentSong = musicQueue?.structuredData[0]?.tracks[currentSongIndex];
