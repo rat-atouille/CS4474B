@@ -6,6 +6,7 @@ import { PlayButton } from "../components/playButton.jsx";
 import isPodcast from "../isPodcast.js";
 import { useAlbum } from "../context/AlbumContext.jsx";
 import getStructuredData from "../getStructuredData.js";
+import { FaMinus, FaPlus } from "react-icons/fa6";
 
 // ===== Carousel Component =====
 function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
@@ -173,16 +174,17 @@ function MediaSection({title, items, renderCollapsed, renderExpanded}) {
   return (
     <div className="mt-4">
       <div className="flex items-center justify-between">
-        <div className="flex items-center">
+        <div
+          onClick={() => setExpanded((prev) => !prev)} 
+          className="hover:text-green-500 select-none flex transition-all items-center ">
           <h2 className="font-bold tracking-wide">{title}</h2>
           <button
-            onClick={() => setExpanded((prev) => !prev)}
-            className="ml-2 text-xl text-gray-200 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"
+            className="ml-2 text-xl"
           >
             {expanded ? (
-              <i className="fa-solid fa-circle-minus"></i>
+              <FaMinus size={12} />
             ) : (
-              <i className="fa-solid fa-circle-plus"></i>
+              <FaPlus size={12} />
             )}
           </button>
         </div>
