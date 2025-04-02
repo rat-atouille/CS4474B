@@ -4,6 +4,8 @@ import isPodcast from '../../isPodcast.js';
 export default function MusicPlayer({ musicQueue }) {
   const [rangeValue, setRangeValue] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isShuffling, setIsShuffling] = useState(false);
+  const [isRepeating, setIsRepeating] = useState(false);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
   // Get current song from musicQueue (use album songs for non-podcast items)
@@ -55,6 +57,14 @@ export default function MusicPlayer({ musicQueue }) {
     setIsPlaying(true);
   };
 
+  const toggleShuffle = () => {
+    setIsShuffling((prev) => !prev);
+  }
+  
+  const toggleLoop = () => {
+    setIsRepeating((prev) => !prev);
+  }
+
   const totalDuration = currentSong?.durationMs / 1000 || 195;
   const minutes = Math.floor(rangeValue / 60);
   const seconds = Math.floor(rangeValue % 60);
@@ -102,7 +112,9 @@ export default function MusicPlayer({ musicQueue }) {
               {/* Center Section: Playback Controls */}
               <div className="flex flex-col text-gray-300">
                 <div className="flex justify-center items-center text-lg space-x-4">
-                  <i className="fa-solid fa-shuffle hover:text-white transition-all duration-300 ease-in-out"></i>
+                  <i className={`fa-solid fa-shuffle transition-all duration-300 ease-in-out 
+                  ${isShuffling ? "text-green-500 hover:text-green-300" : "text=gray-300 hover:text-white"}`}
+                  onClick={toggleShuffle}></i>
                   <i
                       className="fa-solid fa-backward-step hover:text-white transition-all duration-300 ease-in-out"
                       onClick={handlePrev}
@@ -117,7 +129,9 @@ export default function MusicPlayer({ musicQueue }) {
                       className="fa-solid fa-forward-step hover:text-white transition-all duration-300 ease-in-out"
                       onClick={handleNext}
                   ></i>
-                  <i className="fa-solid fa-repeat hover:text-white transition-all duration-300 ease-in-out"></i>
+                  <i className={`fa-solid fa-repeat transition-all duration-300 ease-in-out 
+                  ${isRepeating ? "text-green-500 hover:text-green-300" : "text=gray-300 hover:text-white"}`}
+                  onClick={toggleLoop}></i>
                 </div>
                 <div className="flex mt-2 items-center w-xs md:w-sm text-xs gap-2">
                   <span className="font-thin">{timeFormatted}</span>
