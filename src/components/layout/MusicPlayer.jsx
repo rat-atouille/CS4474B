@@ -115,10 +115,10 @@ export default function MusicPlayer({ musicQueue }) {
                       onClick={handlePrev}
                   ></i>
                   <i
-                      className={`fa-solid text-white text-2xl hover:text-white transition-all duration-300 ease-in-out ${
+                      className={`fa-solid text-white text-2xl  transition-all duration-300 ease-in-out hover:text-green-500 ${
                           !isPlaying ? "fa-circle-play" : "fa-circle-pause"
                       }`}
-                      onClick={() => setIsPlaying(true)}
+                      onClick={() => setIsPlaying(!isPlaying)}
                   ></i>
                   <i
                       className="fa-solid fa-forward-step hover:text-white transition-all duration-300 ease-in-out"
