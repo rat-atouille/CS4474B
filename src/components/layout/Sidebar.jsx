@@ -526,7 +526,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
                   <div 
                     key={item.id} 
                     className="px-2 py-1.5 hover:bg-gray-800/50 rounded-md cursor-pointer transition-colors"
-                    onClick={() => handleAlbumClick(item)}
+                    onClick={() => handleAlbumClick(item.name)}
                   >
                     {/* Compact View Item (no images) */}
                     <div className="text-white text-sm truncate">{item.name}</div>

@@ -1,12 +1,20 @@
 import React, {useState} from 'react';
-import {useAlbum} from '../context/AlbumContext';
 import {IoPlay, IoHeart, IoHeartOutline} from "react-icons/io5";
 import {BsSoundwave} from "react-icons/bs";
+import getStructuredData from "../getStructuredData.js";
+import data from "../assets/data/data.json";
 
 export default function Album({setMusicQueue}) {
+  const albumName = new URL(window.location.href).searchParams.get("name");
+  let currentAlbum;
+  Object.entries(data).flatMap(([artistName, artist]) => {
+    const album = artist.albums.find((album) => album.name === albumName)
+    if (album) {
+      currentAlbum = {...album, artist: artistName};
+    }
+  })
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [playIndex, setPlayIndex] = useState(null);
-  const [currentAlbum] = useAlbum();
   const [likedSongs, setLikedSongs] = useState([]);
 
   if (!currentAlbum) return <div
@@ -26,9 +34,9 @@ export default function Album({setMusicQueue}) {
     return convertToMMSS(songs.reduce((total, song) => total + song.durationMs, 0));
   };
 
-  const handlePlay = (album, index) => {
+  const handlePlay = (name, index) => {
     if (typeof setMusicQueue === 'function') {
-      setMusicQueue({...album, index});
+      setMusicQueue(getStructuredData("album", name, index));
     } else {
       console.error('setMusicQueue is not a function');
     }
@@ -56,10 +64,11 @@ export default function Album({setMusicQueue}) {
   const renderTabContent = () => (
     <div>
       <div className="flex items-center p-0 mt-2 mb-8 text-2xl text-gray-300 space-x-4">
-        <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-green-400 hover:scale-105 transition-all duration-300 ease-in-out"
-        onClick={() => {
-          handlePlay(currentAlbum)
-        }}></i>
+        <i
+          className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-green-400 hover:scale-105 transition-all duration-300 ease-in-out"
+          onClick={() => {
+            handlePlay(currentAlbum.name, 0)
+          }}></i>
         <i className="fa-solid fa-shuffle hover:text-white transition-all duration-300 ease-in-out"></i>
         <i
           className="fa-solid fa-plus text-sm border-3 p-1 rounded-full hover:text-white transition-all duration-300 ease-in-out"></i>
@@ -79,13 +88,13 @@ export default function Album({setMusicQueue}) {
           </tr>
           </thead>
           <tbody>
-          {currentAlbum.album.songs && currentAlbum.album.songs.map((song, index) => (
+          {currentAlbum.songs && currentAlbum.songs.map((song, index) => (
             <tr
               key={index}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={(e) => {
-                handlePlay(currentAlbum, index);
+                handlePlay(currentAlbum.name, index);
                 togglePlay(e, index);
               }}
               className="hover:bg-[#535353] hover:cursor-pointer border-b border-gray-700">
@@ -104,7 +113,8 @@ export default function Album({setMusicQueue}) {
               <td className="text-white py-3 pr-3">
                 <div>
                   <p className={`text-sm w-3/5 md:w-xs ${index === playIndex && "text-green-500"}`}>{song.name}</p>
-                  <a href={`/artist/?name=${currentAlbum.artist}`} className="text-gray-400 text-sm hover:underline transition-all duration-300 ease-in-out">
+                  <a href={`/artist/?name=${currentAlbum.artist}`}
+                     className="text-gray-400 text-sm hover:underline transition-all duration-300 ease-in-out">
                     {currentAlbum.artist}
                   </a>
                 </div>
@@ -135,22 +145,25 @@ export default function Album({setMusicQueue}) {
         <h2 className="text-xl font-bold mb-4 mt-10">More by {currentAlbum.artist}</h2>
         <div className="grid grid-cols-3 lg:grid-cols-5 gap-8">
           {/* Display more albums */}
-          {currentAlbum.album.songs.map((album, index) => (
-            <div key={index} className="p-3 rounded group">
+          {currentAlbum.songs.map((song, index) => (
+            <div key={index} className="p-3 rounded group hover:bg-neutral-600">
               <div className="relative">
                 <img
-                  src={album.image}
+                  src={song.image}
                   alt="Song Image"
                   className="object-cover rounded"
                 />
-                <button
+                <button onClick={(e) => {
+                  togglePlay(e, index)
+                  handlePlay(currentAlbum.name, index)
+                }}
                   className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out">
                   <i
                     className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
                 </button>
               </div>
-              <p className="text-white mt-2 truncate font-semibold text-sm">{album.name}</p>
-              <p className="text-gray-400 text-sm">{currentAlbum.album.releaseDate}</p>
+              <p className="text-white mt-2 truncate font-semibold text-sm">{song.name}</p>
+              <p className="text-gray-400 text-sm">{currentAlbum.releaseDate} • {currentAlbum.name}</p>
             </div>
           ))}
         </div>
@@ -162,17 +175,19 @@ export default function Album({setMusicQueue}) {
     <div className="bg-[#212121] text-white w-full">
       <div className="relative h-64 bg-red-900 p-6 flex items-end space-x-4">
         <img
-          src={currentAlbum == null ? "/placeHolders/placeHolderIcon.jpeg" : currentAlbum.album.image}
+          src={currentAlbum == null ? "/placeHolders/placeHolderIcon.jpeg" : currentAlbum.image}
           alt="Album Image"
           className="object-cover rounded w-1/3 md:w-1/4 xl:w-1/6 z-10"
         />
         <div className="relative z-10">
           <span className="text-xs px-2 py-1 rounded-sm mb-1 inline-block select-none">Album</span>
           <h1
-            className="text-xl sm:text-sm md:text-3xl lg:text-4xl xl:text-5xl w-full font-bold">{currentAlbum.album.name}</h1>
-          <a href={`/artist/?name=${currentAlbum.artist}`} className="text-xs mt-2 text-[#b3b3b3] select-none hover:underline">
-            {currentAlbum.artist} • {currentAlbum.album.releaseDate.substring(0, 4)} • {currentAlbum.album.songs.length} songs
-            • {totalDuration(currentAlbum.album.songs)}
+            className="text-xl sm:text-sm md:text-3xl lg:text-4xl xl:text-5xl w-full font-bold">{currentAlbum.name}</h1>
+          <a href={`/artist/?name=${currentAlbum.artist}`}
+             className="text-xs mt-2 text-[#b3b3b3] select-none hover:underline">
+            {currentAlbum.artist} • {currentAlbum
+            .releaseDate.substring(0, 4)} • {currentAlbum.songs.length} songs
+            • {totalDuration(currentAlbum.songs)}
           </a>
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-80"></div>

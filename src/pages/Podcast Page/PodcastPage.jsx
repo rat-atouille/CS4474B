@@ -12,6 +12,7 @@ import {GiHamburgerMenu} from "react-icons/gi";
 import {FcCheckmark} from "react-icons/fc";
 import EpisodeGrid from "./EpisodeGrid.jsx";
 import EpisodeList from "./EpisodeList.jsx";
+import getStructuredData from "../../getStructuredData.js";
 
 // interface episode {
 //   name: string,
@@ -28,9 +29,8 @@ function PodcastPage({setMusicQueue, musicQueue}) {
   const [playIndex, setPlayIndex] = useState(null);
 
   const handlePlay = (index) => {
-    console.log(index)
     if (typeof setMusicQueue === 'function') {
-      setMusicQueue({...podcast, index});
+      setMusicQueue(getStructuredData("podcast", podcastName, index));
     } else {
       console.error('setMusicQueue is not a function');
     }
