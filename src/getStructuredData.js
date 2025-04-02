@@ -1,6 +1,15 @@
 import albumData from "../src/assets/data/data.json";
 import podcastData from "../src/assets/data/podcastData.json";
 import playlistData from "../src/assets/data/playlistData.json";
+import genreData from "../src/assets/data/genreJson.json";
+
+  // Helper function to convert milliseconds to MM:SS format
+  const convertToMMSS = (durationMs) => {
+    const totalSeconds = Math.floor(durationMs / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
 
 const getStructuredData = (type, name, index) => {
     let structuredData = [];
@@ -10,8 +19,8 @@ const getStructuredData = (type, name, index) => {
         author,
         image,
         name,
-        title: song.name,
-        duration: song.durationMs
+        trackTitle: song.name,
+        trackDuration: convertToMMSS(song.durationMs)
     });
 
     switch (type) {
@@ -19,17 +28,16 @@ const getStructuredData = (type, name, index) => {
             // Flatten albums data and filter by name
             structuredData = Object.entries(albumData).flatMap(([artistName, artist]) =>
                 artist.albums
-                    .filter(album => album.name.toLowerCase().includes(name.toLowerCase()))
+                    .filter(album => album.name.toLowerCase() === name.toLowerCase())
                     .map(album => ({
                         tracks: album.songs.map(song => formatSongData(artistName, album.image, album.name, song))
                     }))
             );
             break;
-
         case "podcast":
             // Filter podcasts by name and format episode data
             structuredData = Object.entries(podcastData).map(([podcastName, podcast]) => {
-                if (podcastName.toLowerCase().includes(name.toLowerCase())) {
+                if (podcastName.toLowerCase() === (name.toLowerCase())) {
                     return {
                         author: podcast.publisher,
                         name: podcastName,
@@ -39,28 +47,31 @@ const getStructuredData = (type, name, index) => {
                 return null;
             }).filter(podcast => podcast !== null);
             break;
-
+        case "genre":
+            // Handle Liked Songs playlist
+            if (genreData[name] && Array.isArray(genreData[name])) {
+                structuredData = genreData[name].map(song => formatSongData(song.artist, song.image, name, song));
+            }
+            break;
         case "playlist-liked":
             // Handle Liked Songs playlist
             if (playlistData["Liked Songs"] && Array.isArray(playlistData["Liked Songs"])) {
                 structuredData = playlistData["Liked Songs"].map(song => formatSongData(song.artist, song.image, "Liked Songs", song));
             }
             break;
-
         case "playlist-album":
             // Handle Albums playlist
             structuredData = Object.entries(albumData).flatMap(([artistName, artist]) =>
                 artist.albums
-                    .filter(album => album.name.toLowerCase().includes(name.toLowerCase()))
+                    .filter(album => album.name.toLowerCase() === (name.toLowerCase()))
                     .map(album => ({
                         tracks: album.songs.map(song => formatSongData(artistName, album.image, album.name, song))
                     }))
             );
             break;
-
         case "playlist-artist":
             structuredData = Object.entries(albumData)
-            .filter(([artistName]) => artistName.toLowerCase().includes(name.toLowerCase()))
+            .filter(([artistName]) => artistName.toLowerCase() === (name.toLowerCase()))
             .flatMap(([artistName, artist]) => 
                 artist.albums.length > 0 
                     ? artist.albums[0].songs.map(song => formatSongData(artistName, artist.albums[0].image, artist.albums[0].name, song))

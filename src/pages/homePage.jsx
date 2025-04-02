@@ -14,8 +14,6 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(getStructuredData("playlist-liked", "Liked Songs", 0))
-
     const updateItemsToShow = () => {
       if (window.innerWidth >= 1024) {
         setItemsToShow(5);
@@ -70,7 +68,11 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
                 <PlayButton 
                   onClick={(e) => {
                     e.stopPropagation();  // Prevents triggering handleAlbumClick
-                    handlePlay(item);
+                    if (isPodcast(item)) {
+                      handlePlay("podcast", item.podcastName, 0);
+                    } else {
+                      handlePlay("album", item.album.name, 0);
+                    }
                   }}/>
               </div>
               <h2 className="mt-1 text-xs font-semibold text-gray-200">
@@ -143,11 +145,15 @@ function GridView({ items, handlePlay, handleAlbumClick }) {
                 alt="Thumbnail"
                 className="h-36 w-full object-fit rounded"
               />
-              <PlayButton 
-                 onClick={(e) => {
-                  e.stopPropagation();  // Prevents triggering handleAlbumClick
-                  handlePlay(item);
-                }}/>
+                <PlayButton 
+                  onClick={(e) => {
+                    e.stopPropagation();  // Prevents triggering handleAlbumClick
+                    if (isPodcast(item)) {
+                      handlePlay("podcast", item.podcastName, 0);
+                    } else {
+                      handlePlay("album", item.album.name, 0);
+                    }
+                  }}/>
             </div>
             <h2 className="mt-1 text-xs font-semibold text-gray-200">
               {item.album?.name ?? item.podcastName}
@@ -168,7 +174,7 @@ function MediaSection({title, items, renderCollapsed, renderExpanded}) {
     <div className="mt-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <h2 className="font-bold text-lg tracking-wide">{title}</h2>
+          <h2 className="font-bold tracking-wide">{title}</h2>
           <button
             onClick={() => setExpanded((prev) => !prev)}
             className="ml-2 text-xl text-gray-200 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"
@@ -183,7 +189,7 @@ function MediaSection({title, items, renderCollapsed, renderExpanded}) {
         {expanded && (
           <a
             onClick={() => setShowAll((prev) => !prev)}
-            className="text-sm text-gray-300 font-semibold hover:underline cursor-pointer transition-all duration-150 ease-in-out"
+            className="text-xs text-gray-300 font-semibold hover:underline cursor-pointer transition-all duration-150 ease-in-out"
           >
             {showAll ? "Show Less" : "Show All"}
           </a>
@@ -265,9 +271,9 @@ export default function HomePage({ setMusicQueue }) {
     setSelectedCategory(category);
   };
 
-  const handlePlay = (item) => {
+  const handlePlay = (type, name, index) => {
     if (typeof setMusicQueue === 'function') {
-      setMusicQueue(item);  // Ensure it's an array for a queue
+      setMusicQueue(getStructuredData(type, name, index));
     } else {
       console.error('setMusicQueue is not a function');
     }
@@ -290,7 +296,7 @@ export default function HomePage({ setMusicQueue }) {
               className="absolute bottom-2 right-2 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-all ease-in-out"
               onClick={(e) => {
                 e.stopPropagation();  // Prevents triggering handleAlbumClick
-                handlePlay(item);
+                handlePlay("album", item.album.name, 0);
               }}
             >
               <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
