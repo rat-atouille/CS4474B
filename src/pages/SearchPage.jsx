@@ -3,13 +3,12 @@ import { useState, useEffect } from "react";
 import rockImage from "../assets/Rocky the cat.png";
 import jsonData from "../assets/data/data.json";
 
-export default function SearchPage({ setMusicQueue }) {
+export default function SearchPage() {
     const location = useLocation();
     const navigate = useNavigate();
     const [searchParam, setSearchParam] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
 
-    // Helper: deduplicate items by name (ignoring case)
     function deduplicateByName(items) {
         const seen = new Set();
         return items.filter((item) => {
@@ -58,7 +57,6 @@ export default function SearchPage({ setMusicQueue }) {
                         extraSongs.push({
                             name: song.name,
                             image: song.image,
-                            durationMs: song.durationMs, // include duration if available
                         });
                     });
                 }
@@ -72,28 +70,9 @@ export default function SearchPage({ setMusicQueue }) {
     const playlists = deduplicateByName([...basePlaylists, ...extraPlaylists]);
 
     // ---------- Category Tabs ----------
-    const categories = [
-        "All",
-        "Songs",
-        "Playlists",
-        "Artists",
-        "Podcasts",
-        "Audiobooks",
-    ];
-    const handleTagClick = (category) => setActiveCategory(category);
-
-    // ---------- Navigation Handlers ----------
-    const handleArtistClick = (artist) => {
-        navigate(`/artist?name=${encodeURIComponent(artist.name)}`);
-    };
-
-    const handleSongClick = (song) => {
-        // For songs, we set the music queue with a dummy album object containing this single song.
-        setMusicQueue({ album: { songs: [song] } });
-    };
-
-    const handlePlaylistClick = (pl) => {
-        navigate(`/playlist?name=${encodeURIComponent(pl.name)}`);
+    const categories = ["All", "Songs", "Playlists", "Artists", "Podcasts", "Audiobooks"];
+    const handleTagClick = (category) => {
+        setActiveCategory(category);
     };
 
     return (
@@ -108,9 +87,7 @@ export default function SearchPage({ setMusicQueue }) {
                     <button
                         key={category}
                         className={`px-4 py-1 rounded-full text-sm ${
-                            activeCategory === category
-                                ? "bg-green-500"
-                                : "bg-gray-700 hover:bg-gray-600"
+                            activeCategory === category ? "bg-green-500" : "bg-gray-700 hover:bg-gray-600"
                         }`}
                         onClick={() => handleTagClick(category)}
                     >
@@ -146,7 +123,9 @@ export default function SearchPage({ setMusicQueue }) {
                                 <div
                                     key={index}
                                     className="flex flex-col items-center cursor-pointer"
-                                    onClick={() => handleArtistClick(artist)}
+                                    onClick={() =>
+                                        navigate(`/artist?name=${encodeURIComponent(artist.name)}`)
+                                    }
                                 >
                                     <img
                                         src={artist.image}
@@ -167,7 +146,9 @@ export default function SearchPage({ setMusicQueue }) {
                                 <div
                                     key={index}
                                     className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                    onClick={() => handleSongClick(song)}
+                                    onClick={() =>
+                                        navigate(`/song?title=${encodeURIComponent(song.name)}`)
+                                    }
                                 >
                                     <img
                                         src={song.image}
@@ -188,7 +169,9 @@ export default function SearchPage({ setMusicQueue }) {
                                 <div
                                     key={index}
                                     className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                    onClick={() => handlePlaylistClick(pl)}
+                                    onClick={() =>
+                                        navigate(`/playlist?name=${encodeURIComponent(pl.name)}`)
+                                    }
                                 >
                                     <img
                                         src={pl.image}
@@ -212,7 +195,9 @@ export default function SearchPage({ setMusicQueue }) {
                             <div
                                 key={index}
                                 className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                onClick={() => handleSongClick(song)}
+                                onClick={() =>
+                                    navigate(`/song?title=${encodeURIComponent(song.name)}`)
+                                }
                             >
                                 <img
                                     src={song.image}
@@ -235,7 +220,9 @@ export default function SearchPage({ setMusicQueue }) {
                             <div
                                 key={index}
                                 className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                onClick={() => handlePlaylistClick(pl)}
+                                onClick={() =>
+                                    navigate(`/playlist?name=${encodeURIComponent(pl.name)}`)
+                                }
                             >
                                 <img
                                     src={pl.image}
@@ -258,7 +245,9 @@ export default function SearchPage({ setMusicQueue }) {
                             <div
                                 key={index}
                                 className="flex flex-col items-center cursor-pointer"
-                                onClick={() => handleArtistClick(artist)}
+                                onClick={() =>
+                                    navigate(`/artist?name=${encodeURIComponent(artist.name)}`)
+                                }
                             >
                                 <img
                                     src={artist.image}

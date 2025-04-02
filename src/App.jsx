@@ -7,6 +7,8 @@ import Browse from './pages/Browse.jsx';
 import Album from './pages/Album.jsx';
 import GenrePage from './pages/GenrePage.jsx';
 import SearchPage from "./pages/SearchPage.jsx";
+import { useEffect, useState } from 'react';
+
 function App({ setMusicQueue }) { // Make sure to accept the prop
 
   return (
