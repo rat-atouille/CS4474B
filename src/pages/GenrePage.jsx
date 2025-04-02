@@ -88,24 +88,24 @@ const GenrePage = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-wrap px-4">
+        <div className="flex flex-wrap px-6 py-2">
           {filteredSongs.map((song, index) => (
             <div 
-              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-3 relative group" 
+              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 relative group" 
               key={index}
             >
-              <div className="bg-[#2a2a2a] rounded-lg overflow-hidden hover:bg-[#3a3a3a] transition-colors cursor-pointer h-full">
-                <div className="p-4">
+              <div className="bg-[#2a2a2a] rounded-lg overflow-hidden hover:bg-[#3a3a3a] transition-colors cursor-pointer h-full flex flex-col">
+                <div className="p-4 pb-2">
                   <img 
                     src={song.image} 
                     alt={`${song.name} cover`} 
-                    className="w-full aspect-square object-cover rounded-md"
+                    className="w-full aspect-square object-cover rounded-md mx-auto max-w-[120px]"
                   />
                 </div>
-                <div className="p-3 pt-0">
-                  <p className="font-medium truncate text-white">{song.name}</p>
-                  <p className="text-sm text-gray-400 truncate">{song.artist}</p>
-                  <p className="text-xs text-gray-500 truncate">{song.album}</p>
+                <div className="p-3 pt-0 flex-grow">
+                  <p className="font-medium truncate text-white text-center">{song.name}</p>
+                  <p className="text-xs text-gray-400 truncate text-center">{song.artist}</p>
+                  <p className="text-xs text-gray-500 truncate text-center mt-1">{song.album}</p>
                 </div>
               </div>
             </div>
