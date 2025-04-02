@@ -88,23 +88,25 @@ const GenrePage = () => {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4">
-          {filteredSongs.map((song) => (
+        <div className="flex flex-wrap px-4">
+          {filteredSongs.map((song, index) => (
             <div 
-              key={`${song.artist}-${song.album}-${song.name}`} 
-              className="bg-[#2a2a2a] rounded-lg overflow-hidden hover:bg-[#3a3a3a] transition-colors cursor-pointer"
+              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-3 relative group" 
+              key={index}
             >
-              <div className="aspect-square">
-                <img 
-                  src={song.image} 
-                  alt={`${song.name} cover`} 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-3">
-                <p className="font-medium truncate">{song.name}</p>
-                <p className="text-sm text-gray-400 truncate">{song.artist}</p>
-                <p className="text-xs text-gray-500 truncate">{song.album}</p>
+              <div className="bg-[#2a2a2a] rounded-lg overflow-hidden hover:bg-[#3a3a3a] transition-colors cursor-pointer h-full">
+                <div className="p-4">
+                  <img 
+                    src={song.image} 
+                    alt={`${song.name} cover`} 
+                    className="w-full aspect-square object-cover rounded-md"
+                  />
+                </div>
+                <div className="p-3 pt-0">
+                  <p className="font-medium truncate text-white">{song.name}</p>
+                  <p className="text-sm text-gray-400 truncate">{song.artist}</p>
+                  <p className="text-xs text-gray-500 truncate">{song.album}</p>
+                </div>
               </div>
             </div>
           ))}
