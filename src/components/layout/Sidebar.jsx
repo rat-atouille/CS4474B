@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import { FaHeart, FaSearch, FaList, FaPlus, FaCheck, FaTimes } from "react-icons/fa";
 import { BsFillGridFill } from "react-icons/bs";
 import { HiViewGrid, HiMenu } from "react-icons/hi";
-import { useAlbum } from "../../context/AlbumContext";
 import getStructuredData from "../../../src/getStructuredData.js";
 
 // Import the data from the specified path
@@ -11,7 +10,6 @@ import playlistData from "../../assets/data/playlistData.json";
 
 function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [, setCurrentAlbum] = useAlbum();
   const navigate = useNavigate();
   
   // State for sort option and view mode
@@ -88,10 +86,17 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
   };
 
   const handleAlbumClick = (item) => {
-    setCurrentAlbum(item);
-    navigate("/album");
-  };
-  
+    if (item.type === "Artist") {
+      navigate(`/artist/?name=${item.name}&type=${item.type}`);
+    } else if (item.type === "Podcast") {
+      navigate(`/podcast/?name=${item.name}`);
+    } else {
+      navigate(`/album/?name=${item.name}&type=${item.type}`);
+    }
+
+    window.location.reload();
+  }
+
   const toggleSortDropdown = () => {
     setShowSortDropdown(!showSortDropdown);
     setShowViewDropdown(false);

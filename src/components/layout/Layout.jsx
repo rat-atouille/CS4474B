@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./Sidebar.jsx";
 import Navbar from "./Navbar.jsx";
 import MusicPlayer from "./MusicPlayer.jsx";
-import { AlbumProvider } from "../../context/AlbumContext.jsx";
 
 export default function Layout({ children }) {
   const [showNavBackground, setShowNavBackground] = useState(false);
@@ -25,7 +24,6 @@ export default function Layout({ children }) {
   }, []);
 
   return (
-    <AlbumProvider>
       <BrowserRouter>
         <div className="h-screen w-screen overflow-x-hidden flex flex-col bg-black">
           {/* Sidebar (Fixed, Always on the Left) */}
@@ -54,6 +52,5 @@ export default function Layout({ children }) {
           <MusicPlayer musicQueue={musicQueue} />
         </div>
       </BrowserRouter>
-    </AlbumProvider>
   );
 }
