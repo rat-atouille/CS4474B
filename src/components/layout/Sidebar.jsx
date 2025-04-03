@@ -78,7 +78,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
           setMusicQueue(getStructuredData("playlist", name, 0));
         }
       } else {
-        console.log("Error with content type.");
+        setMusicQueue(getStructuredData("podcast", name, 0));
       }
     } else {
       console.error('setMusicQueue is not a function');
