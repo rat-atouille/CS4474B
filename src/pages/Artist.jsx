@@ -485,20 +485,33 @@ const Artist = ({setMusicQueue}) => {
           <div>
             <h2 className="text-xl font-bold mb-4">Singles & EPs</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {albums.filter(album => album.songs <= 1).map(album => (
+              {/* Show message if no Singles/EPs exist */}
+              {albums.length > 0 && albums.filter(album => album.tracks <= 3).length === 0 && (
+                <div className="text-gray-400 text-center p-4 w-full">
+                  No Singles or EPs found for this artist.
+                </div>
+              )}
+              {/* Display Singles & EPs */}
+              {albums.filter(album => album.tracks <= 3).map(album => (
                 <div key={album.id} className="bg-gray-800 p-4 rounded">
+                  {/* Album Cover */}
                   <div className="w-full h-48 mb-3 relative rounded overflow-hidden">
                     <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
-                    {/* Heart button */}
-                    <button className="absolute right-4 top-3 cursor-pointer"
+
+                    {/* Heart Button */}
+                    <button
+                      className="absolute right-4 top-3 cursor-pointer"
                       onClick={(e) => toggleLikeAlbum(e, album.id)}
                     >
-                      {likedAlbums.includes(album.id) ?
-                        <IoHeart size={30} className="text-white" /> :
+                      {likedAlbums.includes(album.id) ? (
+                        <IoHeart size={30} className="text-white" />
+                      ) : (
                         <IoHeartOutline size={30} className="text-white" />
-                      }
+                      )}
                     </button>
                   </div>
+
+                  {/* Album Info */}
                   <p className="text-white font-bold">{album.title}</p>
                   <p className="text-gray-400 text-sm">Singles • {album.year}</p>
                 </div>
