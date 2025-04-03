@@ -8,7 +8,7 @@ export default function Layout({ children }) {
   const [showNavBackground, setShowNavBackground] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [musicQueue, setMusicQueue] = useState();
-  
+  const [currentSongIndex, setCurrentSongIndex] = useState();
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -22,6 +22,10 @@ export default function Layout({ children }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    console.log(currentSongIndex);
+  }, [currentSongIndex])
 
   return (
       <BrowserRouter>
@@ -43,13 +47,13 @@ export default function Layout({ children }) {
             {/* Scrollable Content */}
             <div className={`flex-1 mt-[10vh] md:mt-[5vw] overflow-y-auto bg-[#212121] ${collapsed ? "ml-16" : "ml-64"}`}>
               <Routes>
-                <Route path="/*" element={React.cloneElement(children, { setMusicQueue })} />
+                <Route path="/*" element={React.cloneElement(children, { setMusicQueue, setCurrentSongIndex, currentSongIndex })} />
               </Routes>
             </div>
           </div>
 
           {/* Music Player at Bottom */}
-          <MusicPlayer musicQueue={musicQueue} />
+          <MusicPlayer musicQueue={musicQueue} setCurrentSongIndex={setCurrentSongIndex} currentSongIndex={currentSongIndex} />
         </div>
       </BrowserRouter>
   );
