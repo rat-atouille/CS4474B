@@ -21,10 +21,6 @@ export default function Layout({musicQueue, setMusicQueue, currentSongIndex, set
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    console.log(currentSongIndex);
-  }, [currentSongIndex])
-
   return (
     <div className="h-screen w-screen overflow-x-hidden flex flex-col bg-black">
       {/* Sidebar (Fixed, Always on the Left) */}

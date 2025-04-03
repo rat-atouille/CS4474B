@@ -18,9 +18,7 @@ export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSo
 
   // When a new musicQueue is set (i.e. a new song is clicked), reset tracker and auto-play
   useEffect(() => {
-    console.log(musicQueue)
     setCurrentSongIndex({index: musicQueue?.index || 0, albumName: musicQueue?.structuredData[0].tracks[0].name});
-    console.log(musicQueue)
     setRangeValue(0);
     setIsPlaying(true);
   }, [musicQueue]);

@@ -29,7 +29,6 @@ export default function Album({setMusicQueue, currentSong}) {
       }
     }
 
-    console.log(currentAlbum);
   }, [location]);
 
   if (!currentAlbum) return <div></div>;
