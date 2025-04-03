@@ -40,7 +40,7 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
   };
 
   return (
-    <div className="relative w-20/20 mx-auto">
+    <div className="relative w-18/20 mx-auto">
       <div className="overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"
@@ -99,7 +99,7 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
       </button>
       <button
         onClick={goToNext}
-        className="absolute right-0 top-1/2 transform translate-x-full -translate-y-1/2
+        className="absolute right-0 pl-4 top-1/2 transform translate-x-full -translate-y-1/2
                   text-3xl text-gray-200 hover:scale-110 transition-transform"
       >
         <i className="fa-solid fa-circle-chevron-right"></i>
@@ -146,11 +146,11 @@ function GridView({ items, handlePlay, handleAlbumClick }) {
               handleAlbumClick(item.album.name)
             }
           }} key={index} className="w-full group">
-            <div className="relative bg-green-300">
+            <div className="relative bg-green-300 w-[130px] sm:w-[190px] md:w-[200px]">
               <img
                 src={item.album?.image ?? item.image}
                 alt="Thumbnail"
-                className="h-36 w-full object-fit rounded"
+                className="h-full w-full object-fit rounded"
               />
                 <PlayButton 
                   onClick={(e) => {
@@ -294,7 +294,7 @@ export default function HomePage({ setMusicQueue }) {
     <div className="p-8 w-full bg-[#212121]">
       {/* Main Grid Section */}
       <div className="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {albums.length > 0 && albums.slice(0, 8).map((item, index) => (
+        {shuffledRecentlyPlayed.length > 0 && shuffledRecentlyPlayed.slice(0, 8).map((item, index) => (
           <div key={index} className="flex items-center bg-gray-700 hover:bg-gray-600 rounded group relative" onClick={() => handleAlbumClick(item.album.name)}>
             <img src={item.album.image} alt="Thumbnail" className="h-16 w-16 object-fit" />
             <h2 className="ml-3 p-1 text-xs font-semibold">{item.album.name}</h2>
