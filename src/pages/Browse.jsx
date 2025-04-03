@@ -1,5 +1,5 @@
 import { songData, podcastData, audiobookData } from "../assets/Browse/constants";
-import SongCard from "../components/layout/SongCard";
+import SongCard from "../components/SongCard.jsx";
 import { useState } from "react";
 
 const BrowsePage = () => {   

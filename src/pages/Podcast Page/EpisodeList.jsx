@@ -44,7 +44,7 @@ function formatLength(lengthInMs) {
   }
 }
 
-function EpisodeList({episodes, handlePlay, togglePlay, playIndex}) {
+function EpisodeList({episodes, handlePlay, currentSong, podcastName}) {
   const tableBody = useRef(null)
 
   useEffect(() => {
@@ -66,10 +66,7 @@ function EpisodeList({episodes, handlePlay, togglePlay, playIndex}) {
       </tr>
 
       {episodes.map((episode, index) =>
-        <tr onClick={(e) => {
-          handlePlay(index);
-          togglePlay(e, index)
-        }} className={`hover:bg-[#474747] cursor-pointer ${index === playIndex && "text-green-500"}`} key={index}>
+        <tr onClick={() => {handlePlay(index);}} className={`hover:bg-[#474747] cursor-pointer ${(currentSong.index === index && podcastName === currentSong.albumName) && "text-green-500"}`} key={index}>
           <td className={"py-1.5"}><img className={"size-8"} src={episode?.image ?? genericThumbnail} alt={"Thumbnail"}/></td>
           <td className={"py-1.5"}>{episode.name}</td>
           <td className={"py-1.5"}>{formatDate(episode.releaseDate)}</td>

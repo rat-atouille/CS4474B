@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from "react-router-dom";
 
 export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSongIndex }) {
   const [rangeValue, setRangeValue] = useState(0);
@@ -7,7 +8,7 @@ export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSo
   const [isRepeating, setIsRepeating] = useState(false);
 
   // Get current song from musicQueue (use album tracks for non-podcast items)
-  let currentSong = musicQueue?.structuredData[0]?.tracks[currentSongIndex];
+  let currentSong = musicQueue?.structuredData[0]?.tracks[currentSongIndex.index];
 
   // Convert trackDuration (e.g., "2:06") to total seconds
   const convertDurationToSeconds = (duration) => {
@@ -17,8 +18,7 @@ export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSo
 
   // When a new musicQueue is set (i.e. a new song is clicked), reset tracker and auto-play
   useEffect(() => {
-    setCurrentSongIndex(musicQueue?.index || 0);
-    console.log(musicQueue)
+    setCurrentSongIndex({index: musicQueue?.index || 0, albumName: musicQueue?.structuredData[0].tracks[0].name});
     setRangeValue(0);
     setIsPlaying(true);
   }, [musicQueue]);
@@ -44,13 +44,15 @@ export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSo
   const albumLength = musicQueue?.structuredData[0]?.tracks.length;
 
   const handleNext = () => {
-    setCurrentSongIndex(prevIndex => (prevIndex + 1) % albumLength);
+    const index = (currentSongIndex.index + 1) % albumLength;
+    setCurrentSongIndex({index, albumName: musicQueue?.structuredData[0]?.tracks[0].name});
     setRangeValue(0);
     setIsPlaying(true);
   };
 
   const handlePrev = () => {
-    setCurrentSongIndex(prevIndex => (prevIndex - 1 + albumLength) % albumLength);
+    const index = (currentSongIndex.index + - 1 + albumLength) % albumLength;
+    setCurrentSongIndex({index, albumName: musicQueue?.structuredData[0]?.tracks[0].name});
     setRangeValue(0);
     setIsPlaying(true);
   };
@@ -97,9 +99,9 @@ export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSo
                     : currentSong?.trackTitle}
                 </span>
 
-                  <a href={`/artist/?name=${currentSong?.author}`} className="block text-gray-400 text-[8px] md:text-[10px] hover:underline">
+                  <Link to={`/artist/?name=${currentSong?.author}`} href={`/artist/?name=${currentSong?.author}`} className="block text-gray-400 text-[8px] md:text-[10px] hover:underline">
                     {currentSong?.author}
-                  </a>
+                  </Link>
                 </div>
                 <i className="fa-solid fa-plus text-[8px] md:text-xs border p-1 rounded-full text-gray-300 hover:text-white transition-all duration-300 ease-in-out"></i>
               </div>

@@ -93,8 +93,6 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
     } else {
       navigate(`/album/?name=${item.name}&type=${item.type}`);
     }
-
-    window.location.reload();
   }
 
   const toggleSortDropdown = () => {

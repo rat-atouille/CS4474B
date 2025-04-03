@@ -4,10 +4,9 @@ import Navbar from "./Navbar.jsx";
 import MusicPlayer from "./MusicPlayer.jsx";
 import {Outlet} from "react-router-dom";
 
-export default function Layout({musicQueue, setMusicQueue}) {
+export default function Layout({musicQueue, setMusicQueue, currentSongIndex, setCurrentSongIndex}) {
   const [collapsed, setCollapsed] = useState(false);
   const [showNavBackground, setShowNavBackground] = useState(false);
-  const [currentSongIndex, setCurrentSongIndex] = useState();
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -21,10 +20,6 @@ export default function Layout({musicQueue, setMusicQueue}) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    console.log(currentSongIndex);
-  }, [currentSongIndex])
 
   return (
     <div className="h-screen w-screen overflow-x-hidden flex flex-col bg-black">
