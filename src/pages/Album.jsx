@@ -16,7 +16,7 @@ export default function Album({setMusicQueue, currentSong}) {
   const [likedSongs, setLikedSongs] = useState([]);
   const [currentAlbum, setCurrentAlbum] = useState(null);
   const [liked, setLiked] = useState(false);  // for liking the album
-
+  const [shuffle, setShuffle] = useState(false); // for shuffling the album
   useEffect(() => {
     if (albumName && albumType) {
       if (albumType === 'Playlist') {
@@ -100,10 +100,12 @@ export default function Album({setMusicQueue, currentSong}) {
             handlePlay(currentAlbum.structuredData[0].tracks[0].name, 0);
           }}
         ></i>
-        <i className="fa-solid fa-shuffle hover:text-white transition-all duration-300 ease-in-out"></i>
+        <i
+          onClick={() => setShuffle(!shuffle)} 
+          className={`fa-solid fa-shuffle hover:text-white transition-all duration-300 ease-in-out ${shuffle ? "text-green-500"  : "" }`}></i>
         <button 
           onClick={()=> setLiked(!liked)}
-          className='hover:text-white transition-all duration-300 ease-in-out'
+          className={`hover:text-white transition-all duration-300 ease-in-out ${liked ? "text-red-500" : ""}`}
           >
           { liked ? <IoHeart /> : <IoHeartOutline />}
         </button>
@@ -239,7 +241,7 @@ export default function Album({setMusicQueue, currentSong}) {
         )}
         <div className="relative z-10">
           <span className="text-xs py-1 rounded-sm mb-1 inline-block select-none">{albumType}</span>
-          <h1 className="text-xl sm:text-sm md:text-3xl lg:text-4xl xl:text-5xl w-full font-bold">{albumName}</h1>
+          <h1 className="text-xl sm:text-md md:text-3xl lg:text-4xl xl:text-5xl w-full font-bold">{albumName}</h1>
           <div className="text-xs mt-2 text-[#b3b3b3]">
             {albumType === "Playlist" ? (
               <>
