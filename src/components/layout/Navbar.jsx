@@ -142,7 +142,7 @@ function Navbar({ showNavBackground }) {
       {/* Right Icons */}
       <div className="flex items-center space-x-3 md:space-x-4 mr-4 md:mr-8">
         <i className="fa-solid fa-bell text-lg md:text-xl hover:text-white hover:scale-110 transition-all duration-150 ease-in-out"></i>
-        <img src="src/assets/profileIcon.png" alt="Thumbnail" className="h-6 w-6 md:h-8 md:w-8 object-cover rounded-full hover:text-white" />
+        <img src="/profileIcon.png" alt="Thumbnail" className="h-6 w-6 md:h-8 md:w-8 object-cover rounded-full hover:text-white" />
       </div>
     </div>
   );
