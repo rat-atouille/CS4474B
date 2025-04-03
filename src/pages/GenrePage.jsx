@@ -90,8 +90,7 @@ const GenrePage = () => {
             className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 bg-black rounded-full p-2 transition-all duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            src/components/playButton.jsx
-            <i className="fa-solid fa-circle-play text-4xl text-green-500 hover:scale-105 transition-transform duration-150"></i>
+            <i className="fa-solid fa-circle-play text-3xl text-green-500 hover:scale-105 transition-transform duration-150"></i>
           </button>
         </div>
       ) : (
@@ -108,16 +107,16 @@ const GenrePage = () => {
                     alt={`${song.name} cover`} 
                     className="w-full aspect-square object-cover rounded-md mx-auto group-hover:opacity-60 transition-opacity duration-300"
                   />
+                  <button
+                    className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 bg-black rounded-full transition-all ease-in-out"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      // Add play functionality here
+                    }}
+                  >
+                    <i className="fa-solid fa-circle-play text-4xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+                  </button>
                 </div>
-                <button
-                  className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    // Add play functionality here
-                  }}
-                >
-                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
-                </button>
                 <div className="p-2 text-center w-full">
                   <p className="font-medium truncate text-white">{song.name}</p>
                   <p className="text-sm text-gray-400 truncate">{song.artist}</p>
