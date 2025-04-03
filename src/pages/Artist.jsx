@@ -317,7 +317,7 @@ const Artist = ({setMusicQueue, currentSong}) => {
             </div>
 
             <div className="">
-                <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
+                <h2 className="select-none text-xl font-bold mb-4 mt4">Recommended for You</h2>
                 <div className=" mx-5 p-0 m-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                 {albums.map(album => (
                   <Link to={`/album/?name=${album.title}&type=album`} key={album.id} className="p-3 m-0 rounded hover:bg-gray-700 transition-all">
@@ -328,9 +328,9 @@ const Artist = ({setMusicQueue, currentSong}) => {
 
                     </div>
                     {/* Album Title, year, # of songs */}
-                    <Link to={`/album/?name=${album.title}&type=Album`} href={`/album/?name=${album.title}&type=Album`} className="select-none text-white font-bold">{album.title}</Link>
+                    <Link to={`/album/?name=${album.title}&type=Album`} href={`/album/?name=${album.title}`} className="select-none text-white font-bold">{album.title}</Link>
                     <div />
-                    <Link to={`/album/?name=${album.title}&type=Album`} href={`/album/?name=${album.title}&type=Album`} className="select-none text-gray-400 text-sm">{album.year}</Link>
+                    <Link to={`/album/?name=${album.title}&type=album`} href={`/album/?name=${album.title}`} className="select-none text-gray-400 text-sm">{album.year} • {album.tracks} tracks</Link>
                     </div>
                   </Link>
                 ))}
@@ -457,8 +457,7 @@ const Artist = ({setMusicQueue, currentSong}) => {
           <div>
             <h2 className="text-xl font-bold mb-4">Albums</h2>
             <div className=" mx-5 p-0 m-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                {albums.map(album => (
-                  <div  key={album.id} className="p-3 m-0 rounded hover:bg-gray-700 transition-all">
+                {albums.filter(album => album.tracks > 3).map(album => (                  <div  key={album.id} className="p-3 m-0 rounded hover:bg-gray-700 transition-all">
                     {/* Square Album Cover */}
                     <div key={album.id}>
                     <div className="w-full relative aspect-square mb-2 rounded overflow-hidden">
