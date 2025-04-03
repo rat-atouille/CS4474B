@@ -8,8 +8,11 @@ import {Link, useLocation} from "react-router-dom";
 
 export default function Album({setMusicQueue, currentSong}) {
   const location = useLocation();
-  const albumName = new URL(window.location.href).searchParams.get('name');
-  const albumType = new URL(window.location.href).searchParams.get('type');
+  let albumName = new URL(window.location.href).searchParams.get('name');
+  let albumType = new URL(window.location.href).searchParams.get('type');
+  
+  albumName = albumName.charAt(0).toUpperCase() + albumName.slice(1);
+  albumType = albumType.charAt(0).toUpperCase() + albumType.slice(1);
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [playIndex, setPlayIndex] = useState(null);

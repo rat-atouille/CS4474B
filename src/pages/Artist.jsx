@@ -328,9 +328,9 @@ const Artist = ({setMusicQueue, currentSong}) => {
 
                     </div>
                     {/* Album Title, year, # of songs */}
-                    <Link to={`/album/?name=${album.title}&type=album`} href={`/album/?name=${album.title}`} className="select-none text-white font-bold">{album.title}</Link>
+                    <Link to={`/album/?name=${album.title}&type=Album`} href={`/album/?name=${album.title}&type=Album`} className="select-none text-white font-bold">{album.title}</Link>
                     <div />
-                    <Link to={`/album/?name=${album.title}&type=album`} href={`/album/?name=${album.title}`} className="select-none text-gray-400 text-sm">{album.year}</Link>
+                    <Link to={`/album/?name=${album.title}&type=Album`} href={`/album/?name=${album.title}&type=Album`} className="select-none text-gray-400 text-sm">{album.year}</Link>
                     </div>
                   </Link>
                 ))}
