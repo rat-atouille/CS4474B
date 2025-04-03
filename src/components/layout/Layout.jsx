@@ -7,6 +7,7 @@ import {Outlet} from "react-router-dom";
 export default function Layout({musicQueue, setMusicQueue}) {
   const [collapsed, setCollapsed] = useState(false);
   const [showNavBackground, setShowNavBackground] = useState(false);
+  const [currentSongIndex, setCurrentSongIndex] = useState();
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -33,7 +34,7 @@ export default function Layout({musicQueue, setMusicQueue}) {
           collapsed ? "w-16" : "w-64"
         }`}
       >
-        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} setMusicQueue={setMusicQueue}/>
+        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} setMusicQueue={setMusicQueue} currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex}/>
       </div>
 
       {/* Main Content Wrapper (Takes Full Width) */}
@@ -48,7 +49,7 @@ export default function Layout({musicQueue, setMusicQueue}) {
       </div>
 
       {/* Music Player at Bottom */}
-      <MusicPlayer musicQueue={musicQueue}/>
+      <MusicPlayer musicQueue={musicQueue} currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex}/>
     </div>
   );
 }
