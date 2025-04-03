@@ -4,10 +4,9 @@ import Navbar from "./Navbar.jsx";
 import MusicPlayer from "./MusicPlayer.jsx";
 import {Outlet} from "react-router-dom";
 
-export default function Layout({musicQueue, setMusicQueue}) {
+export default function Layout({musicQueue, setMusicQueue, currentSongIndex, setCurrentSongIndex}) {
   const [collapsed, setCollapsed] = useState(false);
   const [showNavBackground, setShowNavBackground] = useState(false);
-  const [currentSongIndex, setCurrentSongIndex] = useState();
 
   const handleScroll = () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;

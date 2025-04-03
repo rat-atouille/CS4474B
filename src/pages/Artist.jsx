@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { IoPlay, IoPause, IoHeart, IoHeartOutline, IoChevronDown, IoChevronUpOutline } from "react-icons/io5";
+import { IoPlay, IoHeart, IoHeartOutline} from "react-icons/io5";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { BsSoundwave } from "react-icons/bs";
 import { FaMinus, FaShuffle } from "react-icons/fa6";
@@ -9,12 +9,11 @@ import { FaPlus } from "react-icons/fa";
 // Import the data from the specified path
 import data from "../assets/data/data.json";
 import getStructuredData from "../getStructuredData.js";
-import { useNavigate } from 'react-router';
 import {Link} from "react-router-dom";
 
 // navigate(`/artist/?name=${item.artistName}`);
 
-const Artist = ({setMusicQueue}) => {
+const Artist = ({setMusicQueue, currentSong}) => {
   const [activeTab, setActiveTab] = useState('Home');
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [playIndex, setPlayIndex] = useState(null);
@@ -150,11 +149,11 @@ const Artist = ({setMusicQueue}) => {
             <div>
               <div className="flex p-0 mb-4 mt-2 justify-between flex-col">
                 <div
-                  onClick={() => setExpanded(expanded.includes('recent') ? expanded.filter(e => e !== 'recent') : [...expanded, 'recent'])} 
+                  onClick={() => setExpanded(expanded.includes('recent') ? expanded.filter(e => e !== 'recent') : [...expanded, 'recent'])}
                   className='hover:text-green-500 transition-all'>
                   <h2 className="select-none text-xl font-bold flex">Recently Played
                   <button className="ml-1 flex items-center justify-center p-2">
-                      {expanded.includes('recent') ? <FaMinus size={10} />  : <FaPlus size={10} />} 
+                      {expanded.includes('recent') ? <FaMinus size={10} />  : <FaPlus size={10} />}
                     </button>
                 </h2>
 
@@ -180,7 +179,7 @@ const Artist = ({setMusicQueue}) => {
                           handlePlay(song.albumName, index);
                         }}
                         >
-                          {playIndex === `recent-${index}` ?
+                          {(currentSong.index === index && currentSong.albumName === song.albumName) ?
                             <BsSoundwave className="text-green-500" /> :
                             (hoveredIndex === `recent-${index}` ? <IoPlay className="text-lg" /> : index + 1)
                           }
@@ -190,10 +189,10 @@ const Artist = ({setMusicQueue}) => {
                         <div className="w-12 h-12 mr-3 overflow-hidden rounded">
                           <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
                         </div>
-  
+
                         {/* Song details */}
                         <div className="flex-1">
-                          <p className={`${playIndex === `recent-${index}` ? 'text-green-500' : 'text-white'}`}>
+                          <p className={(currentSong.index === index && currentSong.albumName === song.albumName) ? 'text-green-500' : 'text-white'}>
                             {song.title}
                           </p>
                           <p className="text-gray-400 text-sm">{song.plays} plays</p>
@@ -222,7 +221,7 @@ const Artist = ({setMusicQueue}) => {
                         )}
                       </div>
                     ))}
-                  </div>                
+                  </div>
                 )}
 
               </div>
@@ -230,19 +229,19 @@ const Artist = ({setMusicQueue}) => {
               {/* popular songs */}
               <div className="flex p-0 mb-4 mt-2 justify-between">
                 <div
-                    onClick={() => setExpanded(expanded.includes('popular') ? expanded.filter(e => e !== 'popular') : [...expanded, 'popular'])} 
+                    onClick={() => setExpanded(expanded.includes('popular') ? expanded.filter(e => e !== 'popular') : [...expanded, 'popular'])}
                     className='hover:text-green-500 transition-all'
                   >
                     <h2 className="select-none text-xl font-bold flex">Popular
                     <button className="ml-1 flex items-center justify-center rounded-full p-2">
-                        {expanded.includes('popular') ? <FaMinus size={10} />  : <FaPlus size={10} />} 
+                        {expanded.includes('popular') ? <FaMinus size={10} />  : <FaPlus size={10} />}
                       </button>
                     </h2>
                   </div>
                 <button className="
                   cursor-pointer text-[#b3b3b3]
                   hover:scale-105 transition-transform duration-150 hover:border-white hover:text-white
-                  pl-2 pr-2 pt-1 pb-1 text-sm font-md border-[#b3b3b3] border border-2 rounded-2xl mr-5"
+                  pl-2 pr-2 pt-1 pb-1 text-sm font-md border-[#b3b3b3] border rounded-2xl mr-5"
                   onClick={()=>setPlayIndex(0)}
                 >
                   Play All
@@ -269,25 +268,25 @@ const Artist = ({setMusicQueue}) => {
                         handlePlay(song.albumName, index)
                       }}
                       >
-                        {playIndex === index ?
+                        {(currentSong.index === index && currentSong.albumName === song.albumName) ?
                           <BsSoundwave className="text-green-500" /> :
                           (hoveredIndex === index ? <IoPlay className="text-lg" /> : index + 1)
                         }
                       </div>
-  
+
                       {/* Song image */}
                       <div className="w-12 h-12 mr-3 overflow-hidden rounded">
                         <img src={song.image} alt={song.title} className="w-full h-full object-cover" />
                       </div>
-  
+
                       {/* Song details */}
                       <div className="flex-1">
-                        <p className={`${playIndex === index ? 'text-green-500' : 'text-white'}`}>
+                        <p className={(currentSong.index === index && currentSong.albumName === song.albumName) ? 'text-green-500' : 'text-white'}>
                           {song.title}
                         </p>
                         <p className="text-gray-400 text-sm">{song.plays} plays</p>
                       </div>
-  
+
                       {/* Liked song */}
                       <div
                         className="text-gray-400 mr-8 cursor-pointer"
@@ -298,7 +297,7 @@ const Artist = ({setMusicQueue}) => {
                           (hoveredIndex === index ? <IoHeartOutline /> : null)
                         }
                       </div>
-  
+
                       {/* Duration and more options */}
                       <div className="text-gray-400 mr-17">{song.duration}</div>
                       {hoveredIndex === index && (
@@ -321,7 +320,7 @@ const Artist = ({setMusicQueue}) => {
                 <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
                 <div className="mx-5  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                   {albums.slice(0, 5).map(album => (
-                    <Link to={`/album/?name=${album.title}`} href={`/album/?name=${album.title}`} key={album.id} className="p-3 rounded hover:bg-gray-700 transition-all hover:bg-neutral-600">
+                    <Link to={`/album/?name=${album.title}&type=album`} href={`/album/?name=${album.title}`} key={album.id} className="p-3 rounded hover:bg-gray-700 transition-all">
                       {/* Square Album Cover */}
                       <div
                        className="w-full aspect-square mb-2 rounded overflow-hidden">
@@ -359,19 +358,19 @@ const Artist = ({setMusicQueue}) => {
             <div>
               <div className='flex p-0 justify-between'>
               <div
-                  onClick={() => setExpanded(expanded.includes('all') ? expanded.filter(e => e !== 'all') : [...expanded, 'all'])} 
+                  onClick={() => setExpanded(expanded.includes('all') ? expanded.filter(e => e !== 'all') : [...expanded, 'all'])}
                   className='hover:text-green-500 transition-all'
                 >
                   <h2 className="select-none text-xl font-bold flex">All Songs
                   <button className="ml-1 flex items-center justify-center rounded-full p-2">
-                      {expanded.includes('all') ? <FaMinus size={10} />  : <FaPlus size={10} />} 
+                      {expanded.includes('all') ? <FaMinus size={10} />  : <FaPlus size={10} />}
                     </button>
                   </h2>
               </div>
                 <button className="
                     cursor-pointer text-[#b3b3b3]
                     hover:scale-105 transition-transform duration-150 hover:border-white hover:text-white
-                    pl-3 pr-3 pt-1 pb-1 mr-5 text-sm font-md border-[#b3b3b3] border border-2 rounded-2xl"
+                    pl-3 pr-3 pt-1 pb-1 mr-5 text-sm font-md border-[#b3b3b3] border rounded-2xl"
                     onClick={()=>setPlayIndex(0)}
                   >
                     Play All
@@ -400,7 +399,7 @@ const Artist = ({setMusicQueue}) => {
                       handlePlay(song.albumName, index);
                     }}
                   >
-                    {playIndex === index ?
+                    {(currentSong.index === index && currentSong.albumName === song.albumName) ?
                       <BsSoundwave className="text-green-500" /> :
                       (hoveredIndex === index ? <IoPlay className="text-lg" /> : index + 1)
                     }
@@ -413,7 +412,7 @@ const Artist = ({setMusicQueue}) => {
 
                   {/* Song details */}
                   <div className="flex-1">
-                    <p className={`${playIndex === index ? 'text-green-500' : 'text-white'}`}>
+                    <p className={(currentSong.index === index && currentSong.albumName === song.albumName) ? 'text-green-500' : 'text-white'}>
                       {song.title}
                     </p>
                     <p className="text-gray-400 text-sm">{song.plays} plays</p>
@@ -471,9 +470,9 @@ const Artist = ({setMusicQueue}) => {
                     </button>
                     </div>
                     {/* Album Title, year, # of songs */}
-                    <Link to={`/album/?name=${album.title}`} href={`/album/?name=${album.title}`} className="select-none text-white font-bold">{album.title}</Link>
+                    <Link to={`/album/?name=${album.title}&type=album`} href={`/album/?name=${album.title}`} className="select-none text-white font-bold">{album.title}</Link>
                     <div />
-                    <Link to={`/album/?name=${album.title}`} href={`/album/?name=${album.title}`} className="select-none text-gray-400 text-sm">{album.year} • {album.tracks} tracks</Link>
+                    <Link to={`/album/?name=${album.title}&type=album`} href={`/album/?name=${album.title}`} className="select-none text-gray-400 text-sm">{album.year} • {album.tracks} tracks</Link>
                     </div>
                   </div>
                 ))}
@@ -579,7 +578,7 @@ const Artist = ({setMusicQueue}) => {
           </button>
 
           {/* Play button */}
-          <button 
+          <button
             onClick={() => handlePlay(albums[0].title, 0)}
             className="hover:scale-110 transition-transform duration-150 
             bg-green-500 flex justify-center items-center

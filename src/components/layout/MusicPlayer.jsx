@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import isPodcast from '../../isPodcast.js';
 import {Link} from "react-router-dom";
 
 export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSongIndex }) {
@@ -9,7 +8,7 @@ export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSo
   const [isRepeating, setIsRepeating] = useState(false);
 
   // Get current song from musicQueue (use album tracks for non-podcast items)
-  let currentSong = musicQueue?.structuredData[0]?.tracks[currentSongIndex];
+  let currentSong = musicQueue?.structuredData[0]?.tracks[currentSongIndex.index];
 
   // Convert trackDuration (e.g., "2:06") to total seconds
   const convertDurationToSeconds = (duration) => {
@@ -19,7 +18,7 @@ export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSo
 
   // When a new musicQueue is set (i.e. a new song is clicked), reset tracker and auto-play
   useEffect(() => {
-    setCurrentSongIndex(musicQueue?.index || 0);
+    setCurrentSongIndex({index: musicQueue?.index || 0, albumName: musicQueue?.structuredData[0].tracks[0].name});
     console.log(musicQueue)
     setRangeValue(0);
     setIsPlaying(true);
@@ -46,13 +45,15 @@ export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSo
   const albumLength = musicQueue?.structuredData[0]?.tracks.length;
 
   const handleNext = () => {
-    setCurrentSongIndex(prevIndex => (prevIndex + 1) % albumLength);
+    const index = (currentSongIndex.index + 1) % albumLength;
+    setCurrentSongIndex({index, albumName: musicQueue?.structuredData[0]?.tracks[0].name});
     setRangeValue(0);
     setIsPlaying(true);
   };
 
   const handlePrev = () => {
-    setCurrentSongIndex(prevIndex => (prevIndex - 1 + albumLength) % albumLength);
+    const index = (currentSongIndex.index + - 1 + albumLength) % albumLength;
+    setCurrentSongIndex({index, albumName: musicQueue?.structuredData[0]?.tracks[0].name});
     setRangeValue(0);
     setIsPlaying(true);
   };

@@ -22,26 +22,15 @@ import getStructuredData from "../../getStructuredData.js";
 //   img: string
 // }
 
-function PodcastPage({setMusicQueue, musicQueue}) {
+function PodcastPage({setMusicQueue, currentSong}) {
   const podcastName = new URL(window.location.href).searchParams.get("name");
   const podcast = podcastData[podcastName];
-
-  const [playIndex, setPlayIndex] = useState(null);
 
   const handlePlay = (index) => {
     if (typeof setMusicQueue === 'function') {
       setMusicQueue(getStructuredData("podcast", podcastName, index));
     } else {
       console.error('setMusicQueue is not a function');
-    }
-  };
-
-  const togglePlay = (e, index) => {
-    e.stopPropagation();
-    if (playIndex === index) {
-      setPlayIndex(null);
-    } else {
-      setPlayIndex(index);
     }
   };
 
@@ -201,8 +190,11 @@ function PodcastPage({setMusicQueue, musicQueue}) {
           </div>
 
           {/*Episodes grid*/}
-          {view === "Grid" ? <EpisodeGrid togglePlay={togglePlay} playIndex={playIndex} handlePlay={handlePlay} episodes={episodesState}/> :
-            <EpisodeList togglePlay={togglePlay} playIndex={playIndex} handlePlay={handlePlay} episodes={episodesState}/>}
+          {view === "Grid" ?
+            <EpisodeGrid handlePlay={handlePlay} episodes={episodesState}
+                         currentSong={currentSong} podcastName={podcastName}/> :
+            <EpisodeList handlePlay={handlePlay} episodes={episodesState}
+                         currentSong={currentSong} podcastName={podcastName}/>}
         </div>
       </div>
     </div>

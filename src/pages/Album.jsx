@@ -6,7 +6,7 @@ import getStructuredData from '../getStructuredData.js';
 import {Link, useLocation} from "react-router-dom";
 
 
-export default function Album({setMusicQueue}) {
+export default function Album({setMusicQueue, currentSong}) {
   const location = useLocation();
   const albumName = new URL(window.location.href).searchParams.get('name');
   const albumType = new URL(window.location.href).searchParams.get('type');
@@ -128,7 +128,7 @@ export default function Album({setMusicQueue}) {
             >
               {/* Index / Play Icon / Soundwave */}
               <td className="w-8 text-center text-xs text-gray-400">
-                {playIndex === index ? (
+                {(currentSong.index === index && currentSong.albumName === currentAlbum.structuredData[0].tracks[0].name) ? (
                   <BsSoundwave className="text-green-500 text-lg ml-2"/>
                 ) : hoveredIndex === index ? (
                   <IoPlay className="text-lg ml-2"/>
@@ -140,7 +140,8 @@ export default function Album({setMusicQueue}) {
               {/* Title and Artist */}
               <td className="text-white py-3 pr-3">
                 <div>
-                  <p className={`text-sm w-3/5 md:w-xs ${index === playIndex && 'text-green-500'}`}>
+                  <p
+                    className={`text-sm w-3/5 md:w-xs ${(currentSong.index === index && currentSong.albumName === currentAlbum.structuredData[0].tracks[0].name) && 'text-green-500'}`}>
                     {song.trackTitle}
                   </p>
                   <Link to={`/artist/?name=${currentAlbum.artist}`}
