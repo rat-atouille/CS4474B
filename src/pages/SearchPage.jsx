@@ -32,8 +32,7 @@ export default function SearchPage({ setMusicQueue }) {
     const playlists = getSearchData("playlists");
     const albums = getSearchData("albums");
     const podcasts = getSearchData("podcasts");
-    const artists = [{ name: "Rocky the cat", image: rockImage }, ...getSearchData("artists")];
-    const baseTopResult = { name: "Meow-meow", type: "Playlist • Spotify", image: rockImage };
+    const artists = getSearchData("artists");
 
     // ---------- Category Tabs ----------
     const handleTagClick = (category) => setActiveCategory(category);
@@ -122,18 +121,6 @@ export default function SearchPage({ setMusicQueue }) {
             {/* =================================== ALL PAGE =================================== */}
             {activeCategory === "All" && (
                 <>
-                    {/* Top Result */}
-                    <div className="mt-6">
-                        <h2 className="font-semibold text-xl mb-2">Top Result</h2>
-                        <div className="flex items-center space-x-4">
-                            <img src={baseTopResult.image} alt="Top Result" className="w-32 h-32 object-cover rounded" />
-                            <div>
-                                <h3 className="text-lg font-bold">{baseTopResult.name}</h3>
-                                <p className="text-gray-300 text-sm">{baseTopResult.type}</p>
-                            </div>
-                        </div>
-                    </div>
-
                     {filteredArtists.length > 0 && (
                         <div>
                        <h2 className="font-semibold text-xl mb-2 mt-6">Artists</h2>
