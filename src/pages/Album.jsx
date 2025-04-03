@@ -15,7 +15,8 @@ export default function Album({setMusicQueue, currentSong}) {
   const [playIndex, setPlayIndex] = useState(null);
   const [likedSongs, setLikedSongs] = useState([]);
   const [currentAlbum, setCurrentAlbum] = useState(null);
-
+  const [liked, setLiked] = useState(false);  // for liking the album
+  const [shuffle, setShuffle] = useState(false); // for shuffling the album
   useEffect(() => {
     if (albumName && albumType) {
       if (albumType === 'Playlist') {
@@ -99,14 +100,20 @@ export default function Album({setMusicQueue, currentSong}) {
             handlePlay(currentAlbum.structuredData[0].tracks[0].name, 0);
           }}
         ></i>
-        <i className="fa-solid fa-shuffle hover:text-white transition-all duration-300 ease-in-out"></i>
         <i
-          className="fa-solid fa-plus text-sm border-3 p-1 rounded-full hover:text-white transition-all duration-300 ease-in-out"
-        ></i>
+          onClick={() => setShuffle(!shuffle)} 
+          className={`fa-solid fa-shuffle hover:text-white transition-all duration-300 ease-in-out ${shuffle ? "text-green-500"  : "" }`}></i>
+        <button 
+          onClick={()=> setLiked(!liked)}
+          className={`hover:text-white transition-all duration-300 ease-in-out ${liked ? "text-red-500" : ""}`}
+          >
+          { liked ? <IoHeart /> : <IoHeartOutline />}
+        </button>
+
         <i
           className="fa-solid fa-arrow-down text-sm border-3 py-1 px-1.5 rounded-full hover:text-white transition-all duration-300 ease-in-out"
         ></i>
-        <i className="text-sm hover:text-white transition-all duration-300 ease-in-out">•••</i>
+        <i className="select-none text-sm hover:text-white transition-all duration-300 ease-in-out">•••</i>
       </div>
       <div className="rounded">
         <table className="w-full text-sm text-left text-gray-400">
@@ -181,7 +188,16 @@ export default function Album({setMusicQueue, currentSong}) {
       </div>
 
       <div className="ml-3 mr-3">
-        <h2 className="text-xl font-bold mb-4 mt-10">More by {currentAlbum.artist}</h2>
+        <h2 className="text-xl font-bold mb-4 mt-10">
+        More by
+        <Link
+            to={`/artist/?name=${currentAlbum.structuredData[0].tracks[0].author}`}
+            href={`/artist/?name=${currentAlbum.structuredData[0].tracks[0].author}`}
+            className="ml-2 select-none hover:underline"
+          >
+          {currentAlbum.structuredData[0].tracks[0].author}        
+          </Link>
+          </h2>
         <div className="grid grid-cols-3 lg:grid-cols-5 gap-8">
           {/* Display more albums */}
           {currentAlbum.structuredData[0].tracks.map((song, index) => (
@@ -200,9 +216,6 @@ export default function Album({setMusicQueue, currentSong}) {
                 </button>
               </div>
               <p className="text-white mt-2 truncate font-semibold text-sm">{song.trackTitle}</p>
-              <p className="text-gray-400 text-sm">
-                {currentAlbum.releaseDate} • {currentAlbum.name}
-              </p>
             </div>
           ))}
         </div>
@@ -227,13 +240,13 @@ export default function Album({setMusicQueue, currentSong}) {
           />
         )}
         <div className="relative z-10">
-          <span className="text-xs px-2 py-1 rounded-sm mb-1 inline-block select-none">{albumType}</span>
-          <h1 className="text-xl sm:text-sm md:text-3xl lg:text-4xl xl:text-5xl w-full font-bold">{albumName}</h1>
+          <span className="text-xs py-1 rounded-sm mb-1 inline-block select-none">{albumType}</span>
+          <h1 className="text-xl sm:text-md md:text-3xl lg:text-4xl xl:text-5xl w-full font-bold">{albumName}</h1>
           <div className="text-xs mt-2 text-[#b3b3b3]">
             {albumType === "Playlist" ? (
               <>
                 <span>You</span>
-                &nbsp;• 2024 • {totalDuration(currentAlbum.structuredData[0].tracks)}
+                &nbsp;• 2025 • {totalDuration(currentAlbum.structuredData[0].tracks)}
               </>
             ) : (
               <>

@@ -87,7 +87,7 @@ export default function SearchPage({ setMusicQueue }) {
                                     className="flex flex-col items-center px-2 py-8 cursor-pointer group hover:bg-gray-800 transition-colors"
                                     onClick={() => handleAlbumClick(artist.name, "Artist")}
                                 >
-                                    <div className="relative w-24 h-24">
+                                    <div className="relative w-36 h-36">
                                     <img
                                         src={artist.image}
                                         alt={artist.name}
@@ -332,7 +332,7 @@ export default function SearchPage({ setMusicQueue }) {
                                     className="flex flex-col items-center px-2 py-8 cursor-pointer group hover:bg-gray-800 transition-colors"
                                     onClick={() => handleAlbumClick(artist.name, "Artist")}
                                 >
-                                    <div className="relative w-24 h-24">
+                                    <div className="relative w-36 h-36">
                                     <img
                                         src={artist.image}
                                         alt={artist.name}
