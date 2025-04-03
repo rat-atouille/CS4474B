@@ -14,6 +14,7 @@ const getSearchData = (category) => {
                             name: song.name,
                             image: song.image,
                             durationMs: song.durationMs,
+                            albumName: album.name
                         }))
                     );
                 }
@@ -59,8 +60,6 @@ const getSearchData = (category) => {
         default:
             break;
     }
-
-    console.log(results)
 
     return results;
 };

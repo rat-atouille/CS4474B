@@ -27,21 +27,31 @@ export default function SearchPage({ setMusicQueue }) {
     const handleTagClick = (category) => setActiveCategory(category);
 
     // ---------- Navigation Handlers ----------
-    const handleArtistClick = (artist) => {
-        navigate(`/artist/?name=${encodeURIComponent(artist.name)}`);
-    };
-
-    const handleSongClick = (song) => {
-        setMusicQueue({ album: { songs: [song] } });
-    };
-
-    const handlePlaylistClick = (pl) => {
-        navigate(`/playlist?name=${encodeURIComponent(pl.name)}`);
-    };
-
-    const handleAlbumClick = (album) => {
-        navigate("/album");
-    };
+    const handlePlay = (type, name) => {
+        if (typeof setMusicQueue === 'function') {
+          if (type === "Album") {
+            setMusicQueue(getStructuredData("album", name, 0));
+          } else if (type === "Artist") {
+            setMusicQueue(getStructuredData("playlist-artist", name, 0));
+          } else if (type === "Playlist") {
+            setMusicQueue(getStructuredData("playlist", name, 0));
+          } else {
+            setMusicQueue(getStructuredData("podcast", name, 0));
+          }
+        } else {
+          console.error('setMusicQueue is not a function');
+        }
+      };
+    
+      const handleAlbumClick = (name, type) => {
+        if (type === "Artist") {
+          navigate(`/artist/?name=${name}&type=${type}`);
+        } else if (type === "Podcast") {
+          navigate(`/podcast/?name=${name}`);
+        } else {
+          navigate(`/album/?name=${name}&type=${type}`);
+        }
+      }
 
     return (
         <div className="bg-[#212121] p-6 space-y-6 text-white min-h-screen">
@@ -74,7 +84,7 @@ export default function SearchPage({ setMusicQueue }) {
                             <div
                                 key={index}
                                 className="flex flex-col items-center cursor-pointer"
-                                onClick={() => handleArtistClick(artist)}
+                                onClick={() => handleAlbumClick(artist.name, "Artist")}
                             >
                                 <img
                                     src={artist.image}
@@ -93,7 +103,7 @@ export default function SearchPage({ setMusicQueue }) {
                             <div
                                 key={index}
                                 className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                onClick={() => handleSongClick(song)}
+                                onClick={() => handleAlbumClick(song.albumName, "Album")}
                             >
                                 <img
                                     src={song.image}
@@ -112,7 +122,7 @@ export default function SearchPage({ setMusicQueue }) {
                             <div
                                 key={index}
                                 className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                onClick={() => handlePlaylistClick(pl)}
+                                onClick={() => handleAlbumClick(pl.name, "Playlist")}
                             >
                                 <img
                                     src={pl.image}
@@ -131,7 +141,7 @@ export default function SearchPage({ setMusicQueue }) {
                             <div
                                 key={index}
                                 className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                onClick={() => handleAlbumClick(album)}
+                                onClick={() => handleAlbumClick(album.name, "Album")}
                             >
                                 <img
                                     src={album.image}
@@ -154,7 +164,7 @@ export default function SearchPage({ setMusicQueue }) {
                             <div
                                 key={index}
                                 className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                onClick={() => handleSongClick(song)}
+                                onClick={() => handleAlbumClick(song.albumName, "Album")}
                             >
                                 <img
                                     src={song.image}
@@ -176,7 +186,7 @@ export default function SearchPage({ setMusicQueue }) {
                             <div
                                 key={index}
                                 className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                onClick={() => handlePlaylistClick(pl)}
+                                onClick={() => handleAlbumClick(pl.name, "Playlist")}
                             >
                                 <img
                                     src={pl.image}
@@ -191,25 +201,25 @@ export default function SearchPage({ setMusicQueue }) {
             )}
 
             {activeCategory === "Artists" && (
-                            <div>
-                                <h2 className="font-semibold text-xl mb-2 mt-6">Artists</h2>
-                                <div className="grid grid-cols-6 gap-4">
-                                    {artists.map((artist, index) => (
-                                        <div
-                                            key={index}
-                                            className="flex flex-col items-center cursor-pointer"
-                                            onClick={() => handleArtistClick(artist)}
-                                        >
-                                            <img
-                                                src={artist.image}
-                                                alt={artist.name}
-                                                className="w-24 h-24 object-cover rounded-full mb-2"
-                                            />
-                                            <p className="text-sm font-medium">{artist.name}</p>
-                                        </div>
-                                    ))}
+                    <div>
+                        <h2 className="font-semibold text-xl mb-2 mt-6">Artists</h2>
+                        <div className="grid grid-cols-6 gap-4">
+                            {artists.map((artist, index) => (
+                                <div
+                                    key={index}
+                                    className="flex flex-col items-center cursor-pointer"
+                                    onClick={() => handleAlbumClick(artist.name, "Artist")}
+                                >
+                                    <img
+                                        src={artist.image}
+                                        alt={artist.name}
+                                        className="w-24 h-24 object-cover rounded-full mb-2"
+                                    />
+                                    <p className="text-sm font-medium">{artist.name}</p>
                                 </div>
-                            </div>
+                            ))}
+                        </div>
+                    </div>
                 )}
 
             {activeCategory === "Albums" && (
@@ -220,7 +230,7 @@ export default function SearchPage({ setMusicQueue }) {
                             <div
                                 key={index}
                                 className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                onClick={() => handleAlbumClick(album)}
+                                onClick={() => handleAlbumClick(album.name, "Album")}
                             >
                                 <img
                                     src={album.image}
@@ -242,7 +252,7 @@ export default function SearchPage({ setMusicQueue }) {
                         <div
                             key={index}
                             className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                            onClick={() => handleAlbumClick(podcast)}
+                            onClick={() => handleAlbumClick(podcast.name, "Podcast")}
                         >
                             <img
                                 src={podcast.image}
