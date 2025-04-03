@@ -287,7 +287,7 @@ export default function HomePage({ setMusicQueue }) {
   };
 
   const handleAlbumClick = (name) => {
-    navigate(`/album/?name=${name}`);
+    navigate(`/album/?name=${name}&type=Album`);
   };
 
   return (
