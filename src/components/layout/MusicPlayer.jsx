@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import isPodcast from '../../isPodcast.js';
 import {Link} from "react-router-dom";
 
-export default function MusicPlayer({ musicQueue }) {
+export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSongIndex }) {
   const [rangeValue, setRangeValue] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isShuffling, setIsShuffling] = useState(false);
   const [isRepeating, setIsRepeating] = useState(false);
-  const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
   // Get current song from musicQueue (use album tracks for non-podcast items)
   let currentSong = musicQueue?.structuredData[0]?.tracks[currentSongIndex];
