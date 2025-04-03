@@ -9,6 +9,7 @@ import { FaPlus } from "react-icons/fa";
 // Import the data from the specified path
 import data from "../assets/data/data.json";
 import getStructuredData from "../getStructuredData.js";
+import { useNavigate } from 'react-router';
 
 // navigate(`/artist/?name=${item.artistName}`);
 
@@ -24,7 +25,6 @@ const Artist = ({setMusicQueue}) => {
   const [songs, setSongs] = useState([]);
   const [albums, setAlbums] = useState([]);
   const [expanded, setExpanded] = useState(['all', 'recent', 'popular']); // State to track expanded sections
-
   useEffect(() => {
     // Load artist data when component mounts
     loadArtistData();
@@ -74,8 +74,7 @@ const Artist = ({setMusicQueue}) => {
               plays: formatNumber(Math.floor(Math.random() * 10000000)), // Random number of plays for demo
               duration: formatDuration(song.durationMs),
               image: song.image || album.image,
-              albumName: album.name,
-              albumIndex: songIndex
+              albumName: album.name
             });
           });
         });
@@ -169,7 +168,7 @@ const Artist = ({setMusicQueue}) => {
                         onMouseLeave={() => setHoveredIndex(null)}
                         onClick={(e) => {
                         togglePlay(e, `recent-${index}`);
-                        handlePlay(song.albumName, song.albumIndex);
+                        handlePlay(song.albumName, index);
                       }}
                         className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                       >
@@ -177,7 +176,7 @@ const Artist = ({setMusicQueue}) => {
                           className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
                           onClick={(e) => {
                           togglePlay(e, `recent-${index}`);
-                          handlePlay(song.albumName, song.albumIndex);
+                          handlePlay(song.albumName, index);
                         }}
                         >
                           {playIndex === `recent-${index}` ?
@@ -258,7 +257,7 @@ const Artist = ({setMusicQueue}) => {
                       onMouseLeave={() => setHoveredIndex(null)}
                       onClick={(e) => {
                       togglePlay(e, index);
-                      handlePlay(song.albumName, song.albumIndex)
+                      handlePlay(song.albumName, index)
                     }}
                       className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                     >
@@ -266,7 +265,7 @@ const Artist = ({setMusicQueue}) => {
                         className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
                         onClick={(e) => {
                         togglePlay(e, index);
-                        handlePlay(song.albumName, song.albumIndex)
+                        handlePlay(song.albumName, index)
                       }}
                       >
                         {playIndex === index ?
@@ -323,7 +322,8 @@ const Artist = ({setMusicQueue}) => {
                   {albums.slice(0, 5).map(album => (
                     <a href={`/album/?name=${album.title}`} key={album.id} className="p-3 rounded hover:bg-gray-700 transition-all hover:bg-neutral-600">
                       {/* Square Album Cover */}
-                      <div className="w-full aspect-square mb-2 rounded overflow-hidden">
+                      <div
+                       className="w-full aspect-square mb-2 rounded overflow-hidden">
                         <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
                       </div>
                       {/* Album Title */}
@@ -388,7 +388,7 @@ const Artist = ({setMusicQueue}) => {
                   onMouseLeave={() => setHoveredIndex(null)}
                   onClick={(e) => {
                     togglePlay(e, index);
-                    handlePlay(song.albumName, song.albumIndex);
+                    handlePlay(song.albumName, index);
                   }}
                   className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
                 >
@@ -396,7 +396,7 @@ const Artist = ({setMusicQueue}) => {
                     className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
                     onClick={(e) => {
                       togglePlay(e, index);
-                      handlePlay(song.albumName, song.albumIndex);
+                      handlePlay(song.albumName, index);
                     }}
                   >
                     {playIndex === index ?
@@ -457,22 +457,23 @@ const Artist = ({setMusicQueue}) => {
                 {albums.map(album => (
                   <div key={album.id} className="p-3 m-0 rounded hover:bg-gray-700 transition-all">
                     {/* Square Album Cover */}
-                    <a href={`/album/?name=${album.title}`} key={album.id} className="">
+                    <div key={album.id}>
                     <div className="w-full relative aspect-square mb-2 rounded overflow-hidden">
                       <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
-                      <button className="absolute right-4 top-3 cursor-pointer"
+                      <button className="absolute right-3 top-3 cursor-pointer"
                       onClick={(e) => toggleLikeAlbum(e, album.id)}
                     >
                       {likedAlbums.includes(album.id) ?
-                        <IoHeart size={25} className="text-white drop-shadow-md" /> :
-                        <IoHeartOutline size={25} className="text-white drop-shadow-mdy" />
+                        <IoHeart size={25} className="z-30 text-white drop-shadow-md" /> :
+                        <IoHeartOutline size={25} className="z-30 text-white drop-shadow-mdy" />
                       }
                     </button>
                     </div>
                     {/* Album Title, year, # of songs */}
-                    <p className="text-white font-bold">{album.title}</p>
-                    <p className="text-gray-400 text-sm">{album.year} • {album.tracks} tracks</p>
-                    </a>
+                    <a href={`/album/?name=${album.title}`}className="select-none text-white font-bold">{album.title}</a>
+                    <div />
+                    <a href={`/album/?name=${album.title}`} className="select-none text-gray-400 text-sm">{album.year} • {album.tracks} tracks</a>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -595,7 +596,7 @@ const Artist = ({setMusicQueue}) => {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`py-4 px-2 relative ${activeTab === tab ? 'text-white' : 'text-gray-400'}`}
+              className={`cursor-pointer py-4 px-2 relative ${activeTab === tab ? 'text-white' : 'text-gray-400'}`}
             >
               {tab}
               {activeTab === tab && (

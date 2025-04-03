@@ -40,11 +40,11 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
   };
 
   return (
-    <div className="relative w-19/20 mx-auto">
+    <div className="relative w-20/20 mx-auto">
       <div className="overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"
-          style={{transform: `translateX(-${(currentIndex * 100) / itemsToShow}%)`}}
+          style={{ transform: `translateX(-${(currentIndex * 100) / itemsToShow}%)` }}
         >
           {items.map((item, index) => (
             <div
@@ -56,26 +56,33 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
                 }
               }}
               key={index}
-              className="p-2 group"
-              style={{flex: `0 0 ${100 / itemsToShow}%`}}
+              className="py-2 group hover:bg-[#535353] rounded transition-all ease-in-out mx-3"
+              style={{ flex: `0 0 ${100 / itemsToShow}%` }}
             >
-              <div className="relative">
-                <img
+              {/* Square Container */}
+              <div className="m-auto relative aspect-square w-[130px] sm:w-[190px] md:w-[200px] rounded overflow-hidden">
+              <img
                   src={item.album?.image ?? item.image}
                   alt="Thumbnail"
-                  className="h-42 w-42 object-fit rounded"
+                  className="w-full h-full object-cover rounded"
                 />
-                <PlayButton 
+                {/* Play Button */}
+                <button
+                  className="absolute bottom-5 right-3  opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
                   onClick={(e) => {
-                    e.stopPropagation();  // Prevents triggering handleAlbumClick
+                    e.stopPropagation();
                     if (isPodcast(item)) {
                       handlePlay("podcast", item.podcastName, 0);
                     } else {
                       handlePlay("album", item.album.name, 0);
                     }
-                  }}/>
+                  }}
+                >
+                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+                </button>
               </div>
-              <h2 className="mt-1 text-xs font-semibold text-gray-200">
+              {/* Album Name */}
+              <h2 className="mt-3 text-center text-sm font-semibold text-gray-200">
                 {item.album?.name ?? item.podcastName}
               </h2>
             </div>
@@ -86,14 +93,14 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
       <button
         onClick={goToPrev}
         className="absolute left-0 top-1/2 transform -translate-x-full -translate-y-1/2
-                   text-3xl text-gray-200 hover:scale-110 transition-transform"
+                  text-3xl text-gray-200 hover:scale-110 transition-transform"
       >
         <i className="fa-solid fa-circle-chevron-left"></i>
       </button>
       <button
         onClick={goToNext}
         className="absolute right-0 top-1/2 transform translate-x-full -translate-y-1/2
-                   text-3xl text-gray-200 hover:scale-110 transition-transform"
+                  text-3xl text-gray-200 hover:scale-110 transition-transform"
       >
         <i className="fa-solid fa-circle-chevron-right"></i>
       </button>
@@ -171,7 +178,7 @@ function MediaSection({title, items, renderCollapsed, renderExpanded}) {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <div className="mt-4">
+    <div className="mt-8">
       <div className="flex items-center justify-between">
         <div
           onClick={() => setExpanded((prev) => !prev)} 

@@ -358,7 +358,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
 
         {/* Category Tabs - Only show when expanded */}
         {!collapsed && (
-          <div className="flex gap-2 mt-4 mb-4 overflow-x-auto scrollbar-none">
+          <div className="grid gap-3 mt-4 mb-4 md:grid-cols-1 lg:grid-cols-2">
             {["Playlists", "Artists", "Albums", "Podcasts"].map((category) => (
               <button
                 onClick={() => handleCategory(category)}

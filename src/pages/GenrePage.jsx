@@ -60,15 +60,7 @@ const GenrePage = () => {
 
   return (
     <div className="genre-page bg-[#212121] min-h-screen">
-      <div className='flex gap-3 items-center p-4'>
-        <button 
-          className='cursor-pointer py-1 px-3 rounded-2xl font-semibold text-md bg-green-500 flex items-center'
-          onClick={()=>navigate('/browse', {replace: true})}
-        >
-          <IoChevronBackOutline className="mr-1" /> Back
-        </button>
-        <h1 className="ml-2 font-bold text-2xl capitalize">{genre}</h1>      
-      </div>
+      <h1 className="mx-6 mt-7 font-bold text-2xl capitalize">{genre}</h1>      
       
       {filteredSongs.length === 0 ? (
         <p className="text-xl p-6">
@@ -88,7 +80,7 @@ const GenrePage = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-wrap px-6 py-2">
+        <div className="flex flex-wrap mx-5 mt-4 px-6 py-2">
           {filteredSongs.map((song, index) => (
             <div 
               className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 relative group" 
