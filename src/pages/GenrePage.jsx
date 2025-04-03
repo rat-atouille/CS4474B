@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import data from '../assets/data/data.json';
 import podcastThumbnail from '../assets/Podcast/sample_thumbnail.png';
 import { IoChevronBackOutline } from "react-icons/io5";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCirclePlay } from '@fortawesome/free-solid-svg-icons';
 
 const GenrePage = () => {
   const { genre } = useParams();
@@ -77,48 +75,49 @@ const GenrePage = () => {
           No content found for this genre.
         </p>
       ) : genre.toLowerCase() === 'sport' ? (
-        <div className="p-4">
+        <div className="p-4 group relative w-fit">
           <div 
             onClick={handlePodcastClick}
-            className="cursor-pointer hover:opacity-80 transition-opacity inline-block"
+            className="cursor-pointer"
           >
             <img 
               src={podcastThumbnail} 
               alt="Podcast thumbnail" 
-              className="w-48 h-48 object-cover rounded-lg shadow-md"
+              className="w-48 h-48 object-cover rounded-lg group-hover:opacity-60 transition-opacity duration-300"
             />
           </div>
+          <button
+            className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 bg-black rounded-full p-2 transition-all duration-300"
+            onClick={(e) => e.stopPropagation()}
+          >
+            src/components/playButton.jsx
+            <i className="fa-solid fa-circle-play text-4xl text-green-500 hover:scale-105 transition-transform duration-150"></i>
+          </button>
         </div>
       ) : (
         <div className="flex flex-wrap mx-5 mt-4 px-6 py-2">
           {filteredSongs.map((song, index) => (
             <div 
-              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 relative group" 
+              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 group" 
               key={index}
             >
-              <div className="rounded-lg overflow-hidden cursor-pointer h-full flex flex-col items-center relative">
-                {/* Image container with play button */}
-                <div className="p-2 relative">
+              <div className="rounded-lg overflow-hidden cursor-pointer h-full flex flex-col items-center relative hover:bg-[#535353] transition-all duration-300">
+                <div className="p-2 relative w-full">
                   <img 
                     src={song.image} 
                     alt={`${song.name} cover`} 
-                    className="w-full aspect-square object-cover rounded-md mx-auto max-w-[120px] group-hover:opacity-70 transition-opacity"
+                    className="w-full aspect-square object-cover rounded-md mx-auto group-hover:opacity-60 transition-opacity duration-300"
                   />
-                  <div 
-                    className="absolute bottom-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-all ease-in-out"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      // Add play functionality here
-                    }}
-                  >
-                    <FontAwesomeIcon 
-                      icon={faCirclePlay} 
-                      className="text-3xl text-green-500 hover:scale-105 transition-transform" 
-                    />
-                  </div>
                 </div>
-                
-                {/* Text info */}
+                <button
+                  className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    // Add play functionality here
+                  }}
+                >
+                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+                </button>
                 <div className="p-2 text-center w-full">
                   <p className="font-medium truncate text-white">{song.name}</p>
                   <p className="text-sm text-gray-400 truncate">{song.artist}</p>
