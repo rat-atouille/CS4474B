@@ -240,13 +240,14 @@ export default function Album({setMusicQueue, currentSong}) {
           />
         )}
         <div className="relative z-10">
-          <span className="text-xs py-1 rounded-sm mb-1 inline-block select-none">{albumType}</span>
+          <span className="text-xs py-1 rounded-sm mb-1 inline-block select-none">{albumType === "Album" ? (currentAlbum.structuredData[0].tracks.length < 4 ? "Single" : albumType) : albumType}
+          </span>
           <h1 className="text-xl sm:text-md md:text-3xl lg:text-4xl xl:text-5xl w-full font-bold">{albumName}</h1>
           <div className="text-xs mt-2 text-[#b3b3b3]">
             {albumType === "Playlist" ? (
               <>
                 <span>You</span>
-                &nbsp;• 2025 • {totalDuration(currentAlbum.structuredData[0].tracks)}
+                &nbsp;• 2024 • {totalDuration(currentAlbum.structuredData[0].tracks)}
               </>
             ) : (
               <>
