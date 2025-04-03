@@ -117,11 +117,7 @@ const GenrePage = () => {
                     <i className="fa-solid fa-circle-play text-4xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
                   </button>
                 </div>
-                <div className="p-2 text-center w-full">
-                  <p className="font-medium truncate text-white">{song.name}</p>
-                  <p className="text-sm text-gray-400 truncate">{song.artist}</p>
-                  <p className="text-xs text-gray-500 truncate mt-1">{song.album}</p>
-                </div>
+              
               </div>
             </div>
           ))}
