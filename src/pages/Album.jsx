@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { IoPlay, IoHeart, IoHeartOutline } from 'react-icons/io5';
-import { FaHeart } from "react-icons/fa";
-import { BsSoundwave } from 'react-icons/bs';
+import React, {useEffect, useState} from 'react';
+import {IoPlay, IoHeart, IoHeartOutline} from 'react-icons/io5';
+import {FaHeart} from "react-icons/fa";
+import {BsSoundwave} from 'react-icons/bs';
 import getStructuredData from '../getStructuredData.js';
+import {Link, useLocation} from "react-router-dom";
 
-export default function Album({ setMusicQueue }) {
+
+export default function Album({setMusicQueue}) {
+  const location = useLocation();
   const albumName = new URL(window.location.href).searchParams.get('name');
   const albumType = new URL(window.location.href).searchParams.get('type');
 
@@ -27,7 +30,7 @@ export default function Album({ setMusicQueue }) {
     }
 
     console.log(currentAlbum);
-  }, []);
+  }, [location]);
 
   if (!currentAlbum) return <div></div>;
 
@@ -35,23 +38,22 @@ export default function Album({ setMusicQueue }) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
-};
+  };
 
   function totalDuration(tracks) {
     let totalSeconds = tracks.reduce((sum, track) => {
-        let [minutes, seconds] = track.trackDuration.split(':').map(Number);
-        return sum + minutes * 60 + seconds;
+      let [minutes, seconds] = track.trackDuration.split(':').map(Number);
+      return sum + minutes * 60 + seconds;
     }, 0);
 
     let hours = Math.floor(totalSeconds / 3600);
     let minutes = Math.floor((totalSeconds % 3600) / 60);
     let seconds = totalSeconds % 60;
 
-    return hours > 0 
-        ? `${hours}:${convertToMMSS(minutes * 60 + seconds)}` 
-        : convertToMMSS(totalSeconds);
+    return hours > 0
+      ? `${hours}:${convertToMMSS(minutes * 60 + seconds)}`
+      : convertToMMSS(totalSeconds);
   }
-
 
 
   const handlePlay = (name, index) => {
@@ -87,7 +89,7 @@ export default function Album({ setMusicQueue }) {
         <i
           className="fa-solid fa-circle-play text-5xl text-green-500 hover:text-green-400 hover:scale-105 transition-all duration-300 ease-in-out"
           onClick={() => {
-            handlePlay(currentAlbum.name, 0);
+            handlePlay(currentAlbum.structuredData[0].tracks[0].name, 0);
           }}
         ></i>
         <i className="fa-solid fa-shuffle hover:text-white transition-all duration-300 ease-in-out"></i>
@@ -102,70 +104,70 @@ export default function Album({ setMusicQueue }) {
       <div className="rounded">
         <table className="w-full text-sm text-left text-gray-400">
           <thead>
-            <tr className="p-3 mb-2 border-b border-gray-700">
-              <th className="p-3 pl-6">#</th>
-              <th className="p-3">Title</th>
-              <th className="hidden md:table-cell p-3">Plays</th>
-              <th className="p-3 text-center">
-                <i className="fa-regular fa-clock"></i>
-              </th>
-              <th className="p-3 text-center"></th>
-            </tr>
+          <tr className="p-3 mb-2 border-b border-gray-700">
+            <th className="p-3 pl-6">#</th>
+            <th className="p-3">Title</th>
+            <th className="hidden md:table-cell p-3">Plays</th>
+            <th className="p-3 text-center">
+              <i className="fa-regular fa-clock"></i>
+            </th>
+            <th className="p-3 text-center"></th>
+          </tr>
           </thead>
           <tbody>
-            {currentAlbum.structuredData[0].tracks.map((song, index) => (
-              <tr
-                key={index}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                onClick={(e) => {
-                  handlePlay(currentAlbum.name, index);
-                  togglePlay(e, index);
-                }}
-                className="hover:bg-[#535353] hover:cursor-pointer border-b border-gray-700"
-              >
-                {/* Index / Play Icon / Soundwave */}
-                <td className="w-8 text-center text-xs text-gray-400">
-                  {playIndex === index ? (
-                    <BsSoundwave className="text-green-500 text-lg ml-2" />
-                  ) : hoveredIndex === index ? (
-                    <IoPlay className="text-lg ml-2" />
-                  ) : (
-                    index + 1
-                  )}
-                </td>
+          {currentAlbum.structuredData[0].tracks.map((song, index) => (
+            <tr
+              key={index}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              onClick={(e) => {
+                handlePlay(currentAlbum.structuredData[0].tracks[0].name, index);
+                togglePlay(e, index);
+              }}
+              className="hover:bg-[#535353] hover:cursor-pointer border-b border-gray-700"
+            >
+              {/* Index / Play Icon / Soundwave */}
+              <td className="w-8 text-center text-xs text-gray-400">
+                {playIndex === index ? (
+                  <BsSoundwave className="text-green-500 text-lg ml-2"/>
+                ) : hoveredIndex === index ? (
+                  <IoPlay className="text-lg ml-2"/>
+                ) : (
+                  index + 1
+                )}
+              </td>
 
-                {/* Title and Artist */}
-                <td className="text-white py-3 pr-3">
-                  <div>
-                    <p className={`text-sm w-3/5 md:w-xs ${index === playIndex && 'text-green-500'}`}>
-                      {song.trackTitle}
-                    </p>
-                    <a
-                      href={`/artist/?name=${currentAlbum.artist}`}
-                      className="text-gray-400 text-sm hover:underline transition-all duration-300 ease-in-out"
-                    >
-                      {currentAlbum.artist}
-                    </a>
-                  </div>
-                </td>
+              {/* Title and Artist */}
+              <td className="text-white py-3 pr-3">
+                <div>
+                  <p className={`text-sm w-3/5 md:w-xs ${index === playIndex && 'text-green-500'}`}>
+                    {song.trackTitle}
+                  </p>
+                  <Link to={`/artist/?name=${currentAlbum.artist}`}
+                        href={`/artist/?name=${currentAlbum.artist}`}
+                        className="text-gray-400 text-sm hover:underline transition-all duration-300 ease-in-out"
+                  >
+                    {currentAlbum.artist}
+                  </Link>
+                </div>
+              </td>
 
-                {/* Plays */}
-                <td className="hidden md:table-cell text-sm">1,000,000</td>
+              {/* Plays */}
+              <td className="hidden md:table-cell text-sm">1,000,000</td>
 
-                {/* Duration */}
-                <td className="text-gray-400 text-sm text-center">{song.trackDuration}</td>
+              {/* Duration */}
+              <td className="text-gray-400 text-sm text-center">{song.trackDuration}</td>
 
-                {/* Like Icon */}
-                <td className="text-gray-400 text-center cursor-pointer" onClick={(e) => toggleLike(e, song.trackTitle)}>
-                  {likedSongs.includes(song.trackTitle) ? (
-                    <IoHeart className="text-red-500" />
-                  ) : (
-                    hoveredIndex === `recent-${index}` ? <IoHeartOutline /> : null
-                  )}
-                </td>
-              </tr>
-            ))}
+              {/* Like Icon */}
+              <td className="text-gray-400 text-center cursor-pointer" onClick={(e) => toggleLike(e, song.trackTitle)}>
+                {likedSongs.includes(song.trackTitle) ? (
+                  <IoHeart className="text-red-500"/>
+                ) : (
+                  hoveredIndex === `recent-${index}` ? <IoHeartOutline/> : null
+                )}
+              </td>
+            </tr>
+          ))}
           </tbody>
         </table>
       </div>
@@ -177,15 +179,16 @@ export default function Album({ setMusicQueue }) {
           {currentAlbum.structuredData[0].tracks.map((song, index) => (
             <div key={index} className="p-3 rounded group hover:bg-neutral-600">
               <div className="relative">
-                <img src={song.image} alt="Song Image" className="object-cover rounded" />
+                <img src={song.image} alt="Song Image" className="object-cover rounded"/>
                 <button
                   onClick={(e) => {
                     togglePlay(e, index);
-                    handlePlay(currentAlbum.name, index);
+                    handlePlay(currentAlbum.structuredData[0].tracks[0].name, index);
                   }}
                   className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
                 >
-                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+                  <i
+                    className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
                 </button>
               </div>
               <p className="text-white mt-2 truncate font-semibold text-sm">{song.trackTitle}</p>
@@ -202,19 +205,19 @@ export default function Album({ setMusicQueue }) {
   return (
     <div className="bg-[#212121] text-white w-full">
       <div className="relative h-64 bg-red-900 p-6 flex items-end space-x-4">
-      {albumName === "Liked Songs" ? (
-        <div
-          className={`flex-shrink-0 w-1/3 md:w-1/4 xl:w-1/6 aspect-[1/1] z-10 bg-gradient-to-br from-purple-600 to-blue-400 flex items-center justify-center rounded-sm`}
-        >
-          <FaHeart className="text-white text-6xl" />
-        </div>
-      ) : (
-        <img
-          src={currentAlbum == null ? '/placeHolders/placeHolderIcon.jpeg' : currentAlbum.structuredData[0].tracks[0].image}
-          alt="Album Image"
-          className="object-cover w-1/3 md:w-1/4 xl:w-1/6 aspect-[1/1] rounded z-10"
-        />
-      )}
+        {albumName === "Liked Songs" ? (
+          <div
+            className={`flex-shrink-0 w-1/3 md:w-1/4 xl:w-1/6 aspect-[1/1] z-10 bg-gradient-to-br from-purple-600 to-blue-400 flex items-center justify-center rounded-sm`}
+          >
+            <FaHeart className="text-white text-6xl"/>
+          </div>
+        ) : (
+          <img
+            src={currentAlbum == null ? '/placeHolders/placeHolderIcon.jpeg' : currentAlbum.structuredData[0].tracks[0].image}
+            alt="Album Image"
+            className="object-cover w-1/3 md:w-1/4 xl:w-1/6 aspect-[1/1] rounded z-10"
+          />
+        )}
         <div className="relative z-10">
           <span className="text-xs px-2 py-1 rounded-sm mb-1 inline-block select-none">{albumType}</span>
           <h1 className="text-xl sm:text-sm md:text-3xl lg:text-4xl xl:text-5xl w-full font-bold">{albumName}</h1>
@@ -226,13 +229,15 @@ export default function Album({ setMusicQueue }) {
               </>
             ) : (
               <>
-                <a 
-                  href={`/artist/?name=${currentAlbum.structuredData[0].tracks[0].author}`} 
+                <Link
+                  to={`/artist/?name=${currentAlbum.structuredData[0].tracks[0].author}`}
+                  href={`/artist/?name=${currentAlbum.structuredData[0].tracks[0].author}`}
                   className="select-none hover:underline"
                 >
                   {currentAlbum.structuredData[0].tracks[0].author}
-                </a>
-                &nbsp;• 2024 • {currentAlbum.structuredData[0].tracks.length} songs • {totalDuration(currentAlbum.structuredData[0].tracks)}
+                </Link>
+                &nbsp;• 2024 • {currentAlbum.structuredData[0].tracks.length} songs
+                • {totalDuration(currentAlbum.structuredData[0].tracks)}
               </>
             )}
           </div>

@@ -17,7 +17,7 @@ function App() { // Make sure to accept the prop
     <BrowserRouter>
       <Routes>
         <Route path={"/"} element={<Layout musicQueue={musicQueue} setMusicQueue={setMusicQueue}/>}>
-          <Route path={"/"} element={<HomePage setMusicQueue={setMusicQueue} musicQueue={musicQueue}/>}/>
+          <Route index element={<HomePage setMusicQueue={setMusicQueue} musicQueue={musicQueue}/>}/>
           <Route path={"/search"} element={<SearchPage setMusicQueue={setMusicQueue} musicQueue={musicQueue}/>}/>
           <Route path={"/artist"} element={<Artist setMusicQueue={setMusicQueue} musicQueue={musicQueue}/>}/>
           <Route path={"/podcast"} element={<PodcastPage setMusicQueue={setMusicQueue} musicQueue={musicQueue}/>}/>

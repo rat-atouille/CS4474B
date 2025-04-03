@@ -1,6 +1,7 @@
 import React, {useState, useRef} from "react";
 import {useNavigate} from "react-router-dom";
 import SearchBar from "../SearchBar.jsx";
+import {Link} from "react-router-dom";
 
 function Navbar({showNavBackground}) {
   const [searchText, setSearchText] = useState("");
@@ -26,11 +27,12 @@ function Navbar({showNavBackground}) {
                   ${showNavBackground && "bg-[#1a1a1a]"}`}
     >
       <div className="flex-1 flex justify-center items-center space-x-4">
-        <a
+        <Link
           href="/"
+          to={"/"}
           className="fa-solid fa-house text-lg md:text-xl hover:text-white hover:scale-110
                      transition-all duration-150 ease-in-out"
-        ></a>
+        ></Link>
 
         <div
           className="relative flex items-center rounded-full py-1 text-white bg-stone-800
@@ -47,7 +49,8 @@ function Navbar({showNavBackground}) {
                      className={"select-none w-full text-sm md:text-md pl-3 pr-4 outline-none bg-transparent"}/>
 
           <div className="h-6 w-px bg-gray-400 mx-2 hidden sm:block"></div>
-          <a
+          <Link
+            to={"/browse"}
             href="/browse"
             className="ml-1 mr-1 fa-solid fa-box-archive text-lg md:text-xl hover:text-white hover:scale-110
                        transition-all duration-150 ease-in-out hidden sm:block relative group"
@@ -59,7 +62,7 @@ function Navbar({showNavBackground}) {
             >
               Browse
             </span>
-          </a>
+          </Link>
         </div>
       </div>
 

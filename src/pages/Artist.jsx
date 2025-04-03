@@ -10,6 +10,7 @@ import { FaPlus } from "react-icons/fa";
 import data from "../assets/data/data.json";
 import getStructuredData from "../getStructuredData.js";
 import { useNavigate } from 'react-router';
+import {Link} from "react-router-dom";
 
 // navigate(`/artist/?name=${item.artistName}`);
 
@@ -320,7 +321,7 @@ const Artist = ({setMusicQueue}) => {
                 <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
                 <div className="mx-5  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                   {albums.slice(0, 5).map(album => (
-                    <a href={`/album/?name=${album.title}`} key={album.id} className="p-3 rounded hover:bg-gray-700 transition-all hover:bg-neutral-600">
+                    <Link to={`/album/?name=${album.title}`} href={`/album/?name=${album.title}`} key={album.id} className="p-3 rounded hover:bg-gray-700 transition-all hover:bg-neutral-600">
                       {/* Square Album Cover */}
                       <div
                        className="w-full aspect-square mb-2 rounded overflow-hidden">
@@ -330,7 +331,7 @@ const Artist = ({setMusicQueue}) => {
                       <p className="text-white truncate font-semibold">{album.title}</p>
                       {/* Album Year */}
                       <p className="text-gray-400 text-sm">{album.year}</p>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -470,9 +471,9 @@ const Artist = ({setMusicQueue}) => {
                     </button>
                     </div>
                     {/* Album Title, year, # of songs */}
-                    <a href={`/album/?name=${album.title}`}className="select-none text-white font-bold">{album.title}</a>
+                    <Link to={`/album/?name=${album.title}`} href={`/album/?name=${album.title}`} className="select-none text-white font-bold">{album.title}</Link>
                     <div />
-                    <a href={`/album/?name=${album.title}`} className="select-none text-gray-400 text-sm">{album.year} • {album.tracks} tracks</a>
+                    <Link to={`/album/?name=${album.title}`} href={`/album/?name=${album.title}`} className="select-none text-gray-400 text-sm">{album.year} • {album.tracks} tracks</Link>
                     </div>
                   </div>
                 ))}

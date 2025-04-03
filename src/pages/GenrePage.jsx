@@ -2,7 +2,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import data from '../assets/data/data.json';
 import podcastThumbnail from '../assets/Podcast/sample_thumbnail.png';
-import { IoChevronBackOutline } from "react-icons/io5";
 
 const GenrePage = () => {
   const { genre } = useParams();

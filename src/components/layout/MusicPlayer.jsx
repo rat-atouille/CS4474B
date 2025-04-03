@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import isPodcast from '../../isPodcast.js';
+import {Link} from "react-router-dom";
 
 export default function MusicPlayer({ musicQueue }) {
   const [rangeValue, setRangeValue] = useState(0);
@@ -99,9 +100,9 @@ export default function MusicPlayer({ musicQueue }) {
                     : currentSong?.trackTitle}
                 </span>
 
-                  <a href={`/artist/?name=${currentSong?.author}`} className="block text-gray-400 text-[8px] md:text-[10px] hover:underline">
+                  <Link to={`/artist/?name=${currentSong?.author}`} href={`/artist/?name=${currentSong?.author}`} className="block text-gray-400 text-[8px] md:text-[10px] hover:underline">
                     {currentSong?.author}
-                  </a>
+                  </Link>
                 </div>
                 <i className="fa-solid fa-plus text-[8px] md:text-xs border p-1 rounded-full text-gray-300 hover:text-white transition-all duration-300 ease-in-out"></i>
               </div>
