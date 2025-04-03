@@ -318,21 +318,37 @@ const Artist = ({setMusicQueue, currentSong}) => {
 
             <div className="">
                 <h2 className="text-xl font-bold mb-4 mt-10">Recommended for You</h2>
-                <div className="mx-5  grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                  {albums.slice(0, 5).map(album => (
-                    <Link to={`/album/?name=${album.title}&type=album`} href={`/album/?name=${album.title}`} key={album.id} className="p-3 rounded hover:bg-gray-700 transition-all">
-                      {/* Square Album Cover */}
-                      <div
-                       className="w-full aspect-square mb-2 rounded overflow-hidden">
-                        <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
-                      </div>
-                      {/* Album Title */}
-                      <p className="text-white truncate font-semibold">{album.title}</p>
-                      {/* Album Year */}
-                      <p className="text-gray-400 text-sm">{album.year}</p>
-                    </Link>
-                  ))}
-                </div>
+                <h2 className="font-semibold text-xl mb-2 mt-6">Songs</h2>
+                <div className="mx-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    {songs.map((song, index) => (
+                        <div
+                            key={index}
+                            className="p-3 rounded hover:bg-gray-700 transition-all"
+                            onClick={() => handleAlbumClick(song.albumName, "Album")}
+                        >
+                            {/* Square Song Cover */}
+                            <div className="relative w-full aspect-square mb-2 rounded overflow-hidden">
+                                <img
+                                    src={song.image}
+                                    alt="Song Cover"
+                                    className="w-full h-full object-cover"
+                                />
+                                {/* Play Button */}
+                                <button
+                                    className="absolute bottom-0 right-0 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
+                                    onClick={null}
+                                >
+                                    <i className="fa-solid fa-circle-play text-8xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+                                </button>
+                            </div>
+                            {/* Song Title */}
+                            <p className="text-white truncate font-semibold">{song.name}</p>
+                            {/* Song Album */}
+                            <p className="text-gray-400 text-sm">{song.albumName}</p>
+                        </div>
+                      ))}
+                  </div>
+
               </div>
           </div>
         );

@@ -2,6 +2,17 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import rockImage from "../assets/Rocky the cat.png";
 import jsonData from "../assets/data/data.json";
+import podcastData from "../assets/data/podcastData.json";
+
+// Utility function to shuffle an array
+function shuffleArray(array) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+}
 
 export default function SearchPage({ setMusicQueue }) {
     const location = useLocation();
@@ -9,17 +20,7 @@ export default function SearchPage({ setMusicQueue }) {
     const [searchParam, setSearchParam] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
 
-    // Helper: deduplicate items by name (ignoring case)
-    function deduplicateByName(items) {
-        const seen = new Set();
-        return items.filter((item) => {
-            const key = item.name.trim().toLowerCase();
-            if (seen.has(key)) return false;
-            seen.add(key);
-            return true;
-        });
-    }
-
+    // Update searchParam whenever the URL query changes.
     useEffect(() => {
         const queryString = new URLSearchParams(location.search);
         const query = queryString.get("q") || "";
@@ -27,12 +28,7 @@ export default function SearchPage({ setMusicQueue }) {
     }, [location.search]);
 
     // ---------- Base Data ----------
-    const baseTopResult = {
-        name: "Meow-meow",
-        type: "Playlist • Spotify",
-        image: rockImage,
-    };
-
+    const baseTopResult = { name: "Meow-meow", type: "Playlist • Spotify", image: rockImage };
     const baseArtists = [{ name: "Rocky the cat", image: rockImage }];
     const baseSongs = [{ name: "I'm cat and you?", image: rockImage }];
     const basePlaylists = [{ name: "Meow-meow", image: rockImage }];
@@ -49,20 +45,15 @@ export default function SearchPage({ setMusicQueue }) {
     Object.values(jsonData).forEach((artist) => {
         if (artist.albums) {
             artist.albums.forEach((album) => {
-                extraAlbums.push({
-                    artist: artist.name,
-                    album: album
-                });
-                extraPlaylists.push({
-                    name: album.name,
-                    image: album.image,
-                });
+                extraAlbums.push({ artist: artist.name, album });
+                extraPlaylists.push({ name: album.name, image: album.image });
                 if (album.songs) {
                     album.songs.forEach((song) => {
                         extraSongs.push({
                             name: song.name,
                             image: song.image,
                             durationMs: song.durationMs,
+                            albumName: album.name,
                         });
                     });
                 }
@@ -70,57 +61,79 @@ export default function SearchPage({ setMusicQueue }) {
         }
     });
 
-    const artists = deduplicateByName([...baseArtists, ...extraArtists]);
-    const songs = deduplicateByName([...baseSongs, ...extraSongs]);
-    const playlists = deduplicateByName([...basePlaylists, ...extraPlaylists]);
+    // Extract podcasts data from podcastData JSON.
+    const extraPodcasts = Object.entries(podcastData).map(
+        ([podcastName, details]) => ({
+            name: podcastName,
+            image: details.image,
+            // add other fields as needed
+        })
+    );
+
+    // ---------- Merge Data (no deduplication for simplicity) ----------
+    const artists = [...baseArtists, ...extraArtists];
+    const songs = [...baseSongs, ...extraSongs];
+    const playlists = [...basePlaylists, ...extraPlaylists];
     const albums = extraAlbums;
+    const podcasts = extraPodcasts;
+
+    // ---------- Filtering: Only show items that match the search query ----------
+    const lowerSearch = searchParam.trim().toLowerCase();
+    const filteredArtists = lowerSearch
+        ? artists.filter((item) => item.name.toLowerCase().includes(lowerSearch))
+        : shuffleArray(artists);
+    const filteredSongs = lowerSearch
+        ? songs.filter((item) => item.name.toLowerCase().includes(lowerSearch))
+        : shuffleArray(songs);
+    const filteredPlaylists = lowerSearch
+        ? playlists.filter((item) => item.name.toLowerCase().includes(lowerSearch))
+        : shuffleArray(playlists);
+    const filteredAlbums = lowerSearch
+        ? albums.filter((item) => item.album.name.toLowerCase().includes(lowerSearch))
+        : shuffleArray(albums);
+    const filteredPodcasts = lowerSearch
+        ? podcasts.filter((item) => item.name.toLowerCase().includes(lowerSearch))
+        : shuffleArray(podcasts);
+
+    // ---------- Build available categories based on filtered data ----------
+    const availableCategories = ["All"];
+    if (filteredSongs.length > 0) availableCategories.push("Songs");
+    if (filteredPlaylists.length > 0) availableCategories.push("Playlists");
+    if (filteredArtists.length > 0) availableCategories.push("Artists");
+    if (filteredAlbums.length > 0) availableCategories.push("Albums");
+    if (filteredPodcasts.length > 0) availableCategories.push("Podcasts");
+
+    // If current active category is no longer available, switch to All.
+    useEffect(() => {
+        if (activeCategory !== "All" && !availableCategories.includes(activeCategory)) {
+            setActiveCategory("All");
+        }
+    }, [availableCategories, activeCategory]);
 
     // ---------- Category Tabs ----------
-    const categories = [
-        "All",
-        "Songs",
-        "Playlists",
-        "Artists",
-        "Albums",
-        "Podcasts",
-        "Audiobooks",
-    ];
     const handleTagClick = (category) => setActiveCategory(category);
 
     // ---------- Navigation Handlers ----------
-    const handleArtistClick = (artist) => {
+    const handleArtistClick = (artist) =>
         navigate(`/artist?name=${encodeURIComponent(artist.name)}`);
-    };
-
-    const handleSongClick = (song) => {
+    const handleSongClick = (song) =>
         setMusicQueue({ album: { songs: [song] } });
-    };
-
-    const handlePlaylistClick = (pl) => {
+    const handlePlaylistClick = (pl) =>
         navigate(`/playlist?name=${encodeURIComponent(pl.name)}`);
-    };
-
-
-    // NOT DONE YET
-    const handleAlbumClick = (item) => {
-        navigate("/album");
-    };
+    const handleAlbumClick = (name, type) =>
+        navigate(`/album?name=${encodeURIComponent(name)}&type=${type}`);
 
     return (
         <div className="bg-[#212121] p-6 space-y-6 text-white min-h-screen">
-            <h1 className="text-2xl font-bold">
-                Search results for "{searchParam}"
-            </h1>
+            <h1 className="text-2xl font-bold">Search results for "{searchParam}"</h1>
 
-            {/* Category Buttons */}
+            {/* Render category tabs only for available categories */}
             <div className="flex flex-wrap gap-2">
-                {categories.map((category) => (
+                {availableCategories.map((category) => (
                     <button
                         key={category}
                         className={`px-4 py-1 rounded-full text-sm ${
-                            activeCategory === category
-                                ? "bg-green-500"
-                                : "bg-gray-700 hover:bg-gray-600"
+                            activeCategory === category ? "bg-green-500" : "bg-gray-700 hover:bg-gray-600"
                         }`}
                         onClick={() => handleTagClick(category)}
                     >
@@ -136,11 +149,7 @@ export default function SearchPage({ setMusicQueue }) {
                     <div className="mt-6">
                         <h2 className="font-semibold text-xl mb-2">Top Result</h2>
                         <div className="flex items-center space-x-4">
-                            <img
-                                src={baseTopResult.image}
-                                alt="Top Result"
-                                className="w-32 h-32 object-cover rounded"
-                            />
+                            <img src={baseTopResult.image} alt="Top Result" className="w-32 h-32 object-cover rounded" />
                             <div>
                                 <h3 className="text-lg font-bold">{baseTopResult.name}</h3>
                                 <p className="text-gray-300 text-sm">{baseTopResult.type}</p>
@@ -148,108 +157,106 @@ export default function SearchPage({ setMusicQueue }) {
                         </div>
                     </div>
 
-                    {/* Artists */}
-                    <div>
-                        <h2 className="font-semibold text-xl mb-2 mt-6">Artists</h2>
-                        <div className="grid grid-cols-6 gap-8">
-                            {artists.map((artist, index) => (
-                                <div
-                                    key={index}
-                                    className="flex flex-col items-center cursor-pointer"
-                                    onClick={() => handleArtistClick(artist)}
-                                >
-                                    <img
-                                        src={artist.image}
-                                        alt={artist.name}
-                                        className="w-24 h-24 object-cover rounded-full mb-2"
-                                    />
-                                    <p className="text-sm font-medium">{artist.name}</p>
-                                </div>
-                            ))}
+                    {filteredArtists.length > 0 && (
+                        <div>
+                            <h2 className="font-semibold text-xl mb-2 mt-6">Artists</h2>
+                            <div className="grid grid-cols-6 gap-8">
+                                {filteredArtists.map((artist, index) => (
+                                    <div key={index} className="flex flex-col items-center cursor-pointer" onClick={() => handleArtistClick(artist)}>
+                                        <img src={artist.image} alt={artist.name} className="w-24 h-24 object-cover rounded-full mb-2" />
+                                        <p className="text-sm font-medium">{artist.name}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
 
-                    {/* Songs */}
-                    <div>
-                        <h2 className="font-semibold text-xl mb-2 mt-6">Songs</h2>
-                        <div className="grid grid-cols-6 gap-4">
-                            {songs.map((song, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                    onClick={() => handleSongClick(song)}
-                                >
-                                    <img
-                                        src={song.image}
-                                        alt="Song Cover"
-                                        className="w-24 h-24 object-cover rounded mb-2"
-                                    />
-                                    <p className="text-xs font-semibold">{song.name}</p>
-                                </div>
-                            ))}
+                    {filteredSongs.length > 0 && (
+                        <div>
+                            <h2 className="font-semibold text-xl mb-2 mt-6">Songs</h2>
+                            <div className="grid grid-cols-6 gap-4">
+                                {filteredSongs.map((song, index) => (
+                                    <div
+                                        key={index}
+                                        className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                        onClick={() => handleSongClick(song)}
+                                    >
+                                        <img src={song.image} alt="Song Cover" className="w-24 h-24 object-cover rounded mb-2" />
+                                        <p className="text-xs font-semibold">{song.name}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
 
-                    {/* Playlists */}
-                    <div>
-                        <h2 className="font-semibold text-xl mb-2 mt-6">Playlists</h2>
-                        <div className="grid grid-cols-6 gap-4">
-                            {playlists.map((pl, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                    onClick={() => handlePlaylistClick(pl)}
-                                >
-                                    <img
-                                        src={pl.image}
-                                        alt="Playlist Cover"
-                                        className="w-24 h-24 object-cover rounded mb-2"
-                                    />
-                                    <p className="text-xs font-semibold">{pl.name}</p>
-                                </div>
-                            ))}
+                    {filteredPlaylists.length > 0 && (
+                        <div>
+                            <h2 className="font-semibold text-xl mb-2 mt-6">Playlists</h2>
+                            <div className="grid grid-cols-6 gap-4">
+                                {filteredPlaylists.map((pl, index) => (
+                                    <div
+                                        key={index}
+                                        className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                        onClick={() => handlePlaylistClick(pl)}
+                                    >
+                                        <img src={pl.image} alt="Playlist Cover" className="w-24 h-24 object-cover rounded mb-2" />
+                                        <p className="text-xs font-semibold">{pl.name}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
 
-                    {/* Albums */}
-                    <div>
-                        <h2 className="font-semibold text-xl mb-2 mt-6">Albums</h2>
-                        <div className="grid grid-cols-6 gap-4">
-                            {albums.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                    onClick={() => handleAlbumClick(item)}
-                                >
-                                    <img
-                                        src={item.album.image}
-                                        alt="Album Cover"
-                                        className="w-24 h-24 object-cover rounded mb-2"
-                                    />
-                                    <p className="text-xs font-semibold">{item.album.name}</p>
-                                </div>
-                            ))}
+                    {filteredAlbums.length > 0 && (
+                        <div>
+                            <h2 className="font-semibold text-xl mb-2 mt-6">Albums</h2>
+                            <div className="grid grid-cols-6 gap-4">
+                                {filteredAlbums.map((album, index) => (
+                                    <div
+                                        key={index}
+                                        className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                        onClick={() => handleAlbumClick(album.album.name, "Album")}
+                                    >
+                                        <img src={album.album.image} alt="Album Cover" className="w-24 h-24 object-cover rounded mb-2" />
+                                        <p className="text-xs font-semibold">{album.album.name}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
+
+                    {filteredPodcasts.length > 0 && (
+                        <div>
+                            <h2 className="font-semibold text-xl mb-2 mt-6">Podcasts</h2>
+                            <div className="grid grid-cols-6 gap-4">
+                                {filteredPodcasts.map((podcast, index) => (
+                                    <div
+                                        key={index}
+                                        className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                        onClick={() => handleAlbumClick(podcast.name, "Podcast")}
+                                    >
+                                        <img src={podcast.image} alt="Podcast Cover" className="w-24 h-24 object-cover rounded mb-2" />
+                                        <p className="text-xs font-semibold">{podcast.name}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </>
             )}
 
-            {/* =================================== SONGS PAGE =================================== */}
-            {activeCategory === "Songs" && (
+            {/* =================================== CATEGORY PAGES =================================== */}
+            {activeCategory === "Songs" && filteredSongs.length > 0 && (
                 <div>
-                    <h2 className="font-semibold text-xl mb-2 mt-6">Songs Page</h2>
+                    <h2 className="font-semibold text-xl mb-2 mt-6">Songs</h2>
                     <div className="grid grid-cols-6 gap-4">
-                        {songs.map((song, index) => (
+                        {filteredSongs.map((song, index) => (
                             <div
                                 key={index}
                                 className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
                                 onClick={() => handleSongClick(song)}
                             >
-                                <img
-                                    src={song.image}
-                                    alt="Song Cover"
-                                    className="w-24 h-24 object-cover rounded mb-2"
-                                />
+                                <img src={song.image} alt="Song Cover" className="w-24 h-24 object-cover rounded mb-2" />
                                 <p className="text-xs font-semibold">{song.name}</p>
                             </div>
                         ))}
@@ -257,22 +264,17 @@ export default function SearchPage({ setMusicQueue }) {
                 </div>
             )}
 
-            {/* =================================== PLAYLISTS PAGE =================================== */}
-            {activeCategory === "Playlists" && (
+            {activeCategory === "Playlists" && filteredPlaylists.length > 0 && (
                 <div>
-                    <h2 className="font-semibold text-xl mb-2 mt-6">Playlists Page</h2>
+                    <h2 className="font-semibold text-xl mb-2 mt-6">Playlists</h2>
                     <div className="grid grid-cols-6 gap-4">
-                        {playlists.map((pl, index) => (
+                        {filteredPlaylists.map((pl, index) => (
                             <div
                                 key={index}
                                 className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
                                 onClick={() => handlePlaylistClick(pl)}
                             >
-                                <img
-                                    src={pl.image}
-                                    alt="Playlist Cover"
-                                    className="w-24 h-24 object-cover rounded mb-2"
-                                />
+                                <img src={pl.image} alt="Playlist Cover" className="w-24 h-24 object-cover rounded mb-2" />
                                 <p className="text-xs font-semibold">{pl.name}</p>
                             </div>
                         ))}
@@ -280,22 +282,17 @@ export default function SearchPage({ setMusicQueue }) {
                 </div>
             )}
 
-            {/* =================================== ARTISTS PAGE =================================== */}
-            {activeCategory === "Artists" && (
+            {activeCategory === "Artists" && filteredArtists.length > 0 && (
                 <div>
-                    <h2 className="font-semibold text-xl mb-2 mt-6">Artists Page</h2>
+                    <h2 className="font-semibold text-xl mb-2 mt-6">Artists</h2>
                     <div className="grid grid-cols-6 gap-8">
-                        {artists.map((artist, index) => (
+                        {filteredArtists.map((artist, index) => (
                             <div
                                 key={index}
                                 className="flex flex-col items-center cursor-pointer"
                                 onClick={() => handleArtistClick(artist)}
                             >
-                                <img
-                                    src={artist.image}
-                                    alt="Artist"
-                                    className="w-24 h-24 object-cover rounded-full mb-2"
-                                />
+                                <img src={artist.image} alt={artist.name} className="w-24 h-24 object-cover rounded-full mb-2" />
                                 <p className="text-sm font-medium">{artist.name}</p>
                             </div>
                         ))}
@@ -303,19 +300,39 @@ export default function SearchPage({ setMusicQueue }) {
                 </div>
             )}
 
-            {/* =================================== PODCASTS PAGE =================================== */}
-            {activeCategory === "Podcasts" && (
+            {activeCategory === "Albums" && filteredAlbums.length > 0 && (
                 <div>
-                    <h2 className="font-semibold text-xl mb-2 mt-6">Podcasts</h2>
-                    <p className="text-sm text-gray-400">No sample data for podcasts yet.</p>
+                    <h2 className="font-semibold text-xl mb-2 mt-6">Albums</h2>
+                    <div className="grid grid-cols-6 gap-4">
+                        {filteredAlbums.map((album, index) => (
+                            <div
+                                key={index}
+                                className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                onClick={() => handleAlbumClick(album.album.name, "Album")}
+                            >
+                                <img src={album.album.image} alt="Album Cover" className="w-24 h-24 object-cover rounded mb-2" />
+                                <p className="text-xs font-semibold">{album.album.name}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
 
-            {/* =================================== AUDIOBOOKS PAGE =================================== */}
-            {activeCategory === "Audiobooks" && (
+            {activeCategory === "Podcasts" && filteredPodcasts.length > 0 && (
                 <div>
-                    <h2 className="font-semibold text-xl mb-2 mt-6">Audiobooks</h2>
-                    <p className="text-sm text-gray-400">No sample data for audiobooks yet.</p>
+                    <h2 className="font-semibold text-xl mb-2 mt-6">Podcasts</h2>
+                    <div className="grid grid-cols-6 gap-4">
+                        {filteredPodcasts.map((podcast, index) => (
+                            <div
+                                key={index}
+                                className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                onClick={() => handleAlbumClick(podcast.name, "Podcast")}
+                            >
+                                <img src={podcast.image} alt="Podcast Cover" className="w-24 h-24 object-cover rounded mb-2" />
+                                <p className="text-xs font-semibold">{podcast.name}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
         </div>
