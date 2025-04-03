@@ -1,10 +1,11 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import spotifyData from "../assets/data/data.json";
 import podcastData from "../assets/data/podcastData.json";
 import { useNavigate } from "react-router-dom";
 import { PlayButton } from "../components/playButton.jsx";
 import isPodcast from "../isPodcast.js";
-import { useAlbum } from "../context/AlbumContext.jsx";
+import getStructuredData from "../getStructuredData.js";
+import { FaMinus, FaPlus } from "react-icons/fa6";
 
 // ===== Carousel Component =====
 function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
@@ -39,11 +40,11 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
   };
 
   return (
-    <div className="relative w-19/20 mx-auto">
+    <div className="relative w-20/20 mx-auto">
       <div className="overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-in-out"
-          style={{transform: `translateX(-${(currentIndex * 100) / itemsToShow}%)`}}
+          style={{ transform: `translateX(-${(currentIndex * 100) / itemsToShow}%)` }}
         >
           {items.map((item, index) => (
             <div
@@ -51,26 +52,37 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
                 if (isPodcast(item)) {
                   navigate(`/podcast/?name=${item.podcastName}`);
                 } else {
-                  handleAlbumClick(item);
+                  handleAlbumClick(item.album.name);
                 }
               }}
               key={index}
-              className="p-2 group"
-              style={{flex: `0 0 ${100 / itemsToShow}%`}}
+              className="py-2 group hover:bg-[#535353] rounded transition-all ease-in-out mx-3"
+              style={{ flex: `0 0 ${100 / itemsToShow}%` }}
             >
-              <div className="relative">
-                <img
+              {/* Square Container */}
+              <div className="m-auto relative aspect-square w-[130px] sm:w-[190px] md:w-[200px] rounded overflow-hidden">
+              <img
                   src={item.album?.image ?? item.image}
                   alt="Thumbnail"
-                  className="h-42 w-42 object-fit rounded"
+                  className="w-full h-full object-cover rounded"
                 />
-                <PlayButton 
+                {/* Play Button */}
+                <button
+                  className="absolute bottom-5 right-3  opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
                   onClick={(e) => {
-                    e.stopPropagation();  // Prevents triggering handleAlbumClick
-                    handlePlay(item);
-                  }}/>
+                    e.stopPropagation();
+                    if (isPodcast(item)) {
+                      handlePlay("podcast", item.podcastName, 0);
+                    } else {
+                      handlePlay("album", item.album.name, 0);
+                    }
+                  }}
+                >
+                  <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+                </button>
               </div>
-              <h2 className="mt-1 text-xs font-semibold text-gray-200">
+              {/* Album Name */}
+              <h2 className="mt-3 text-center text-sm font-semibold text-gray-200">
                 {item.album?.name ?? item.podcastName}
               </h2>
             </div>
@@ -81,14 +93,14 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
       <button
         onClick={goToPrev}
         className="absolute left-0 top-1/2 transform -translate-x-full -translate-y-1/2
-                   text-3xl text-gray-200 hover:scale-110 transition-transform"
+                  text-3xl text-gray-200 hover:scale-110 transition-transform"
       >
         <i className="fa-solid fa-circle-chevron-left"></i>
       </button>
       <button
         onClick={goToNext}
         className="absolute right-0 top-1/2 transform translate-x-full -translate-y-1/2
-                   text-3xl text-gray-200 hover:scale-110 transition-transform"
+                  text-3xl text-gray-200 hover:scale-110 transition-transform"
       >
         <i className="fa-solid fa-circle-chevron-right"></i>
       </button>
@@ -131,7 +143,7 @@ function GridView({ items, handlePlay, handleAlbumClick }) {
             if (isPodcast(item)) {
               navigate(`/podcast/?name=${item.podcastName}`)
             } else {
-              handleAlbumClick(item)
+              handleAlbumClick(item.album.name)
             }
           }} key={index} className="w-full group">
             <div className="relative bg-green-300">
@@ -140,11 +152,15 @@ function GridView({ items, handlePlay, handleAlbumClick }) {
                 alt="Thumbnail"
                 className="h-36 w-full object-fit rounded"
               />
-              <PlayButton 
-                 onClick={(e) => {
-                  e.stopPropagation();  // Prevents triggering handleAlbumClick
-                  handlePlay(item);
-                }}/>
+                <PlayButton 
+                  onClick={(e) => {
+                    e.stopPropagation();  // Prevents triggering handleAlbumClick
+                    if (isPodcast(item)) {
+                      handlePlay("podcast", item.podcastName, 0);
+                    } else {
+                      handlePlay("album", item.album.name, 0);
+                    }
+                  }}/>
             </div>
             <h2 className="mt-1 text-xs font-semibold text-gray-200">
               {item.album?.name ?? item.podcastName}
@@ -162,25 +178,26 @@ function MediaSection({title, items, renderCollapsed, renderExpanded}) {
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <div className="mt-4">
+    <div className="mt-8">
       <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <h2 className="font-bold text-lg tracking-wide">{title}</h2>
+        <div
+          onClick={() => setExpanded((prev) => !prev)} 
+          className="hover:text-green-500 select-none flex transition-all items-center ">
+          <h2 className="font-bold tracking-wide">{title}</h2>
           <button
-            onClick={() => setExpanded((prev) => !prev)}
-            className="ml-2 text-xl text-gray-200 hover:scale-105 hover:text-white transition-all duration-150 ease-in-out"
+            className="ml-2 text-xl"
           >
             {expanded ? (
-              <i className="fa-solid fa-circle-minus"></i>
+              <FaMinus size={12} />
             ) : (
-              <i className="fa-solid fa-circle-plus"></i>
+              <FaPlus size={12} />
             )}
           </button>
         </div>
         {expanded && (
           <a
             onClick={() => setShowAll((prev) => !prev)}
-            className="text-sm text-gray-300 font-semibold hover:underline cursor-pointer transition-all duration-150 ease-in-out"
+            className="text-xs text-gray-300 font-semibold hover:underline cursor-pointer transition-all duration-150 ease-in-out"
           >
             {showAll ? "Show Less" : "Show All"}
           </a>
@@ -226,7 +243,6 @@ export default function HomePage({ setMusicQueue }) {
   const [shuffledTrendingPodcasts, setShuffledTrendingPodcasts] = useState([]);
   const [shuffledLatestEpisodes, setShuffledLatestEpisodes] = useState([]);
   const [shuffledRecommended, setShuffledRecommended] = useState([]);
-  const [, setCurrentAlbum] = useAlbum();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -262,17 +278,16 @@ export default function HomePage({ setMusicQueue }) {
     setSelectedCategory(category);
   };
 
-  const handlePlay = (item) => {
+  const handlePlay = (type, name, index) => {
     if (typeof setMusicQueue === 'function') {
-      setMusicQueue(item);  // Ensure it's an array for a queue
+      setMusicQueue(getStructuredData(type, name, index));
     } else {
       console.error('setMusicQueue is not a function');
     }
   };
 
-  const handleAlbumClick = (album) => {
-    setCurrentAlbum(album);
-    navigate("/album");
+  const handleAlbumClick = (name) => {
+    navigate(`/album/?name=${name}&type=Album`);
   };
 
   return (
@@ -280,14 +295,14 @@ export default function HomePage({ setMusicQueue }) {
       {/* Main Grid Section */}
       <div className="w-full grid sm:grid-cols-2 md:grid-cols-4 gap-4">
         {albums.length > 0 && albums.slice(0, 8).map((item, index) => (
-          <div key={index} className="flex items-center bg-gray-700 hover:bg-gray-600 rounded group relative" onClick={() => handleAlbumClick(item)}>
+          <div key={index} className="flex items-center bg-gray-700 hover:bg-gray-600 rounded group relative" onClick={() => handleAlbumClick(item.album.name)}>
             <img src={item.album.image} alt="Thumbnail" className="h-16 w-16 object-fit" />
             <h2 className="ml-3 p-1 text-xs font-semibold">{item.album.name}</h2>
             <button
               className="absolute bottom-2 right-2 bg-black rounded-full opacity-0 group-hover:opacity-100 transition-all ease-in-out"
               onClick={(e) => {
                 e.stopPropagation();  // Prevents triggering handleAlbumClick
-                handlePlay(item);
+                handlePlay("album", item.album.name, 0);
               }}
             >
               <i className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>

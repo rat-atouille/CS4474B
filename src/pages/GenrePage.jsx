@@ -90,7 +90,7 @@ const GenrePage = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-wrap px-6 py-2">
+        <div className="flex flex-wrap mx-5 mt-4 px-6 py-2">
           {filteredSongs.map((song, index) => (
             <div 
               className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 relative group" 

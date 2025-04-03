@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import isPodcast from '../../isPodcast.js';
 
-export default function MusicPlayer({ musicQueue }) {
+export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSongIndex }) {
   const [rangeValue, setRangeValue] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isShuffling, setIsShuffling] = useState(false);
   const [isRepeating, setIsRepeating] = useState(false);
-  const [currentSongIndex, setCurrentSongIndex] = useState(0);
-  const [shuffle, setShuffle] = useState(false);
-  const [repeat, setRepeat] = useState(false);
 
-  // Get current song from musicQueue (use album songs for non-podcast items)
-  let currentSong;
-  if (!isPodcast(musicQueue)) {
-    currentSong = musicQueue?.album?.songs[currentSongIndex];
-  } else {
-    currentSong = musicQueue?.episodes[currentSongIndex];
-  }
+  // Get current song from musicQueue (use album tracks for non-podcast items)
+  let currentSong = musicQueue?.structuredData[0]?.tracks[currentSongIndex];
+
+  // Convert trackDuration (e.g., "2:06") to total seconds
+  const convertDurationToSeconds = (duration) => {
+    const [minutes, seconds] = duration.split(':').map(Number);
+    return minutes * 60 + seconds;
+  };
 
   // When a new musicQueue is set (i.e. a new song is clicked), reset tracker and auto-play
   useEffect(() => {
-    setCurrentSongIndex(0);
+    setCurrentSongIndex(musicQueue?.index || 0);
+    console.log(musicQueue)
     setRangeValue(0);
     setIsPlaying(true);
   }, [musicQueue]);
@@ -31,7 +29,7 @@ export default function MusicPlayer({ musicQueue }) {
     if (isPlaying) {
       interval = setInterval(() => {
         setRangeValue(prev => {
-          const maxDuration = currentSong?.durationMs / 1000;
+          const maxDuration = currentSong?.trackDuration ? convertDurationToSeconds(currentSong.trackDuration) : 0;
           if (prev >= maxDuration) {
             setRangeValue(0);
             return maxDuration;
@@ -41,11 +39,9 @@ export default function MusicPlayer({ musicQueue }) {
       }, 1000);
     }
     return () => clearInterval(interval);
-  }, [isPlaying, currentSong?.durationMs]);
+  }, [isPlaying, currentSong?.trackDuration]);
 
-  const albumLength = !isPodcast(musicQueue)
-      ? musicQueue?.album?.songs.length
-      : musicQueue?.episodes.length;
+  const albumLength = musicQueue?.structuredData[0]?.tracks.length;
 
   const handleNext = () => {
     setCurrentSongIndex(prevIndex => (prevIndex + 1) % albumLength);
@@ -62,12 +58,12 @@ export default function MusicPlayer({ musicQueue }) {
   const toggleShuffle = () => {
     setIsShuffling((prev) => !prev);
   }
-  
+
   const toggleLoop = () => {
     setIsRepeating((prev) => !prev);
   }
 
-  const totalDuration = currentSong?.durationMs / 1000 || 195;
+  const totalDuration = currentSong ? convertDurationToSeconds(currentSong.trackDuration) : 195;
   const minutes = Math.floor(rangeValue / 60);
   const seconds = Math.floor(rangeValue % 60);
   const timeFormatted = `${minutes.toString().padStart(2, '0')}:${seconds
@@ -84,29 +80,26 @@ export default function MusicPlayer({ musicQueue }) {
   return (
       <>
         {musicQueue && (
-            <div className="fixed bottom-0 bg-black w-full h-[10vh] md:h-[5vw] overflow-x-hidden z-10 px-4 py-2 flex items-center justify-between transition-all">
+            <div className="hover:opacity-70 fixed bottom-0 bg-black w-full h-[10vh] md:h-[5vw] overflow-x-hidden z-10 px-4 py-2 flex items-center justify-between transition-all">
               {/* Left Section: Song Info */}
-              <div className="flex items-center space-x-4 h-full">
-                <img
-                    src={
-                        currentSong?.image ||
-                        (!isPodcast(musicQueue)
-                            ? musicQueue.album?.image
-                            : musicQueue.image) ||
-                        "/placeHolders/placeHolderIcon.jpeg"
-                    }
-                    alt="Song Cover"
-                    className="object-cover rounded h-3/4"
-                />
+              <div className="flex items-center space-x-4 md:w-1/5 h-full">
+                <div className={"h-3/4"}>
+                  <img
+                  src={currentSong?.image || "/placeHolders/placeHolderIcon.jpeg"}
+                  alt="Song Cover"
+                  className="object-cover rounded h-full"
+                  />
+                </div>
                 <div>
-              <span className="text-white font-medium text-[10px] md:text-sm">
-                {currentSong?.name}
-              </span>
-                  <div className="text-gray-400 text-[8px] md:text-xs">
-                    {!isPodcast(musicQueue)
-                        ? musicQueue.artist
-                        : musicQueue.publisher}
-                  </div>
+                <span className="text-white font-medium text-[10px]" title={currentSong?.trackTitle}>
+                  {currentSong?.trackTitle.length > 30
+                    ? `${currentSong.trackTitle.substring(0, 30)}...`
+                    : currentSong?.trackTitle}
+                </span>
+
+                  <a href={`/artist/?name=${currentSong?.author}`} className="block text-gray-400 text-[8px] md:text-[10px] hover:underline">
+                    {currentSong?.author}
+                  </a>
                 </div>
                 <i className="fa-solid fa-plus text-[8px] md:text-xs border p-1 rounded-full text-gray-300 hover:text-white transition-all duration-300 ease-in-out"></i>
               </div>
@@ -122,7 +115,7 @@ export default function MusicPlayer({ musicQueue }) {
                       onClick={handlePrev}
                   ></i>
                   <i
-                      className={`fa-solid text-white text-2xl hover:text-white transition-all duration-300 ease-in-out ${
+                      className={`fa-solid text-white text-2xl  transition-all duration-300 ease-in-out hover:text-green-500 ${
                           !isPlaying ? "fa-circle-play" : "fa-circle-pause"
                       }`}
                       onClick={() => setIsPlaying(!isPlaying)}
@@ -135,7 +128,7 @@ export default function MusicPlayer({ musicQueue }) {
                   ${isRepeating ? "text-green-500 hover:text-green-300" : "text=gray-300 hover:text-white"}`}
                   onClick={toggleLoop}></i>
                 </div>
-                <div className="flex mt-2 items-center w-xs md:w-sm text-xs gap-2">
+                <div className="flex mt-2 items-center md:w-sm text-xs gap-2">
                   <span className="font-thin">{timeFormatted}</span>
                   <div className="flex w-full items-center gap-2">
                     <input
