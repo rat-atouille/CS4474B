@@ -10,10 +10,10 @@ const getSearchData = (category) => {
             results = Object.entries(albumData).flatMap(([artist, artistData]) => {
                 if (artistData.albums) {
                     return artistData.albums.flatMap((album) =>
-                        album.songs.map((song) => ({
+                        album.songs.map((song, index) => ({
                             name: song.name,
                             image: song.image,
-                            durationMs: song.durationMs,
+                            index: index,
                             albumName: album.name
                         }))
                     );
@@ -60,7 +60,6 @@ const getSearchData = (category) => {
         default:
             break;
     }
-
     return results;
 };
 
