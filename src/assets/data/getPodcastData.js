@@ -18,25 +18,26 @@ const CLIENT_ID = "1500e4eb90b34eecb403201c86d3611e";
 const CLIENT_SECRET = "ea2e38c9737a43e7a6735c17315b7e7d";
 
 const podcastGenres = [
-  "True Crime",
+  "Art",
+  "Beauty",
+  "Book",
+  "Business",
   "Comedy",
-  "News & Politics",
-  "Health & Fitness",
-  "Business & Finance",
-  "Technology",
-  "Education",
+  "Crime",
+  "Design",
+  "Documentary",
+  "Educational",
+  "Fiction",
+  "Film",
+  "Finance",
+  "Fitness",
+  "Games",
   "History",
-  "Sports",
-  "Entertainment",
+  "News",
+  "Pop Culture",
   "Science",
-  "Fiction/Storytelling",
-  "Parenting",
-  "Self-Improvement",
-  "Gaming",
-  "Arts & Culture",
-  "Religion & Spirituality",
-  "Lifestyle",
-  "Miscellaneous"
+  "Sport",
+  "Top"
 ];
 
 function shuffle(array) {

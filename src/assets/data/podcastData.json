@@ -70,7 +70,7 @@
       }
     ],
     "genres": [
-      "Parenting",
+      "Educational",
       "Technology"
     ]
   },
@@ -153,7 +153,7 @@
     ],
     "genres": [
       "News & Politics",
-      "Education"
+      "Educational"
     ]
   },
   "The Joe Rogan Experience": {
@@ -398,7 +398,7 @@
       }
     ],
     "genres": [
-      "Parenting",
+      "Educational",
       "Sports"
     ]
   },
@@ -480,7 +480,7 @@
       }
     ],
     "genres": [
-      "Parenting",
+      "Top",
       "Gaming"
     ]
   },
@@ -563,7 +563,7 @@
     ],
     "genres": [
       "Science",
-      "Miscellaneous"
+      "Pop Culture"
     ]
   },
   "This Past Weekend w/ Theo Von": {
@@ -644,8 +644,8 @@
       }
     ],
     "genres": [
-      "Business & Finance",
-      "Health & Fitness"
+      "Business",
+      "Fitness"
     ]
   },
   "TED Talks Daily": {
@@ -727,7 +727,7 @@
     ],
     "genres": [
       "Education",
-      "Religion & Spirituality"
+      "Comedy"
     ]
   },
   "Matt and Shane's Secret Podcast": {
@@ -808,8 +808,8 @@
       }
     ],
     "genres": [
-      "Fiction/Storytelling",
-      "Miscellaneous"
+      "Fiction",
+      "News"
     ]
   }
 }
