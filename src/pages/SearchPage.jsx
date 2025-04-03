@@ -39,7 +39,6 @@ export default function SearchPage({ setMusicQueue }) {
     const basePlaylists = [{ name: "Meow-meow", image: rockImage }];
 
     // ---------- Extract Extra Data from JSON ----------
-    // Artists from main JSON
     const extraArtists = Object.entries(jsonData).map(([artistName, details]) => ({
         name: artistName,
         image: details.image,
@@ -76,12 +75,13 @@ export default function SearchPage({ setMusicQueue }) {
     });
 
     // Extract podcasts data from podcastData JSON.
-    // Assuming podcastData is an object with keys as podcast names.
-    const extraPodcasts = Object.entries(podcastData).map(([podcastName, details]) => ({
-        name: podcastName,
-        image: details.image,
-        // You can add more fields as needed (e.g., description)
-    }));
+    const extraPodcasts = Object.entries(podcastData).map(
+        ([podcastName, details]) => ({
+            name: podcastName,
+            image: details.image,
+            // add other fields as needed
+        })
+    );
 
     // ---------- Merge Data (no deduplication for simplicity) ----------
     const artists = [...baseArtists, ...extraArtists];
@@ -93,13 +93,17 @@ export default function SearchPage({ setMusicQueue }) {
     // ---------- Filtering: Only show items that match the search query ----------
     const lowerSearch = searchParam.trim().toLowerCase();
     const filteredArtists = lowerSearch
-        ? artists.filter((item) => item.name.toLowerCase().includes(lowerSearch))
+        ? artists.filter((item) =>
+            item.name.toLowerCase().includes(lowerSearch)
+        )
         : shuffleArray(artists);
     const filteredSongs = lowerSearch
         ? songs.filter((item) => item.name.toLowerCase().includes(lowerSearch))
         : shuffleArray(songs);
     const filteredPlaylists = lowerSearch
-        ? playlists.filter((item) => item.name.toLowerCase().includes(lowerSearch))
+        ? playlists.filter((item) =>
+            item.name.toLowerCase().includes(lowerSearch)
+        )
         : shuffleArray(playlists);
     const filteredAlbums = lowerSearch
         ? albums.filter((item) =>
@@ -107,18 +111,30 @@ export default function SearchPage({ setMusicQueue }) {
         )
         : shuffleArray(albums);
     const filteredPodcasts = lowerSearch
-        ? podcasts.filter((item) => item.name.toLowerCase().includes(lowerSearch))
+        ? podcasts.filter((item) =>
+            item.name.toLowerCase().includes(lowerSearch)
+        )
         : shuffleArray(podcasts);
 
-    // ---------- Category Tabs (Audiobooks removed) ----------
-    const categories = [
-        "All",
-        "Songs",
-        "Playlists",
-        "Artists",
-        "Albums",
-        "Podcasts",
-    ];
+    // ---------- Determine available categories based on filtered data ----------
+    const availableCategories = ["All"].concat(
+        [
+            { name: "Songs", data: filteredSongs },
+            { name: "Playlists", data: filteredPlaylists },
+            { name: "Artists", data: filteredArtists },
+            { name: "Albums", data: filteredAlbums },
+            { name: "Podcasts", data: filteredPodcasts },
+        ].filter((cat) => cat.data.length > 0).map((cat) => cat.name)
+    );
+
+    // Update activeCategory if the current one is no longer available.
+    useEffect(() => {
+        if (activeCategory !== "All" && !availableCategories.includes(activeCategory)) {
+            setActiveCategory("All");
+        }
+    }, [availableCategories, activeCategory]);
+
+    // ---------- Category Tabs ----------
     const handleTagClick = (category) => setActiveCategory(category);
 
     // ---------- Navigation Handlers ----------
@@ -127,7 +143,6 @@ export default function SearchPage({ setMusicQueue }) {
     };
 
     const handleSongClick = (song) => {
-        // When a song is clicked, set the music queue so that the MusicPlayer will play it.
         setMusicQueue({ album: { songs: [song] } });
     };
 
@@ -136,7 +151,6 @@ export default function SearchPage({ setMusicQueue }) {
     };
 
     const handleAlbumClick = (name, type) => {
-        // For both Albums and Podcasts (if type is "Podcast")
         navigate(`/album?name=${encodeURIComponent(name)}&type=${type}`);
     };
 
@@ -146,9 +160,9 @@ export default function SearchPage({ setMusicQueue }) {
                 Search results for "{searchParam}"
             </h1>
 
-            {/* Category Buttons */}
+            {/* Category Buttons - only render if there is at least one item */}
             <div className="flex flex-wrap gap-2">
-                {categories.map((category) => (
+                {availableCategories.map((category) => (
                     <button
                         key={category}
                         className={`px-4 py-1 rounded-full text-sm ${
@@ -183,118 +197,126 @@ export default function SearchPage({ setMusicQueue }) {
                     </div>
 
                     {/* Artists */}
-                    <div>
-                        <h2 className="font-semibold text-xl mb-2 mt-6">Artists</h2>
-                        <div className="grid grid-cols-6 gap-8">
-                            {filteredArtists.map((artist, index) => (
-                                <div
-                                    key={index}
-                                    className="flex flex-col items-center cursor-pointer"
-                                    onClick={() => handleArtistClick(artist)}
-                                >
-                                    <img
-                                        src={artist.image}
-                                        alt={artist.name}
-                                        className="w-24 h-24 object-cover rounded-full mb-2"
-                                    />
-                                    <p className="text-sm font-medium">{artist.name}</p>
-                                </div>
-                            ))}
+                    {filteredArtists.length > 0 && (
+                        <div>
+                            <h2 className="font-semibold text-xl mb-2 mt-6">Artists</h2>
+                            <div className="grid grid-cols-6 gap-8">
+                                {filteredArtists.map((artist, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex flex-col items-center cursor-pointer"
+                                        onClick={() => handleArtistClick(artist)}
+                                    >
+                                        <img
+                                            src={artist.image}
+                                            alt={artist.name}
+                                            className="w-24 h-24 object-cover rounded-full mb-2"
+                                        />
+                                        <p className="text-sm font-medium">{artist.name}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
 
                     {/* Songs */}
-                    <div>
-                        <h2 className="font-semibold text-xl mb-2 mt-6">Songs</h2>
-                        <div className="grid grid-cols-6 gap-4">
-                            {filteredSongs.map((song, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                    onClick={() => handleSongClick(song)}
-                                >
-                                    <img
-                                        src={song.image}
-                                        alt="Song Cover"
-                                        className="w-24 h-24 object-cover rounded mb-2"
-                                    />
-                                    <p className="text-xs font-semibold">{song.name}</p>
-                                </div>
-                            ))}
+                    {filteredSongs.length > 0 && (
+                        <div>
+                            <h2 className="font-semibold text-xl mb-2 mt-6">Songs</h2>
+                            <div className="grid grid-cols-6 gap-4">
+                                {filteredSongs.map((song, index) => (
+                                    <div
+                                        key={index}
+                                        className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                        onClick={() => handleSongClick(song)}
+                                    >
+                                        <img
+                                            src={song.image}
+                                            alt="Song Cover"
+                                            className="w-24 h-24 object-cover rounded mb-2"
+                                        />
+                                        <p className="text-xs font-semibold">{song.name}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
 
                     {/* Playlists */}
-                    <div>
-                        <h2 className="font-semibold text-xl mb-2 mt-6">Playlists</h2>
-                        <div className="grid grid-cols-6 gap-4">
-                            {filteredPlaylists.map((pl, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                    onClick={() => handlePlaylistClick(pl)}
-                                >
-                                    <img
-                                        src={pl.image}
-                                        alt="Playlist Cover"
-                                        className="w-24 h-24 object-cover rounded mb-2"
-                                    />
-                                    <p className="text-xs font-semibold">{pl.name}</p>
-                                </div>
-                            ))}
+                    {filteredPlaylists.length > 0 && (
+                        <div>
+                            <h2 className="font-semibold text-xl mb-2 mt-6">Playlists</h2>
+                            <div className="grid grid-cols-6 gap-4">
+                                {filteredPlaylists.map((pl, index) => (
+                                    <div
+                                        key={index}
+                                        className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                        onClick={() => handlePlaylistClick(pl)}
+                                    >
+                                        <img
+                                            src={pl.image}
+                                            alt="Playlist Cover"
+                                            className="w-24 h-24 object-cover rounded mb-2"
+                                        />
+                                        <p className="text-xs font-semibold">{pl.name}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
 
                     {/* Albums */}
-                    <div>
-                        <h2 className="font-semibold text-xl mb-2 mt-6">Albums</h2>
-                        <div className="grid grid-cols-6 gap-4">
-                            {filteredAlbums.map((album, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                    onClick={() =>
-                                        handleAlbumClick(album.album.name, "Album")
-                                    }
-                                >
-                                    <img
-                                        src={album.album.image}
-                                        alt="Album Cover"
-                                        className="w-24 h-24 object-cover rounded mb-2"
-                                    />
-                                    <p className="text-xs font-semibold">{album.album.name}</p>
-                                </div>
-                            ))}
+                    {filteredAlbums.length > 0 && (
+                        <div>
+                            <h2 className="font-semibold text-xl mb-2 mt-6">Albums</h2>
+                            <div className="grid grid-cols-6 gap-4">
+                                {filteredAlbums.map((album, index) => (
+                                    <div
+                                        key={index}
+                                        className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                        onClick={() =>
+                                            handleAlbumClick(album.album.name, "Album")
+                                        }
+                                    >
+                                        <img
+                                            src={album.album.image}
+                                            alt="Album Cover"
+                                            className="w-24 h-24 object-cover rounded mb-2"
+                                        />
+                                        <p className="text-xs font-semibold">{album.album.name}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
 
                     {/* Podcasts */}
-                    <div>
-                        <h2 className="font-semibold text-xl mb-2 mt-6">Podcasts</h2>
-                        <div className="grid grid-cols-6 gap-4">
-                            {filteredPodcasts.map((podcast, index) => (
-                                <div
-                                    key={index}
-                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                    onClick={() =>
-                                        handleAlbumClick(podcast.name, "Podcast")
-                                    }
-                                >
-                                    <img
-                                        src={podcast.image}
-                                        alt="Podcast Cover"
-                                        className="w-24 h-24 object-cover rounded mb-2"
-                                    />
-                                    <p className="text-xs font-semibold">{podcast.name}</p>
-                                </div>
-                            ))}
+                    {filteredPodcasts.length > 0 && (
+                        <div>
+                            <h2 className="font-semibold text-xl mb-2 mt-6">Podcasts</h2>
+                            <div className="grid grid-cols-6 gap-4">
+                                {filteredPodcasts.map((podcast, index) => (
+                                    <div
+                                        key={index}
+                                        className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                        onClick={() => handleAlbumClick(podcast.name, "Podcast")}
+                                    >
+                                        <img
+                                            src={podcast.image}
+                                            alt="Podcast Cover"
+                                            className="w-24 h-24 object-cover rounded mb-2"
+                                        />
+                                        <p className="text-xs font-semibold">{podcast.name}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </>
             )}
 
             {/* =================================== CATEGORY PAGES =================================== */}
-            {activeCategory === "Songs" && (
+            {activeCategory === "Songs" && filteredSongs.length > 0 && (
                 <div>
                     <h2 className="font-semibold text-xl mb-2 mt-6">Songs</h2>
                     <div className="grid grid-cols-6 gap-4">
@@ -316,7 +338,7 @@ export default function SearchPage({ setMusicQueue }) {
                 </div>
             )}
 
-            {activeCategory === "Playlists" && (
+            {activeCategory === "Playlists" && filteredPlaylists.length > 0 && (
                 <div>
                     <h2 className="font-semibold text-xl mb-2 mt-6">Playlists</h2>
                     <div className="grid grid-cols-6 gap-4">
@@ -338,7 +360,7 @@ export default function SearchPage({ setMusicQueue }) {
                 </div>
             )}
 
-            {activeCategory === "Artists" && (
+            {activeCategory === "Artists" && filteredArtists.length > 0 && (
                 <div>
                     <h2 className="font-semibold text-xl mb-2 mt-6">Artists</h2>
                     <div className="grid grid-cols-6 gap-8">
@@ -360,7 +382,7 @@ export default function SearchPage({ setMusicQueue }) {
                 </div>
             )}
 
-            {activeCategory === "Albums" && (
+            {activeCategory === "Albums" && filteredAlbums.length > 0 && (
                 <div>
                     <h2 className="font-semibold text-xl mb-2 mt-6">Albums</h2>
                     <div className="grid grid-cols-6 gap-4">
@@ -382,7 +404,7 @@ export default function SearchPage({ setMusicQueue }) {
                 </div>
             )}
 
-            {activeCategory === "Podcasts" && (
+            {activeCategory === "Podcasts" && filteredPodcasts.length > 0 && (
                 <div>
                     <h2 className="font-semibold text-xl mb-2 mt-6">Podcasts</h2>
                     <div className="grid grid-cols-6 gap-4">
