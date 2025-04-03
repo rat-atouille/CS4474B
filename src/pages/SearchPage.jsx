@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import rockImage from "../assets/Rocky the cat.png";
 import jsonData from "../assets/data/data.json";
+import podcastData from "../assets/data/podcastData.json";
 
 // Utility function to shuffle an array
 function shuffleArray(array) {
@@ -38,6 +39,7 @@ export default function SearchPage({ setMusicQueue }) {
     const basePlaylists = [{ name: "Meow-meow", image: rockImage }];
 
     // ---------- Extract Extra Data from JSON ----------
+    // Artists from main JSON
     const extraArtists = Object.entries(jsonData).map(([artistName, details]) => ({
         name: artistName,
         image: details.image,
@@ -65,7 +67,7 @@ export default function SearchPage({ setMusicQueue }) {
                             name: song.name,
                             image: song.image,
                             durationMs: song.durationMs,
-                            albumName: album.name,
+                            albumName: album.name, // for navigation reference
                         });
                     });
                 }
@@ -73,14 +75,22 @@ export default function SearchPage({ setMusicQueue }) {
         }
     });
 
-    // ---------- Merge Data (No deduplication for simplicity) ----------
+    // Extract podcasts data from podcastData JSON.
+    // Assuming podcastData is an object with keys as podcast names.
+    const extraPodcasts = Object.entries(podcastData).map(([podcastName, details]) => ({
+        name: podcastName,
+        image: details.image,
+        // You can add more fields as needed (e.g., description)
+    }));
+
+    // ---------- Merge Data (no deduplication for simplicity) ----------
     const artists = [...baseArtists, ...extraArtists];
     const songs = [...baseSongs, ...extraSongs];
     const playlists = [...basePlaylists, ...extraPlaylists];
     const albums = extraAlbums;
+    const podcasts = extraPodcasts;
 
     // ---------- Filtering: Only show items that match the search query ----------
-    // If no query is provided, show random (shuffled) items.
     const lowerSearch = searchParam.trim().toLowerCase();
     const filteredArtists = lowerSearch
         ? artists.filter((item) => item.name.toLowerCase().includes(lowerSearch))
@@ -96,6 +106,9 @@ export default function SearchPage({ setMusicQueue }) {
             item.album.name.toLowerCase().includes(lowerSearch)
         )
         : shuffleArray(albums);
+    const filteredPodcasts = lowerSearch
+        ? podcasts.filter((item) => item.name.toLowerCase().includes(lowerSearch))
+        : shuffleArray(podcasts);
 
     // ---------- Category Tabs (Audiobooks removed) ----------
     const categories = [
@@ -123,7 +136,7 @@ export default function SearchPage({ setMusicQueue }) {
     };
 
     const handleAlbumClick = (name, type) => {
-        // Navigate to the Album page (type "Album")
+        // For both Albums and Podcasts (if type is "Podcast")
         navigate(`/album?name=${encodeURIComponent(name)}&type=${type}`);
     };
 
@@ -240,7 +253,9 @@ export default function SearchPage({ setMusicQueue }) {
                                 <div
                                     key={index}
                                     className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
-                                    onClick={() => handleAlbumClick(album.album.name, "Album")}
+                                    onClick={() =>
+                                        handleAlbumClick(album.album.name, "Album")
+                                    }
                                 >
                                     <img
                                         src={album.album.image}
@@ -248,6 +263,29 @@ export default function SearchPage({ setMusicQueue }) {
                                         className="w-24 h-24 object-cover rounded mb-2"
                                     />
                                     <p className="text-xs font-semibold">{album.album.name}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Podcasts */}
+                    <div>
+                        <h2 className="font-semibold text-xl mb-2 mt-6">Podcasts</h2>
+                        <div className="grid grid-cols-6 gap-4">
+                            {filteredPodcasts.map((podcast, index) => (
+                                <div
+                                    key={index}
+                                    className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                    onClick={() =>
+                                        handleAlbumClick(podcast.name, "Podcast")
+                                    }
+                                >
+                                    <img
+                                        src={podcast.image}
+                                        alt="Podcast Cover"
+                                        className="w-24 h-24 object-cover rounded mb-2"
+                                    />
+                                    <p className="text-xs font-semibold">{podcast.name}</p>
                                 </div>
                             ))}
                         </div>
@@ -347,7 +385,22 @@ export default function SearchPage({ setMusicQueue }) {
             {activeCategory === "Podcasts" && (
                 <div>
                     <h2 className="font-semibold text-xl mb-2 mt-6">Podcasts</h2>
-                    <p className="text-sm text-gray-400">No sample data for podcasts yet.</p>
+                    <div className="grid grid-cols-6 gap-4">
+                        {filteredPodcasts.map((podcast, index) => (
+                            <div
+                                key={index}
+                                className="bg-gray-700 hover:bg-gray-600 rounded p-2 flex flex-col items-center cursor-pointer"
+                                onClick={() => handleAlbumClick(podcast.name, "Podcast")}
+                            >
+                                <img
+                                    src={podcast.image}
+                                    alt="Podcast Cover"
+                                    className="w-24 h-24 object-cover rounded mb-2"
+                                />
+                                <p className="text-xs font-semibold">{podcast.name}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             )}
         </div>
