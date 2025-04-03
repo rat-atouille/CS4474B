@@ -58,7 +58,15 @@ export default function Album({setMusicQueue, currentSong}) {
 
   const handlePlay = (name, index) => {
     if (typeof setMusicQueue === 'function') {
-      setMusicQueue(getStructuredData('album', name, index));
+      if (albumType === 'Playlist') {
+        if (albumName === 'Liked Songs') {
+          setMusicQueue(getStructuredData('playlist-liked', name, index));
+        } else {
+          setMusicQueue(getStructuredData('playlist', name, index));
+        }
+      } else {
+        setMusicQueue(getStructuredData('album', name, index));
+      }
     } else {
       console.error('setMusicQueue is not a function');
     }
