@@ -78,7 +78,7 @@ const BrowsePage = () => {
                       // Add play functionality here
                     }}
                   >
-                    <div className="bg-black rounded-full p-2">
+                    <div className="bg-black rounded-full">
                       <i className="fa-solid fa-circle-play text-4xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
                     </div>
                   </button>
