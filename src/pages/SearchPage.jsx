@@ -65,7 +65,7 @@ export default function SearchPage({ setMusicQueue }) {
                             name: song.name,
                             image: song.image,
                             durationMs: song.durationMs,
-                            albumName: album.name, // useful for navigation
+                            albumName: album.name,
                         });
                     });
                 }
