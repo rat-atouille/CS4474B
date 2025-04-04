@@ -137,7 +137,7 @@ function Navbar({ showNavBackground }) {
                 setSearchText={setSearchText}
                 onKeyDown={handleKeyDown}
                 delay={500}
-                placeholder={"What do you want to play?"}
+                placeholder={"Artist, Songs, Ablums and Podcasts"}
                 className={"select-none w-full text-sm md:text-md pl-3 pr-4 outline-none bg-transparent"}
               />
               <div className="h-6 w-px bg-gray-400 mx-2 hidden sm:block"></div>
