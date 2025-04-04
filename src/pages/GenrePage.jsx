@@ -51,11 +51,11 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
       setFilteredContent(sortAlphabetically(podcasts));
       setContentType('podcasts');
     } else {
-      // Use genreData.json if available, otherwise fall back to songData
+      // Declare song array
       let songs = [];
       
       if (genreData[lowerGenre]) {
-        // Format and sort songs from genreData
+        // Format songs from genreData
         songs = genreData[lowerGenre].map(song => ({
           type: 'song',
           name: song.name,
@@ -66,7 +66,7 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
           albumImage: song.image
         }));
       } else {
-        // Fall back to original filtering from songData
+        // If genres match genre in data.json file, push on song arrary
         Object.values(songData).forEach(artist => {
           if (artist.genres && artist.genres.some(g => g.toLowerCase() === lowerGenre)) {
             artist.albums.forEach(album => {
@@ -90,6 +90,7 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
   }, [genre]);
 
   const handleContentClick = (item) => {
+    // Redirect to podcast using podcast name
     if (item.type === 'podcast') {
       navigate(`/podcast?name=${encodeURIComponent(item.name)}`);
     } else {

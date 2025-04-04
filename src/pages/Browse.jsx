@@ -43,10 +43,10 @@ const BrowsePage = () => {
         </button>
       </div>
       
-      {/* Content Grid */}
+      {/* Content Container */}
       <div className="mb-4 bg-[#212121]">
-        <h1 className="ml-4 my-2 font-bold text-2xl">Genres</h1> {/* Changed my-5 to mb-2 */}
-        <div className="flex flex-wrap mx-5 px-6"> {/* Removed py-2 */}
+        <h1 className="ml-4 my-2 font-bold text-2xl">Genres</h1> 
+        <div className="flex flex-wrap mx-5 px-6"> 
           {dataToDisplay.map((item, index) => (
             <div 
               className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 group" 
@@ -54,11 +54,11 @@ const BrowsePage = () => {
               onClick={() => handleGenreClick(item.genre)}
             >
               <div className="rounded-lg overflow-hidden cursor-pointer h-full flex flex-col items-center relative hover:bg-[#535353] transition-all duration-300">
-                {/* Square Image Container */}
+                {/* Scale Image Container */}
                 <div className="relative w-full pb-[100%] overflow-hidden">
                   <img 
                     src={item.image} 
-                    alt={`${item.name || item.title} cover`} 
+                    alt={`${item.genre} cover`} 
                     className="absolute top-0 left-0 w-full h-full object-cover rounded-md group-hover:opacity-60 transition-opacity duration-300"
                     style={{ 
                       objectPosition: 'left center',
@@ -67,12 +67,7 @@ const BrowsePage = () => {
                     }}
                   />
                   <button
-                    className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all ease-in-out"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      // Add play functionality here
-                    }}
-                  >
+                    className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all ease-in-out" >
                     <div className="bg-black rounded-full">
                       <i className="fa-solid fa-circle-play text-4xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
                     </div>
