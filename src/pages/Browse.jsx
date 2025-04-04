@@ -21,10 +21,8 @@ const BrowsePage = () => {
         return songData;
       case 'Podcast':
         return podcastData;
-      case 'Audiobooks':
-        return audiobookData;
       default: 
-        return [...songData, ...podcastData, ...audiobookData];
+        return [...songData, ...podcastData];
     }
   };
 
@@ -42,9 +40,6 @@ const BrowsePage = () => {
         </button>
         <button className={`px-4 py-1 rounded-2xl font-semibold cursor-pointer ${activeFilter === "Podcast" ? "bg-green-500 text-white" : "bg-gray-700 text-gray-300"}`} onClick={()=>handleClick("Podcast")}>
           Podcast
-        </button>
-        <button className={`px-4 py-1 rounded-2xl font-semibold cursor-pointer ${activeFilter === "Audiobooks" ? "bg-green-500 text-white" : "bg-gray-700 text-gray-300"}`} onClick={()=>handleClick("Audiobooks")}>
-          Audiobooks
         </button>
       </div>
       
