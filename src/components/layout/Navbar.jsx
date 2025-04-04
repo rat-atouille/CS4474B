@@ -79,6 +79,19 @@ function Navbar({ showNavBackground }) {
     }
   };
 
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      const trimmed = searchText.trim();
+      if (trimmed.length > 0) {
+        navigate(`/search?q=${encodeURIComponent(trimmed)}`);
+      } else {
+        navigate(`/`);
+      }
+    }, 100);
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchText]);
+
   return (
     <div
       className={`fixed bg-black w-full h-[10vh] 
@@ -124,7 +137,7 @@ function Navbar({ showNavBackground }) {
                 setSearchText={setSearchText}
                 onKeyDown={handleKeyDown}
                 delay={500}
-                placeholder={"What do you want to play?"}
+                placeholder={"Artist, Songs, Ablums and Podcasts"}
                 className={"select-none w-full text-sm md:text-md pl-3 pr-4 outline-none bg-transparent"}
               />
               <div className="h-6 w-px bg-gray-400 mx-2 hidden sm:block"></div>

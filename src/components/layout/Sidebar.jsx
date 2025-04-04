@@ -308,15 +308,14 @@ function Sidebar({ collapsed, setCollapsed, musicQueue, setMusicQueue }) {
         {/* Library Header with Library Icon and Add Button */}
         <div className="flex items-center space-x-3 py-4">
           <div 
-            className={`flex items-center justify-center cursor-pointer group ${collapsed? 'm-auto':'ml-1'}`}
+            className={`flex items-center justify-center cursor-pointer text-gray-300 hover:text-white transition-colors ${collapsed? 'm-auto':'ml-1'}`}
             onClick={handleCollapse}
           >
-            <BsFillGridFill className="text-gray-400 text-xl group-hover:text-white transition-colors" />
+            <BsFillGridFill className="text-xl" />
+            {!collapsed && (
+            <span className="font-bold ml-2">Your Library</span>
+            )}
           </div>
-          
-          {!collapsed && (
-            <span className="text-white font-bold">Your Library</span>
-          )}
 
           {!collapsed && (
             <div className="ml-auto">

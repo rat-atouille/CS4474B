@@ -47,6 +47,8 @@ const BrowsePage = () => {
       <div className="mb-4 bg-[#212121]">
         <h1 className="ml-4 my-2 font-bold text-2xl">Genres</h1> 
         <div className="flex flex-wrap mx-5 px-6"> 
+        <h1 className="ml-4 mt-10 mb-2 font-bold text-2xl">Genres</h1> {/* Changed my-5 to mb-2 */}
+        <div className="flex flex-wrap mx-5 px-6"> {/* Removed py-2 */}
           {dataToDisplay.map((item, index) => (
             <div 
               className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 p-4 group" 
