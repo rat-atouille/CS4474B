@@ -16,7 +16,7 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
   useEffect(() => {
     const updateItemsToShow = () => {
       if (window.innerWidth >= 1024) {
-        setItemsToShow(5);
+        setItemsToShow(4);
       } else if (window.innerWidth >= 768) {
         setItemsToShow(3);
       } else {
@@ -313,7 +313,7 @@ export default function HomePage({ setMusicQueue }) {
 
       {/* Category Buttons */}
       <div className="mt-7 mb-7 flex flex-wrap gap-3">
-        {["All", "Music", "Podcasts", "Audiobooks"].map((category) => (
+        {["All", "Music", "Podcasts"].map((category) => (
           <button
             onClick={() => handleCategory(category)}
             key={category}
@@ -353,12 +353,12 @@ export default function HomePage({ setMusicQueue }) {
         </>
       )}
 
-      {selectedCategory === "Audiobooks" && (
+      {/* {selectedCategory === "Audiobooks" && (
         <>
           {renderMediaSection("Audiobook Collection", shuffledRecentlyPlayed, handlePlay, handleAlbumClick)}
           {renderMediaSection("Your Audiobook Library", shuffledRecentlyPlayed, handlePlay, handleAlbumClick)}
         </>
-      )}
+      )} */}
     </div>
   );
 }

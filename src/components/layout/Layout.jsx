@@ -29,7 +29,7 @@ export default function Layout({musicQueue, setMusicQueue, currentSongIndex, set
           collapsed ? "w-16" : "w-64"
         }`}
       >
-        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} setMusicQueue={setMusicQueue} currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex}/>
+        <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} musicQueue={musicQueue} setMusicQueue={setMusicQueue} currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex}/>
       </div>
 
       {/* Main Content Wrapper (Takes Full Width) */}
@@ -38,7 +38,9 @@ export default function Layout({musicQueue, setMusicQueue, currentSongIndex, set
         <Navbar showNavBackground={showNavBackground} className="w-full"/>
 
         {/* Scrollable Content */}
-        <div className={`flex-1 mt-[10vh] md:mt-[5vw] mb-[10vh] md:mb-[5vw] overflow-y-auto bg-[#212121] ${collapsed ? "ml-16" : "ml-64"}`}>
+        <div className={`flex-1 mt-[10vh] md:mt-[5vw] overflow-y-auto bg-[#212121] 
+          ${collapsed ? "ml-16" : "ml-64"}
+          ${musicQueue && "mb-[10vh] md:mb-[5vw]"}`}>
           <Outlet/>
         </div>
       </div>
