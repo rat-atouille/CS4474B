@@ -488,10 +488,10 @@ const Artist = ({setMusicQueue, currentSong}) => {
         return (
           <div>
             <h2 className="text-xl font-bold mb-4">Singles & EPs</h2>
-            <div className="mx-5 p-0 m-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <div className=" mx-5 p-0 m-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
               {/* Show message if no Singles/EPs exist */}
               {albums.length > 0 && albums.filter(album => album.tracks <= 3).length === 0 && (
-                <div className="text-gray-400 text-center p-4 w-full">
+                  <div className="w-full col-span-full text-left text-gray-400 p-4">
                   No Singles or EPs found for this artist.
                 </div>
               )}
@@ -536,7 +536,7 @@ const Artist = ({setMusicQueue, currentSong}) => {
             <h2 className="text-xl font-bold mb-4">About {artistData.name}</h2>
             <div className="mb-6 flex">
               <div>
-                <p className="text-gray-300 mb-4">
+                <p className="mb-4 text-gray-400">
                   {artistData.about}
                 </p>
                 <div className="mb-4">
