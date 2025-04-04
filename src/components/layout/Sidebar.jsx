@@ -474,7 +474,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
 
         {/* Sidebar Items */}
         <div className="flex-grow overflow-hidden">
-          <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
+          <div className="h-10/12 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
             {collapsed && (
               <div className="flex justify-center mb-2">
                 <button className="bg-gray-900 hover:bg-gray-800 transition-colors rounded-full p-2 cursor-pointer">
@@ -484,7 +484,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
             )}
             
             {viewMode === "Grid" && !collapsed ? (
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4 overflow-y-auto pb-4">
                 {sidebarItems.map((item) => (
                   <div 
                   key={item.id} 
@@ -523,7 +523,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
                 ))}
               </div>
             ) : viewMode === "Compact" && !collapsed ? (
-              <div className="space-y-1">
+              <div className="space-y-1 overflow-y-auto pb-6">
                 {sidebarItems.map((item) => (
                   <div 
                     key={item.id} 
@@ -537,7 +537,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
                 ))}
               </div>
             ) : (
-              <div className="space-y-2">
+              <div className="space-y-2 overflow-y-auto pb-4">
                 {/* Regular List View */}
                 {sidebarItems.map((item) => (
                   <div 

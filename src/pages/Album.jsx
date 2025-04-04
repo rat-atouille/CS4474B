@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {IoPlay, IoHeart, IoHeartOutline} from 'react-icons/io5';
 import {FaHeart} from "react-icons/fa";
 import {BsSoundwave} from 'react-icons/bs';
 import getStructuredData from '../getStructuredData.js';
-import {Link, useLocation} from "react-router-dom";
-
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import data from "../assets/data/data.json";
 
 export default function Album({setMusicQueue, currentSong}) {
   const location = useLocation();
@@ -19,21 +19,46 @@ export default function Album({setMusicQueue, currentSong}) {
   const [likedSongs, setLikedSongs] = useState([]);
   const [currentAlbum, setCurrentAlbum] = useState(null);
   const [liked, setLiked] = useState(false);  // for liking the album
+  const [albums, setAlbums] = useState([]);
   const [shuffle, setShuffle] = useState(false); // for shuffling the album
+  const navigate = useNavigate();
+  const toTopRef = useRef<HTMLSpanElement>(null);
+  
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [])
+
   useEffect(() => {
     if (albumName && albumType) {
       if (albumType === 'Playlist') {
-        if (albumName === 'Liked Songs') {
-          setCurrentAlbum(getStructuredData('playlist-liked', albumName, 0));
-        } else {
-          setCurrentAlbum(getStructuredData('playlist', albumName, 0));
-        }
+        setCurrentAlbum(getStructuredData(albumName === 'Liked Songs' ? 'playlist-liked' : 'playlist', albumName, 0));
       } else {
         setCurrentAlbum(getStructuredData('album', albumName, 0));
       }
     }
-
-  }, [location]);
+  }, [albumName, albumType, location]);
+  
+  useEffect(() => {
+    if (albumType === "Album" && currentAlbum) {
+      const artistName = currentAlbum?.structuredData?.[0]?.tracks?.[0]?.author;
+      const artistKey = Object.keys(data).find(key => key.toLowerCase() === artistName?.toLowerCase());
+  
+      if (!artistKey || !data[artistKey]) {
+        console.log("Artist not found :(");
+        return;
+      }
+  
+      const artistAlbums = data[artistKey].albums.map((album, index) => ({
+        id: index + 1,
+        title: album.name,
+        year: new Date(album.releaseDate).getFullYear(),
+        tracks: album.songs.length,
+        image: album.image
+      }));
+  
+      setAlbums(artistAlbums);
+    }
+  }, [albumType, currentAlbum, data, location]);  
 
   if (!currentAlbum) return <div></div>;
 
@@ -58,7 +83,6 @@ export default function Album({setMusicQueue, currentSong}) {
       : convertToMMSS(totalSeconds);
   }
 
-
   const handlePlay = (name, index) => {
     if (typeof setMusicQueue === 'function') {
       if (albumType === 'Playlist') {
@@ -74,6 +98,10 @@ export default function Album({setMusicQueue, currentSong}) {
       console.error('setMusicQueue is not a function');
     }
   };
+
+  const handleAlbumClick = (albumName) => {
+    navigate(`/album/?name=${albumName}&type=album`);
+  }
 
   const togglePlay = (e, index) => {
     e.stopPropagation();
@@ -190,9 +218,10 @@ export default function Album({setMusicQueue, currentSong}) {
         </table>
       </div>
 
-      <div className="ml-3 mr-3">
+      {albumType === "Album" && (
+        <div className="ml-3 mr-3">
         <h2 className="text-xl font-bold mb-4 mt-10">
-        More by
+          More by
         <Link
             to={`/artist/?name=${currentAlbum.structuredData[0].tracks[0].author}`}
             href={`/artist/?name=${currentAlbum.structuredData[0].tracks[0].author}`}
@@ -203,14 +232,14 @@ export default function Album({setMusicQueue, currentSong}) {
           </h2>
         <div className="grid grid-cols-3 lg:grid-cols-5 gap-8">
           {/* Display more albums */}
-          {currentAlbum.structuredData[0].tracks.map((song, index) => (
-            <div key={index} className="p-3 rounded group hover:bg-neutral-600">
+          {albums.map((album, index) => (
+            <div key={index} className="p-3 rounded group hover:bg-neutral-600" onClick={() => handleAlbumClick(album.title)}>
               <div className="relative">
-                <img src={song.image} alt="Song Image" className="object-cover rounded"/>
+                <img src={album.image} alt="Song Image" className="object-cover rounded"/>
                 <button
                   onClick={(e) => {
                     togglePlay(e, index);
-                    handlePlay(currentAlbum.structuredData[0].tracks[0].name, index);
+                    handlePlay(album.title, 0);
                   }}
                   className="absolute bottom-2 right-2 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
                 >
@@ -218,11 +247,12 @@ export default function Album({setMusicQueue, currentSong}) {
                     className="fa-solid fa-circle-play text-5xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
                 </button>
               </div>
-              <p className="text-white mt-2 truncate font-semibold text-sm">{song.trackTitle}</p>
+              <p className="text-white mt-2 truncate font-semibold text-sm">{album.title}</p>
             </div>
           ))}
         </div>
       </div>
+      )}
     </div>
   );
 

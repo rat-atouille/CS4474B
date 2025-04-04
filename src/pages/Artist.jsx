@@ -9,7 +9,7 @@ import { FaPlus } from "react-icons/fa";
 // Import the data from the specified path
 import data from "../assets/data/data.json";
 import getStructuredData from "../getStructuredData.js";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 // navigate(`/artist/?name=${item.artistName}`);
 
@@ -24,7 +24,8 @@ const Artist = ({setMusicQueue, currentSong}) => {
   const [artistData, setArtistData] = useState(null);
   const [songs, setSongs] = useState([]);
   const [albums, setAlbums] = useState([]);
-  const [expanded, setExpanded] = useState(['all', 'recent', 'popular']); // State to track expanded sections
+  const [expanded, setExpanded] = useState(['all', 'recent', 'popular']); // State to track expanded 
+
   useEffect(() => {
     // Load artist data when component mounts
     loadArtistData();
@@ -41,8 +42,6 @@ const Artist = ({setMusicQueue, currentSong}) => {
       const artist = data[artistKey];
 
       if (artist) {
-        console.log("Loaded artist:", artistKey, artist);
-
         // Set artist info
         setArtistData({
           name: artistKey,
@@ -457,7 +456,9 @@ const Artist = ({setMusicQueue, currentSong}) => {
           <div>
             <h2 className="text-xl font-bold mb-4">Albums</h2>
             <div className=" mx-5 p-0 m-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                {albums.filter(album => album.tracks > 3).map(album => (                  <div  key={album.id} className="p-3 m-0 rounded hover:bg-gray-700 transition-all">
+                {albums.filter(album => album.tracks > 3).map(album => (                  
+                  <Link to={`/album/?name=${album.title}&type=album`} key={album.id} className="p-3 m-0 rounded hover:bg-gray-700 transition-all">
+                  <div  key={album.id} className="p-3 m-0 rounded hover:bg-gray-700 transition-all">
                     {/* Square Album Cover */}
                     <div key={album.id}>
                     <div className="w-full relative aspect-square mb-2 rounded overflow-hidden">
@@ -477,6 +478,7 @@ const Artist = ({setMusicQueue, currentSong}) => {
                     <Link to={`/album/?name=${album.title}&type=album`} href={`/album/?name=${album.title}`} className="select-none text-gray-400 text-sm">{album.year} • {album.tracks} tracks</Link>
                     </div>
                   </div>
+                  </Link>
                 ))}
               </div>
           </div>
@@ -495,7 +497,8 @@ const Artist = ({setMusicQueue, currentSong}) => {
               )}
               {/* Display Singles & EPs */}
               {albums.filter(album => album.tracks <= 3).map(album => (
-                <div key={album.id} className=" hover:bg-gray-700  p-3 m-0 rounded hover:bg-gray-700 transition-all">
+                <Link to={`/album/?name=${album.title}&type=album`} key={album.id} className="p-3 m-0 rounded hover:bg-gray-700 transition-all">
+                <div key={album.id} className="p-3 m-0 rounded hover:bg-gray-700 transition-all">
                   {/* Album Cover */}
                   <div className="w-full relative aspect-square mb-2 rounded overflow-hidden">
                   <img src={album.image} alt={album.title} className="w-full h-full object-cover" />
@@ -519,6 +522,7 @@ const Artist = ({setMusicQueue, currentSong}) => {
                   <p className="text-gray-400 text-sm">Singles • {album.year}</p>
                   </Link>
                 </div>
+                </Link>
               ))}
             </div>
 
