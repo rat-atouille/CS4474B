@@ -82,7 +82,7 @@ export default function MusicPlayer({ musicQueue, currentSongIndex, setCurrentSo
   return (
       <>
         {musicQueue && (
-            <div className="hover:opacity-70 fixed bottom-0 bg-black w-full h-[10vh] md:h-[5vw] overflow-x-hidden z-10 px-4 py-2 flex items-center justify-between transition-all">
+            <div className="fixed bottom-0 bg-black w-full h-[10vh] md:h-[5vw] overflow-x-hidden z-10 px-4 py-2 flex items-center justify-between transition-all">
               {/* Left Section: Song Info */}
               <div className="flex items-center space-x-4 md:w-1/5 h-full">
                 <div className={"h-3/4"}>
