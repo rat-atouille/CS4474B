@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import songData from '../assets/data/data.json';
 import podcastData from '../assets/data/podcastData.json';
 import { IoChevronBackOutline } from "react-icons/io5";
-import genreData from '../assets/data/genreJson.json'; // Import your genre JSON data
+import genreData from '../assets/data/genreJson.json';
 
 const PODCAST_GENRES = [
   "art", "beauty", "book", "business", "comedy", "crime", 
@@ -18,12 +18,23 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
   const [filteredContent, setFilteredContent] = useState([]);
   const [contentType, setContentType] = useState('songs');
 
+  // Function to sort content alphabetically by name
+  const sortAlphabetically = (content) => {
+    return [...content].sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+      if (nameA < nameB) return -1;
+      if (nameA > nameB) return 1;
+      return 0;
+    });
+  };
+
   useEffect(() => {
     const lowerGenre = genre.toLowerCase();
     const isPodcastGenre = PODCAST_GENRES.includes(lowerGenre);
 
     if (isPodcastGenre) {
-      // Filter podcasts (unchanged)
+      // Filter and sort podcasts alphabetically
       const podcasts = [];
       Object.entries(podcastData).forEach(([podcastName, podcast]) => {
         if (podcast.genres && podcast.genres.some(g => g.toLowerCase() === lowerGenre)) {
@@ -37,14 +48,25 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
           });
         }
       });
-      setFilteredContent(podcasts.sort((a, b) => a.name.localeCompare(b.name)));
+      setFilteredContent(sortAlphabetically(podcasts));
       setContentType('podcasts');
     } else {
-      // Use genreData.json for songs if available, otherwise fall back to songData
-      const songs = genreData[lowerGenre] || [];
+      // Use genreData.json if available, otherwise fall back to songData
+      let songs = [];
       
-      // If genreData doesn't have this genre, fall back to original filtering
-      if (songs.length === 0) {
+      if (genreData[lowerGenre]) {
+        // Format and sort songs from genreData
+        songs = genreData[lowerGenre].map(song => ({
+          type: 'song',
+          name: song.name,
+          durationMs: song.durationMs,
+          image: song.image,
+          artist: song.artist,
+          album: song.album,
+          albumImage: song.image
+        }));
+      } else {
+        // Fall back to original filtering from songData
         Object.values(songData).forEach(artist => {
           if (artist.genres && artist.genres.some(g => g.toLowerCase() === lowerGenre)) {
             artist.albums.forEach(album => {
@@ -60,23 +82,9 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
             });
           }
         });
-      } else {
-        // Format songs from genreData to match expected structure
-        const formattedSongs = songs.map(song => ({
-          type: 'song',
-          name: song.name,
-          durationMs: song.durationMs,
-          image: song.image,
-          artist: song.artist,
-          album: song.album,
-          albumImage: song.image // Using same image for album cover
-        }));
-        setFilteredContent(formattedSongs);
-        setContentType('songs');
-        return;
       }
       
-      setFilteredContent(songs.sort((a, b) => a.name.localeCompare(b.name)));
+      setFilteredContent(sortAlphabetically(songs));
       setContentType('songs');
     }
   }, [genre]);
@@ -85,7 +93,7 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
     if (item.type === 'podcast') {
       navigate(`/podcast?name=${encodeURIComponent(item.name)}`);
     } else {
-      // Handle song click - create music queue
+      // Create music queue with all songs from the same album
       const albumTracks = filteredContent
         .filter(track => track.type === 'song' && track.album === item.album)
         .map(track => ({
@@ -99,7 +107,6 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
 
       const songIndex = albumTracks.findIndex(track => track.trackTitle === item.name);
 
-      // Set music queue in the format your player expects
       setMusicQueue({
         structuredData: [{
           tracks: albumTracks,
@@ -110,7 +117,6 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
         index: songIndex
       });
 
-      // Set current song index
       setCurrentSongIndex({
         index: songIndex,
         albumName: item.album
