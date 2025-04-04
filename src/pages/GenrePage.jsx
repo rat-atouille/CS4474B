@@ -55,7 +55,7 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
       let songs = [];
       
       if (genreData[lowerGenre]) {
-        // Format songs from genreData
+        // Format songs from data.json
         songs = genreData[lowerGenre].map(song => ({
           type: 'song',
           name: song.name,
@@ -66,7 +66,7 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
           albumImage: song.image
         }));
       } else {
-        // If genres match genre in data.json file, push on song arrary
+        // Once genres, match push song information in song array
         Object.values(songData).forEach(artist => {
           if (artist.genres && artist.genres.some(g => g.toLowerCase() === lowerGenre)) {
             artist.albums.forEach(album => {
@@ -90,11 +90,11 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
   }, [genre]);
 
   const handleContentClick = (item) => {
-    // Redirect to podcast using podcast name
     if (item.type === 'podcast') {
       navigate(`/podcast?name=${encodeURIComponent(item.name)}`);
     } else {
       // Create music queue with all songs from the same album
+      // Convert duration into minutes and seconds
       const albumTracks = filteredContent
         .filter(track => track.type === 'song' && track.album === item.album)
         .map(track => ({
@@ -168,12 +168,6 @@ const GenrePage = ({ setMusicQueue, setCurrentSongIndex }) => {
                 </div>
                 <div className="p-2 text-center w-full">
                   <p className="font-medium truncate text-white">{item.name}</p>
-                  <p className="text-sm text-gray-400 truncate">
-                    {item.type === 'podcast' ? item.artist : `by ${item.artist}`}
-                  </p>
-                  <p className="text-xs text-gray-500 truncate mt-1">
-                    {item.type === 'podcast' ? `Latest: ${item.album}` : item.album}
-                  </p>
                 </div>
               </div>
             </div>
