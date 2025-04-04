@@ -7,7 +7,7 @@ import { IoChevronBackOutline } from "react-icons/io5";
 // List of genres that should show podcasts instead of songs
 const PODCAST_GENRES = [
   "art", "beauty", "book", "business", "comedy", "crime", 
-  "design", "documentary", "educational", "fiction", "film", 
+  "design", "career", "educational", "fiction", "film", 
   "finance", "fitness", "games", "history", "news", 
   "pop culture", "science", "sport", "top"
 ];
