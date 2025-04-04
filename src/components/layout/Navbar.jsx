@@ -79,6 +79,19 @@ function Navbar({ showNavBackground }) {
     }
   };
 
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      const trimmed = searchText.trim();
+      if (trimmed.length > 0) {
+        navigate(`/search?q=${encodeURIComponent(trimmed)}`);
+      } else {
+        navigate(`/`);
+      }
+    }, 100);
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchText]);
+
   return (
     <div
       className={`fixed bg-black w-full h-[10vh] 
