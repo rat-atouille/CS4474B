@@ -1,6 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import rockImage from "../assets/Rocky the cat.png";
 import getSearchData from "../getSearchData.js";
 import getStructuredData from "../getStructuredData";
 import { FaMinus, FaPlus } from "react-icons/fa6";
@@ -20,7 +19,7 @@ export default function SearchPage({ setMusicQueue }) {
     const navigate = useNavigate();
     const [searchParam, setSearchParam] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
-    const [expanded, setExpanded] = useState(['all', 'songs', 'artist','albums','podcasts']); // State to track expanded 
+    const [expanded, setExpanded] = useState(['all', 'songs', 'artist','albums','podcasts']); // State to track expanded
 
     // Update searchParam whenever the URL query changes.
     useEffect(() => {
@@ -92,6 +91,14 @@ export default function SearchPage({ setMusicQueue }) {
     if (filteredAlbums.length > 0) availableCategories.push("Albums");
     if (filteredPodcasts.length > 0) availableCategories.push("Podcasts");
 
+    // Check if no results
+    const noResults =
+    filteredSongs.length === 0 &&
+    filteredPlaylists.length === 0 &&
+    filteredArtists.length === 0 &&
+    filteredAlbums.length === 0 &&
+    filteredPodcasts.length === 0;
+
     // If current active category is no longer available, switch to All.
     useEffect(() => {
         if (activeCategory !== "All" && !availableCategories.includes(activeCategory)) {
@@ -105,29 +112,32 @@ export default function SearchPage({ setMusicQueue }) {
 
             {/* Category Buttons */}
             <div className="flex flex-wrap gap-2">
-                {availableCategories.map((category) => (
-                    <button
-                        key={category}
-                        className={`px-4 py-1 rounded-full text-sm ${
-                            activeCategory === category
-                                ? "bg-green-500"
-                                : "bg-gray-700 hover:bg-gray-600"
-                        }`}
-                        onClick={() => handleTagClick(category)}
-                    >
-                        {category}
-                    </button>
-                ))}
+                {!noResults && (
+                    availableCategories.map((category) => (
+                        <button
+                            key={category}
+                            className={`px-4 py-1 rounded-full text-sm ${
+                                activeCategory === category
+                                    ? "bg-green-500"
+                                    : "bg-gray-700 hover:bg-gray-600"
+                            }`}
+                            onClick={() => handleTagClick(category)}
+                        >
+                            {category}
+                        </button>
+                    ))
+                )}
+
             </div>
 
             {/* =================================== ALL PAGE =================================== */}
-            {activeCategory === "All" && (
+            {activeCategory === "All" && !noResults ? (
                 <div>
                     {filteredArtists.length > 0 && (
                     <>
-                    <div className="select-none flex p-0 mb-4  flex-rows hover:text-green-500 transition-all duration-150 ease-in-out">
+                    <div className="select-none flex p-0 mb-4  flex-rows hover:text-green-500 transition-all duration-150 ease-in-out"
+                        onClick={() => setExpanded(expanded.includes('all') ? expanded.filter(e => e !== 'all') : [...expanded, 'all'])}>
                        <h2 
-                        onClick={() => setExpanded(expanded.includes('all') ? expanded.filter(e => e !== 'all') : [...expanded, 'all'])}
                         className="font-semibold text-xl">Artists</h2>
                         <button className="ml-1 flex items-center justify-center p-2">
                         {expanded.includes('all') ? <FaMinus size={10} />  : <FaPlus size={10} />}
@@ -168,9 +178,9 @@ export default function SearchPage({ setMusicQueue }) {
 
                     {filteredSongs.length > 0 && (
                         <div>
-                            <div className="select-none flex p-0 mb-4  flex-rows hover:text-green-500 transition-all duration-150 ease-in-out">
+                            <div className="select-none flex p-0 mb-4  flex-rows hover:text-green-500 transition-all duration-150 ease-in-out"
+                                onClick={() => setExpanded(expanded.includes('songs') ? expanded.filter(e => e !== 'songs') : [...expanded, 'songs'])}>
                                 <h2 
-                                    onClick={() => setExpanded(expanded.includes('songs') ? expanded.filter(e => e !== 'songs') : [...expanded, 'songs'])}
                                     className="font-semibold text-xl">Songs</h2>
                                     <button className="ml-1 flex items-center justify-center p-2">
                                         {expanded.includes('songs') ? <FaMinus size={10} />  : <FaPlus size={10} />}
@@ -216,9 +226,9 @@ export default function SearchPage({ setMusicQueue }) {
 
                     {filteredAlbums.length > 0 && (
                         <div>
-                           <div className="select-none flex p-0 mb-4  flex-rows hover:text-green-500 transition-all duration-150 ease-in-out">
+                           <div className="select-none flex p-0 mb-4  flex-rows hover:text-green-500 transition-all duration-150 ease-in-out"
+                            onClick={() => setExpanded(expanded.includes('albums') ? expanded.filter(e => e !== 'albums') : [...expanded, 'albums'])}>
                             <h2 
-                                onClick={() => setExpanded(expanded.includes('albums') ? expanded.filter(e => e !== 'albums') : [...expanded, 'albums'])}
                                 className="font-semibold text-xl">Albums</h2>
                                 <button className="ml-1 flex items-center justify-center p-2">
                                 {expanded.includes('albums') ? <FaMinus size={10} />  : <FaPlus size={10} />}
@@ -261,9 +271,9 @@ export default function SearchPage({ setMusicQueue }) {
 
                     {filteredPodcasts.length > 0 && (
                         <div>
-                            <div className="select-none flex p-0 mb-4  flex-rows hover:text-green-500 transition-all duration-150 ease-in-out">
-                            <h2 
-                                onClick={() => setExpanded(expanded.includes('podcasts') ? expanded.filter(e => e !== 'podcasts') : [...expanded, 'podcasts'])}
+                            <div className="select-none flex p-0 mb-4  flex-rows hover:text-green-500 transition-all duration-150 ease-in-out"
+                            onClick={() => setExpanded(expanded.includes('podcasts') ? expanded.filter(e => e !== 'podcasts') : [...expanded, 'podcasts'])}>
+                            <h2
                                 className="font-semibold text-xl">Podcasts</h2>
                                 <button className="ml-1 flex items-center justify-center p-2">
                                 {expanded.includes('podcasts') ? <FaMinus size={10} />  : <FaPlus size={10} />}
@@ -303,6 +313,10 @@ export default function SearchPage({ setMusicQueue }) {
                             )}
                         </div>
                     )}
+                </div>
+            ) : (
+                <div className="text-center mt-10 text-gray-400">
+                    <p className="text-lg">No results found matching your search.</p>
                 </div>
             )}
 
