@@ -48,17 +48,19 @@ export default function Album({setMusicQueue, currentSong}) {
         return;
       }
   
-      const artistAlbums = data[artistKey].albums.map((album, index) => ({
-        id: index + 1,
-        title: album.name,
-        year: new Date(album.releaseDate).getFullYear(),
-        tracks: album.songs.length,
-        image: album.image
-      }));
+      const artistAlbums = data[artistKey].albums
+        .map((album, index) => ({
+          id: index + 1,
+          title: album.name,
+          year: new Date(album.releaseDate).getFullYear(),
+          tracks: album.songs.length,
+          image: album.image
+        }))
+        .filter(album => album.title !== albumName); // Filter out the current album
   
       setAlbums(artistAlbums);
     }
-  }, [albumType, currentAlbum, data, location]);  
+  }, [albumType, currentAlbum, data, location]);
 
   if (!currentAlbum) return <div></div>;
 
