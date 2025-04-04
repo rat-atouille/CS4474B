@@ -27,7 +27,7 @@ import businessCover from './businessCover.png'
 import comedyCover from './comedyCover.png'
 import crimeCover from './crimeCover.png'
 import designCover from './designCover.png'
-import documentaryCover from './documentaryCover.png'
+import careerCover from './careerCover.png'
 import educationalCover from './educationalCover.png'
 import filmCover from './filmCover.png' 
 import fictionCover from './fictionCover.png'
@@ -90,8 +90,8 @@ export const assets = {
   businessCover,
   comedyCover,
   crimeCover,
+  careerCover,
   designCover,
-  documentaryCover,
   educationalCover,
   fictionCover,
   filmCover,
@@ -278,27 +278,28 @@ export const podcastData = [
   {
     id:24,
     type: "Podcast",
+    genre: "Career",
+    image: careerCover,
+  },
+  {
+    id:25,
+    type: "Podcast",
     genre: "Comedy",
     image: comedyCover
   },
   {
-    id:25,
+    id:26,
     type: "Podcast",
     genre: "Crime",
     image: crimeCover
   },
   {
-    id:26,
+    id:27,
     type: "Podcast",
     genre: "Design",
     image: designCover
   },
-  {
-    id:27,
-    type: "Podcast",
-    genre: "Documentary",
-    image: documentaryCover
-  },
+ 
   {
     id:28,
     type: "Podcast",
