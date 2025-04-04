@@ -8,7 +8,7 @@ import getStructuredData from "../../../src/getStructuredData.js";
 // Import the data from the specified path
 import playlistData from "../../assets/data/playlistData.json";
 
-function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
+function Sidebar({ collapsed, setCollapsed, musicQueue, setMusicQueue }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const navigate = useNavigate();
   
@@ -474,7 +474,8 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
 
         {/* Sidebar Items */}
         <div className="flex-grow overflow-hidden">
-          <div className="h-10/12 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
+          <div className={`overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent
+            ${musicQueue ? "h-9/12" : "h-10/12"}`}>
             {collapsed && (
               <div className="flex justify-center mb-2">
                 <button className="bg-gray-900 hover:bg-gray-800 transition-colors rounded-full p-2 cursor-pointer">
