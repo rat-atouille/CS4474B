@@ -38,9 +38,9 @@ function formatLength(lengthInMs) {
   const seconds = totalSeconds % 60;
 
   if (hours > 0) {
-    return `${hours} hr ${minutes} min ${seconds} sec`;
+    return `${hours}:${minutes}:${seconds}`;
   } else {
-    return `${minutes} min ${seconds} sec`;
+    return `${minutes}:${seconds}`;
   }
 }
 
@@ -59,18 +59,18 @@ function EpisodeList({episodes, handlePlay, currentSong, podcastName}) {
     <table className={"w-full mt-7"}>
       <tbody ref={tableBody}>
       <tr>
-        <th className={"text-left pb-2 border-b-2 border-neutral-700 text-neutral-400"}><AiFillPicture/></th>
-        <th className={"text-left pb-2 border-b-2 border-neutral-700 text-neutral-400"}>Name</th>
-        <th className={"text-left pb-2 border-b-2 border-neutral-700 text-neutral-400"}>Release Date</th>
-        <th className={"text-left pb-2 border-b-2 border-neutral-700 text-neutral-400"}>Duration</th>
+        <th className={"text-left font-medium pb-2 border-b-2 border-neutral-700 text-neutral-400"}><AiFillPicture/></th>
+        <th className={"text-left font-medium pb-2 border-b-2 border-neutral-700 text-neutral-400"}>Name</th>
+        <th className={"text-left font-medium pb-2 border-b-2 border-neutral-700 text-neutral-400"}>Release Date</th>
+        <th className={"text-left font-medium ml-3 pb-2 border-b-2 border-neutral-700 text-neutral-400"}>Duration</th>
       </tr>
 
       {episodes.map((episode, index) =>
         <tr onClick={() => {handlePlay(index);}} className={`hover:bg-[#474747] cursor-pointer ${(currentSong.index === index && podcastName === currentSong.albumName) && "text-green-500"}`} key={index}>
           <td className={"py-1.5"}><img className={"size-8"} src={episode?.image ?? genericThumbnail} alt={"Thumbnail"}/></td>
           <td className={"py-1.5"}>{episode.name}</td>
-          <td className={"py-1.5"}>{formatDate(episode.releaseDate)}</td>
-          <td className={"py-1.5"}>{formatLength(episode.durationMs)}</td>
+          <td className={"py-1.5 text-gray-400"}>{formatDate(episode.releaseDate)}</td>
+          <td className={"py-1.5 text-gray-400"}>{formatLength(episode.durationMs)}</td>
         </tr>
       )}
       </tbody>

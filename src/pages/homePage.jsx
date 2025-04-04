@@ -56,7 +56,7 @@ function RecentPlayedCarousel({ items, handlePlay, handleAlbumClick }) {
                 }
               }}
               key={index}
-              className="py-2 group hover:bg-[#535353] rounded transition-all ease-in-out mx-3"
+              className="py-2 group hover:bg-gray-700 rounded transition-all ease-in-out mx-3"
               style={{ flex: `0 0 ${100 / itemsToShow}%` }}
             >
               {/* Square Container */}

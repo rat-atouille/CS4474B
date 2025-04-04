@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import rockImage from "../assets/Rocky the cat.png";
 import getSearchData from "../getSearchData.js";
 import getStructuredData from "../getStructuredData";
+import { FaMinus, FaPlus } from "react-icons/fa6";
 
 // Utility function to shuffle an array
 function shuffleArray(array) {
@@ -19,6 +20,7 @@ export default function SearchPage({ setMusicQueue }) {
     const navigate = useNavigate();
     const [searchParam, setSearchParam] = useState("");
     const [activeCategory, setActiveCategory] = useState("All");
+    const [expanded, setExpanded] = useState(['all', 'songs', 'artist','albums','podcasts']); // State to track expanded 
 
     // Update searchParam whenever the URL query changes.
     useEffect(() => {
@@ -120,45 +122,63 @@ export default function SearchPage({ setMusicQueue }) {
 
             {/* =================================== ALL PAGE =================================== */}
             {activeCategory === "All" && (
-                <>
+                <div>
                     {filteredArtists.length > 0 && (
-                        <div>
-                       <h2 className="font-semibold text-xl mb-2 mt-6">Artists</h2>
+                    <>
+                    <div className="select-none flex p-0 mb-4  flex-rows hover:text-green-500 transition-all duration-150 ease-in-out">
+                       <h2 
+                        onClick={() => setExpanded(expanded.includes('all') ? expanded.filter(e => e !== 'all') : [...expanded, 'all'])}
+                        className="font-semibold text-xl">Artists</h2>
+                        <button className="ml-1 flex items-center justify-center p-2">
+                        {expanded.includes('all') ? <FaMinus size={10} />  : <FaPlus size={10} />}
+                        </button>
+                    </div>
+                    {expanded.includes('all') && (
                         <div className="grid grid-cols-6 gap-4">
-                            {filteredArtists.map((artist, index) => (
-                                <div
-                                    key={index}
-                                    className="flex flex-col items-center px-2 py-8 cursor-pointer group hover:bg-gray-800 transition-colors"
-                                    onClick={() => handleAlbumClick(artist.name, "Artist")}
+                        {filteredArtists.map((artist, index) => (
+                            <div
+                                key={index}
+                                className="flex flex-col items-center px-2 py-8 cursor-pointer group hover:bg-gray-800 transition-colors"
+                                onClick={() => handleAlbumClick(artist.name, "Artist")}
+                            >
+                                <div className="relative w-36 h-36">
+                                <img
+                                    src={artist.image}
+                                    alt={artist.name}
+                                    className="w-full h-full object-cover rounded-full mb-2"
+                                />
+                                
+                                <button
+                                    className="absolute bottom-0 right-0 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
+                                    onClick={(e) => {
+                                        e.stopPropagation(); // Prevents click from bubbling up
+                                        handlePlay("Artist", artist.name, 0);
+                                      }}
                                 >
-                                    <div className="relative w-36 h-36">
-                                    <img
-                                        src={artist.image}
-                                        alt={artist.name}
-                                        className="w-full h-full object-cover rounded-full mb-2"
-                                    />
-                                    
-                                    <button
-                                        className="absolute bottom-0 right-0 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
-                                        onClick={(e) => {
-                                            e.stopPropagation(); // Prevents click from bubbling up
-                                            handlePlay("Artist", artist.name, 0);
-                                          }}
-                                    >
-                                        <i className="fa-solid fa-circle-play text-4xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
-                                    </button>
-                                    </div>
-                                    <p className="mt-2 text-sm font-medium">{artist.name}</p>
+                                    <i className="fa-solid fa-circle-play text-4xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
+                                </button>
                                 </div>
-                            ))}
-                        </div>
-                        </div>
+                                <p className="mt-2 text-sm font-medium">{artist.name}</p>
+                            </div>
+                        ))}
+                    </div>
+                    )}
+                    </>
                     )}
 
                     {filteredSongs.length > 0 && (
                         <div>
-                            <h2 className="font-semibold text-xl mb-2 mt-6">Songs</h2>
-                                <div className="mx-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                            <div className="select-none flex p-0 mb-4  flex-rows hover:text-green-500 transition-all duration-150 ease-in-out">
+                                <h2 
+                                    onClick={() => setExpanded(expanded.includes('songs') ? expanded.filter(e => e !== 'songs') : [...expanded, 'songs'])}
+                                    className="font-semibold text-xl">Songs</h2>
+                                    <button className="ml-1 flex items-center justify-center p-2">
+                                        {expanded.includes('songs') ? <FaMinus size={10} />  : <FaPlus size={10} />}
+                                    </button>
+                                </div>
+                                {expanded.includes('songs') && (
+                                    <div className="mx-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                                        
                                     {filteredSongs.map((song, index) => (
                                         <div
                                             key={index}
@@ -189,49 +209,22 @@ export default function SearchPage({ setMusicQueue }) {
                                             <p className="text-gray-400 text-sm">{song.albumName}</p>
                                         </div>
                                     ))}
-                            </div>
+                                    </div>
+                                )}
                     </div>
-                    )}
-
-                    {filteredPlaylists.length > 0 && (
-                        <div>
-                            <h2 className="font-semibold text-xl mb-2 mt-6">Playlists</h2>
-                                <div className="mx-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                                    {filteredPlaylists.map((pl, index) => (
-                                        <div
-                                            key={index}
-                                            className="p-3 rounded hover:bg-gray-700 transition-all group"
-                                            onClick={() => handleAlbumClick(pl.name, "Playlist")}
-                                        >
-                                            {/* Square Playlist Cover */}
-                                            <div className="relative w-full aspect-square mb-2 rounded overflow-hidden">
-                                                <img
-                                                    src={pl.image}
-                                                    alt="Playlist Cover"
-                                                    className="w-full h-full object-cover"
-                                                />
-                                                {/* Play Button */}
-                                                <button
-                                                    className="absolute bottom-1 right-1 opacity-0 bg-black rounded-full group-hover:opacity-100 transition-all ease-in-out"
-                                                    onClick={(e) => {
-                                                        e.stopPropagation(); // Prevents click from bubbling up
-                                                        handlePlay("Playlist", pl.name, 0);
-                                                    }}
-                                                >
-                                                    <i className="fa-solid fa-circle-play text-6xl text-green-500 hover:scale-105 transition-all duration-150 ease-in-out"></i>
-                                                </button>
-                                            </div>
-                                            {/* Playlist Name */}
-                                            <p className="text-white truncate font-semibold">{pl.name}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                        </div>
                     )}
 
                     {filteredAlbums.length > 0 && (
                         <div>
-                            <h2 className="font-semibold text-xl mb-2 mt-6">Albums</h2>
+                           <div className="select-none flex p-0 mb-4  flex-rows hover:text-green-500 transition-all duration-150 ease-in-out">
+                            <h2 
+                                onClick={() => setExpanded(expanded.includes('albums') ? expanded.filter(e => e !== 'albums') : [...expanded, 'albums'])}
+                                className="font-semibold text-xl">Albums</h2>
+                                <button className="ml-1 flex items-center justify-center p-2">
+                                {expanded.includes('albums') ? <FaMinus size={10} />  : <FaPlus size={10} />}
+                                </button>
+                            </div>                            
+                            {expanded.includes('albums') && (
                                 <div className="mx-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                                     {filteredAlbums.map((album, index) => (
                                         <div
@@ -262,12 +255,21 @@ export default function SearchPage({ setMusicQueue }) {
                                         </div>
                                     ))}
                                 </div>
+                            )}
                         </div>
                     )}
 
                     {filteredPodcasts.length > 0 && (
                         <div>
-                            <h2 className="font-semibold text-xl mb-2 mt-6">Podcasts</h2>
+                            <div className="select-none flex p-0 mb-4  flex-rows hover:text-green-500 transition-all duration-150 ease-in-out">
+                            <h2 
+                                onClick={() => setExpanded(expanded.includes('podcasts') ? expanded.filter(e => e !== 'podcasts') : [...expanded, 'podcasts'])}
+                                className="font-semibold text-xl">Podcasts</h2>
+                                <button className="ml-1 flex items-center justify-center p-2">
+                                {expanded.includes('podcasts') ? <FaMinus size={10} />  : <FaPlus size={10} />}
+                                </button>
+                            </div>     
+                            {expanded.includes('podcasts') && (
                                 <div className="mx-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                                     {filteredPodcasts.map((podcast, index) => (
                                         <div
@@ -298,9 +300,10 @@ export default function SearchPage({ setMusicQueue }) {
                                         </div>
                                     ))}
                                 </div>
+                            )}
                         </div>
                     )}
-                </>
+                </div>
             )}
 
             {/* =================================== CATEGORY PAGES =================================== */}

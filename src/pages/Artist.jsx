@@ -159,7 +159,7 @@ const Artist = ({setMusicQueue, currentSong}) => {
                 </div>
                 {/* Recently played contents - limited to 3 songs */}
                 {expanded.includes('recent') && (
-                <div className="rounded mt-5">
+                <div className="rounded mt-5 mb-5">
                     {songs.slice(0, 3).map((song, index) => (
                       <div
                         key={song.id}
@@ -169,7 +169,7 @@ const Artist = ({setMusicQueue, currentSong}) => {
                         togglePlay(e, `recent-${index}`);
                         handlePlay(song.albumName, index);
                       }}
-                        className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
+                        className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-gray-700 relative"
                       >
                         <div
                           className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
@@ -248,7 +248,7 @@ const Artist = ({setMusicQueue, currentSong}) => {
               </div>
               {
                 expanded.includes('popular') && (
-                  <div className="rounded mt-5">
+                  <div className="rounded mt-5 mb-6">
                   {songs.slice(0,5).map((song, index) => (
                     <div
                       key={song.id}
@@ -258,7 +258,7 @@ const Artist = ({setMusicQueue, currentSong}) => {
                       togglePlay(e, index);
                       handlePlay(song.albumName, index)
                     }}
-                      className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
+                      className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-gray-700 relative"
                     >
                       <div
                         className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"
@@ -392,7 +392,7 @@ const Artist = ({setMusicQueue, currentSong}) => {
                     togglePlay(e, index);
                     handlePlay(song.albumName, index);
                   }}
-                  className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-[#535353] relative"
+                  className="rounded-lg flex items-center p-3 border-b border-gray-700 hover:cursor-pointer hover:bg-gray-700 relative"
                 >
                   <div
                     className="w-8 h-8 flex items-center justify-center text-gray-400 mr-3 hover:text-white"

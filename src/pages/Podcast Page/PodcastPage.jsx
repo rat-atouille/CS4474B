@@ -109,19 +109,19 @@ function PodcastPage({setMusicQueue, currentSong}) {
     <div className="pb-7 bg-[#212121]">
       {/*Top section*/}
       <div ref={topRef} className={"pl-3 py-3 flex gap-2 bg-linear-to-b to-black to-110%"}>
-        <img crossOrigin="anonymous" alt={"Thumbnail"} className={"h-36"} src={podcast.image ?? genericThumbnail}/>
-        <section className={"justify-end flex flex-col gap-2"}>
+        <img crossOrigin="anonymous" alt={"Thumbnail"} className={"h-36 ml-2"} src={podcast.image ?? genericThumbnail}/>
+        <section className={"ml-2 justify-end flex flex-col gap-2"}>
           <div className={"flex gap-2 content-center line-clamp-1"}>
-            <div>Podcast</div>
+            <div className="font-semibold">Podcast</div>
             <div className={"flex gap-1.5"}>{podcast.genres?.map(tag => <Tag key={tag} tag={tag}></Tag>)}</div>
           </div>
           <div className={"text-4xl font-sans font-bold italic line-clamp-2"}>{podcastName}</div>
-          <div className={"text-xl font-bold line-clamp-1"}>{podcast.publisher}</div>
+          <div className={"text-xl ml-1 mb-2 font-bold text-gray-300 line-clamp-1"}>{podcast.publisher}</div>
         </section>
       </div>
 
       {/*Everything else (all indented*/}
-      <div className={"ml-7 mr-14 mt-4"}>
+      <div className={"mx-8 mt-8"}>
 
         {/*Top Buttons*/}
         <div className={"flex gap-2"}>
@@ -131,20 +131,20 @@ function PodcastPage({setMusicQueue, currentSong}) {
         </div>
 
         {/*About*/}
-        <div className={"mt-5"}>
+        <div className={"mt-7"}>
           <div className={"font-bold text-xl"}>About</div>
           <div dangerouslySetInnerHTML={{__html: podcast.about}} className={"mt-2 text-sm text-neutral-400"}></div>
         </div>
 
         {/*Episodes*/}
-        <div className={"mt-5"}>
+        <div className={"mt-8"}>
           <div className={"font-bold text-xl"}>Episodes</div>
 
           {/*Search and sorters*/}
-          <div className={"mt-3 flex gap-2 content-center items-center"}>
+          <div className={"mt-5 flex gap-2 content-center items-center"}>
             <div
-              className="relative flex items-center rounded-full text-white bg-black
-                     hover:bg-stone-900 focus-within:bg-stone-950
+              className="relative flex items-center rounded-full text-white bg-gray-700
+                     hover:bg-gray-600
                      transition-all duration-150 ease-in-out px-4 py-2
                      max-w-xs sm:max-w-md md:max-w-lg">
               <i className="fa-solid fa-search text-lg md:text-xl hover:text-white

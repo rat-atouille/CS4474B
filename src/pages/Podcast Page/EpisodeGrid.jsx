@@ -39,9 +39,9 @@ function formatLength(lengthInMs) {
   const seconds = totalSeconds % 60;
 
   if (hours > 0) {
-    return `${hours} hr ${minutes} min ${seconds} sec`;
+    return `${hours}:${minutes}:${seconds}`;
   } else {
-    return `${minutes} min ${seconds} sec`;
+    return `${minutes}:${seconds}`;
   }
 }
 

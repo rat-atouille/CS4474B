@@ -340,7 +340,7 @@ function Sidebar({ collapsed, setCollapsed, setMusicQueue }) {
                 value={searchQuery}
                 onChange={handleSearchChange}
                 placeholder="Search in Your Library"
-                className="w-full py-1 pl-10 pr-10 bg-gray-800 text-sm truncate text-white rounded-2xl focus:outline-none focus:ring-1 focus:ring-gray-700"
+                className="w-full py-1 pl-10 pr-10 bg-stone-800 text-sm truncate text-white rounded-2xl focus:outline-none focus:ring-1 focus:ring-gray-700"
               />
               {searchQuery && (
                 <button 
