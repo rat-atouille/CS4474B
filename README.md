@@ -16,7 +16,7 @@ git clone https://github.com/rat-atouille/CS4474B.git
    npm install
    ```
 
-2.```
+2. ```
    npm run dev
    ```
 And enjoy!
